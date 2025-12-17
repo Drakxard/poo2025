@@ -1,6 +1,8 @@
 
 Estructura
+
 <img width="163" height="195" alt="image" src="https://github.com/user-attachments/assets/f737eb28-5905-4065-82a2-42df60d37f04" />
+
 
 
 

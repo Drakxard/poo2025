@@ -1,4 +1,12 @@
-#include "system.h"
+#include "System.h"
+int System::VerID()
+{
+	return id;
+}
+string System::VerNombre(){
+	return nombre;
+}
+
 
 void System::GuardarLibros(string nombreArhivo, vector<Libro>&A_Guardar){
     ofstream archi(nombreArhivo, ios::binary);

@@ -1,4 +1,11 @@
 #include "Libro.h"
+int Libro::VerID()
+{
+    return id;
+}
+string Libro::VerNombre(){
+    return nombre;
+}
 void Libro::CambiarEstado(bool estado)
 {
     if (estado)

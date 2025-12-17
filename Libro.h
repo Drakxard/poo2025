@@ -1,4 +1,6 @@
-#include "base.cpp"
+#include "base.h"
+#ifndef LIBRO_H
+#define LIBRO_H
 class Libro
 {
     int id;
@@ -15,8 +17,11 @@ public:
         this->id = id;
         this->nombre = nombre;
     }
+    int VerID();
+    string VerNombre();
     void CambiarNombre(string NuevoNombre);
     void CambiarEstado(bool estado); //1 expirado, 0 no expirado, 
     void RestarDia(); //Se avanzo otro día y cambia estado
     void DiasRestantes(int dias);
 };
+#endif

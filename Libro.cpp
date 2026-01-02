@@ -36,3 +36,9 @@ void Libro::DiasRestantes(int dias){
 void Libro::CambiarNombre(string NuevoNombre){
     nombre=NuevoNombre;
 }
+
+bool Libro::operator==(const Libro& otro) const {
+	// Comparamos si los IDs son iguales.
+	// Si tus variables se llaman diferente, cámbialas aquí.
+	return this->id == otro.id; 
+}

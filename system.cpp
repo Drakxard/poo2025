@@ -35,6 +35,29 @@ vector<Libro> System::VerLibros(string nombreArchivo){
     return Resultado;
 }
 
-
+void System::AgregarLibros(int LibrosAgregar,vector<Libro>&resultadoTest){
+	
+	string nombreLibro="";
+	int idLibro=0;
+	while(LibrosAgregar>0){
+		
+		cout<<"Nombre del libro: ";cin>>nombreLibro;
+		
+		///Generar ID
+		int size= resultadoTest.size(); 
+		if(size>0)
+			idLibro = (resultadoTest[size-1].VerID()) + 1;
+		
+		Libro aux(idLibro,nombreLibro);
+		resultadoTest.push_back(aux);
+		--LibrosAgregar;
+	}
+}
+	void System:: EliminarLibro(Libro Eliminar,vector<Libro>&resultadoTest){
+	vector<Libro>::iterator it = remove(resultadoTest.begin(),
+										resultadoTest.end(),Eliminar);
+	resultadoTest.erase(it);
+	
+	}
 
 

@@ -54,7 +54,6 @@ void System::AgregarLibros(int LibrosAgregar,vector<Libro>&resultadoTest){
 			idLibro = (resultadoTest[size-1].VerID()) + 1;
 		
 		Libro aux(idLibro,nombreLibro.c_str());
-		cout<<endl<<"Nombre enviado: "<<nombreLibro.c_str()<<endl;
 		resultadoTest.push_back(aux);
 		--LibrosAgregar;
 	}
@@ -65,5 +64,18 @@ void System::AgregarLibros(int LibrosAgregar,vector<Libro>&resultadoTest){
 	resultadoTest.erase(it);
 	
 	}
+
+
+vector<Libro>::const_iterator System::BuscarLibro(int idLibro,const vector<Libro> &v){
+	vector<Libro>::const_iterator it = find_if(v.begin(),v.end(),[idLibro](const Libro a){
+		return a.VerID() == idLibro;});
+	if (it != v.end()) {
+		return it; 
+	} else {
+		return v.end(); 
+	}
+	
+}
+
 
 

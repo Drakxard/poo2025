@@ -1,5 +1,5 @@
 #include "Libro.h"
-int Libro::VerID()
+int Libro::VerID() const  
 {
     return id;
 }
@@ -43,3 +43,5 @@ bool Libro::operator==(const Libro& otro) const {
 	// Si tus variables se llaman diferente, cámbialas aquí.
 	return this->id == otro.id; 
 }
+
+

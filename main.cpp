@@ -38,28 +38,16 @@ int main(){
 	
 	
 	///¿Buscar libros?
-	 /*
-	///Eliminar
 	int idLibro;
-	cout<<"Eliminar libro: ";cin>>idLibro;
-	//Libro Eliminar = admin.Buscar(idLibro);
-	Libro Eliminar;
-	admin.EliminarLibro(Eliminar,resultadoTest);
+	cout<<endl<<"Buscar libro, indica ID: ";cin>>idLibro;
 	
-	admin.GuardarLibros(archiTest,resultadoTest);
+	vector<Libro>::const_iterator it = admin.BuscarLibro(idLibro,resultadoTest);
 	
-	mostrar= admin.VerLibros(archiTest);
+	cout<<"Libro: "<<endl;
 	
-	///Salida por terminal simulada de una posible interaccion en la
-	///IU, Mostrar quien realizo algo, vector como tal
-	cout<<"Entidad: "<< admin.VerNombre()<< " con ID: "<< admin.VerID()<<endl;
-	for(Libro &x: mostrar)
-		cout
-		<<"Nombre Libro: " 	<<x.VerNombre()
-		<<"  Id: "	<<x.VerID()
-		<<endl; 
 	
-	*/
+	
+	
 	
 	///Podría prestar libros: Necesitaria Usuario , a quien prestar
 	

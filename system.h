@@ -14,4 +14,5 @@ public:
     vector<Libro> VerLibros(string nombreArchivo,bool crear=false);
 	void AgregarLibros(int LibrosAgregar,vector<Libro>&resultadoTest);
 	void EliminarLibro(Libro Eliminar,vector<Libro>&resultadoTest);
+	vector<Libro>::const_iterator BuscarLibro(int idLibro,const vector<Libro>&v);
 };

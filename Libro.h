@@ -18,7 +18,7 @@ public:
 		strncpy(this->nombre, nombre, 49);
 		this->nombre[49] = '\0';
     }
-    int VerID();
+    int VerID() const;
 	const char* VerNombre();
     void CambiarNombre(const char* NuevoNombre);
     void CambiarEstado(bool estado); //1 expirado, 0 no expirado, 

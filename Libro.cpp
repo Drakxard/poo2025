@@ -3,7 +3,7 @@ int Libro::VerID() const
 {
     return id;
 }
-const char* Libro::VerNombre(){
+const char* Libro::VerNombre() const{
     return this->nombre;
 }
 void Libro::CambiarEstado(bool estado)

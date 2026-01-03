@@ -1,4 +1,5 @@
 #include "System.h"
+using namespace std;
 int System::VerID()
 {
 	return id;
@@ -58,12 +59,10 @@ void System::AgregarLibros(int LibrosAgregar,vector<Libro>&resultadoTest){
 		--LibrosAgregar;
 	}
 }
-	void System:: EliminarLibro(Libro Eliminar,vector<Libro>&resultadoTest){
-	vector<Libro>::iterator it = remove(resultadoTest.begin(),
-										resultadoTest.end(),Eliminar);
-	resultadoTest.erase(it);
-	
-	}
+
+void System::EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v){
+	v.erase(Eliminar);
+}
 
 
 vector<Libro>::const_iterator System::BuscarLibro(int idLibro,const vector<Libro> &v){
@@ -76,6 +75,9 @@ vector<Libro>::const_iterator System::BuscarLibro(int idLibro,const vector<Libro
 	}
 	
 }
+
+
+
 
 
 

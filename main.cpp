@@ -43,11 +43,26 @@ int main(){
 	
 	vector<Libro>::const_iterator it = admin.BuscarLibro(idLibro,resultadoTest);
 	
-	cout<<"Libro: "<<endl;
+	cout<<"Libro: "<<endl
+		<<"Nombre: "<<(*(it)).VerNombre()
+		<<endl 
+		<<"ID: "<<(*(it)).VerID()
+		<<endl;
+
+	
+	cout<<"ID para eliminar: ";cin>>idLibro;
+	
+	vector<Libro>::const_iterator itBorrar = admin.BuscarLibro(idLibro,resultadoTest);
+	admin.EliminarLibro(itBorrar,resultadoTest);
+	admin.GuardarLibros(archiTest,resultadoTest);
 	
 	
-	
-	
+	cout<<"Entidad: "<< admin.VerNombre()<< " con ID: "<< admin.VerID()<<endl;
+	for(Libro &x: resultadoTest)
+		cout
+		<<"Nombre Libro: " 	<<x.VerNombre()
+		<<"  Id: "	<<x.VerID()
+		<<endl; 
 	
 	///Podría prestar libros: Necesitaria Usuario , a quien prestar
 	

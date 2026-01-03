@@ -19,7 +19,7 @@ public:
 		this->nombre[49] = '\0';
     }
     int VerID() const;
-	const char* VerNombre();
+	const char* VerNombre() const;
     void CambiarNombre(const char* NuevoNombre);
     void CambiarEstado(bool estado); //1 expirado, 0 no expirado, 
     void RestarDia(); //Se avanzo otro día y cambia estado

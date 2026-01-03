@@ -22,11 +22,16 @@ void System::GuardarLibros(string nombreArhivo, vector<Libro>&A_Guardar){
     archi.close();
 }
 
-vector<Libro> System::VerLibros(string nombreArchivo){
+vector<Libro> System::VerLibros(string nombreArchivo,bool crear){
     ifstream archi(nombreArchivo,ios::binary);
-    if(!archi)
-        throw runtime_error("Error al Recuperar Libro de " + nombreArchivo);
-    vector<Libro>Resultado;
+    if(crear){
+		//nada
+	}
+	else{
+		if(!archi)
+			throw runtime_error("Error al Recuperar Libro de " + nombreArchivo);
+    }
+	vector<Libro>Resultado;
     Libro aux;
     while(archi.read(reinterpret_cast<char*>(&(aux)),sizeof(aux))){
         Resultado.push_back(aux);
@@ -48,7 +53,8 @@ void System::AgregarLibros(int LibrosAgregar,vector<Libro>&resultadoTest){
 		if(size>0)
 			idLibro = (resultadoTest[size-1].VerID()) + 1;
 		
-		Libro aux(idLibro,nombreLibro);
+		Libro aux(idLibro,nombreLibro.c_str());
+		cout<<endl<<"Nombre enviado: "<<nombreLibro.c_str()<<endl;
 		resultadoTest.push_back(aux);
 		--LibrosAgregar;
 	}

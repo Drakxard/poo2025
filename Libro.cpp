@@ -3,8 +3,8 @@ int Libro::VerID()
 {
     return id;
 }
-string Libro::VerNombre(){
-    return nombre;
+const char* Libro::VerNombre(){
+    return this->nombre;
 }
 void Libro::CambiarEstado(bool estado)
 {
@@ -33,8 +33,9 @@ void Libro::DiasRestantes(int dias){
     diasRestantes = dias;
 }
 
-void Libro::CambiarNombre(string NuevoNombre){
-    nombre=NuevoNombre;
+void Libro::CambiarNombre(const char *NuevoNombre){
+	strncpy(this->nombre, NuevoNombre,49);
+	this->nombre[49]='\0';
 }
 
 bool Libro::operator==(const Libro& otro) const {

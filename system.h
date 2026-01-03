@@ -11,7 +11,7 @@ public:
 	int VerID();
 	string VerNombre();
     void GuardarLibros(string nombreArhivo, vector<Libro> &A_Guardar);
-    vector<Libro> VerLibros(string nombreArchivo);
+    vector<Libro> VerLibros(string nombreArchivo,bool crear=false);
 	void AgregarLibros(int LibrosAgregar,vector<Libro>&resultadoTest);
 	void EliminarLibro(Libro Eliminar,vector<Libro>&resultadoTest);
 };

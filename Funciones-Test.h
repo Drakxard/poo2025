@@ -5,7 +5,7 @@ vector<Libro> genLibros(int Nlibros){
 	for(size_t i = 0; i<Nlibros; ++i){
         nom= "test "+to_string(i+1);
 		id= rand()%(Nlibros*2)+1;
-		Libro aux(id,nom);
+		Libro aux(id,nom.c_str());
         resultado.push_back(aux);
     }
     return resultado;

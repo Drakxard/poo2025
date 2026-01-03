@@ -4,7 +4,7 @@
 class Libro
 {
     int id;
-    string nombre;
+    char nombre[50];
     int diasRestantes;
     bool caduco;
 public:
@@ -12,14 +12,15 @@ public:
     {
         id = -1;
     };
-    Libro(int id, string nombre)
+    Libro(int id, const char* nombre)
     {
         this->id = id;
-        this->nombre = nombre;
+		strncpy(this->nombre, nombre, 49);
+		this->nombre[49] = '\0';
     }
     int VerID();
-    string VerNombre();
-    void CambiarNombre(string NuevoNombre);
+	const char* VerNombre();
+    void CambiarNombre(const char* NuevoNombre);
     void CambiarEstado(bool estado); //1 expirado, 0 no expirado, 
     void RestarDia(); //Se avanzo otro día y cambia estado
     void DiasRestantes(int dias);

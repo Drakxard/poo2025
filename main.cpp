@@ -25,7 +25,7 @@ int main(){
 	cin.ignore();
 	}
 }
-	
+    
 {	///Buscar libro
 
 	cin.get();

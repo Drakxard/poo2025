@@ -1,68 +1,40 @@
-#include "base.h"
-#include "Libro.h"
-#include "System.h"
-#include "Funciones-Test.h"
-#include <iomanip>
-using namespace std;
+#include "ParaMenu.h"
+#include "PreConfiguracion.h"
 
 int main(){
+
+	///Informar quién realiza la acción
+	ReconocerSolicitud(admin);
 	
-	System admin("Rafael",1); 
-	
-	string archiTest = "Test.bin";
-	
-	vector<Libro> resultadoTest = admin.VerLibros(archiTest,1);	
-	
-	
-	cout<<"Entidad: "<< admin.VerNombre()<< " con ID: "<< admin.VerID()<<endl;
-	for(Libro &x: resultadoTest)
-		cout
-		<<"Nombre Libro: " 	<<x.VerNombre()
-		<<"  Id: "	<<x.VerID()
-		<<endl; 
-	
-	
-	int LibrosAgregar=0;
-	cout<<"LIbros a agregar: ";cin>>LibrosAgregar;
-	admin.AgregarLibros(LibrosAgregar,resultadoTest);
-	
-	admin.GuardarLibros(archiTest,resultadoTest);
+	///Contenido Actual
+	VerContenido(resultadoTest);
+
+{	///Test Agregar libros 
+
+	cout<<"LIbros a agregar: ";cin>>Nlibros;
+	AgregarLibros(admin,resultadoTest, archiTest, Nlibros);
+	///Recarga del vector desde bin
 	resultadoTest = admin.VerLibros(archiTest);
 	
-	cout<<"Entidad: "<< admin.VerNombre()<< " con ID: "<< admin.VerID()<<endl;
-	for(Libro &x: resultadoTest)
-		cout
-		<<"Nombre Libro: " 	<<x.VerNombre()
-		<<"  Id: "	<<x.VerID()
-		<<endl; 	
+	ReconocerSolicitud(admin);
+	VerContenido(resultadoTest);
+}
 	
-	
-	///¿Buscar libros?
-	int idLibro;
+{	///Buscar libro
 	cout<<endl<<"Buscar libro, indica ID: ";cin>>idLibro;
+	BuscarLibro(admin, idLibro, resultadoTest);
+}	
 	
-	vector<Libro>::const_iterator it = admin.BuscarLibro(idLibro,resultadoTest);
 	
-	cout<<"Libro: "<<endl
-		<<"Nombre: "<<(*(it)).VerNombre()
-		<<endl 
-		<<"ID: "<<(*(it)).VerID()
-		<<endl;
+{	///Borrar
+	cout<<endl<<"ID a eliminar: ";cin>>idLibro;
+	BorrarLibro(admin, resultadoTest, archiTest, idLibro);
 
+	ReconocerSolicitud(admin);
+	VerContenido(resultadoTest);
+}	
 	
-	cout<<"ID para eliminar: ";cin>>idLibro;
-	
-	vector<Libro>::const_iterator itBorrar = admin.BuscarLibro(idLibro,resultadoTest);
-	admin.EliminarLibro(itBorrar,resultadoTest);
-	admin.GuardarLibros(archiTest,resultadoTest);
-	
-	
-	cout<<"Entidad: "<< admin.VerNombre()<< " con ID: "<< admin.VerID()<<endl;
-	for(Libro &x: resultadoTest)
-		cout
-		<<"Nombre Libro: " 	<<x.VerNombre()
-		<<"  Id: "	<<x.VerID()
-		<<endl; 
+
 	
 	///Podría prestar libros: Necesitaria Usuario , a quien prestar
 	

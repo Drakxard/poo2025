@@ -18,7 +18,7 @@ current_source=main.cpp
 path_char=\
 [source]
 path=main.cpp
-cursor=11:0
+cursor=10:0
 open=true
 [source]
 path=System.cpp
@@ -46,7 +46,7 @@ path=ParaMenu.h
 cursor=9:0
 [header]
 path=PreConfiguracion.h
-cursor=0:0
+cursor=17:0
 [config]
 name=Debug
 toolchain=

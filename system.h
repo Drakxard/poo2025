@@ -16,4 +16,5 @@ public:
 	void EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v);
 	vector<Libro>::const_iterator BuscarLibro(int idLibro,const vector<Libro>&v);
 	bool PrestarLibros(int idLibro,vector <libro>&v,int cantDiasPrestar);
+	///ayrton proy final
 };

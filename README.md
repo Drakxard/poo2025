@@ -1,5 +1,4 @@
-
-![Untitled-2026-01-04-1914](https://github.com/user-attachments/assets/41c786c0-d6ac-4103-9780-b91a869505f9)
+![Untitled-2026-01-04-1914](https://github.com/user-attachments/assets/bcd4adf8-0846-43f4-b3b7-f1458ca4d69f)
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2171.81554098402 1743.0385432047299" width="2171.81554098402" height="1743.0385432047299"><!-- svg-source:excalidraw --><metadata></metadata><defs><style class="style-fonts">

@@ -77,6 +77,27 @@ vector<Libro>::const_iterator System::BuscarLibro(int idLibro,const vector<Libro
 }
 
 
+	bool System::PrestarLibros(int idLibro, vector<libro>& v,int cantDiasPrestar) {
+		auto it = find(v.begin(), v.end(), idLibro);
+		
+		// 1. Verificar si existe
+		if (it != v.end()) {
+			if(EstadoDisponibilidad()){
+				it->disponible = false; //fue prestado
+				bool estado=false;
+				it->CambiarEstado(bool estado);
+				int dias= 
+				return true; // Éxito
+			}else{
+				return false; // ya fue prestado
+			}
+		}
+		return false; // No se encontró el libro
+	}
+	
+
+
+
 
 
 

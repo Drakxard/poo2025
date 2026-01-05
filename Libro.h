@@ -6,6 +6,7 @@ class Libro
     int id;
     char nombre[50];
     int diasRestantes;
+	bool disponible=true;
     bool caduco;
 public:
     Libro()
@@ -21,7 +22,8 @@ public:
     int VerID() const;
 	const char* VerNombre() const;
     void CambiarNombre(const char* NuevoNombre);
-    void CambiarEstado(bool estado); //1 expirado, 0 no expirado, 
+    bool EstadoDisponibilidad();
+	void CambiarEstado(bool estado); //1 expirado, 0 no expirado, 
     void RestarDia(); //Se avanzo otro día y cambia estado
     void DiasRestantes(int dias);
 	

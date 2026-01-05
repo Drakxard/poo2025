@@ -6,6 +6,13 @@ int Libro::VerID() const
 const char* Libro::VerNombre() const{
     return this->nombre;
 }
+
+bool Libro::EstadoDisponibilidad(){
+	if (disponibilidad)
+		disponibilidad = true;
+	else
+		disponibilidad = false;
+}
 void Libro::CambiarEstado(bool estado)
 {
     if (estado)

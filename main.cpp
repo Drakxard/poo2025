@@ -3,7 +3,7 @@
 
 int main(){
 
-	///Informar quiï¿½n realiza la acciï¿½n
+	///Informar quién realiza la acción
 	ReconocerSolicitud(admin);
 	
 	///Contenido Actual
@@ -49,25 +49,13 @@ int main(){
 }	
 	
 
-//Sancionar
-
-
-
-
-//Sancionar 
-
-
-
-
-
-
 	
-	///Podrï¿½a prestar libros: Necesitaria Usuario , a quien prestar
+	///Podría prestar libros: Necesitaria Usuario , a quien prestar
 	
 	/// Iniciar devolucion: Inciar Tramite, dar "informe" de la devolucion
 	
 	
-	///ï¿½?
+	///¿?
 	
 	return 0;
 }

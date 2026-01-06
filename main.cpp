@@ -32,6 +32,8 @@ int main(){
 	system("cls");
 	cout<<"Buscar libro, indica ID: ";cin>>idLibro;
 	BuscarLibro(admin, idLibro, resultadoTest);
+	
+	///falta que busque por nombre del libro
 }	
 	
 	

@@ -20,8 +20,8 @@ int main(){
 	
 	cout<<"Nombre: "<<NombreUsuario;
 	/// Variables
-	char *nom = NombreUsuario.c_str();
-	Bibliotecario admin(nom,codigo); 
+	const char *nom = NombreUsuario.c_str();
+	Bibliotecario admin(codigo,nom); 
 	string libros = "libros.bin";
 	vector<Libro> vectorLibros = admin.VerLibros(libros, 1);
 	int idLibro;

@@ -5,20 +5,21 @@
 
 #include <ctime>
 using namespace std;
+template <typename T>
 class Bibliotecario: public Persona{
  char nombre[49];
  int id;
 public:
 	Bibliotecario(int id, const char *nombre):Persona(id,nombre){};
-	// Función auxiliar para calcular diferencia de días desde "hoy" hasta una fecha meta
+	// Funciï¿½n auxiliar para calcular diferencia de dï¿½as desde "hoy" hasta una fecha meta
 	int CalcularDiferenciaDias(int dia, int mes, int anio) {
 		// 1. Obtener fecha actual
 		time_t t = time(0);
 		struct tm * now = localtime(&t);
 		
-		// 2. Configurar fecha de devolución (struct tm)
+		// 2. Configurar fecha de devoluciï¿½n (struct tm)
 		struct tm fechaDevolucion = {0};
-		fechaDevolucion.tm_year = anio - 1900; // Los años en tm cuentan desde 1900
+		fechaDevolucion.tm_year = anio - 1900; // Los aï¿½os en tm cuentan desde 1900
 		fechaDevolucion.tm_mon = mes - 1;      // Los meses van de 0 a 11
 		fechaDevolucion.tm_mday = dia;
 		
@@ -26,11 +27,11 @@ public:
 		time_t fechaActualSec = mktime(now);
 		time_t fechaDevSec = mktime(&fechaDevolucion);
 		
-		// 4. Calcular diferencia en segundos y convertir a días
+		// 4. Calcular diferencia en segundos y convertir a dï¿½as
 		double seconds = difftime(fechaDevSec, fechaActualSec);
 		int dias = static_cast<int>(seconds / (60 * 60 * 24));
 		
-		return dias > 0 ? dias : 0; // Evitar días negativos si la fecha ya pasó
+		return dias > 0 ? dias : 0; // Evitar dï¿½as negativos si la fecha ya pasï¿½
 	}
 	void GuardarLibros(string nombreArhivo, vector<Libro> &A_Guardar);
     vector<Libro> VerLibros(string nombreArchivo,bool crear=false);

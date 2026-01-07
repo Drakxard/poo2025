@@ -7,6 +7,8 @@ const char* Libro::VerNombre() const{
     return this->nombre;
 }
 
+bool libro::EstadoDispon
+
 bool Libro::EstadoDisponibilidad(){
 	bool disponibilidad = 0;
 	if (disponibilidad)
@@ -48,7 +50,7 @@ void Libro::CambiarNombre(const char *NuevoNombre){
 
 bool Libro::operator==(const Libro& otro) const {
 	// Comparamos si los IDs son iguales.
-	// Si tus variables se llaman diferente, cámbialas aquí.
+	// Si tus variables se llaman diferente, cï¿½mbialas aquï¿½.
 	return this->id == otro.id; 
 }
 

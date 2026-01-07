@@ -10,15 +10,13 @@ class Libro
 	int id;
 	char nombre[50];
 	int diasRestantes;
-	bool disponible; // Quitamos la inicialización aquí para hacerlo en el constructor
-	bool caduco;
+	bool disponible; // Quitamos la inicializaciï¿½n aquï¿½ para hacerlo en el constructor
 	
 public:
 	Libro()
 	{
 		id = -1;
 		disponible = true;
-		caduco = false;
 		diasRestantes = 0;
 	};
 	
@@ -36,9 +34,9 @@ public:
 	const char* VerNombre() const;
 	void CambiarNombre(const char* NuevoNombre);
 	
-	// Métodos corregidos
+	// Mï¿½todos corregidos
 	bool EstadoDisponibilidad() const; 
-	void SetDisponible(bool d); // Nuevo método necesario para PrestarLibros
+	void SetDisponible(bool d); // Nuevo mï¿½todo necesario para PrestarLibros
 	
 	void CambiarEstado(bool estado); // 1 expirado, 0 no expirado
 	void RestarDia(); 

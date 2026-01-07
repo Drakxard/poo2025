@@ -1,6 +1,7 @@
-#include "base.h"
 #ifndef LIBRO_H
 #define LIBRO_H
+#include <cstring>
+using namespace std;
 class Libro
 {
     int id;

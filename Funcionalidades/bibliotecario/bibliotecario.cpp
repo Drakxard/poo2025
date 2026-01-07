@@ -1,14 +1,5 @@
 #include "Bibliotecario.h"
-#include <ctime>
 using namespace std;
-int Bibliotecario::VerID()
-{
-	return id;
-}
-string Bibliotecario::VerNombre(){
-	return nombre;
-}
-
 
 void Bibliotecario::GuardarLibros(string nombreArhivo, vector<Libro>&A_Guardar){
     ofstream archi(nombreArhivo, ios::binary);
@@ -78,47 +69,23 @@ vector<Libro>::const_iterator Bibliotecario::BuscarLibro(int idLibro,const vecto
 }
 
 
-// En bibliotecario.cpp
-
-// Asegúrate de que libro.h tenga acceso a sus atributos o métodos setter adecuados
-bool Bibliotecario::PrestarLibros(int idLibro, vector<Libro>& v, int cantDiasPrestar) {
-	// Buscar el libro
-	auto it = find_if(v.begin(), v.end(), [idLibro](const Libro& a) {
-		return a.VerID() == idLibro;
-	});
-	
-	// 1. Verificar si existe
-	if (it != v.end()) {
-		// NOTA: EstadoDisponibilidad() devuelve un bool, úsalo en el if.
-		// Además, verifica que la lógica en libro.cpp esté correcta (actualmente no retorna valor en tu archivo).
+	bool Bibliotecario::PrestarLibros(int idLibro, vector<libro>& v,int cantDiasPrestar) {
+		auto it = find(v.begin(), v.end(), idLibro);
 		
-		/* Corrección: Asumiendo que EstadoDisponibilidad verifica si está libre */
-		// Necesitas un método público para ver si es true, ya que 'disponible' es privado en tu Libro.h
-		
-		// Asumimos lógica: Si el libro NO tiene diasRestantes o una flag de disponible
-		bool estaDisponible = true; // Aquí deberías llamar a it->EsDisponible() o similar
-		
-		if (estaDisponible) { 
-			// ERROR ORIGINAL: it->disponible = false; (Esto es privado en Libro.h, usa un setter)
-			// ERROR ORIGINAL: it->CambiarEstado(bool estado); (Sintaxis incorrecta)
-			
-			it->CambiarEstado(false); // Marcar como no disponible / prestado
-			
-			// AQUÍ ESTÁ LO QUE PEDISTE: Cargar los días
-			// Si 'cantDiasPrestar' ya es el número de días, solo asígnalo:
-			it->DiasRestantes(cantDiasPrestar);
-			
-			// SI quisieras calcularlo basado en una fecha objetivo (ej. 20/12/2025):
-			// int diasCalculados = CalcularDiferenciaDias(20, 12, 2025);
-			// it->DiasRestantes(diasCalculados);
-			
-			return true; // Éxito
-		} else {
-			return false; // Ya fue prestado
+		// 1. Verificar si existe
+		if (it != v.end()) {
+			if(EstadoDisponibilidad()){
+				it->disponible = false; //fue prestado
+				bool estado=false;
+				it->CambiarEstado(bool estado);
+				int dias= 
+				return true; // ï¿½xito
+			}else{
+				return false; // ya fue prestado
+			}
 		}
+		return false; // No se encontrï¿½ el libro
 	}
-	return false; // No se encontró el libro
-}
 	
 
 

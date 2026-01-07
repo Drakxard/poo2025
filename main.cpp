@@ -9,6 +9,11 @@ using namespace std;
 #include "Funcionalidades/libro/libro.h"
 #include "Funcionalidades/bibliotecario/bibliotecario.h"
 
+struct Tag{
+	string nombre;
+	int id;
+};
+
 
 int main(){
 
@@ -69,25 +74,7 @@ int main(){
 	}
 }
     
-{	///Buscar libro
-	///Terminal			| Entrada
-	cin.get();
-	system("cls");
-	cout<<"Buscar libro, indica ID: ";cin>>idLibro;
 	
-	///Buscar Libro		| Proceso
-	vector<Libro>::const_iterator it = admin.BuscarLibro(idLibro,vectorLibros);
-	
-	
-	///Muestra 			| Salida
-	cout<<"Libro: "<<endl
-		<<"Nombre: "<<(*(it)).VerNombre()
-		<<endl 
-		<<"ID: "<<(*(it)).VerID()
-		<<endl;
-	
-	///falta que busque por nombre del libro
-}	
 	
 	
 {	///Borrar
@@ -111,6 +98,36 @@ int main(){
 		<<"  Id: "	<<x.VerID()
 		<<endl; 
 }	
+{	///Buscar libro
+	///Terminal			| Entrada
+	cin.get();
+	system("cls");
+	cout<<"Buscar libro, indica ID: ";cin>>idLibro;
+	
+	///Buscar Libro		| Proceso
+	vector<Libro>::const_iterator it = admin.BuscarLibro(idLibro,vectorLibros);
+	
+	
+	///Muestra 			| Salida
+	cout<<"Libro: "<<endl
+		<<"Nombre: "<<(*(it)).VerNombre()
+		<<endl 
+		<<"ID: "<<(*(it)).VerID()
+		<<endl;
+	
+///Buscar por nombre del libro
+	
+	///Simulacion de etiquetas existentes
+	///Luego recuperar de .bin
+	vector<Tag> etiquetas={{"Matematica",1},
+							{"Poo",2}};
+	string nombreBusqueda= "Poo";
+	vector<Libro>::const_iterator it2 = admin.BuscarLibro(nombreBusqueda,etiquetas,vectorLibros);
+
+}
+	
+	
+	
 	return 0;
 }
 	

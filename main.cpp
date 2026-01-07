@@ -1,23 +1,33 @@
-#include "Recursos/libreria/base.h"
-#include "Recursos/libreria/configuracion.h"
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <algorithm>
+#include <cstring>
+#include <iomanip>
+using namespace std;
+//Importar Clases propias
 #include "Funcionalidades/libro/libro.h"
 #include "Funcionalidades/bibliotecario/bibliotecario.h"
 
 
 int main(){
 
-	
 	///Login
 	string NombreUsuario;
 	int codigo = 1;
 	
-	cout<<"Sistema de gestión Bibliotecario!!!"<<endl<<endl;
+	cout<<"Sistema de gestiï¿½n Bibliotecario!!!"<<endl<<endl;
 	
 	cout<<"Nombre: "<<NombreUsuario;
+	/// Variables
+	char *nom = NombreUsuario.c_str();
+	Bibliotecario admin(nom,codigo); 
+	string libros = "libros.bin";
+	vector<Libro> vectorLibros = admin.VerLibros(libros, 1);
+	int idLibro;
+	int Nlibros;	
 	
-	
-	Bibliotecario admin(NombreUsuario,codigo); 
-	
+	///Saludo y estado actual
 	cout<<"Buenas "<< admin.VerNombre()<< " ID: "<< admin.VerID()<<endl;
 	cin.get();
 	system("cls");
@@ -30,6 +40,10 @@ int main(){
 		<<"Nombre Libro: " 	<<x.VerNombre()
 		<<"  Id: "	<<x.VerID()
 		<<endl; 
+	
+
+		
+		
 	
 {	///Agregar libros 
 	cout<<"Prueba registrar un nuevo libro!! ( 0 _ 0 )"<<endl;
@@ -88,7 +102,7 @@ int main(){
 	vector<Libro>::const_iterator itBorrar = admin.BuscarLibro(idLibro,vectorLibros);
 	admin.EliminarLibro(itBorrar,vectorLibros);
 	admin.GuardarLibros(libros,vectorLibros);
-	
+
 	
 	///Muestra			| Salida
 	for(Libro &x: vectorLibros)
@@ -97,7 +111,6 @@ int main(){
 		<<"  Id: "	<<x.VerID()
 		<<endl; 
 }	
-
 	return 0;
 }
 	

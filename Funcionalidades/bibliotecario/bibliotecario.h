@@ -1,7 +1,9 @@
-#include "base.h"
-#include "Libro.h"
-#include "persona.h"
+#include <string>
+#include <vector>
+#include "../libro/libro.h"
+#include "../../librerias/persona.h"
 
+using namespace std;
 class Bibliotecario: public Persona{
  char nombre[49];
  int id;

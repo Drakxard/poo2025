@@ -1,4 +1,6 @@
-#include "base.h"
+
+#include <cstring>
+using namespace std;
 
 class Persona{
     int id;

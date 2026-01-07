@@ -8,6 +8,7 @@ const char* Libro::VerNombre() const{
 }
 
 bool Libro::EstadoDisponibilidad(){
+	bool disponibilidad = 0;
 	if (disponibilidad)
 		disponibilidad = true;
 	else

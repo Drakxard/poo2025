@@ -1,13 +1,10 @@
 #include "Bibliotecario.h"
-using namespace std;
-int Bibliotecario::VerID()
-{
-	return id;
-}
-string Bibliotecario::VerNombre(){
-	return nombre;
-}
 
+#include <string>
+#include <fstream>
+#include <iostream>
+#include <algorithm>
+using namespace std;
 
 void Bibliotecario::GuardarLibros(string nombreArhivo, vector<Libro>&A_Guardar){
     ofstream archi(nombreArhivo, ios::binary);
@@ -77,7 +74,7 @@ vector<Libro>::const_iterator Bibliotecario::BuscarLibro(int idLibro,const vecto
 }
 
 
-	bool Bibliotecario::PrestarLibros(int idLibro, vector<libro>& v,int cantDiasPrestar) {
+	bool Bibliotecario::PrestarLibros(int idLibro, vector<Libro>& v,int cantDiasPrestar) {
 		auto it = find(v.begin(), v.end(), idLibro);
 		
 		// 1. Verificar si existe

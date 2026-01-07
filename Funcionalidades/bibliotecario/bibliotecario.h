@@ -2,6 +2,7 @@
 #include <vector>
 #include "../libro/libro.h"
 #include "../../librerias/persona.h"
+#include <ctime>
 
 using namespace std;
 class Bibliotecario: public Persona{

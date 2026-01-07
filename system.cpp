@@ -1,15 +1,15 @@
-#include "System.h"
+#include "Bibliotecario.h"
 using namespace std;
-int System::VerID()
+int Bibliotecario::VerID()
 {
 	return id;
 }
-string System::VerNombre(){
+string Bibliotecario::VerNombre(){
 	return nombre;
 }
 
 
-void System::GuardarLibros(string nombreArhivo, vector<Libro>&A_Guardar){
+void Bibliotecario::GuardarLibros(string nombreArhivo, vector<Libro>&A_Guardar){
     ofstream archi(nombreArhivo, ios::binary);
 
     if(!archi)
@@ -23,7 +23,7 @@ void System::GuardarLibros(string nombreArhivo, vector<Libro>&A_Guardar){
     archi.close();
 }
 
-vector<Libro> System::VerLibros(string nombreArchivo,bool crear){
+vector<Libro> Bibliotecario::VerLibros(string nombreArchivo,bool crear){
     ifstream archi(nombreArchivo,ios::binary);
     if(crear){
 		//nada
@@ -41,7 +41,7 @@ vector<Libro> System::VerLibros(string nombreArchivo,bool crear){
     return Resultado;
 }
 
-void System::AgregarLibros(int LibrosAgregar,vector<Libro>&resultadoTest){
+void Bibliotecario::AgregarLibros(int LibrosAgregar,vector<Libro>&resultadoTest){
 	
 	string nombreLibro="";
 	int idLibro=0;
@@ -60,12 +60,12 @@ void System::AgregarLibros(int LibrosAgregar,vector<Libro>&resultadoTest){
 	}
 }
 
-void System::EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v){
+void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v){
 	v.erase(Eliminar);
 }
 
 
-vector<Libro>::const_iterator System::BuscarLibro(int idLibro,const vector<Libro> &v){
+vector<Libro>::const_iterator Bibliotecario::BuscarLibro(int idLibro,const vector<Libro> &v){
 	vector<Libro>::const_iterator it = find_if(v.begin(),v.end(),[idLibro](const Libro a){
 		return a.VerID() == idLibro;});
 	if (it != v.end()) {
@@ -77,7 +77,7 @@ vector<Libro>::const_iterator System::BuscarLibro(int idLibro,const vector<Libro
 }
 
 
-	bool System::PrestarLibros(int idLibro, vector<libro>& v,int cantDiasPrestar) {
+	bool Bibliotecario::PrestarLibros(int idLibro, vector<libro>& v,int cantDiasPrestar) {
 		auto it = find(v.begin(), v.end(), idLibro);
 		
 		// 1. Verificar si existe
@@ -87,12 +87,12 @@ vector<Libro>::const_iterator System::BuscarLibro(int idLibro,const vector<Libro
 				bool estado=false;
 				it->CambiarEstado(bool estado);
 				int dias= 
-				return true; // Éxito
+				return true; // ï¿½xito
 			}else{
 				return false; // ya fue prestado
 			}
 		}
-		return false; // No se encontró el libro
+		return false; // No se encontrï¿½ el libro
 	}
 	
 

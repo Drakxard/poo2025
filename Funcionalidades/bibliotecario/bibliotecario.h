@@ -2,7 +2,6 @@
 #include <vector>
 #include "../libro/libro.h"
 #include "../../librerias/persona.h"
-#include <ctime>
 
 #include <ctime>
 using namespace std;

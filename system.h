@@ -16,4 +16,8 @@ public:
 	bool PrestarLibros(int idLibro,vector<Libro>&v,int cantDiasPrestar);
 	
 	
+<<<<<<< Updated upstream
+=======
+	///ayrton sanciones
+>>>>>>> Stashed changes
 };

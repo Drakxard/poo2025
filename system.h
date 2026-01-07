@@ -15,8 +15,12 @@ public:
 	vector<Libro>::const_iterator BuscarLibro(int idLibro,const vector<Libro>&v);
 	bool PrestarLibros(int idLibro,vector<Libro>&v,int cantDiasPrestar);
 	
+<<<<<<< Updated upstream
 	
 <<<<<<< Updated upstream
+=======
+	///ayrton sanciones
+>>>>>>> Stashed changes
 =======
 	///ayrton sanciones
 >>>>>>> Stashed changes

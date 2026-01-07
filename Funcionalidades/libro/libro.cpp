@@ -7,15 +7,17 @@ const char* Libro::VerNombre() const{
     return this->nombre;
 }
 
-bool libro::EstadoDispon
-
-bool Libro::EstadoDisponibilidad(){
-	bool disponibilidad = 0;
-	if (disponibilidad)
-		disponibilidad = true;
-	else
-		disponibilidad = false;
+// Corrección: Ahora retorna el atributo de la clase
+bool Libro::EstadoDisponibilidad() const {
+    return this->disponible;
 }
+
+// Nuevo método para cambiar la disponibilidad desde Bibliotecario
+void Libro::SetDisponible(bool d) {
+    this->disponible = d;
+}
+
+
 void Libro::CambiarEstado(bool estado)
 {
     if (estado)

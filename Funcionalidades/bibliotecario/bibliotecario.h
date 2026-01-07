@@ -5,7 +5,6 @@
 
 #include <ctime>
 using namespace std;
-template <typename T>
 class Bibliotecario: public Persona{
  char nombre[49];
  int id;
@@ -34,11 +33,13 @@ public:
 		return dias > 0 ? dias : 0; // Evitar d�as negativos si la fecha ya pas�
 	}
 	void GuardarLibros(string nombreArhivo, vector<Libro> &A_Guardar);
-    vector<Libro> VerLibros(string nombreArchivo,bool crear=false);
 	void AgregarLibros(int LibrosAgregar,vector<Libro>&resultadoTest);
 	void EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v);
 	vector<Libro>::const_iterator BuscarLibro(int idLibro,const vector<Libro>&v);
-	bool PrestarLibros(int idLibro,vector<Libro>&v,int cantDiasPrestar);
+	bool PrestarLibros(int idLibro, vector<Libro>&v, int dia, int mes, int anio);
+	bool Verid( Alumno& x );
+	bool Seprestara();
+	vector<Alumno>Sancionados(int id);
 	
 
 };

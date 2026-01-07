@@ -73,10 +73,6 @@ int main(){
 	cin.ignore();
 	}
 }
-    
-	
-	
-	
 {	///Borrar
 	///Terminal  		| Entrada
 	cin.ignore();
@@ -119,15 +115,10 @@ int main(){
 	
 	///Simulacion de etiquetas existentes
 	///Luego recuperar de .bin
-	vector<Tag> etiquetas={{"Matematica",1},
-							{"Poo",2}};
+	vector<int> etiquetas={1,2,3};
 	string nombreBusqueda= "Poo";
-	vector<Libro>::const_iterator it2 = admin.BuscarLibro(nombreBusqueda,etiquetas,vectorLibros);
+	vector<Libro> ResultadosBusqueda = admin.BuscarLibro(nombreBusqueda,etiquetas,);
 
 }
-	
-	
-	
 	return 0;
 }
-	

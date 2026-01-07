@@ -121,13 +121,9 @@ int main(){
 	///Luego recuperar de .bin
 	vector<Tag> etiquetas={{"Matematica",1},
 							{"Poo",2}};
+	string nombreBusqueda= "Poo";
+	vector<Libro>::const_iterator it2 = admin.BuscarLibro(nombreBusqueda,etiquetas,vectorLibros);
 
-
-	
-	
-	vector<Libro>::const_iterator it2 = admin.BuscarLibro(idLibro,vectorLibros);
-	
-	
 }
 	
 	

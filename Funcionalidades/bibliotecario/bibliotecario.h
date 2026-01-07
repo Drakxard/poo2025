@@ -4,6 +4,7 @@
 #include "../../librerias/persona.h"
 #include <ctime>
 
+#include <ctime>
 using namespace std;
 class Bibliotecario: public Persona{
  char nombre[49];

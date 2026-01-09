@@ -1,21 +1,6 @@
 #include "Bibliotecario.h";
 using namespace std;
 
-void Bibliotecario::GuardarLibros(string nombreArhivo, vector<Libro> &A_Guardar)
-{
-	ofstream archi(nombreArhivo, ios::binary);
-
-	if (!archi)
-		throw runtime_error("Error al guardar Libro en " + nombreArhivo);
-
-	Libro aux;
-	for (size_t i = 0; i < A_Guardar.size(); ++i)
-	{
-		aux = A_Guardar[i];
-		archi.write(reinterpret_cast<const char *>(&(aux)), sizeof(aux));
-	}
-	archi.close();
-}
 
 void Bibliotecario::AgregarLibros(int LibrosAgregar, vector<Libro> &resultadoTest)
 {
@@ -44,23 +29,10 @@ void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector
 	v.erase(Eliminar);
 }
 
-vector<Libro>::const_iterator Bibliotecario::BuscarLibro(int idLibro, const vector<Libro> &v)
-{
-	vector<Libro>::const_iterator it = find_if(v.begin(), v.end(), [idLibro](const Libro a)
-											   { return a.VerID() == idLibro; });
-	if (it != v.end())
-	{
-		return it;
-	}
-	else
-	{
-		return v.end();
-	}
-}
 
 // En bibliotecario.cpp
 
-// Método corregido e implementado
+
 bool Bibliotecario::PrestarLibros(int idLibro, vector<Libro>& v, int dia, int mes, int anio) {
  // 1. Buscar el libro por ID si existe
  
@@ -93,11 +65,35 @@ bool Bibliotecario::PrestarLibros(int idLibro, vector<Libro>& v, int dia, int me
     return false;
 }
 
-bool EstaSancionado(Alumno &x){
+bool Bibliotecario:: Alumno_quiere_un_libro(Alumno &x){
+	//averiguamos si está limpio y no está sancionado
 	return x.sancion;
 }
+vector<Alumno>Sancionados(int id){
+	if(EstaSancionado){
 
-bool Seprestara(Libro l){
-	l.id
+	}
 }
-vector<Alumno>Sancionados(int id);
+
+
+int Bibliotecario::CalcularDiferenciaDias(int dia, int mes, int anio){
+		// 1. Obtener fecha actual
+		time_t t = time(0);
+		struct tm * now = localtime(&t);
+		
+		// 2. Configurar fecha de devoluci�n (struct tm)
+		struct tm fechaDevolucion = {0};
+		fechaDevolucion.tm_year = anio - 1900; // Los a�os en tm cuentan desde 1900
+		fechaDevolucion.tm_mon = mes - 1;      // Los meses van de 0 a 11
+		fechaDevolucion.tm_mday = dia;
+		
+		// 3. Convertir ambas a tiempo en segundos
+		time_t fechaActualSec = mktime(now);
+		time_t fechaDevSec = mktime(&fechaDevolucion);
+		
+		// 4. Calcular diferencia en segundos y convertir a d�as
+		double seconds = difftime(fechaDevSec, fechaActualSec);
+		int dias = static_cast<int>(seconds / (60 * 60 * 24));
+		
+		return dias > 0 ? dias : 0; // Evitar d�as negativos si la fecha ya pas�
+	}

@@ -9,9 +9,10 @@ struct Tags{
 };
 //template<typename T>
 class Buscador{
-	vector<Tags> Etiquetas;
+	vector<string> Etiquetas;
 public:
-	Buscador(vector<Tags>Etiquetas){
+	Buscador(){}
+	Buscador(vector<string>Etiquetas){
 		this->Etiquetas = Etiquetas;
 	}
 	//vector<Libro>::const_iterator Buscar(string nombreBuscado, int Cantidad);

@@ -20,22 +20,36 @@ int main(){
 	Bibliotecario admin(codigo,nom); 
 	///Clase encargada de los metodos de bajo nivel
 	System sistema; 
-	vector<string>Etiquetas;
+	vector<string>listaTags;
 	///Clase encargada de las busquedas
-	Buscador navega(Etiquetas);
+	Buscador navega(listaTags);
 	
 	///Nombre del Binario de test
 	string libros = "Recursos/binarios/libros.bin";
+	string usuarios = "Recursos/binarios/usuarios.bin";
+	string bibliotecarios = "Recursos/binarios/bibliotecarios.bin";
+
+	///Estados Especiales
+		///De alumno
+		string sancionados = "Recursos/binarios/sancionados.bin";
+		///De libro
+		string prestados = "Recursos/binarios/prestados.bin";
+		string matematica = "Recursos/binarios/matematica.bin";
+		string poo = "Recursos/binarios/poo.bin";
+		string fisica = "Recursos/binarios/fisica.bin";
+		///N-tags
+		
+	
 	vector<Libro> vectorLibros = sistema.VerContenido(libros, 1);
 	int idLibro;
 	int Nlibros;	
 	
-	
+		///Iteradores para los metodos
 	vector<Libro>::const_iterator it;
 	vector<Libro>::const_iterator itBorrar;
+	int c;
 	
-	
-	
+	vector<Tags> Etiquetas;
 
 	
 	cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;
@@ -55,13 +69,15 @@ int main(){
 	
 	switch (opcion){
 	case 1:
-		while(opcion!=5){
+		while(opcion!=6){
 		cout<<"Menu Libros"<<endl;
 		cout<<"1. Ver libros"<<endl
 			<<"2. Buscar libros"<<endl
 			<<"3. Eliminar libro"<<endl
 			<<"4. Agregar Libro"<<endl
-			<<"5. Volver"
+			<<"5. Etiquetas"<<endl
+			<<"6. Volver"
+			
 			<<endl
 			<<"Selecciona: ";cin>>opcion;
 			
@@ -152,16 +168,79 @@ int main(){
 		
 		break;
 	case 5:
+		opcion=-1;
+		while(opcion!=5){
+		cout<<"Menu Etiquetas"<<endl;
+		cout<<"1. Ver Etiquetas"<<endl
+			<<"2. Buscar Etiquetas"<<endl
+			<<"3. Eliminar Etiquetas"<<endl
+			<<"4. Agregar Etiquetas"<<endl
+			<<"5. Volver"
+			
+			<<endl
+			<<"Selecciona: ";cin>>opcion;
+			
+			system("cls");
+			switch (opcion){
+			case 1:
+		
+				cout<<"Etiquetas Existentes: "<<endl;
+				Etiquetas = sistema.etiquetas();
+				c=0;
+				for(Tags& x : Etiquetas)
+					cout<<++c<<" ) "<<x.nombre<<endl;
+				
+				cout<<endl<<endl<<"Preciona para volver";
+				cin.ignore();
+				cin.get();
+				system("cls");
+				break;
+			case 2:
+				cout<<"Buscar Etiquetas...";
+				cout<<endl<<endl<<"Preciona para volver";
+				cin.ignore();
+				cin.get();
+				system("cls");
+				break;
+							case 3:
+				cout<<"Eliminar Etiquetas...";
+				cout<<endl<<endl<<"Preciona para volver";
+				cin.ignore();
+				cin.get();
+				system("cls");
+				break;
+							case 4:
+				cout<<"Agregar Etiquetas...";
+				cout<<endl<<endl<<"Preciona para volver";
+				cin.ignore();
+				cin.get();
+				system("cls");
+				break;
+				
+			case 5:
+				///volver
+				break;
+			
+			default:
+				break;
+			}///Fin case, etiquetas
+			}///Fin While etiquetas
+	case 6:
 		//Volviendo
 		break;
+		
+			
 	default:
-		break;
+	break;
 		
 		}///Case
-	}///While	
-	
-  }//Case
-}///While
+	}///While Menu Libros
+		//Casos Usuarios, Bibliotecarios, ...
+		default:
+		break;
+			  
+		}//Case
+}///While Principal
 
 
 	
@@ -169,41 +248,14 @@ int main(){
 }
 
 /*
-	{	///Agregar libros 
-	cout<<"Prueba registrar un nuevo libro!! ( 0 _ 0 )"<<endl;
-	///Terminal			| Entrada
-	
-	cin.get();
-	system("cls");
-	
-	system("cls");
-	///Muestra			| Salida
-	for(Libro &x: vectorLibros)
-	cout
-	<<"Nombre Libro: " 	<<x.VerNombre()
-	<<"  Id: "	<<x.VerID()
-	<<endl; 
-	cin.ignore();
-	}
-	}
-	{	///Borrar
-	///Terminal  		| Entrada
-	cin.ignore();
-	cin.get();
-	system("cls");
-	
-	}	
-	cin.get();
-	system("cls");
-	
-	{	
+
 	///Buscar por nombre del libro
 	
 	///Simulacion de etiquetas existentes
 	///Luego recuperar de .bin
 	vector<int> etiquetas={1,2,3};
 	string nombreBusqueda= "Poo";
-	//vector<Libro> ResultadosBusqueda = admin.BuscarLibro(nombreBusqueda,etiquetas,);
+	//vector<Libro> ResultadosBusqueda = 	admin.BuscarLibro(nombreBusqueda,etiquetas,);
 	
 	}
 	

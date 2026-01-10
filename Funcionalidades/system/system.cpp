@@ -62,3 +62,13 @@ bool System::actualizar_disponibilidad( string nombreArchivo, int id){
    // aux.Disponible(false);
     archi.close();
 }
+
+
+
+vector<Tags> System::etiquetas(){
+
+	vector<Tags> resultado;
+	//resultado = VerContenido(AllTags,1);
+	return resultado;
+
+}

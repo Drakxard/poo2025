@@ -3,10 +3,7 @@
 #include <vector>
 #include "../libro/libro.h"
 using namespace std;
-struct Tags{
-	string nombre;
-	vector<int>registrados;
-};
+
 //template<typename T>
 class Buscador{
 	vector<string> Etiquetas;

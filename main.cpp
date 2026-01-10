@@ -1,18 +1,10 @@
 #include <iostream>
-#include <vector>
-#include <fstream>
-#include <algorithm>
 #include <cstring>
 #include <iomanip>
 using namespace std;
 //Importar Clases propias
 #include "Funcionalidades/libro/libro.h"
 #include "Funcionalidades/bibliotecario/bibliotecario.h"
-
-struct Tag{
-	string nombre;
-	int id;
-};
 
 
 int main(){
@@ -60,7 +52,7 @@ int main(){
 	///Uso del metodo	| Proceso
 	if(!Nlibros==0){
 		admin.AgregarLibros(Nlibros,vectorLibros);	
-		admin.GuardarLibros(libros,vectorLibros);
+		//admin.GuardarLibros(libros,vectorLibros);
 		vectorLibros = admin.VerLibros(libros);
 	
 	system("cls");
@@ -82,9 +74,9 @@ int main(){
 	
 	
 	///Uso del metodo 	| Proceso
-	vector<Libro>::const_iterator itBorrar = admin.BuscarLibro(idLibro,vectorLibros);
-	admin.EliminarLibro(itBorrar,vectorLibros);
-	admin.GuardarLibros(libros,vectorLibros);
+//	vector<Libro>::const_iterator itBorrar = admin.BuscarLibro(idLibro,vectorLibros);
+	//<admin.EliminarLibro(itBorrar,vectorLibros);
+	//admin.GuardarLibros(libros,vectorLibros);
 
 	
 	///Muestra			| Salida
@@ -101,14 +93,14 @@ int main(){
 	cout<<"Buscar libro, indica ID: ";cin>>idLibro;
 	
 	///Buscar Libro		| Proceso
-	vector<Libro>::const_iterator it = admin.BuscarLibro(idLibro,vectorLibros);
+	//vector<Libro>::const_iterator it = admin.BuscarLibro(idLibro,vectorLibros);
 	
 	
 	///Muestra 			| Salida
 	cout<<"Libro: "<<endl
-		<<"Nombre: "<<(*(it)).VerNombre()
+	//	<<"Nombre: "<<(*(it)).VerNombre()
 		<<endl 
-		<<"ID: "<<(*(it)).VerID()
+		//<<"ID: "<<(*(it)).VerID()
 		<<endl;
 	
 ///Buscar por nombre del libro
@@ -117,7 +109,7 @@ int main(){
 	///Luego recuperar de .bin
 	vector<int> etiquetas={1,2,3};
 	string nombreBusqueda= "Poo";
-	vector<Libro> ResultadosBusqueda = admin.BuscarLibro(nombreBusqueda,etiquetas,);
+	//vector<Libro> ResultadosBusqueda = admin.BuscarLibro(nombreBusqueda,etiquetas,);
 
 }
 	return 0;

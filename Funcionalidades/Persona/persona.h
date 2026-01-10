@@ -1,5 +1,11 @@
-
+#ifndef PERSONA_H  // 1. Si no está definido PERSONA_H
+#define PERSONA_H
 #include <cstring>
+#include <vector>
+#include <fstream>
+#include "../libro/libro.h"
+
+
 using namespace std;
 
 class Persona{
@@ -16,3 +22,4 @@ class Persona{
         void CambiarNombre(const char *NuevoNombre);
         vector<Libro> VerLibros(string nombreArchivo,bool crear=false);
 };
+#endif // 3. Fin de la condición

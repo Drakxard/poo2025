@@ -1,5 +1,5 @@
-#include "base.h"
-#include "persona.h"
+
+#include "../Persona/persona.h"
 class Alumno: public Persona{
     char nombre[49];
     int id;

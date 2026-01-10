@@ -1,5 +1,7 @@
 #include "persona.h"
 
+using namespace std;
+
 int Persona::VerID() const
 {
     return id;

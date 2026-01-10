@@ -1,9 +1,10 @@
 #include <string>
 #include <vector>
 #include "../libro/libro.h"
-#include "../../librerias/persona.h"
 
 #include <ctime>
+#include "../alumno/alumno.h"
+#include "../Persona/persona.h"
 using namespace std;
 class Bibliotecario: public Persona{
  char nombre[49];

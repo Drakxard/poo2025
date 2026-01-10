@@ -11,7 +11,7 @@ class Libro
 	char nombre[50];
 	int diasRestantes;
 	bool disponible; // Quitamos la inicializaci�n aqu� para hacerlo en el constructor
-	
+	bool caduco;
 public:
 	Libro()
 	{

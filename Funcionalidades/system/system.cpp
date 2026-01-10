@@ -1,12 +1,15 @@
 #include "system.h"
-void System::Guardar(string nombreArhivo, vector<K> &A_Guardar)
+#include <vector>
+using namespace std;
+
+void System::Guardar(string nombreArhivo, vector<Libro> &A_Guardar)
 {
 	ofstream archi(nombreArhivo, ios::binary);
 
 	if (!archi)
 		throw runtime_error("Error al guardar en " + nombreArhivo);
 
-	K aux;
+	Libro aux;
 	for (size_t i = 0; i < A_Guardar.size(); ++i)
 	{
 		aux = A_Guardar[i];
@@ -16,17 +19,17 @@ void System::Guardar(string nombreArhivo, vector<K> &A_Guardar)
 }
 
 
-vector<K> System::VerContenido(string nombreArchivo,bool crear){
+vector<Libro> System::VerContenido(string nombreArchivo,bool crear){
     ifstream archi(nombreArchivo,ios::binary);
     if(crear){
 		//nada
 	}
 	else{
 		if(!archi)
-			throw runtime_error("Error al Recuperar K de " + nombreArchivo);
+			throw runtime_error("Error al Recuperar Libro de " + nombreArchivo);
     }
-	vector<K>Resultado;
-    K aux;
+	vector<Libro>Resultado;
+    Libro aux;
     while(archi.read(reinterpret_cast<char*>(&(aux)),sizeof(aux))){
         Resultado.push_back(aux);
     }
@@ -36,7 +39,7 @@ vector<K> System::VerContenido(string nombreArchivo,bool crear){
 
 bool System::actualizar_disponibilidad( string nombreArchivo, int id){
     fstream archi(nombreArchivo, ios::binary);
-    if(!nombreArchivo.is_open()){
+    if(!archi){
         //nada
     }else{
         throw runtime_error("abriste cualquier cosa man deaa");
@@ -46,16 +49,16 @@ bool System::actualizar_disponibilidad( string nombreArchivo, int id){
    
     //cambiar el bool de Disponibilidad
     //Cambiar estado del libro en el binario 
-    archi.seekg((id-1)*sizeof(libro))//vamos a la posicion del libro
+   // archi.seekg((id-1)*sizeof(libro))//vamos a la posicion del libro
     Libro  aux;
 
     archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
-    aux.Disponible(false);
+    //aux.disponible(false);
     
     //cursor al final del libro
     //Debe volver asi escribir libro actualizado 
-    archi.seekg((id-1)*sizeof(libro))
+    //archi.seekg((id-1)*sizeof(libro))
     archi.write(reinterpret_cast<const char*>(&aux),sizeof(aux));
-    aux.Disponible(false);
+   // aux.Disponible(false);
     archi.close();
 }

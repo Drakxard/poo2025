@@ -1,4 +1,4 @@
-#include "Bibliotecario.h";
+#include "Bibliotecario.h"
 using namespace std;
 
 
@@ -46,14 +46,14 @@ bool Bibliotecario::PrestarLibros(int idLibro, vector<Libro>& v, int dia, int me
 		{
 			
 			/// entonces lo prestare y no estara disponible
-			Setit->Disponible(false);  
+			//this->Disponible(false);  
 			
             
             // Calcular días restantes hasta la fecha dada
             int diasCalculados = CalcularDiferenciaDias(dia, mes, anio);
             
             // Asignar los días al libro
-            it->DiasRestantes(diasCalculados);
+           // this->DiasRestantes(diasCalculados);
             
             cout << "Libro prestado exitosamente. Dias para devolucion: " << diasCalculados << endl;
             return true;
@@ -67,14 +67,14 @@ bool Bibliotecario::PrestarLibros(int idLibro, vector<Libro>& v, int dia, int me
 
 bool Bibliotecario:: Alumno_quiere_un_libro(Alumno &x){
 	//averiguamos si está limpio y no está sancionado
-	return x.sancion;
+	return true;//x.sancion;
 }
-vector<Alumno>Sancionados(int id){
+/*vector<Alumno>Sancionados(int id){
 	if(EstaSancionado){
 
 	}
 }
-
+*/
 
 int Bibliotecario::CalcularDiferenciaDias(int dia, int mes, int anio){
 		// 1. Obtener fecha actual

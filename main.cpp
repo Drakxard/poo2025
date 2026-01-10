@@ -30,91 +30,12 @@ int main(){
 	int idLibro;
 	int Nlibros;	
 	
-	///Saludo y estado actual
-	cout<<"Buenas "<< admin.VerNombre()<< " tu ID es: "<< admin.VerID()<<endl;
-	cout<<endl<<endl<<"Preciona para continuar";
-	cin.get();
-	system("cls");
+	
+	vector<Libro>::const_iterator it;
+	vector<Libro>::const_iterator itBorrar;
 	
 	
 	
-	
-	
-	
-	{	///Agregar libros 
-		cout<<"Prueba registrar un nuevo libro!! ( 0 _ 0 )"<<endl;
-		///Terminal			| Entrada
-		
-		cin.get();
-		system("cls");
-		cout<<"LIbros a agregar: ";cin>>Nlibros;
-		///Uso del metodo	| Proceso
-		if(!Nlibros==0){
-			admin.AgregarLibros(Nlibros,vectorLibros);	
-			sistema.Guardar(libros,vectorLibros);
-			vectorLibros = admin.VerLibros(libros);
-			
-			system("cls");
-			///Muestra			| Salida
-			for(Libro &x: vectorLibros)
-				cout
-				<<"Nombre Libro: " 	<<x.VerNombre()
-				<<"  Id: "	<<x.VerID()
-				<<endl; 
-			cin.ignore();
-		}
-	}
-	{	///Borrar
-		///Terminal  		| Entrada
-		cin.ignore();
-		cin.get();
-		system("cls");
-		cout<<"ID a eliminar: ";cin>>idLibro;
-		
-		
-		///Uso del metodo 	| Proceso
-		vector<Libro>::const_iterator itBorrar = navega.Buscar(idLibro,vectorLibros);
-		//<admin.EliminarLibro(itBorrar,vectorLibros);
-		//admin.GuardarLibros(libros,vectorLibros);
-		
-		
-		///Muestra			| Salida
-		for(Libro &x: vectorLibros)
-			cout
-			<<"Nombre Libro: " 	<<x.VerNombre()
-			<<"  Id: "	<<x.VerID()
-			<<endl; 
-	}	
-		cin.get();
-		system("cls");
-		
-		{	///Buscar libro
-			///Terminal			| Entrada
-			cout<<"Buscar libro, indica ID: ";cin>>idLibro;
-			
-			///Buscar Libro		| Proceso
-			vector<Libro>::const_iterator it = navega.Buscar(idLibro,vectorLibros);
-			
-			
-			///Muestra 			| Salida
-			cout<<"Libro: "<<endl
-				<<"Nombre: "<<(*(it)).VerNombre()
-				<<endl 
-				<<"ID: "<<(*(it)).VerID()
-				<<endl;
-			
-			///Buscar por nombre del libro
-			
-			///Simulacion de etiquetas existentes
-			///Luego recuperar de .bin
-			vector<int> etiquetas={1,2,3};
-			string nombreBusqueda= "Poo";
-			//vector<Libro> ResultadosBusqueda = admin.BuscarLibro(nombreBusqueda,etiquetas,);
-			
-		}
-		
-	
-
 
 	
 	cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;
@@ -122,9 +43,9 @@ int main(){
 	while(opcion!=0){
 	
 	cout<<"Menu de gestion"<<endl;
-	cout<<"1. Ver libros"<<endl
-	<<"2. Ver Usuarios"<<endl
-	<<"3. Ver Bibliotecarios"<<endl
+	cout<<"1. Libros"<<endl
+	<<"2. Usuarios"<<endl
+	<<"3. Bibliotecarios"<<endl
 	<<"0. Salir"
 	<<endl
 	<<"Selecciona: ";cin>>opcion;
@@ -134,10 +55,20 @@ int main(){
 	
 	switch (opcion){
 	case 1:
-		while(opcion!=0){
-		cout<<"Viendo libros...";
-		cout<<"Libros Disponibles: "<<endl;
-		
+		while(opcion!=5){
+		cout<<"Menu Libros"<<endl;
+		cout<<"1. Ver libros"<<endl
+			<<"2. Buscar libros"<<endl
+			<<"3. Eliminar libro"<<endl
+			<<"4. Agregar Libro"<<endl
+			<<"5. Volver"
+			<<endl
+			<<"Selecciona: ";cin>>opcion;
+			
+		system("cls");
+		switch (opcion){
+		case 1:
+		cout<<"Libros Disponibles: "<<endl;	
 		///Contenido Actual
 		for(Libro &x: vectorLibros)
 			cout
@@ -146,26 +77,139 @@ int main(){
 			<<endl; 
 		
 		
-		cout<<"Preciona 0 para volver";cin>>opcion;
+		cout<<endl<<endl<<"Preciona para volver";
+		cin.ignore();
+		cin.get();
 		system("cls");
-		}
 		break;
 	case 2:
-		cout<<"Viendo usuarios...";
+		///Buscar libro
+		///Terminal			| Entrada
+		cout<<"Buscar libro, indica ID: ";cin>>idLibro;
+		
+		///Buscar Libro		| Proceso
+		it = navega.Buscar(idLibro,vectorLibros);
+		
+		
+		///Muestra 			| Salida
+		cout<<"Libro: "<<endl
+			<<"Nombre: "<<(*(it)).VerNombre()
+			<<endl 
+			<<"ID: "<<(*(it)).VerID()
+			<<endl;
+		
+		cout<<endl<<endl<<"Preciona para volver";
+		cin.ignore();
+		cin.get();
+		system("cls");
+		
 		break;
 	case 3:
-		cout<<"Viendo bibliotecarios...";
+		cout<<"ID a eliminar: ";cin>>idLibro;
+		
+		
+		///Buscar Libro		| Proceso
+		it = navega.Buscar(idLibro,vectorLibros);
+		
+		if(it!= vectorLibros.end() ){
+		///Muestra 			| Salida
+		cout<<"Libro: "<<endl
+			<<"Nombre: "<<(*(it)).VerNombre()
+			<<endl 
+			<<"ID: "<<(*(it)).VerID()
+			<<endl;
+		
+		char borrar;
+		cout<<"Confirmas Eliminarlo? s/n: ";cin>>borrar;
+		if(borrar=='s'){
+		///Uso del metodo 	| Proceso
+		itBorrar = navega.Buscar(idLibro,vectorLibros);
+		admin.EliminarLibro(itBorrar,vectorLibros);
+		sistema.Guardar(libros,vectorLibros);
+		}
+		}else{ cout<<endl<<"Codigo No existente";}
+		
+		cout<<endl<<endl<<"Preciona para volver";
+		cin.ignore();
+		cin.get();
+		system("cls");
+		
 		break;
-	case 0:
-		cout<<"Saliendo...";
+	case 4:
+		cout<<"Agregar Libro...";
+		cout<<"LIbros a agregar: ";cin>>Nlibros;
+		///Uso del metodo	| Proceso
+		if(!Nlibros==0){
+			admin.AgregarLibros(Nlibros,vectorLibros);	
+			sistema.Guardar(libros,vectorLibros);
+			vectorLibros = admin.VerLibros(libros);
+			cout<<"Agregados Corectamente!"<<endl;
+		}	
+		cout<<endl<<endl<<"Preciona para volver";
+		cin.ignore();
+		cin.get();
+		system("cls");
+		
+		break;
+	case 5:
+		//Volviendo
 		break;
 	default:
 		break;
 		
-	}
-	opcion=-1;
-	}
+		}///Case
+	}///While	
+	
+  }//Case
+}///While
+
+
 	
 	return 0;
 }
 
+/*
+	{	///Agregar libros 
+	cout<<"Prueba registrar un nuevo libro!! ( 0 _ 0 )"<<endl;
+	///Terminal			| Entrada
+	
+	cin.get();
+	system("cls");
+	
+	system("cls");
+	///Muestra			| Salida
+	for(Libro &x: vectorLibros)
+	cout
+	<<"Nombre Libro: " 	<<x.VerNombre()
+	<<"  Id: "	<<x.VerID()
+	<<endl; 
+	cin.ignore();
+	}
+	}
+	{	///Borrar
+	///Terminal  		| Entrada
+	cin.ignore();
+	cin.get();
+	system("cls");
+	
+	}	
+	cin.get();
+	system("cls");
+	
+	{	
+	///Buscar por nombre del libro
+	
+	///Simulacion de etiquetas existentes
+	///Luego recuperar de .bin
+	vector<int> etiquetas={1,2,3};
+	string nombreBusqueda= "Poo";
+	//vector<Libro> ResultadosBusqueda = admin.BuscarLibro(nombreBusqueda,etiquetas,);
+	
+	}
+	
+	
+	
+	
+	*/
+	
+	

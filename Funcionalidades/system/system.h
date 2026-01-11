@@ -1,3 +1,5 @@
+#ifndef SYSTEM_H  // 1. Si no está definido PERSONA_H
+#define SYSTEM_H
 #include <fstream>
 #include <string>
 #include <vector>
@@ -10,6 +12,10 @@ struct Tags{
 };
 class System{
 
+	int UltimoIdLibro;
+	int UltimoIdAlumno;
+	int UltimoIdBibliocario;
+	
 	///De libro
 	string prestados = "Recursos/binarios/prestados.bin";
 	string matematica = "Recursos/binarios/matematica.bin";
@@ -22,9 +28,12 @@ public:
 	void Guardar(string nombreArhivo, vector<T> &A_Guardar);
 	template<typename T>
     vector<T> VerContenido(string nombreArchivo,bool crear);
-    template<typename T>
-	vector<T> etiquetas(const string& path);
+	vector<Tags> etiquetas(const string& path);
 	bool actualizar_disponibilidad( string nombreArchivo, int id);
+	
+	int VerUltimoIdLibro(){return UltimoIdLibro;}
+	int VerUltimoIdAlumno(){return UltimoIdLibro;}
+	int VerUltimoIdBibliotecario(){return UltimoIdLibro;}
 	
 };
 /* Sí necesitas clase template y separar code en .cpp
@@ -37,3 +46,5 @@ public:
 template class System<Alumno>; 
 template class System<Libro>;
 */
+
+#endif // 3. Fin de la condición

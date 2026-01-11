@@ -2,11 +2,13 @@
 using namespace std;
 
 
-void Bibliotecario::AgregarLibros(int LibrosAgregar, vector<Libro> &resultadoTest)
+vector<Libro> Bibliotecario::AgregarLibros(int LibrosAgregar)
 {
-	
+	vector<Libro> resultado;
 	string nombreLibro = "";
 	int idLibro = 0;
+	
+	int id = sistema.VerUltimoIdLibro();
 	while (LibrosAgregar > 0)
 	{
 		
@@ -14,12 +16,10 @@ void Bibliotecario::AgregarLibros(int LibrosAgregar, vector<Libro> &resultadoTes
 		cin >> nombreLibro;
 		
 		/// Generar ID
-		int size = resultadoTest.size();
-		if (size > 0)
-			idLibro = (resultadoTest[size - 1].VerID()) + 1;
+			idLibro = ++id;
 		
 		Libro aux(idLibro, nombreLibro.c_str());
-		resultadoTest.push_back(aux);
+		resultado.push_back(aux);
 		--LibrosAgregar;
 	}
 }

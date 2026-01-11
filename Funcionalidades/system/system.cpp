@@ -1,10 +1,11 @@
 #include "system.h"
 #include <vector>
+#include <fstream>
 using namespace std;
-template <typename T>
+template <typename T>  ///Cambiar a Guardar al final
 void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
 {
-	ofstream archi(nombreArhivo, ios::binary);
+	ofstream archi(nombreArhivo, ios::binary|ios::ate);
 
 	if (!archi)
 		throw runtime_error("Error al guardar en " + nombreArhivo);
@@ -18,7 +19,7 @@ void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
 	archi.close();
 }
 
-template <typename T>
+template <typename T> ///Cambiar a solo leer N cosas
 vector<T> System::VerContenido(string nombreArchivo,bool crear){
     ifstream archi(nombreArchivo,ios::binary);
     if(crear){
@@ -65,13 +66,12 @@ bool System::actualizar_disponibilidad( string nombreArchivo, int id){
 }
 
 
-template <typename T>
-vector<T> System::etiquetas(const string& path){
+vector<Tags> System::etiquetas(const string& path){
 	///Segun el tipo un path?
 	string AllTags= path;
 	
-	vector<T> resultado;
-	resultado = VerContenido<T>(AllTags,1);
+	vector<Tags> resultado;
+	resultado = VerContenido<Tags>(AllTags,1);
 	return resultado;
 
 }
@@ -88,8 +88,5 @@ template vector<Alumno> System::VerContenido<Alumno>(string, bool);
 template vector<Libro> System::VerContenido<Libro>(string, bool);
 
 
-// Instanciación para Etiquetas
-template vector<Alumno> System::etiquetas<Alumno>(const string& path);
-template vector<Libro> System::etiquetas<Libro>(const string& path);
 
 

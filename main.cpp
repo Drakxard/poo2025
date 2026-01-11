@@ -50,10 +50,9 @@ int main(){
 	vector<Libro>::const_iterator itBorrar;
 	int c;
 	
-	vector<Libro> Etiquetas;
-	vector<Alumno>EtiquetasAlumnos;
-	string pathLibros = "Recursos/binarios/Tags/Libros.bin";
-	string pathAlumnos= "Recursos/binarios/Tags/Alumnos.bin";
+	vector<Tags> Etiquetas;
+	string etiquetasLibros = "Recursos/binarios/Tags/Libros.bin";
+	string TagsAlmunos= "Recursos/binarios/Tags/Alumnos.bin";
 	
 	cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;
 	int opcion=-1;
@@ -144,7 +143,7 @@ int main(){
 		///Uso del metodo 	| Proceso
 		itBorrar = navega.Buscar(idLibro,vectorLibros);
 		admin.EliminarLibro(itBorrar,vectorLibros);
-		sistema.Guardar(libros,vectorLibros);
+		sistema.Guardar<Libro>(libros,vectorLibros);
 		}
 		}else{ cout<<endl<<"Codigo No existente";}
 		
@@ -159,9 +158,9 @@ int main(){
 		cout<<"LIbros a agregar: ";cin>>Nlibros;
 		///Uso del metodo	| Proceso
 		if(!Nlibros==0){
-			admin.AgregarLibros(Nlibros,vectorLibros);	
-			sistema.Guardar(libros,vectorLibros);
-			vectorLibros = admin.VerLibros(libros);
+			vectorLibros = admin.AgregarLibros(Nlibros);	
+			sistema.Guardar<Libro>(libros,vectorLibros);
+			vectorLibros = sistema.VerContenido<Libro>(libros,true);
 			cout<<"Agregados Corectamente!"<<endl;
 		}	
 		cout<<endl<<endl<<"Preciona para volver";
@@ -189,15 +188,15 @@ int main(){
 		
 				cout<<"Etiquetas Existentes: "<<endl;
 				cout<<"De Libros: "<<endl;
-				Etiquetas = sistema.etiquetas<Libro>(pathLibros);
+				Etiquetas = sistema.etiquetas(etiquetasLibros);
 				c=0;
-				for(Libro& x : Etiquetas)
-					cout<<++c<<" ) "<<x.VerNombre()<<endl;
+				for(Tags& x : Etiquetas)
+					cout<<++c<<" ) "<<x.nombre<<endl;
 				cout<<"De Alumnos: "<<endl;
-				EtiquetasAlumnos = sistema.etiquetas<Alumno>(pathAlumnos);
+				Etiquetas = sistema.etiquetas(TagsAlmunos);
 				c=0;
-				for(Alumno& x : EtiquetasAlumnos)
-					cout<<++c<<" ) "<<x.VerNombre()<<endl;
+				for(Tags& x : Etiquetas)
+					cout<<++c<<" ) "<<x.nombre<<endl;
 				
 				cout<<endl<<endl<<"Preciona para volver";
 				cin.ignore();
@@ -211,15 +210,23 @@ int main(){
 				cin.get();
 				system("cls");
 				break;
-							case 3:
+				
+			case 3:
 				cout<<"Eliminar Etiquetas...";
 				cout<<endl<<endl<<"Preciona para volver";
 				cin.ignore();
 				cin.get();
 				system("cls");
 				break;
-							case 4:
+				
+			case 4:
 				cout<<"Agregar Etiquetas...";
+				///Carga en memoria N elementos
+				//VectorTags= vacio
+				//bibliotecario.Agregar<Tags>(VectorTags)
+				//VectorTags=lleno
+				///Va al bin a cargarlo
+				//sistema.Guardar<Tags>(VectorTags)
 				cout<<endl<<endl<<"Preciona para volver";
 				cin.ignore();
 				cin.get();

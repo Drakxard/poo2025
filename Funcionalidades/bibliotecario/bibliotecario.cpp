@@ -33,7 +33,7 @@ void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector
 // En bibliotecario.cpp
 
 
-bool Bibliotecario::PrestarLibros(int idLibro, vector<Libro>& v, int dia, int mes, int anio) {
+bool Bibliotecario::PrestarLibros(size_t idLibro, vector<Libro>& v, int dia, int mes, int anio) {
  // 1. Buscar el libro por ID si existe
  
 	   if(idLibro>v.size()){

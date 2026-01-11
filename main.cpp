@@ -19,7 +19,8 @@ int main(){
 	///Crear entedidad del sistema de gestion
 	Bibliotecario admin(codigo,nom); 
 	///Clase encargada de los metodos de bajo nivel
-	System sistema; 
+	System sistema;
+	
 	vector<string>listaTags;
 	///Clase encargada de las busquedas
 	Buscador navega(listaTags);
@@ -40,7 +41,7 @@ int main(){
 		///N-tags
 		
 	
-	vector<Libro> vectorLibros = sistema.VerContenido(libros, 1);
+	vector<Libro> vectorLibros = sistema.VerContenido<Libro>(libros, 1);
 	int idLibro;
 	int Nlibros;	
 	
@@ -49,8 +50,10 @@ int main(){
 	vector<Libro>::const_iterator itBorrar;
 	int c;
 	
-	vector<Tags> Etiquetas;
-
+	vector<Libro> Etiquetas;
+	vector<Alumno>EtiquetasAlumnos;
+	string pathLibros = "Recursos/binarios/Tags/Libros.bin";
+	string pathAlumnos= "Recursos/binarios/Tags/Alumnos.bin";
 	
 	cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;
 	int opcion=-1;
@@ -185,10 +188,16 @@ int main(){
 			case 1:
 		
 				cout<<"Etiquetas Existentes: "<<endl;
-				Etiquetas = sistema.etiquetas();
+				cout<<"De Libros: "<<endl;
+				Etiquetas = sistema.etiquetas<Libro>(pathLibros);
 				c=0;
-				for(Tags& x : Etiquetas)
-					cout<<++c<<" ) "<<x.nombre<<endl;
+				for(Libro& x : Etiquetas)
+					cout<<++c<<" ) "<<x.VerNombre()<<endl;
+				cout<<"De Alumnos: "<<endl;
+				EtiquetasAlumnos = sistema.etiquetas<Alumno>(pathAlumnos);
+				c=0;
+				for(Alumno& x : EtiquetasAlumnos)
+					cout<<++c<<" ) "<<x.VerNombre()<<endl;
 				
 				cout<<endl<<endl<<"Preciona para volver";
 				cin.ignore();

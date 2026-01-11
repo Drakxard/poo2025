@@ -1,15 +1,15 @@
 #include "system.h"
 #include <vector>
 using namespace std;
-
-void System::Guardar(string nombreArhivo, vector<Libro> &A_Guardar)
+template <typename T>
+void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
 {
 	ofstream archi(nombreArhivo, ios::binary);
 
 	if (!archi)
 		throw runtime_error("Error al guardar en " + nombreArhivo);
 
-	Libro aux;
+	T aux;
 	for (size_t i = 0; i < A_Guardar.size(); ++i)
 	{
 		aux = A_Guardar[i];
@@ -18,18 +18,18 @@ void System::Guardar(string nombreArhivo, vector<Libro> &A_Guardar)
 	archi.close();
 }
 
-
-vector<Libro> System::VerContenido(string nombreArchivo,bool crear){
+template <typename T>
+vector<T> System::VerContenido(string nombreArchivo,bool crear){
     ifstream archi(nombreArchivo,ios::binary);
     if(crear){
 		//nada
 	}
 	else{
 		if(!archi)
-			throw runtime_error("Error al Recuperar Libro de " + nombreArchivo);
+			throw runtime_error("Error al Recuperar de " + nombreArchivo);
     }
-	vector<Libro>Resultado;
-    Libro aux;
+	vector<T>Resultado;
+	T aux;
     while(archi.read(reinterpret_cast<char*>(&(aux)),sizeof(aux))){
         Resultado.push_back(aux);
     }
@@ -61,14 +61,35 @@ bool System::actualizar_disponibilidad( string nombreArchivo, int id){
     archi.write(reinterpret_cast<const char*>(&aux),sizeof(aux));
    // aux.Disponible(false);
     archi.close();
+	return true;
 }
 
 
-
-vector<Tags> System::etiquetas(){
-
-	vector<Tags> resultado;
-	//resultado = VerContenido(AllTags,1);
+template <typename T>
+vector<T> System::etiquetas(const string& path){
+	///Segun el tipo un path?
+	string AllTags= path;
+	
+	vector<T> resultado;
+	resultado = VerContenido<T>(AllTags,1);
 	return resultado;
 
 }
+
+
+
+	
+	// Instanciación para Guardar
+template void System::Guardar<Alumno>(string, vector<Alumno>&);
+template void System::Guardar<Libro>(string, vector<Libro>&);
+
+// Instanciación para VerContenido
+template vector<Alumno> System::VerContenido<Alumno>(string, bool);
+template vector<Libro> System::VerContenido<Libro>(string, bool);
+
+
+// Instanciación para Etiquetas
+template vector<Alumno> System::etiquetas<Alumno>(const string& path);
+template vector<Libro> System::etiquetas<Libro>(const string& path);
+
+

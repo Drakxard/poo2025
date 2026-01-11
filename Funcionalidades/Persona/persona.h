@@ -12,6 +12,7 @@ class Persona{
     int id;
     char nombre[49]; 
     public:
+		Persona(){}
         Persona(int id, const char *nombre){
                 this->id = id;
                 strncpy(this->nombre, nombre, 49);

@@ -211,14 +211,16 @@ int main(){
 				cin.get();
 				system("cls");
 				break;
-							case 3:
+				
+			case 3:
 				cout<<"Eliminar Etiquetas...";
 				cout<<endl<<endl<<"Preciona para volver";
 				cin.ignore();
 				cin.get();
 				system("cls");
 				break;
-							case 4:
+				
+			case 4:
 				cout<<"Agregar Etiquetas...";
 				cout<<endl<<endl<<"Preciona para volver";
 				cin.ignore();

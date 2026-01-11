@@ -14,9 +14,9 @@ class Persona{
     public:
 		Persona(){}
         Persona(int id, const char *nombre){
-                this->id = id;
-                strncpy(this->nombre, nombre, 49);
-                this->nombre[49] = '\0';
+			this->id = id;
+			strncpy(this->nombre, nombre, 49);
+			this->nombre[49] = '\0';
         }
         int VerID() const;
         const char *VerNombre() const;

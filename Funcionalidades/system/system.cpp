@@ -37,7 +37,7 @@ vector<T> System::VerContenido(string nombreArchivo,bool crear){
     archi.close();
     return Resultado;
 }
-
+template<typename D> ///cambia la disponibilidad del libro o la sancion del alumno
 bool System::actualizar_disponibilidad( string nombreArchivo, int id){
     fstream archi(nombreArchivo, ios::binary);
     if(!archi){
@@ -46,23 +46,21 @@ bool System::actualizar_disponibilidad( string nombreArchivo, int id){
         throw runtime_error("abriste cualquier cosa man deaa");
     }
   
-    
-   
-    //cambiar el bool de Disponibilidad
-    //Cambiar estado del libro en el binario 
-   // archi.seekg((id-1)*sizeof(libro))//vamos a la posicion del libro
-    Libro  aux;
+    D  aux;
+	archi.seekg((id-1)*sizeof(D))//vamos a la posicion 
 
-    archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
+    archi.read(reinterpret_cast<char*>(&aux),sizeof(D));
     //aux.disponible(false);
-    
-    //cursor al final del libro
+    //cursor al final del libro o alumno
     //Debe volver asi escribir libro actualizado 
-    //archi.seekg((id-1)*sizeof(libro))
-    archi.write(reinterpret_cast<const char*>(&aux),sizeof(aux));
-   // aux.Disponible(false);
+    
+	archi.seekg((id-1)*sizeof(D))
+    archi.write(reinterpret_cast<const char*>(&aux),sizeof(D));
+		//aux.SetDisponible(false); para actualizar (no) disponibilidad del libro
+		//aux.CambiarEstado(true); para actualizar (si) sancion del alumno
     archi.close();
-	return true;
+	
+	return true; //se realizo el cambio
 }
 
 

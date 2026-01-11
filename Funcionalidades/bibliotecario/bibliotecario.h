@@ -15,7 +15,10 @@ class Bibliotecario: public Persona{
  System sistema;
 public:
 	Bibliotecario(int id, const char *nombre):Persona(id,nombre){};
-	
+	int VerID() const;
+	const char* VerNombre() const;
+	void CambiarNombre(const char* NuevoNombre);
+	void Cambiar_Id( int nuevo_id);
 	
 	int CalcularDiferenciaDias(int dia, int mes, int anio);
 	vector<Libro> AgregarLibros(int LibrosAgregar);

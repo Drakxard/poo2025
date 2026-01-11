@@ -50,6 +50,7 @@ void Libro::CambiarNombre(const char *NuevoNombre){
 	this->nombre[49]='\0';
 }
 
+
 bool Libro::operator==(const Libro& otro) const {
 	// Comparamos si los IDs son iguales.
 	// Si tus variables se llaman diferente, c�mbialas aqu�.

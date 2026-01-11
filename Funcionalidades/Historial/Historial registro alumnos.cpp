@@ -8,14 +8,7 @@ struct Registro{
     int IdLibro,IdAlumno;
 };
 
-bool Sancionar(int IdAlumno){
-    ///Alumno
-  // bool Respuesta = Buscar(actualizar_disponibilidad);
-    return true;
-        //Saltar N-pos (id)
-        //Cambiar Su estado a Estado Sancionado
-    ///Return true -> sin problemas al sancionar
-}
+
 void Ver_Sancionado(Alumno& a, vector<Alumno>& v){
     if(Sancionar(23)){
         //a.sancion=true;

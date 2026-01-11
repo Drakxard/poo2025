@@ -6,7 +6,7 @@
 
 #include <ctime>
 #include "../alumno/alumno.h"
-#include "../Persona/persona.h"
+//#include "../Persona/persona.h"
 using namespace std;
 class Bibliotecario: public Persona{
  char nombre[49];

@@ -37,32 +37,6 @@ vector<T> System::VerContenido(string nombreArchivo,bool crear){
     archi.close();
     return Resultado;
 }
-template<typename D> ///cambia la disponibilidad del libro o la sancion del alumno
-bool System::actualizar_disponibilidad( string nombreArchivo, int id){
-    fstream archi(nombreArchivo, ios::binary);
-    if(!archi){
-        //nada
-    }else{
-        throw runtime_error("abriste cualquier cosa man deaa");
-    }
-  
-    D  aux;
-	
-	archi.seekg((id-1)*sizeof(D))//vamos a la posicion 
-
-    archi.read(reinterpret_cast<char*>(&aux),sizeof(D));
-    //aux.disponible(false);
-    //cursor al final del libro o alumno
-    //Debe volver asi escribir libro actualizado 
-    
-	archi.seekg((id-1)*sizeof(D))
-    archi.write(reinterpret_cast<const char*>(&aux),sizeof(D));
-		//aux.SetDisponible(false); para actualizar (no) disponibilidad del libro
-		//aux.CambiarEstado(true); para actualizar (si) sancion del alumno
-    archi.close();
-	
-	return true; //se realizo el cambio
-}
 
 
 vector<Tags> System::etiquetas(const string& path){
@@ -75,42 +49,95 @@ vector<Tags> System::etiquetas(const string& path){
 
 }
 
+template <typename T>
+vector<T> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo)
+{   //3 4 7 8 9
+
+	ifstream archi(nombreArchivo, ios::binary);
+	if (!archi)
+		throw runtime_error("Error al Recuperar de " + nombreArchivo);
 
 
-	
-	// Instanciaci�n para Guardar
+	T aux;
+	vector<T>resultado;
+	int actual;
+	bool primero=true; //Ajustar puntero, para iniciar 
+	for (int i = 0; i < IdARecuperar.size()-1;++i)
+	{
+		//Está ordenado, logica para 2 -> n (seguir pensando)
+		//  2 4 6 8
+		//primero -> 0 + primerID, hacer,
+		// 4 - 2 = 2, cursor en 2 -> 4, saltar 2 lugares
+		//6 -4 = 2, cursor en 4 -> 6, saltar 2 lugares
+		// 8 - 6 = 2, cursor en 6 -> 8, saltar 2 lugares 
+		if(primero){
+			actual = IdARecuperar[i];
+			primero = false;
+		}else{
+		actual = IdARecuperar[i + 1] - IdARecuperar[i];
+		}
+		archi.seekg((actual) * (sizeof(T))); // vamos a la posicion
+		archi.read(reinterpret_cast<char*>(&aux), sizeof(aux));
+		resultado.push_back(aux);
+	}
+	return resultado;
+};
+
+template <typename T>
+bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo)
+{ 	// 3 4 7 8 9
+
+	ofstream archi(nombreArchivo, ios::binary);
+	if (!archi)
+		throw runtime_error("Error al Recuperar de " + nombreArchivo);
+
+	T aux;
+	vector<T> resultado;
+	int actual;
+	bool primero = true; // Ajustar puntero, para iniciar
+	for (int i = 0; i < IdARecuperar.size() - 1; ++i)
+	{
+		// Está ordenado, logica para 2 -> n (seguir pensando)
+		//   2 4 6 8
+		// primero -> 0 + primerID, hacer,
+		//  4 - 2 = 2, cursor en 2 -> 4, saltar 2 lugares
+		// 6 -4 = 2, cursor en 4 -> 6, saltar 2 lugares
+		//  8 - 6 = 2, cursor en 6 -> 8, saltar 2 lugares
+		if (primero)
+		{
+			actual = IdARecuperar[i];
+			primero = false;
+		}
+		else
+		{
+			actual = IdARecuperar[i + 1] - IdARecuperar[i];
+		}
+		archi.seekg((actual) * (sizeof(T))); // vamos a la posicion
+		archi.write(reinterpret_cast<const char *>(&aux), sizeof(aux));
+		resultado.push_back(aux);
+	}
+	return true;	
+};
+
+template <typename T> /// Cuando terminas las modificacines lo sobreescribes
+bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {};
+
+// Instanciaci�n para Guardar
 template void System::Guardar<Alumno>(string, vector<Alumno>&);
 template void System::Guardar<Libro>(string, vector<Libro>&);
+
+
 
 // Instanciaci�n para VerContenido
 template vector<Alumno> System::VerContenido<Alumno>(string, bool);
 template vector<Libro> System::VerContenido<Libro>(string, bool);
 
-//funcion para saltar al lugar que quieras, de libro, alumno o incluso bibl!
-//vector<Registro> resultado = Saltar<Registro>(vector<int>IdARecuperar);
-/*
-template<typename T>
-vector<T> System::Saltar(vector<int>&IdARecuperar,string nombreArchivo){
+// Instanciaci�n para LeerDelBin y EscribirDelBin
+template vector<Alumno> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
+template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Alumno>& elementos, string nombreArchivo);
 
-	fstream archi(nombreArchivo, ios::binary|ios::out|ios::in);
-		if (!archi)
-			throw runtime_error("Error al Recuperar de " + nombreArchivo);
-		T a;
+template vector<Libro> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
+template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Libro>&elementos, string nombreArchivo);
 
-			// 3 7 1  5 2
-			// 1 2 3 5 7
-			//siguiente_salto = idSiguiente - IdActual ;
-//			seekp(siguiente_salto);
-
-				for (int i = 0; i < IdARecuperar;)
-					archi.seekg((T) * (sizeof(T))); // vamos a la posicion
-			archi.read(reinterpret_cast<char *>(&t), sizeof(T));
-			// cursor al final del alumno
-			// Debe volver asi escribir libro actualizado
-			t.Sancionar(decision); // se cambia; bool  sancion = true, se sancionó
-			archi.seekg((-1) * sizeof(T));
-			archi.write(reinterpret_cast<const char *>(&t), sizeof(T));
-			return true;
-}
-
-*/
+// funcion para saltar al lugar que quieras, de libro, alumno o incluso bibl!
+// vector<Registro> resultado = Saltar<Registro>(vector<int>IdARecuperar);

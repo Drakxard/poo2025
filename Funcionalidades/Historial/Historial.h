@@ -6,15 +6,25 @@
 #include "../alumno/alumno.h"
 #include "../system/system.h"
 
+
 struct Registro{
     int IdLibro,IdAlumno, IdBibliotecario;
+
 };
 //prestados.bin ->registro de los prestamos
+
 class Historial{
     System sistema;  
+    int LeerRegistro; //puede ser alumno o bibliotecario
+    bool ingreso;
     public:
-    bool AgregarNuevoRegistro(IdBibliotecario);//trabajo del bibliotecario
-    bool EliminarRegistro(int IdRegistro);
-    void Ver_Registro(Registro& actual, string nombreArchivo);
+        Historial(int x){
+        this->ingreso=false; LeerRegistro=x;
+        }
+        template<typename S>
+        bool Verificar_Existencia(vector<S>& v);
+        bool AgregarNuevoRegistro(int IdBibliotecario);//trabajo del bibliotecario
+        bool EliminarRegistro(int IdRegistro);
+        void Ver_Registro( string nombreArchivo);
 
 };

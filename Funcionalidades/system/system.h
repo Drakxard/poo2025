@@ -38,6 +38,13 @@ public:
 	void SumarUltimoIdAlumno() { UltimoIdAlumno++;}
 	int VerUltimoIdBibliotecario() { return UltimoIdBibliocario; }
 	void SumarUltimoIdBibliotecario() { UltimoIdBibliocario++; }
+	/// Cambiar a solo leer N cosas
+	template <typename T> 
+	vector<T> System::VerContenido(string nombreArchivo, bool crear);
+	template <typename T>
+	vector<T> LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
+	template <typename T>
+	bool EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo);
 };
 
 

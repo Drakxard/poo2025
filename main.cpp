@@ -71,7 +71,7 @@ int main(){
 	system("cls");	
 	
 	switch (opcion){
-	case 1:
+	case 1://Menu libro
 		while(opcion!=6){
 		cout<<"Menu Libros"<<endl;
 		cout<<"1. Ver libros"<<endl
@@ -251,8 +251,9 @@ int main(){
 	break;
 		
 		}///Case
-	}///While Menu Libros
-		//Casos Usuarios, Bibliotecarios, ...
+	}
+	///While Menu Libros	
+	//Casos Usuarios, Bibliotecarios, ...
 		default:
 		break;
 			  

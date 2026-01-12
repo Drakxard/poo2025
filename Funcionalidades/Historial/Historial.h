@@ -11,7 +11,7 @@ struct Registro{
 };
 //prestados.bin ->registro de los prestamos
 class Historial{
-    System sistema;
+    System sistema;  
     public:
     bool AgregarNuevoRegistro();
     bool EliminarRegistro(int IdRegistro);

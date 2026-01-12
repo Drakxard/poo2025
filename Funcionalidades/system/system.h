@@ -1,4 +1,4 @@
-#ifndef SYSTEM_H  // 1. Si no está definido PERSONA_H
+#ifndef SYSTEM_H  // 1. Si no estï¿½ definido PERSONA_H
 #define SYSTEM_H
 #include <fstream>
 #include <string>
@@ -26,25 +26,19 @@ public:
     System(){};
 	template<typename T>
 	void Guardar(string nombreArhivo, vector<T> &A_Guardar);
+	//Falta codear Eliminar, tempalte
 	template<typename T>
     vector<T> VerContenido(string nombreArchivo,bool crear);
 	vector<Tags> etiquetas(const string& path);
 	bool actualizar_disponibilidad( string nombreArchivo, int id);
 	
 	int VerUltimoIdLibro(){return UltimoIdLibro;}
-	int VerUltimoIdAlumno(){return UltimoIdLibro;}
-	int VerUltimoIdBibliotecario(){return UltimoIdLibro;}
-	
+	void SumarUltimoIdLibro() { UltimoIdLibro++;}
+	int VerUltimoIdAlumno(){return UltimoIdAlumno;}
+	void SumarUltimoIdAlumno() { UltimoIdAlumno++;}
+	int VerUltimoIdBibliotecario() { return UltimoIdBibliocario; }
+	void SumarUltimoIdBibliotecario() { UltimoIdBibliocario++; }
 };
-/* Sí necesitas clase template y separar code en .cpp
-///Instanciación Explícita
-///	Esta técnica permite dejar el código en el .cpp 
-///y que el compilador no se queje, pero tiene una condición: 
-///debes saber de antemano qué tipos de datos vas a usar 
-///		(por ejemplo, System<Alumno> o System<Libro>)
-/// Al final del archivo, instancia los tipos que vayas a usar:
-template class System<Alumno>; 
-template class System<Libro>;
-*/
 
-#endif // 3. Fin de la condición
+
+#endif // 3. Fin de la condiciï¿½n

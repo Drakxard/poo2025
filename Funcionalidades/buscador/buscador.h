@@ -5,13 +5,20 @@
 using namespace std;
 
 //template<typename T>
+struct Tags{
+	string nombre,path;
+};
 class Buscador{
-	vector<string> Etiquetas;
+	vector<Tags> Etiquetas;
 public:
 	Buscador(){}
-	Buscador(vector<string>Etiquetas){
+	Buscador(vector<Tags>Etiquetas){
 		this->Etiquetas = Etiquetas;
 	}
 	//vector<Libro>::const_iterator Buscar(string nombreBuscado, int Cantidad);
-	vector<Libro>::const_iterator Buscar(int idLibro, const vector<Libro> &v);
+	vector<Libro>::const_iterator Buscar(string& nombreBuscado, vector<Tags>&etiquedasUsadas);
+	
+	void AgregarEtiqueta(string& nombre);
+	void EliminarEtiqueta(int& idEtiqueta);
+
 };

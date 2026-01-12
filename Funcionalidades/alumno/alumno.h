@@ -1,4 +1,4 @@
-#ifndef ALUMNO_H  // 1. Si no está definido PERSONA_H
+#ifndef ALUMNO_H  // 1. Si no estï¿½ definido PERSONA_H
 #define ALUMNO_H
 #include "../Persona/persona.h"
 class Alumno: public Persona{
@@ -14,7 +14,9 @@ class Alumno: public Persona{
 		const char* VerNombre() const;
 		void CambiarNombre(const char* NuevoNombre);
 		void Cambiar_Id( int nuevo_id);
-        bool Versancion();
-		void CambiarEstado(bool estado); // 1 expirado, 0 no expirado
+        //Propios para uso del bibliotecario
+        //No darle acceso al alumno (No en botones)
+        bool VerEstadoDeSancion(){{return sancion;}};
+        void Sancionar(bool desicion) { sancion =desicion;};
 };
-#endif // 3. Fin de la condición
+#endif // 3. Fin de la condiciï¿½n

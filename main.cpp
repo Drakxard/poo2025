@@ -20,15 +20,16 @@ int main(){
 	Bibliotecario admin(codigo,nom); 
 	///Clase encargada de los metodos de bajo nivel
 	System sistema;
-	
-	vector<string>listaTags;
+
+	/// Nombre del Binario de test
+	string libros = "Recursos/Binarios/libros.bin";
+	string usuarios = "Recursos/Binarios/usuarios.bin";
+	string bibliotecarios = "Recursos/Binarios/bibliotecarios.bin";
+
 	///Clase encargada de las busquedas
-	Buscador navega(listaTags);
-	
-	///Nombre del Binario de test
-	string libros = "Recursos/binarios/libros.bin";
-	string usuarios = "Recursos/binarios/usuarios.bin";
-	string bibliotecarios = "Recursos/binarios/bibliotecarios.bin";
+	Buscador navegaLibros(Tags(libros));
+	Buscador navegaAlumnos(Tags(usuarios));
+	Buscador navegabibliotecarios(Tags(bibliotecarios));
 
 	///Estados Especiales
 		///De alumno

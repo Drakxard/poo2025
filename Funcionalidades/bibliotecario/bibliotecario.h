@@ -1,4 +1,4 @@
-#ifndef BIBLIOTECARIO_H  // 1. Si no está definido PERSONA_H
+#ifndef BIBLIOTECARIO_H  // 1. Si no estï¿½ definido PERSONA_H
 #define BIBLIOTECARIO_H
 #include <string>
 #include <vector>
@@ -25,6 +25,9 @@ public:
 	void EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v);
 	bool Alumno_quiere_un_libro( Alumno& x );
 	bool PrestarLibros(size_t idLibro, vector<Libro>&v, int dia, int mes, int anio);
+	bool Sancionar(int idAlumno, string nombreArchivo, bool desicion);
+	bool Actualizar_Disponibilidad( int idLibro, string nombreArchivo, bool decision);
+	
 
 };
-#endif // 3. Fin de la condición
+#endif // 3. Fin de la condiciï¿½n

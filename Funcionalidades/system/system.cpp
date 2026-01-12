@@ -78,14 +78,39 @@ vector<Tags> System::etiquetas(const string& path){
 
 
 	
-	// Instanciación para Guardar
+	// Instanciaciï¿½n para Guardar
 template void System::Guardar<Alumno>(string, vector<Alumno>&);
 template void System::Guardar<Libro>(string, vector<Libro>&);
 
-// Instanciación para VerContenido
+// Instanciaciï¿½n para VerContenido
 template vector<Alumno> System::VerContenido<Alumno>(string, bool);
 template vector<Libro> System::VerContenido<Libro>(string, bool);
 
+//funcion para saltar al lugar que quieras, de libro, alumno o incluso bibl!
+//vector<Registro> resultado = Saltar<Registro>(vector<int>IdARecuperar);
+/*
+template<typename T>
+vector<T> System::Saltar(vector<int>&IdARecuperar,string nombreArchivo){
 
+	fstream archi(nombreArchivo, ios::binary|ios::out|ios::in);
+		if (!archi)
+			throw runtime_error("Error al Recuperar de " + nombreArchivo);
+		T a;
 
+			// 3 7 1  5 2
+			// 1 2 3 5 7
+			//siguiente_salto = idSiguiente - IdActual ;
+//			seekp(siguiente_salto);
 
+				for (int i = 0; i < IdARecuperar;)
+					archi.seekg((T) * (sizeof(T))); // vamos a la posicion
+			archi.read(reinterpret_cast<char *>(&t), sizeof(T));
+			// cursor al final del alumno
+			// Debe volver asi escribir libro actualizado
+			t.Sancionar(decision); // se cambia; bool  sancion = true, se sancionÃ³
+			archi.seekg((-1) * sizeof(T));
+			archi.write(reinterpret_cast<const char *>(&t), sizeof(T));
+			return true;
+}
+
+*/

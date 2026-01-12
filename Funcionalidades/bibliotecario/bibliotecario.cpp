@@ -83,14 +83,9 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, vector<Libro>& v, int dia, int
 
 bool Bibliotecario:: Alumno_quiere_un_libro(Alumno &x){
 	//averiguamos si esta limpio y no esta sancionado
-	return true;//x.sancion;
+	return x.VerEstadoDeSancion();
 }
-/*vector<Alumno>Sancionados(int id){
-if(EstaSancionado){
 
-}
-}
-*/
 
 int Bibliotecario::CalcularDiferenciaDias(int dia, int mes, int anio){
 	// 1. Obtener fecha actual

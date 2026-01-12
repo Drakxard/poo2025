@@ -7,13 +7,13 @@
 #include "../system/system.h"
 
 struct Registro{
-    int IdLibro,IdAlumno;
+    int IdLibro,IdAlumno, IdBibliotecario;
 };
 //prestados.bin ->registro de los prestamos
 class Historial{
     System sistema;  
     public:
-    bool AgregarNuevoRegistro();
+    bool AgregarNuevoRegistro(IdBibliotecario);//trabajo del bibliotecario
     bool EliminarRegistro(int IdRegistro);
     void Ver_Registro(Registro& actual, string nombreArchivo);
 

@@ -47,6 +47,7 @@ bool System::actualizar_disponibilidad( string nombreArchivo, int id){
     }
   
     D  aux;
+	
 	archi.seekg((id-1)*sizeof(D))//vamos a la posicion 
 
     archi.read(reinterpret_cast<char*>(&aux),sizeof(D));

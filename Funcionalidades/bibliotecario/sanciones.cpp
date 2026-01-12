@@ -6,9 +6,9 @@
 
 bool Sancionar(int IdAlumno){
 	///Alumno
-	bool Respuesta = Buscar(EstadoDisponibilidad()); 
+	bool Respuesta = EstadoDisponibilidad(); 
 	if(Respuesta){
-		actualizar_disponibilidad(Respuesta);
+		actualizar_disponibilidad(string nombreArchivo, int id);
 	}
 	return true;
 	//Saltar N-pos (id)

@@ -23,5 +23,5 @@ void Alumno::CambiarEstado(bool estado){
 	if (estado)
 		sancion = true;
 	else
-		sancio = false;
+		sancion = false;
 }

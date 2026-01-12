@@ -10,7 +10,7 @@ struct Registro{
 
 
 void Ver_Sancionado(Alumno& a, vector<Alumno>& v){
-    if(Sancionar(23)){
+    if(Sancionar()){
         //a.sancion=true;
          //está sancionado
     }

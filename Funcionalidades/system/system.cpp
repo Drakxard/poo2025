@@ -62,7 +62,7 @@ vector<T> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo)
 	vector<T>resultado;
 	int actual;
 	bool primero=true; //Ajustar puntero, para iniciar 
-	for (int i = 0; i < IdARecuperar.size()-1;++i)
+	for (size_t i = 0; i < IdARecuperar.size()-1;++i)
 	{
 		//Está ordenado, logica para 2 -> n (seguir pensando)
 		//  2 4 6 8
@@ -95,7 +95,7 @@ bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, strin
 	vector<T> resultado;
 	int actual;
 	bool primero = true; // Ajustar puntero, para iniciar
-	for (int i = 0; i < IdARecuperar.size() - 1; ++i)
+	for (size_t i = 0; i < IdARecuperar.size() - 1; ++i)
 	{
 		// Está ordenado, logica para 2 -> n (seguir pensando)
 		//   2 4 6 8
@@ -120,7 +120,7 @@ bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, strin
 };
 
 template <typename T> /// Cuando terminas las modificacines lo sobreescribes
-bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {};
+bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {return true;};
 
 // Instanciaci�n para Guardar
 template void System::Guardar<Alumno>(string, vector<Alumno>&);
@@ -131,6 +131,7 @@ template void System::Guardar<Libro>(string, vector<Libro>&);
 // Instanciaci�n para VerContenido
 template vector<Alumno> System::VerContenido<Alumno>(string, bool);
 template vector<Libro> System::VerContenido<Libro>(string, bool);
+template vector<int> System::VerContenido<int>(string, bool);
 
 // Instanciaci�n para LeerDelBin y EscribirDelBin
 template vector<Alumno> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
@@ -138,6 +139,10 @@ template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Alumno>& e
 
 template vector<Libro> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
 template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Libro>&elementos, string nombreArchivo);
+
+template vector<Tags> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
+template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Tags>&elementos, string nombreArchivo);
+
 
 // funcion para saltar al lugar que quieras, de libro, alumno o incluso bibl!
 // vector<Registro> resultado = Saltar<Registro>(vector<int>IdARecuperar);

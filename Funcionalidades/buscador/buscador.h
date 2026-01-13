@@ -11,6 +11,7 @@ using namespace std;
 class Buscador{
 	System sistema;
 	vector<Tags> Etiquetas;
+	vector<int> Ordenar(vector<Tags>v);
 public:
 	Buscador(){}
 	Buscador(vector<Tags>Etiquetas){

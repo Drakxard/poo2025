@@ -16,11 +16,7 @@ class System{
 	int UltimoIdAlumno;
 	int UltimoIdBibliocario;
 	
-	///De libro
-	string prestados = "Recursos/binarios/prestados.bin";
-	string matematica = "Recursos/binarios/matematica.bin";
-	string poo = "Recursos/binarios/poo.bin";
-	string fisica = "Recursos/binarios/fisica.bin";
+
 	///N-tags
 public:
     System(){};

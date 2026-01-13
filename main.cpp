@@ -20,16 +20,17 @@ int main(){
 	Bibliotecario admin(codigo,nom); 
 	///Clase encargada de los metodos de bajo nivel
 	System sistema;
-	
-	vector<string>listaTags;
-	///Clase encargada de las busquedas
-	Buscador navega(listaTags);
-	
-	///Nombre del Binario de test
-	string libros = "Recursos/binarios/libros.bin";
-	string usuarios = "Recursos/binarios/usuarios.bin";
-	string bibliotecarios = "Recursos/binarios/bibliotecarios.bin";
 
+	/// Nombre del Binario de test
+	string libros = "Recursos/Binarios/libros.bin";
+	string usuarios = "Recursos/Binarios/usuarios.bin";
+	string bibliotecarios = "Recursos/Binarios/bibliotecarios.bin";
+
+	///Clase encargada de las busquedas
+	Buscador navega;
+	string palabra="Casa";
+
+	vector<Libro> resultadoLibros;
 	///Estados Especiales
 		///De alumno
 		string sancionados = "Recursos/binarios/sancionados.bin";
@@ -70,7 +71,7 @@ int main(){
 	system("cls");	
 	
 	switch (opcion){
-	case 1:
+	case 1://Menu libro
 		while(opcion!=6){
 		cout<<"Menu Libros"<<endl;
 		cout<<"1. Ver libros"<<endl
@@ -106,15 +107,9 @@ int main(){
 		cout<<"Buscar libro, indica ID: ";cin>>idLibro;
 		
 		///Buscar Libro		| Proceso
-		it = navega.Buscar(idLibro,vectorLibros);
 		
+		resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
 		
-		///Muestra 			| Salida
-		cout<<"Libro: "<<endl
-			<<"Nombre: "<<(*(it)).VerNombre()
-			<<endl 
-			<<"ID: "<<(*(it)).VerID()
-			<<endl;
 		
 		cout<<endl<<endl<<"Preciona para volver";
 		cin.ignore();
@@ -127,9 +122,9 @@ int main(){
 		
 		
 		///Buscar Libro		| Proceso
-		it = navega.Buscar(idLibro,vectorLibros);
+		resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
 		
-		if(it!= vectorLibros.end() ){
+		/*if(it!= vectorLibros.end() ){
 		///Muestra 			| Salida
 		cout<<"Libro: "<<endl
 			<<"Nombre: "<<(*(it)).VerNombre()
@@ -147,6 +142,7 @@ int main(){
 		}
 		}else{ cout<<endl<<"Codigo No existente";}
 		
+		*/
 		cout<<endl<<endl<<"Preciona para volver";
 		cin.ignore();
 		cin.get();
@@ -250,8 +246,9 @@ int main(){
 	break;
 		
 		}///Case
-	}///While Menu Libros
-		//Casos Usuarios, Bibliotecarios, ...
+	}
+	///While Menu Libros	
+	//Casos Usuarios, Bibliotecarios, ...
 		default:
 		break;
 			  

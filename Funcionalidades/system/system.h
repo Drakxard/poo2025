@@ -1,4 +1,4 @@
-#ifndef SYSTEM_H  // 1. Si no está definido PERSONA_H
+#ifndef SYSTEM_H  // 1. Si no estï¿½ definido PERSONA_H
 #define SYSTEM_H
 #include <fstream>
 #include <string>
@@ -16,35 +16,30 @@ class System{
 	int UltimoIdAlumno;
 	int UltimoIdBibliocario;
 	
-	///De libro
-	string prestados = "Recursos/binarios/prestados.bin";
-	string matematica = "Recursos/binarios/matematica.bin";
-	string poo = "Recursos/binarios/poo.bin";
-	string fisica = "Recursos/binarios/fisica.bin";
+
 	///N-tags
 public:
     System(){};
 	template<typename T>
 	void Guardar(string nombreArhivo, vector<T> &A_Guardar);
-	template<typename T>
-    vector<T> VerContenido(string nombreArchivo,bool crear);
+	//Falta codear Eliminar, tempalte
 	vector<Tags> etiquetas(const string& path);
 	bool actualizar_disponibilidad( string nombreArchivo, int id);
 	
 	int VerUltimoIdLibro(){return UltimoIdLibro;}
-	int VerUltimoIdAlumno(){return UltimoIdLibro;}
-	int VerUltimoIdBibliotecario(){return UltimoIdLibro;}
-	
+	void SumarUltimoIdLibro() { UltimoIdLibro++;}
+	int VerUltimoIdAlumno(){return UltimoIdAlumno;}
+	void SumarUltimoIdAlumno() { UltimoIdAlumno++;}
+	int VerUltimoIdBibliotecario() { return UltimoIdBibliocario; }
+	void SumarUltimoIdBibliotecario() { UltimoIdBibliocario++; }
+	/// Cambiar a solo leer N cosas
+	template <typename T> 
+	vector<T> VerContenido(string nombreArchivo, bool crear);
+	template <typename T>
+	vector<T> LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
+	template <typename T>
+	bool EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo);
 };
-/* Sí necesitas clase template y separar code en .cpp
-///Instanciación Explícita
-///	Esta técnica permite dejar el código en el .cpp 
-///y que el compilador no se queje, pero tiene una condición: 
-///debes saber de antemano qué tipos de datos vas a usar 
-///		(por ejemplo, System<Alumno> o System<Libro>)
-/// Al final del archivo, instancia los tipos que vayas a usar:
-template class System<Alumno>; 
-template class System<Libro>;
-*/
 
-#endif // 3. Fin de la condición
+
+#endif // 3. Fin de la condiciï¿½n

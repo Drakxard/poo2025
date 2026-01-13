@@ -15,13 +15,3 @@ void Alumno::Cambiar_Id(int nuevo_id){
 	this->id= nuevo_id;
 }
 
-bool Alumno::Versancion(){
-    return sancion;
-}
-
-void Alumno::CambiarEstado(bool estado){
-	if (estado)
-		sancion = true;
-	else
-		sancion = false;
-}

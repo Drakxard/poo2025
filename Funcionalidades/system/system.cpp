@@ -112,7 +112,7 @@ bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, strin
 		{
 			actual = IdARecuperar[i + 1] - IdARecuperar[i];
 		}
-		archi.seekg((actual) * (sizeof(T))); // vamos a la posicion
+		archi.seekp((actual) * (sizeof(T))); // vamos a la posicion
 		archi.write(reinterpret_cast<const char *>(&aux), sizeof(aux));
 		resultado.push_back(aux);
 	}

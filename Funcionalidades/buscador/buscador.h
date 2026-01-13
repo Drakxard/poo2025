@@ -7,9 +7,7 @@
 using namespace std;
 
 //template<typename T>
-struct Tags{
-	string nombre,path;
-};
+
 class Buscador{
 	System sistema;
 	vector<Tags> Etiquetas;
@@ -19,7 +17,7 @@ public:
 		this->Etiquetas = Etiquetas;
 	}
 	//vector<Libro>::const_iterator Buscar(string nombreBuscado, int Cantidad);
-	vector<Libro>::const_iterator Buscar(string& nombreBuscado, vector<Tags>&etiquedasUsadas,int cantidad);
+	vector<Libro> Buscar(string &nombreBuscado, vector<Tags> &etiquedasUsadas, int cantidad);
 	
 	void AgregarEtiqueta(string& nombre);
 	void EliminarEtiqueta(int& idEtiqueta);

@@ -27,10 +27,10 @@ int main(){
 	string bibliotecarios = "Recursos/Binarios/bibliotecarios.bin";
 
 	///Clase encargada de las busquedas
-	Buscador navegaLibros(Tags(libros));
-	Buscador navegaAlumnos(Tags(usuarios));
-	Buscador navegabibliotecarios(Tags(bibliotecarios));
+	Buscador navega;
+	string palabra="Casa";
 
+	vector<Libro> resultadoLibros;
 	///Estados Especiales
 		///De alumno
 		string sancionados = "Recursos/binarios/sancionados.bin";
@@ -107,15 +107,9 @@ int main(){
 		cout<<"Buscar libro, indica ID: ";cin>>idLibro;
 		
 		///Buscar Libro		| Proceso
-		it = navega.Buscar(idLibro,vectorLibros);
 		
+		resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
 		
-		///Muestra 			| Salida
-		cout<<"Libro: "<<endl
-			<<"Nombre: "<<(*(it)).VerNombre()
-			<<endl 
-			<<"ID: "<<(*(it)).VerID()
-			<<endl;
 		
 		cout<<endl<<endl<<"Preciona para volver";
 		cin.ignore();
@@ -128,9 +122,9 @@ int main(){
 		
 		
 		///Buscar Libro		| Proceso
-		it = navega.Buscar(idLibro,vectorLibros);
+		resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
 		
-		if(it!= vectorLibros.end() ){
+		/*if(it!= vectorLibros.end() ){
 		///Muestra 			| Salida
 		cout<<"Libro: "<<endl
 			<<"Nombre: "<<(*(it)).VerNombre()
@@ -148,6 +142,7 @@ int main(){
 		}
 		}else{ cout<<endl<<"Codigo No existente";}
 		
+		*/
 		cout<<endl<<endl<<"Preciona para volver";
 		cin.ignore();
 		cin.get();

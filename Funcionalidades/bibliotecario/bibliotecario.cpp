@@ -1,4 +1,5 @@
 #include "Bibliotecario.h"
+#include <algorithm>
 using namespace std;
 
 int Bibliotecario::VerID() const  
@@ -11,10 +12,6 @@ const char* Bibliotecario::VerNombre() const{
 void Bibliotecario::CambiarNombre(const char *NuevoNombre){
 	strncpy(this->nombre, NuevoNombre,49);
 	this->nombre[49]='\0';
-}
-void Alumno::Cambiar_Id(int nuevo_id){
-	cin>>nuevo_id;
-	this->id= nuevo_id;
 }
 
 
@@ -38,6 +35,7 @@ vector<Libro> Bibliotecario::AgregarLibros(int LibrosAgregar)
 		resultado.push_back(aux);
 		--LibrosAgregar;
 	}
+	return resultado;
 }
 
 void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector<Libro> &Libros)

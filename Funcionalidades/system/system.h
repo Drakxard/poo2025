@@ -27,8 +27,6 @@ public:
 	template<typename T>
 	void Guardar(string nombreArhivo, vector<T> &A_Guardar);
 	//Falta codear Eliminar, tempalte
-	template<typename T>
-    vector<T> VerContenido(string nombreArchivo,bool crear);
 	vector<Tags> etiquetas(const string& path);
 	bool actualizar_disponibilidad( string nombreArchivo, int id);
 	
@@ -40,7 +38,7 @@ public:
 	void SumarUltimoIdBibliotecario() { UltimoIdBibliocario++; }
 	/// Cambiar a solo leer N cosas
 	template <typename T> 
-	vector<T> System::VerContenido(string nombreArchivo, bool crear);
+	vector<T> VerContenido(string nombreArchivo, bool crear);
 	template <typename T>
 	vector<T> LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
 	template <typename T>

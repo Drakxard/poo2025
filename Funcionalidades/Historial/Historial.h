@@ -25,6 +25,6 @@ class Historial{
         bool Verificar_Existencia(vector<S>& v);
         bool AgregarNuevoRegistro(int IdBibliotecario);//trabajo del bibliotecario
         bool EliminarRegistro(int IdRegistro);
-        void Ver_Registro( string nombreArchivo);
+        Registro Ver_Registro(int actual,string nombreArchivo);
 
 };

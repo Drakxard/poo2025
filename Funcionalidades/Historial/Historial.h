@@ -22,7 +22,7 @@ class Historial{
         this->ingreso=false; LeerRegistro=x;
         }
         template<typename S>
-        bool Verificar_Existencia(vector<S>& v);
+        bool Verificar_Existencia( vector<S>&v,S LeerRegistro);
         bool AgregarNuevoRegistro(int IdBibliotecario);//trabajo del bibliotecario
         bool EliminarRegistro(int IdRegistro);
         Registro Ver_Registro(int actual,string nombreArchivo);

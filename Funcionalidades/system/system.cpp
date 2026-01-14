@@ -119,14 +119,47 @@ bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, strin
 	return true;	
 };
 
+
+template<typename T>
+int VerUltimo(string nombreArchivo){
+	
+	ifstream archi(nombreArchivo,ios::binary|ios::ate);
+	if(!archi)
+	throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo);
+	int resultado;
+	if(archi.tellg() < size_t(T)){
+	archi.close();
+	throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo+" No hay registros");
+	}
+	archi.seekg(-sizeof(T),ios::end);
+	T aux;
+	archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
+	resultado= aux.VerID();
+	
+	archi.close();
+	return resultado;
+}
+
+template<typemane S >
+bool System::Verificar_Existencia( string nombreArchivo){
+	//Buscar si Alumno/Bibliotecario/Libro por ID si existe
+	int ultimo = sistema.VerUltimo<S>(nombreArchivo);
+	if(ultimo >= LeerRegistro){
+		//existe en el sistema
+		return true; 
+	}else{
+		//No existe en el sistema
+		return false;
+	}
+}
+
+
 template <typename T> /// Cuando terminas las modificacines lo sobreescribes
 bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {return true;};
 
 // Instanciaci�n para Guardar
 template void System::Guardar<Alumno>(string, vector<Alumno>&);
 template void System::Guardar<Libro>(string, vector<Libro>&);
-
-
 
 // Instanciaci�n para VerContenido
 template vector<Alumno> System::VerContenido<Alumno>(string, bool);
@@ -142,6 +175,8 @@ template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Libro>&ele
 
 template vector<Tags> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
 template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Tags>&elementos, string nombreArchivo);
+
+template bool Verificar_Existencia( string nombreArchivo);
 
 
 // funcion para saltar al lugar que quieras, de libro, alumno o incluso bibl!

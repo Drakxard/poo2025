@@ -11,13 +11,9 @@ struct Tags{
 	string nombre,path;
 };
 class System{
+	string pathalumnos ="../../Recursos/Binarios/alumnos.bin";
 
-	int UltimoIdLibro;
-	int UltimoIdAlumno;
-	int UltimoIdBibliocario;
-	
 
-	///N-tags
 public:
     System(){};
 	template<typename T>
@@ -26,19 +22,20 @@ public:
 	vector<Tags> etiquetas(const string& path);
 	bool actualizar_disponibilidad( string nombreArchivo, int id);
 	
-	int VerUltimoIdLibro(){return UltimoIdLibro;}
-	void SumarUltimoIdLibro() { UltimoIdLibro++;}
-	int VerUltimoIdAlumno(){return UltimoIdAlumno;}
-	void SumarUltimoIdAlumno() { UltimoIdAlumno++;}
-	int VerUltimoIdBibliotecario() { return UltimoIdBibliocario; }
-	void SumarUltimoIdBibliotecario() { UltimoIdBibliocario++; }
+	template<typename S>
+    bool Verificar_Existencia( string nombreArchivo);
+  
+
 	/// Cambiar a solo leer N cosas
+	template <typename T>
+	int VerUltimo(string nombreArchivo);
 	template <typename T> 
 	vector<T> VerContenido(string nombreArchivo, bool crear);
 	template <typename T>
 	vector<T> LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
 	template <typename T>
 	bool EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo);
+	string alumnos(){return pathalumnos;}
 };
 
 

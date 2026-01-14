@@ -21,6 +21,6 @@ class Persona{
         int VerID() const;
         const char *VerNombre() const;
         void CambiarNombre(const char *NuevoNombre);
-        vector<Libro> VerLibros(string nombreArchivo,bool crear=false);//usan tanto el Bibliotecario como el Alumno
+        
 };
 #endif // 3. Fin de la condición

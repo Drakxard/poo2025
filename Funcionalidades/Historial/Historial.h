@@ -23,8 +23,8 @@ class Historial{
         }
         template<typename S>
         bool Verificar_Existencia( vector<S>&v,S LeerRegistro);
-        bool AgregarNuevoRegistro(int IdBibliotecario);//trabajo del bibliotecario
+        bool AgregarNuevoRegistro(int IdBibliotecario);
         bool EliminarRegistro(int IdRegistro);
-        Registro Ver_Registro(int actual,string nombreArchivo);
+        void Ver_Historial(int actual,string nombreArchivo);
 
 };

@@ -48,52 +48,60 @@ void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector
 
 bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos, int dia, int mes, int anio)
 {
-	// 1. Buscar si el alumno por ID si existe
+	// 1. Buscar al alumno por ID usando find_if
 	auto itAlumno = find_if(Alumnos.begin(), Alumnos.end(), [idAlumno](const Alumno& a) {
-			return a.VerID() == idAlumno;
-		});
+		return a.VerID() == idAlumno;
+	});
 	
-	if(idLibro>Alumnos.size()){
-			cout<<"Cï¿½digo de libro inexistente, Libro no encontrado." << endl;
-			return false; //no existe el libro o estï¿½ prestado
-		}
-	//verificar si el alumno no esta sancionado
-		
+	// Validar si el iterador llegó al final (no encontró al alumno)
+	if (itAlumno == Alumnos.end()) {
+		cout << "Error: Alumno con ID " << idAlumno << " no encontrado." << endl;
+		return false;
+	}
 	
-		// 1. Buscar el libro por ID si existe
-		auto itlibro = find_if(Libros.begin(), Libros.end(), [idLibro](const Libro& a) {
-			return a.VerID() == idLibro;
-		});
+	// 2. Verificar si el alumno está sancionado
+	// Nota: Asumimos que VerEstadoDeSancion devuelve 'true' si está sancionado.
+	// Puedes usar la función auxiliar que ya tenías: Alumno_quiere_un_libro(*itAlumno)
+	// O llamar directamente al método del alumno. Usaremos el método directo por claridad:
+	if (itAlumno->VerEstadoDeSancion()) { 
+		cout << "Prestamo denegado: El alumno " << itAlumno->VerNombre() << " tiene una sancion activa." << endl;
+		return false;
+	}
+	
+	// 3. Buscar el libro por ID
+	auto itLibro = find_if(Libros.begin(), Libros.end(), [idLibro](const Libro& l) {
+		return l.VerID() == idLibro;
+	});
+	
+	// Validar si el iterador llegó al final (no encontró el libro)
+	if (itLibro == Libros.end()) {
+		cout << "Error: Libro con ID " << idLibro << " no encontrado." << endl;
+		return false;
+	}
+	
+	// 4. Verificar disponibilidad y procesar el préstamo
+	if (itLibro->EstadoDisponibilidad()) {
 		
-		if(idLibro>Libros.size()){
-			cout<<"Cï¿½digo de libro inexistente, Libro no encontrado." << endl;
-			return false; //no existe el libro o estï¿½ prestado
-		}
+		// Marcar el libro como NO disponible
+		itLibro->SetDisponible(false); 
 		
-		// 2. Verificar si existe
-		if (itlibro != Libros.end()) {
-			// 3. Verificar disponibilidad
-			if (itlibro->EstadoDisponibilidad()) {
-				
-				// Marcar como NO disponible
-				itlibro->SetDisponible(false); 
-				
-				// Calcular dÃ­as restantes hasta la fecha dada
-				int diasCalculados = CalcularDiferenciaDias(dia, mes, anio);
-
-				// Asignar los dÃ­as al libro
-				itlibro->DiasRestantes(diasCalculados);
-				
-				cout << "Libro prestado exitosamente. Dias para devolucion: " << diasCalculados << endl;
-				return true; 
-			} else {
-				cout << "El libro ya se encuentra prestado." << endl;
-				return false; 
-			}
-		}
-    
-    cout << "Libro no encontrado." << endl;
-    return false;
+		// Calcular la diferencia de días para la devolución
+		int diasCalculados = CalcularDiferenciaDias(dia, mes, anio);
+		
+		// Asignar los días restantes al libro
+		itLibro->DiasRestantes(diasCalculados);
+		
+		cout << "------------------------------------------------" << endl;
+		cout << "Libro prestado exitosamente a: " << itAlumno->VerNombre() << endl;
+		cout << "Libro: " << itLibro->VerNombre() << endl;
+		cout << "Dias para devolucion: " << diasCalculados << endl;
+		cout << "------------------------------------------------" << endl;
+		
+		return true; 
+	} else {
+		cout << "El libro '" << itLibro->VerNombre() << "' ya se encuentra prestado." << endl;
+		return false; 
+	}
 }
 
 bool Bibliotecario:: Alumno_quiere_un_libro(Alumno &x){

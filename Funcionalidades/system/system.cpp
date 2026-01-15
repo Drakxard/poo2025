@@ -127,7 +127,7 @@ int VerUltimo(string nombreArchivo){
 	if(!archi)
 	throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo);
 	int resultado;
-	if(archi.tellg() < size_t(T)){
+	if(archi.tellg() < sizeof(T)){
 	archi.close();
 	throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo+" No hay registros");
 	}

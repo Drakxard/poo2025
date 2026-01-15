@@ -23,6 +23,6 @@ class Persona{
         const char *VerNombre() const;
         void CambiarNombre(const char *NuevoNombre);
         void CambiarDni(int nuevo_DNI);
-        
+		void Cambiar_Id( int nuevo_id);
 };
 #endif // 3. Fin de la condici�n

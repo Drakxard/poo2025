@@ -2,6 +2,8 @@
 
 using namespace std;
 
+
+
 int Persona::VerID() const
 {
     return id;
@@ -19,4 +21,10 @@ void Persona:: CambiarDni(int nuevo_DNI){
     //por si se confundió en algo
     this-> DNI=nuevo_DNI;
 }
+
+void Persona::Cambiar_Id(int nuevo_id){
+	cin>>nuevo_id;
+	this->id= nuevo_id;
+}
+
 

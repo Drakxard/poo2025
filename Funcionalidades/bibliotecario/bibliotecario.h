@@ -10,16 +10,10 @@
 #include "../system/system.h"
 using namespace std;
 class Bibliotecario: public Persona{
- char nombre[49];
- int id;
  System sistema;
 public:
-	Bibliotecario(int id, const char *nombre):Persona(id,nombre){};
-	int VerID() const;
-	const char* VerNombre() const;
-	void CambiarNombre(const char* NuevoNombre);
-	void Cambiar_Id( int nuevo_id);
-	
+	Bibliotecario(int id, const char* n,int dni) :Persona(id, n, dni){};
+
 	vector<Libro> AgregarLibros(int LibrosAgregar);
 	void EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v);
 
@@ -34,7 +28,7 @@ public:
 	bool Sancionar(int idAlumno, string nombreArchivo, bool desicion);
 	bool Actualizar_Disponibilidad( int idLibro, string nombreArchivo, bool decision);
 
-	void CrearObjetoCorrespondiente(PosBibliotecario,string nombre );
+	void CrearObjetoCorrespondiente(int PosBibliotecario,string nombre );
 	
 };
 #endif // 3. Fin de la condici�n

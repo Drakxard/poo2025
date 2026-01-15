@@ -2,17 +2,8 @@
 #include <algorithm>
 using namespace std;
 
-int Bibliotecario::VerID() const  
-{
-	return id;
-}
-const char* Bibliotecario::VerNombre() const{
-	return this->nombre;
-}
-void Bibliotecario::CambiarNombre(const char *NuevoNombre){
-	strncpy(this->nombre, NuevoNombre,49);
-	this->nombre[49]='\0';
-}
+
+
 
 
 vector<Libro> Bibliotecario::AgregarLibros(int LibrosAgregar)
@@ -21,7 +12,7 @@ vector<Libro> Bibliotecario::AgregarLibros(int LibrosAgregar)
 	string nombreLibro = "";
 	int idLibro = 0;
 	
-	int id = sistema.VerUltimoIdLibro();
+	int id = sistema.VerUltimo<Libro>(libros);
 	while (LibrosAgregar > 0)
 	{
 		

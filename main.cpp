@@ -3,6 +3,8 @@
 #include <iomanip>
 #include "Funcionalidades/system/system.h"
 #include "Funcionalidades/buscador/buscador.h"
+#include "Funcionalidades/login/login.h"
+#include "Funcionalidades/bibliotecario/bibliotecario.h"
 #include <string>
 using namespace std;
 //Importar Clases propias
@@ -16,10 +18,9 @@ int main(){
 		///Clase encargada de los metodos de bajo nivel
 	System sistema;
 
-	/// Nombre del Binario de test
-	string libros = "Recursos/Binarios/libros.bin";
+string libros = "Recursos/Binarios/libros.bin";
 	string usuarios = "Recursos/Binarios/usuarios.bin";
-	string bibliotecarios = "Recursos/Binarios/bibliotecarios.bin";
+	string BibliotecarioPath = "Recursos/Binarios/Bibliotecario.bin";
 
 	///Clase encargada de las busquedas
 	Buscador navega;
@@ -39,35 +40,33 @@ int main(){
 
 
 ///---------------------------------
-	
-	cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;
+
+cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;
 
 int dni;
 cout<<"Ingrese su Documento de Identidad, por favor"<<endl;
 cin>>dni;
 
+string AlumnosPath = usuarios;
 
-vector<Bibliotecarios> vectorBibliotecarios = sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
-int PosBibliotecario = BuscarDniEnBibliotecarios(dni, vectorBibliotecarios);
-Bibliotecario biblio;
+vector<Bibliotecario> vectorBibliotecario = sistema.VerContenido<Bibliotecario>(BibliotecarioPath,true);
+int PosBibliotecario = BuscarDniEnBibliotecarios(dni, vectorBibliotecario);
 Alumno alumn;
 if(PosBibliotecario != -1){
-	biblio = ObjetoCorrespondienteBibliotecario(PosBibliotecario,biblioterios );
-	cout<<"¿Qué Quieres Hacer "<<Biblio.VerNombre()<<" ?"<<endl;
-	MenuBibliotecario();
+	Bibliotecario biblio = CrearObjetoCorrespondienteBibliotecario(PosBibliotecario, vectorBibliotecario);
+	cout<<"¿Qué Quieres Hacer "<<biblio.VerNombre()<<" ?"<<endl;
 
 }else{
-	vector<Alumno> vectorAlumno = sistema.VerContenido<Alumno>(alumnos,true);
+	vector<Alumno> vectorAlumno = sistema.VerContenido<Alumno>(AlumnosPath,true);
 	int PosAlumno = BuscarDniEnAlumnos(dni,vectorAlumno);
 	if(PosAlumno!= -1){
-		alumn = ObjetoCorrespondienteAlumno(PosAlumno, alumnos); 
-			cout<<"¿Qué Quieres Hacer "<<Alumn.VerNombre()<<" ?"<<endl;
-			MenuAlumno();
+		alumn = CrearObjetoCorrespondienteAlumno(PosAlumno, vectorAlumno); 
+			cout<<"¿Qué Quieres Hacer "<<alumn.VerNombre()<<" ?"<<endl;
 	}else{
 		string nombre;
 		cout<<"Ingresa tu nombre: ";cin>>nombre;
-		int id = sistema.VerUltimo<Alumno>(alumnos);
-		alumn = Alumno(id,nombre);
+		int id = sistema.VerUltimo<Alumno>(AlumnosPath);
+		alumn = Alumno(id, nombre.c_str(), dni);
 	}
 }
 

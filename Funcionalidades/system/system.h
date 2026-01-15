@@ -25,7 +25,7 @@ public:
 	template<typename S>
     bool Verificar_Existencia_Binario(string nombreArchivo);
 	template<typename S>
-	bool Verificar_Existencia_Vector(int dni, vector<s>&v);
+	int Verificar_Existencia_Vector(int dni, vector<s>&v);
 
 	/// Cambiar a solo leer N cosas
 	template <typename T>

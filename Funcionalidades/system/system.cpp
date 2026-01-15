@@ -153,8 +153,10 @@ bool System::Verificar_Existencia_Binario( string nombreArchivo){
 	}
 }
 template<typemane S >
-bool System::Verificar_Existencia_Vector(int dni, vector<s>&v){
-	
+int System::Verificar_Existencia_Vector(int dni, vector<s>&v){
+	 vector<s>::iterator encontrar = find_if(v.begin(), v.end(), [dni](const S& x) {
+		return x.VerID() == dni;
+    return -1;
 }
 
 template <typename T> /// Cuando terminas las modificacines lo sobreescribes
@@ -179,7 +181,8 @@ template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Libro>&ele
 template vector<Tags> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
 template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Tags>&elementos, string nombreArchivo);
 
-template bool Verificar_Existencia( string nombreArchivo);
+template bool Verificar_Existencia_Binario( string nombreArchivo);
+template int Verificar_Existencia_Vector(int dni, vector<s>&v)
 
 
 // funcion para saltar al lugar que quieras, de libro, alumno o incluso bibl!

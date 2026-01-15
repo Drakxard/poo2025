@@ -47,29 +47,32 @@ cout<<"Ingrese su Documento de Identidad, por favor"<<endl;
 cin>>dni;
 
 
-
-int PosBibliotecario = BuscarDniEnBibliotecarios(dni, bibliotecarios);
+vector<Bibliotecarios> vectorBibliotecarios = sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
+int PosBibliotecario = BuscarDniEnBibliotecarios(dni, vectorBibliotecarios);
 Bibliotecario biblio;
 Alumno alumn;
 if(PosBibliotecario != -1){
-	biblio = CrearObjetoCorrespondienteBibliotecario(PosBibliotecario,biblioterios );
-	cout<<"¿Qué Quieres Hacer? "<<biblio.VerNombre();
+	biblio = ObjetoCorrespondienteBibliotecario(PosBibliotecario,biblioterios );
+	cout<<"¿Qué Quieres Hacer "<<Biblio.VerNombre()<<" ?"<<endl;
 	MenuBibliotecario();
 
 }else{
-	int PosAlumno = (dni, alumnos);
+	vector<Alumno> vectorAlumno = sistema.VerContenido<Alumno>(alumnos,true);
+	int PosAlumno = BuscarDniEnAlumnos(dni,vectorAlumno);
 	if(PosAlumno!= -1){
-		alumn = CrearObjetoCorrespondienteAlumno(PosAlumno, alumnos); 
-			cout<<"¿Qué Quieres Hacer? "<<alumn.VerNombre();
+		alumn = ObjetoCorrespondienteAlumno(PosAlumno, alumnos); 
+			cout<<"¿Qué Quieres Hacer "<<Alumn.VerNombre()<<" ?"<<endl;
 			MenuAlumno();
 	}else{
 		string nombre;
 		cout<<"Ingresa tu nombre: ";cin>>nombre;
-		sistema.VerUltimo();
-		alumn = Alumno()
-
+		int id = sistema.VerUltimo<Alumno>(alumnos);
+		alumn = Alumno(id,nombre);
 	}
 }
+
+
+//Fin login, tenemos o un Bibliotecario o un Alumno
 
 
 	return 0;

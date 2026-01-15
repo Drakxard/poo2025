@@ -2,12 +2,10 @@
 #define ALUMNO_H
 #include "../Persona/persona.h"
 class Alumno: public Persona{
-    char nombre[49];
-    int id;
     bool sancion;
     public:
 		Alumno(){}
-	    Alumno(int id, const char *nombre):Persona(id,nombre){
+		Alumno(int id, const char* n) : Persona(id, n, 0){
         this-> sancion=false;
         };
 		int VerID() const;

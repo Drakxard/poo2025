@@ -28,7 +28,6 @@ public:
 	bool Sancionar(int idAlumno, string nombreArchivo, bool desicion);
 	bool Actualizar_Disponibilidad( int idLibro, string nombreArchivo, bool decision);
 
-	void CrearObjetoCorrespondiente(int PosBibliotecario,string nombre );
 	
 };
 #endif // 3. Fin de la condici�n

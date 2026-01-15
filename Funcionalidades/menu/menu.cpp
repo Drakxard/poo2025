@@ -1,5 +1,32 @@
 #include "menu.h"
 
+
+
+///Clase encargada de los metodos de bajo nivel
+System sistema;
+
+string libros = "Recursos/Binarios/libros.bin";
+string usuarios = "Recursos/Binarios/usuarios.bin";
+string BibliotecarioPath = "Recursos/Binarios/Bibliotecario.bin";
+
+///Clase encargada de las busquedas
+Buscador navega;
+string palabra="Casa";
+
+vector<Libro> resultadoLibros;
+
+
+vector<Libro> vectorLibros = sistema.VerContenido<Libro>(libros, 1);
+int idLibro;
+int Nlibros;	
+
+///Iteradores para los metodos
+vector<Libro>::const_iterator it;
+vector<Libro>::const_iterator itBorrar;
+int c;
+
+
+
 void MenuBibliotecario(){
 	int opcion=-1;
 	while(opcion!=0){

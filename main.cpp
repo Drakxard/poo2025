@@ -3,42 +3,18 @@
 #include <iomanip>
 #include "Funcionalidades/system/system.h"
 #include "Funcionalidades/buscador/buscador.h"
-#include "Funcionalidades/login/login.h"
 #include "Funcionalidades/bibliotecario/bibliotecario.h"
+#include "Funcionalidades/Logear/login.h"
+
 #include <string>
 using namespace std;
 //Importar Clases propias
 #include "Funcionalidades/libro/libro.h"
 
 
-
 int main(){
 	///Login
 	
-		///Clase encargada de los metodos de bajo nivel
-	System sistema;
-
-string libros = "Recursos/Binarios/libros.bin";
-	string usuarios = "Recursos/Binarios/usuarios.bin";
-	string BibliotecarioPath = "Recursos/Binarios/Bibliotecario.bin";
-
-	///Clase encargada de las busquedas
-	Buscador navega;
-	string palabra="Casa";
-
-	vector<Libro> resultadoLibros;
-		
-	
-	vector<Libro> vectorLibros = sistema.VerContenido<Libro>(libros, 1);
-	int idLibro;
-	int Nlibros;	
-	
-		///Iteradores para los metodos
-	vector<Libro>::const_iterator it;
-	vector<Libro>::const_iterator itBorrar;
-	int c;
-
-
 ///---------------------------------
 
 cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;

@@ -158,7 +158,8 @@ int System::Verificar_Existencia_Vector(int dni, vector<S>&v){
 	
 	auto encontrar = find_if(v.begin(), v.end(), [dni](const S& x) {
 		return x.VerID() == dni;
-	}};
+	});
+	
     return -1;
 }
 
@@ -184,8 +185,8 @@ template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Libro>&ele
 template vector<Tags> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
 template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Tags>&elementos, string nombreArchivo);
 
-template bool Verificar_Existencia_Binario( string nombreArchivo);
-template int Verificar_Existencia_Vector(int dni, vector<s>&v)
+template bool Verificar_Existencia_Binario(int x,string nombreArchivo);
+template int Verificar_Existencia_Vector(int dni, vector<s>&v);
 
 template int Verificar_Existencia_Vector(int dni, vector<Libro>&v);
 

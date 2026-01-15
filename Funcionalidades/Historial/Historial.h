@@ -10,8 +10,10 @@
 template<typename S>
 class Historial{
     System sistema;  
-    int LeerRegistro; //puede ser alumno/ bibliotecario/libro
+    int IdUsuario, IdUsuarioAnterior;
+    int IdLibro, IdLibroAnterior;
     bool ingreso;
+
 
     public:
         Historial(int x){

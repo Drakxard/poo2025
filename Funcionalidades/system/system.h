@@ -23,8 +23,9 @@ public:
 	bool actualizar_disponibilidad( string nombreArchivo, int id);
 	
 	template<typename S>
-    bool Verificar_Existencia( string nombreArchivo);
-  
+    bool Verificar_Existencia_Binario(string nombreArchivo);
+	template<typename S>
+	bool Verificar_Existencia_Vector(int dni, vector<s>&v);
 
 	/// Cambiar a solo leer N cosas
 	template <typename T>

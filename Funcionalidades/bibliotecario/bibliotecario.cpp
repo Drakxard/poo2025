@@ -53,16 +53,16 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 		return a.VerID() == idAlumno;
 	});
 	
-	// Validar si el iterador llegó al final (no encontró al alumno)
+	// Validar si el iterador llegï¿½ al final (no encontrï¿½ al alumno)
 	if (itAlumno == Alumnos.end()) {
 		cout << "Error: Alumno con ID " << idAlumno << " no encontrado." << endl;
 		return false;
 	}
 	
-	// 2. Verificar si el alumno está sancionado
-	// Nota: Asumimos que VerEstadoDeSancion devuelve 'true' si está sancionado.
-	// Puedes usar la función auxiliar que ya tenías: Alumno_quiere_un_libro(*itAlumno)
-	// O llamar directamente al método del alumno. Usaremos el método directo por claridad:
+	// 2. Verificar si el alumno estï¿½ sancionado
+	// Nota: Asumimos que VerEstadoDeSancion devuelve 'true' si estï¿½ sancionado.
+	// Puedes usar la funciï¿½n auxiliar que ya tenï¿½as: Alumno_quiere_un_libro(*itAlumno)
+	// O llamar directamente al mï¿½todo del alumno. Usaremos el mï¿½todo directo por claridad:
 	if (itAlumno->VerEstadoDeSancion()) { 
 		cout << "Prestamo denegado: El alumno " << itAlumno->VerNombre() << " tiene una sancion activa." << endl;
 		return false;
@@ -73,22 +73,22 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 		return l.VerID() == idLibro;
 	});
 	
-	// Validar si el iterador llegó al final (no encontró el libro)
+	// Validar si el iterador llegï¿½ al final (no encontrï¿½ el libro)
 	if (itLibro == Libros.end()) {
 		cout << "Error: Libro con ID " << idLibro << " no encontrado." << endl;
 		return false;
 	}
 	
-	// 4. Verificar disponibilidad y procesar el préstamo
+	// 4. Verificar disponibilidad y procesar el prï¿½stamo
 	if (itLibro->EstadoDisponibilidad()) {
 		
 		// Marcar el libro como NO disponible
 		itLibro->SetDisponible(false); 
 		
-		// Calcular la diferencia de días para la devolución
+		// Calcular la diferencia de dï¿½as para la devoluciï¿½n
 		int diasCalculados = CalcularDiferenciaDias(dia, mes, anio);
 		
-		// Asignar los días restantes al libro
+		// Asignar los dï¿½as restantes al libro
 		itLibro->DiasRestantes(diasCalculados);
 		
 		cout << "------------------------------------------------" << endl;

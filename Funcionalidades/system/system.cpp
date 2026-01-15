@@ -141,7 +141,7 @@ int VerUltimo(string nombreArchivo){
 }
 
 template<typemane S >
-bool System::Verificar_Existencia( string nombreArchivo){
+bool System::Verificar_Existencia_Binario( string nombreArchivo){
 	//Buscar si Alumno/Bibliotecario/Libro por ID si existe
 	int ultimo = sistema.VerUltimo<S>(nombreArchivo);
 	if(ultimo >= LeerRegistro){
@@ -152,7 +152,10 @@ bool System::Verificar_Existencia( string nombreArchivo){
 		return false;
 	}
 }
-
+template<typemane S >
+bool System::Verificar_Existencia_Vector(int dni, vector<s>&v){
+	
+}
 
 template <typename T> /// Cuando terminas las modificacines lo sobreescribes
 bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {return true;};

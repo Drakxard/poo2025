@@ -18,5 +18,6 @@ class Alumno: public Persona{
         //No darle acceso al alumno (No en botones)
         bool VerEstadoDeSancion(){{return sancion;}};
         void Sancionar(bool desicion) { sancion =desicion;};
+        void CrearObjetoCorrespondienteAlumno(int posAlumno, vector<Alumno>&v );
 };
 #endif // 3. Fin de la condici�n

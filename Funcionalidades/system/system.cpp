@@ -1,6 +1,7 @@
 #include "system.h"
 #include <vector>
 #include <fstream>
+#include <algorithm>
 using namespace std;
 template <typename T>  ///Cambiar a Guardar al final
 void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
@@ -140,11 +141,11 @@ int VerUltimo(string nombreArchivo){
 	return resultado;
 }
 
-template<typemane S >
-bool System::Verificar_Existencia_Binario( string nombreArchivo){
+template<typename S >
+bool System::Verificar_Existencia_Binario( int x, string nombreArchivo){
 	//Buscar si Alumno/Bibliotecario/Libro por ID si existe
-	int ultimo = sistema.VerUltimo<S>(nombreArchivo);
-	if(ultimo >= LeerRegistro){
+	int ultimo = VerUltimo<S>(nombreArchivo);
+	if(ultimo >= x){
 		//existe en el sistema
 		return true; 
 	}else{
@@ -152,10 +153,12 @@ bool System::Verificar_Existencia_Binario( string nombreArchivo){
 		return false;
 	}
 }
-template<typemane S >
-int System::Verificar_Existencia_Vector(int dni, vector<s>&v){
-	 vector<s>::iterator encontrar = find_if(v.begin(), v.end(), [dni](const S& x) {
+template<typename S >
+int System::Verificar_Existencia_Vector(int dni, vector<S>&v){
+	
+	auto encontrar = find_if(v.begin(), v.end(), [dni](const S& x) {
 		return x.VerID() == dni;
+	}};
     return -1;
 }
 
@@ -184,6 +187,7 @@ template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Tags>&elem
 template bool Verificar_Existencia_Binario( string nombreArchivo);
 template int Verificar_Existencia_Vector(int dni, vector<s>&v)
 
+template int Verificar_Existencia_Vector(int dni, vector<Libro>&v);
 
 // funcion para saltar al lugar que quieras, de libro, alumno o incluso bibl!
 // vector<Registro> resultado = Saltar<Registro>(vector<int>IdARecuperar);

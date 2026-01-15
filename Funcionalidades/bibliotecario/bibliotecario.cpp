@@ -6,13 +6,13 @@ using namespace std;
 
 
 
-vector<Libro> Bibliotecario::AgregarLibros(int LibrosAgregar)
+vector<Libro> Bibliotecario::AgregarLibros(int LibrosAgregar, string nombreArchivo)
 {
 	vector<Libro> resultado;
 	string nombreLibro = "";
 	int idLibro = 0;
 	
-	int id = sistema.VerUltimo<Libro>(libros);
+	int id = sistema.VerUltimo<Libro>(nombreArchivo);
 	while (LibrosAgregar > 0)
 	{
 		
@@ -125,7 +125,7 @@ int Bibliotecario::CalcularDiferenciaDias(int dia, int mes, int anio){
 
 bool Bibliotecario::Sancionar(int IdAlumno, string nombreArchivo, bool decision)
 {
-	int ultimoID = sistema.VerUltimoIdAlumno();
+	int ultimoID = sistema.VerUltimo<Alumno>(nombreArchivo);
 	if (IdAlumno > ultimoID){
 		cout << "DNI inexistente, Alumno no encontrado." << endl;
 		return false;
@@ -147,7 +147,7 @@ bool Bibliotecario::Sancionar(int IdAlumno, string nombreArchivo, bool decision)
 	}
 }
 bool Bibliotecario::Actualizar_Disponibilidad( int idLibro, string nombreArchivo, bool decision){
-	int ultimoID = sistema.VerUltimoIdLibro();
+	int ultimoID = sistema.VerUltimo<Libro>(nombreArchivo);
 	if (idLibro > ultimoID){
 		cout << "Id inexistente, Libro no encontrado." << endl;
 		return false;

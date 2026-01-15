@@ -14,7 +14,7 @@ class Bibliotecario: public Persona{
 public:
 	Bibliotecario(int id, const char* n,int dni) :Persona(id, n, dni){};
 
-	vector<Libro> AgregarLibros(int LibrosAgregar);
+	vector<Libro> AgregarLibros(int LibrosAgregar, string nombreArchivo);
 	void EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v);
 
 //	1) Verificar si no es narco para poder prestarle el libro(es para la funcion Prestar Libro)

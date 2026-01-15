@@ -7,7 +7,7 @@
 #include "../system/system.h"
 
 //prestados.bin ->registro de los prestamos
-template<typename S>
+
 class Historial{
 	System sistema;  
 	int IdUsuario, IdUsuarioAnterior;
@@ -17,7 +17,7 @@ class Historial{
 	
 public:
 	Historial(int x){
-		this->ingreso=false; LeerRegistro=x;
+		this->ingreso=false;
 	}
 	
 	bool AgregarNuevoRegistro(int IdBibliotecario);

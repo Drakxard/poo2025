@@ -13,8 +13,9 @@ bool Historial::EliminarRegistro(int IdRegistro){return true;};//Si quiere elimi
 //Alumnos ->nombreArchivo = sistema.alumnos();
 //Bibliotecarios  ->nombreArchivo = sistema.bibliotecarios();
 //Registro  ->nombreArchivo = sistema.bibliotecarios();
-Void Historial::Ver_Historial(string nombreArchivo){
-		if(Verificar_Existencia(nombreArchivo)){
-		VerContenido(sistema.libro,bool crear);//muestra todo. pero hay que filtrar
-		}	
+void Historial::Ver_Historial(string nombreArchivo){
+	
+//		if(sistema.Verificar_Existencia(nombreArchivo)){
+//		VerContenido(sistema.libro,bool crear);//muestra todo. pero hay que filtrar
+//		}	
 }

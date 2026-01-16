@@ -4,6 +4,7 @@
 
 ///Clase encargada de los metodos de bajo nivel
 System sistema;
+//Bibliotecario admin;
 
 string libros = "Recursos/Binarios/libros.bin";
 string usuarios = "Recursos/Binarios/usuarios.bin";
@@ -28,7 +29,7 @@ int c;
 
 
 void MenuBibliotecario(){
-	int opcion=-1;
+	int opcion=-1; 
 	while(opcion!=0){
 	
 	cout<<"Menu de gestion"<<endl;
@@ -80,7 +81,7 @@ void MenuBibliotecario(){
 		
 		///Buscar Libro		| Proceso
 		
-		resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
+//		resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
 		
 		
 		cout<<endl<<endl<<"Presiona para volver";
@@ -94,7 +95,7 @@ void MenuBibliotecario(){
 		
 		
 		///Buscar Libro		| Proceso
-		resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
+//		resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
 		
 		/*if(it!= vectorLibros.end() ){
 		///Muestra 			| Salida
@@ -126,7 +127,7 @@ void MenuBibliotecario(){
 		cout<<"LIbros a agregar: ";cin>>Nlibros;
 		///Uso del metodo	| Proceso
 		if(!Nlibros==0){
-			vectorLibros = admin.AgregarLibros(Nlibros);	
+//			vectorLibros = admin.AgregarLibros(Nlibros);	
 			sistema.Guardar<Libro>(libros,vectorLibros);
 			vectorLibros = sistema.VerContenido<Libro>(libros,true);
 			cout<<"Agregados Corectamente!"<<endl;
@@ -156,15 +157,15 @@ void MenuBibliotecario(){
 		
 				cout<<"Etiquetas Existentes: "<<endl;
 				cout<<"De Libros: "<<endl;
-				Etiquetas = sistema.etiquetas(etiquetasLibros);
+//				Etiquetas = sistema.etiquetas(etiquetasLibros);
 				c=0;
-				for(Tags& x : Etiquetas)
-					cout<<++c<<" ) "<<x.nombre<<endl;
+//				for(Tags& x : Etiquetas)
+//					cout<<++c<<" ) "<<x.nombre<<endl;
 				cout<<"De Alumnos: "<<endl;
-				Etiquetas = sistema.etiquetas(TagsAlmunos);
+//				Etiquetas = sistema.etiquetas(TagsAlmunos);
 				c=0;
-				for(Tags& x : Etiquetas)
-					cout<<++c<<" ) "<<x.nombre<<endl;
+//				for(Tags& x : Etiquetas)
+//					cout<<++c<<" ) "<<x.nombre<<endl;
 				
 				cout<<endl<<endl<<"Presiona para volver";
 				cin.ignore();

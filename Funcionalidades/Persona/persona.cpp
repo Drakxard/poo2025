@@ -12,6 +12,10 @@ const char *Persona::VerNombre() const
 {
     return this->nombre;
 }
+int Persona::VerDNI() const
+{
+	return DNI;
+}
 void Persona::CambiarNombre(const char *NuevoNombre)
 {
     strncpy(this->nombre, NuevoNombre, 49);

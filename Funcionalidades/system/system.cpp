@@ -2,6 +2,7 @@
 #include <vector>
 #include <fstream>
 #include <algorithm>
+#include "../libro/libro.h"
 using namespace std;
 template <typename T>  ///Cambiar a Guardar al final
 void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
@@ -142,7 +143,7 @@ int VerUltimo(string nombreArchivo){
 }
 
 template<typename S >
-bool System::Verificar_Existencia_Binario( int x, string nombreArchivo){
+bool System::Verificar_Existencia_Binario( int x,string nombreArchivo){
 	//Buscar si Alumno/Bibliotecario/Libro por ID si existe
 	int ultimo = VerUltimo<S>(nombreArchivo);
 	if(ultimo >= x){
@@ -154,7 +155,7 @@ bool System::Verificar_Existencia_Binario( int x, string nombreArchivo){
 	}
 }
 template<typename S >
-int System::Verificar_Existencia_Vector(int dni, vector<S>&v){
+int System::Verificar_Existencia_Vector(int dni,vector<S>&v){
 	
 	auto encontrar = find_if(v.begin(), v.end(), [dni](const S& x) {
 		return x.VerID() == dni;
@@ -171,8 +172,8 @@ template void System::Guardar<Alumno>(string, vector<Alumno>&);
 template void System::Guardar<Libro>(string, vector<Libro>&);
 
 // Instanciaci�n para VerContenido
-template vector<Alumno> System::VerContenido<Alumno>(string, bool);
-template vector<Libro> System::VerContenido<Libro>(string, bool);
+
+template vector<Alumno> System::VerContenido<Alumno>(string nombreArchivo, bool crear);
 template vector<int> System::VerContenido<int>(string, bool);
 
 // Instanciaci�n para LeerDelBin y EscribirDelBin
@@ -185,10 +186,10 @@ template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Libro>&ele
 template vector<Tags> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
 template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Tags>&elementos, string nombreArchivo);
 
-template bool Verificar_Existencia_Binario(int x,string nombreArchivo);
-template int Verificar_Existencia_Vector(int dni, vector<s>&v);
 
-template int Verificar_Existencia_Vector(int dni, vector<Libro>&v);
+
+//template int Verificar_Existencia_Vector(int dni,vector<Libro>&v);
+//template bool Verificar_Existencia_Binario(int x,string nombreArchivo);
 
 // funcion para saltar al lugar que quieras, de libro, alumno o incluso bibl!
 // vector<Registro> resultado = Saltar<Registro>(vector<int>IdARecuperar);

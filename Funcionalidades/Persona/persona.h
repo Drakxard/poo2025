@@ -21,6 +21,7 @@ class Persona{
         }
         int VerID() const;
         const char *VerNombre() const;
+		int VerDNI() const;
         void CambiarNombre(const char *NuevoNombre);
         void CambiarDni(int nuevo_DNI);
 		void Cambiar_Id( int nuevo_id);

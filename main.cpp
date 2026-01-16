@@ -4,8 +4,10 @@
 #include "Funcionalidades/system/system.h"
 #include "Funcionalidades/buscador/buscador.h"
 #include "Funcionalidades/bibliotecario/bibliotecario.h"
-#include "Funcionalidades/Logear/login.h"
-
+#include "Funcionalidades/login/login.h"
+#include <vector>
+#include <fstream>
+#include <algorithm>
 #include <string>
 using namespace std;
 //Importar Clases propias
@@ -22,9 +24,8 @@ cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;
 int dni;
 cout<<"Ingrese su Documento de Identidad, por favor"<<endl;
 cin>>dni;
-
-string AlumnosPath = usuarios;
-
+System sistema;
+string AlumnosPath ,BibliotecarioPath;
 vector<Bibliotecario> vectorBibliotecario = sistema.VerContenido<Bibliotecario>(BibliotecarioPath,true);
 int PosBibliotecario = BuscarDniEnBibliotecarios(dni, vectorBibliotecario);
 Alumno alumn;

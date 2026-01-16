@@ -1,9 +1,7 @@
 #ifndef HISTORIAL_H
 #define HISTORIAL_H
-#include <cstring>
-#include <iostream>
-#include <string>
-#include <vector>
+#include "../preConfiguracion/preConfiguracion.h"
+
 #include "../libro/libro.h"
 #include "../alumno/alumno.h"
 #include "../system/system.h"

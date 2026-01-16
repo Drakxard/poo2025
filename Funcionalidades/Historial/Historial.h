@@ -1,3 +1,5 @@
+#ifndef HISTORIAL_H
+#define HISTORIAL_H
 #include <cstring>
 #include <iostream>
 #include <string>
@@ -5,6 +7,7 @@
 #include "../libro/libro.h"
 #include "../alumno/alumno.h"
 #include "../system/system.h"
+
 
 
 struct Registro{
@@ -28,3 +31,4 @@ class Historial{
         Registro Ver_Registro(int actual,string nombreArchivo);
 
 };
+#endif

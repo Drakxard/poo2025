@@ -1,6 +1,5 @@
 #ifndef BUSCADOR_H
 #define BUSCADOR_H
-
 #include <string>
 #include <vector>
 #include "../libro/libro.h"

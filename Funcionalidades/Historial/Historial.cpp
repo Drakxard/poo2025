@@ -24,9 +24,10 @@ bool Historial::Verificar_Existencia(int x, vector<S>&v){//string nombreArchivo)
 
 
 
-bool Historial::AgregarNuevoRegistro(int IdBibliotecario){}//se debe agregar automaticamente                                                          //una vez prestado el libro
-bool Historial::EliminarRegistro(int IdRegistro){};//Si quiere eliminar un libro o
+bool Historial::AgregarNuevoRegistro(int IdBibliotecario){return true;}//se debe agregar automaticamente                                                          //una vez prestado el libro
+bool Historial::EliminarRegistro(int IdRegistro){return true;};//Si quiere eliminar un libro o
                                                     //un alumno
 Registro Historial::Ver_Registro(int actual,string nombreArchivo)
-{
+{	Registro aux;
+	return aux;
 }

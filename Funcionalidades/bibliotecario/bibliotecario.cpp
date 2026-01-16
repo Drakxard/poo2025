@@ -1,5 +1,6 @@
 #include "Bibliotecario.h"
-#include <algorithm>
+#include "../system/system.h"
+
 using namespace std;
 
 int Bibliotecario::VerID() const  
@@ -129,7 +130,7 @@ int Bibliotecario::CalcularDiferenciaDias(int dia, int mes, int anio){
 bool Bibliotecario::Sancionar(int IdAlumno, string nombreArchivo, bool decision)
 {
 	string a= "ab";
-	int ultimoID = sistema.VerUltimo<Alumno>(a);
+	int ultimoID = sistema->template VerUltimo<Alumno>(a);
 	if (IdAlumno > ultimoID){
 		cout << "DNI inexistente, Alumno no encontrado." << endl;
 		return false;

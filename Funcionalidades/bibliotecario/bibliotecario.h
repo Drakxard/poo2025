@@ -1,7 +1,6 @@
 #ifndef BIBLIOTECARIO_H  // 1. Si no est� definido PERSONA_H
 #define BIBLIOTECARIO_H
 #include "../preConfiguracion/preConfiguracion.h"
-
 #include "../libro/libro.h"
 #include "../alumno/alumno.h"
 

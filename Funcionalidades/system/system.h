@@ -38,6 +38,9 @@ public:
 	template <typename T>
 	bool EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo);
 	string alumnos(){return pathalumnos;}
+
+
+	
 };
 
 

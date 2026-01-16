@@ -9,18 +9,22 @@
 using namespace std;
 
 class Persona{
-    int id;
+    int id, DNI;
     char nombre[49]; 
     public:
 		Persona(){}
-        Persona(int id, const char *nombre){
+        Persona(int id, const char *nombre,int DNI){
 			this->id = id;
+			this->DNI = DNI;
+			
 			strncpy(this->nombre, nombre, 49);
 			this->nombre[49] = '\0';
         }
         int VerID() const;
+		int VerDNI() const;
         const char *VerNombre() const;
         void CambiarNombre(const char *NuevoNombre);
+		void Cambiar_Id( int nuevo_id);
         vector<Libro> VerLibros(string nombreArchivo,bool crear=false);//usan tanto el Bibliotecario como el Alumno
 };
 #endif // 3. Fin de la condición

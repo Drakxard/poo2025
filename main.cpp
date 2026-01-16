@@ -1,13 +1,15 @@
+#include <iostream>
+#include "Funcionalidades/preConfiguracion/preConfiguracion.h" // Solo una vez
 
-#include "Funcionalidades/preConfiguracion/preConfiguracion.h"
-
-#include "Funcionalidades/preConfiguracion/preConfiguracion.h"
-//Importar Clases propias
+// Importar Clases
 #include "Funcionalidades/system/system.h"
 #include "Funcionalidades/buscador/buscador.h"
 #include "Funcionalidades/libro/libro.h"
 #include "Funcionalidades/bibliotecario/bibliotecario.h"
 #include "Funcionalidades/alumno/alumno.h"
+#include "Funcionalidades/login/login.h" // Si vas a usar login
+
+using namespace std; // Importante si usas string sin std::
 
 
 string NombreUsuario= "Invitado";
@@ -15,7 +17,8 @@ int codigo = 1;
 /// Variables
 const char *nom = NombreUsuario.c_str();
 ///Crear entedidad del sistema de gestion
-Bibliotecario admin(codigo,nom); 
+int DNI=12345;
+Bibliotecario admin(codigo,nom,DNI); 
 ///Clase encargada de los metodos de bajo nivel
 System sistema;
 
@@ -60,7 +63,7 @@ void menuAlumno();
 
 
 int main(){
-	///Login
+	////*Login*/
 	menuBibliotecario();
 	return 0;
 }

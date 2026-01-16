@@ -7,13 +7,10 @@ class Alumno: public Persona{
     bool sancion;
     public:
 		Alumno(){}
-	    Alumno(int id, const char *nombre):Persona(id,nombre){
+	    Alumno(int id, const char *nombre,int DNI):Persona(id,nombre,DNI){
         this-> sancion=false;
         };
-		int VerID() const;
-		const char* VerNombre() const;
-		void CambiarNombre(const char* NuevoNombre);
-		void Cambiar_Id( int nuevo_id);
+
         //Propios para uso del bibliotecario
         //No darle acceso al alumno (No en botones)
         bool VerEstadoDeSancion(){{return sancion;}};

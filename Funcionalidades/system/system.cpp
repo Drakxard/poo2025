@@ -1,4 +1,5 @@
 #include "system.h"
+#include "../bibliotecario/bibliotecario.h"
 
 using namespace std;
 template <typename T>  ///Cambiar a Guardar al final
@@ -139,6 +140,17 @@ archi.close();
 return resultado;
 }
 
+template<typename S >
+int System::Verificar_Existencia_Vector(int dni,vector<S>&v){
+	
+	auto encontrar = find_if(v.begin(), v.end(), [dni](const S& x) {
+		return x.VerID() == dni;
+	});
+	if(encontrar !=v.end())
+		return encontrar->VerID();
+	
+	return -1;
+}
 
 
 template <typename T> /// Cuando terminas las modificacines lo sobreescribes
@@ -165,9 +177,12 @@ template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Libro>&ele
 template vector<Tags> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
 template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Tags>&elementos, string nombreArchivo);
 
-
+template int System::Verificar_Existencia_Vector(int dni,vector<Bibliotecario>&v);
+template int System::Verificar_Existencia_Vector(int dni,vector<Alumno>&v);
 
 template int System::VerUltimo<Alumno>(string nombreArchivo);
+template int System::VerUltimo<Libro>(string nombreArchivo);
 
+template int System::VerUltimo<Bibliotecario>(string nombreArchivo);
 // funcion para saltar al lugar que quieras, de libro, alumno o incluso bibl!
 // vector<Registro> resultado = Saltar<Registro>(vector<int>IdARecuperar);

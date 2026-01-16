@@ -1,8 +1,5 @@
 #include "system.h"
-#include <vector>
-#include <fstream>
-#include <algorithm>
-#include "../libro/libro.h"
+
 using namespace std;
 template <typename T>  ///Cambiar a Guardar al final
 void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
@@ -123,46 +120,26 @@ bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, strin
 
 
 template<typename T>
-int VerUltimo(string nombreArchivo){
-	
-	ifstream archi(nombreArchivo,ios::binary|ios::ate);
-	if(!archi)
-	throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo);
-	int resultado;
-	if(archi.tellg() < sizeof(T)){
-	archi.close();
-	throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo+" No hay registros");
-	}
-	archi.seekg(-sizeof(T),ios::end);
-	T aux;
-	archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
-	resultado= aux.VerID();
-	
-	archi.close();
-	return resultado;
+int System::VerUltimo(string nombreArchivo){
+
+ifstream archi(nombreArchivo,ios::binary|ios::ate);
+if(!archi)
+throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo);
+int resultado;
+if(archi.tellg() < sizeof(T)){
+archi.close();
+throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo+" No hay registros");
+}
+archi.seekg(-sizeof(T),ios::end);
+T aux;
+archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
+resultado= aux.VerID();
+
+archi.close();
+return resultado;
 }
 
-template<typename S >
-bool System::Verificar_Existencia_Binario( int x,string nombreArchivo){
-	//Buscar si Alumno/Bibliotecario/Libro por ID si existe
-	int ultimo = VerUltimo<S>(nombreArchivo);
-	if(ultimo >= x){
-		//existe en el sistema
-		return true; 
-	}else{
-		//No existe en el sistema
-		return false;
-	}
-}
-template<typename S >
-int System::Verificar_Existencia_Vector(int dni,vector<S>&v){
-	
-	auto encontrar = find_if(v.begin(), v.end(), [dni](const S& x) {
-		return x.VerID() == dni;
-	});
-	
-    return -1;
-}
+
 
 template <typename T> /// Cuando terminas las modificacines lo sobreescribes
 bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {return true;};
@@ -171,9 +148,11 @@ bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {return true;};
 template void System::Guardar<Alumno>(string, vector<Alumno>&);
 template void System::Guardar<Libro>(string, vector<Libro>&);
 
-// Instanciaci�n para VerContenido
 
-template vector<Alumno> System::VerContenido<Alumno>(string nombreArchivo, bool crear);
+
+// Instanciaci�n para VerContenido
+template vector<Alumno> System::VerContenido<Alumno>(string, bool);
+template vector<Libro> System::VerContenido<Libro>(string, bool);
 template vector<int> System::VerContenido<int>(string, bool);
 
 // Instanciaci�n para LeerDelBin y EscribirDelBin
@@ -188,8 +167,7 @@ template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Tags>&elem
 
 
 
-//template int Verificar_Existencia_Vector(int dni,vector<Libro>&v);
-//template bool Verificar_Existencia_Binario(int x,string nombreArchivo);
+template int System::VerUltimo<Alumno>(string nombreArchivo);
 
 // funcion para saltar al lugar que quieras, de libro, alumno o incluso bibl!
 // vector<Registro> resultado = Saltar<Registro>(vector<int>IdARecuperar);

@@ -6,7 +6,7 @@
 
 bool Sancionar(int IdAlumno){
 	bool nueva_sancion;
-	return true;
+	
 	//Saltar N-pos (id)
 	//Cambiar Su estado a Estado Sancionado
 	///Return true -> sin problemas al sancionar

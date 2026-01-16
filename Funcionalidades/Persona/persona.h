@@ -1,4 +1,4 @@
-#ifndef PERSONA_H  // 1. Si no estï¿½ definido PERSONA_H
+#ifndef PERSONA_H  // 1. Si no está definido PERSONA_H
 #define PERSONA_H
 #include <cstring>
 #include <vector>
@@ -9,21 +9,18 @@
 using namespace std;
 
 class Persona{
-    int id, DNI;
+    int id;
     char nombre[49]; 
     public:
 		Persona(){}
-        Persona(int id, const char *nombre, int actual_DNI){
+        Persona(int id, const char *nombre){
 			this->id = id;
 			strncpy(this->nombre, nombre, 49);
 			this->nombre[49] = '\0';
-            DNI=actual_DNI;
         }
         int VerID() const;
         const char *VerNombre() const;
-		int VerDNI() const;
         void CambiarNombre(const char *NuevoNombre);
-        void CambiarDni(int nuevo_DNI);
-		void Cambiar_Id( int nuevo_id);
+        vector<Libro> VerLibros(string nombreArchivo,bool crear=false);//usan tanto el Bibliotecario como el Alumno
 };
-#endif // 3. Fin de la condiciï¿½n
+#endif // 3. Fin de la condición

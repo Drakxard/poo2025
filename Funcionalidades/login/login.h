@@ -1,7 +1,5 @@
-#include <vector>
-#include "../bibliotecario/bibliotecario.h"
-#include "../alumno/alumno.h"
-#include "../system/system.h"
+#include "../preConfiguracion/preConfiguracion.h"
+
 System sistema;
 int BuscarDniEnBibliotecarios(int dni,vector<Bibliotecario>& v);
 int BuscarDniEnAlumnos(int dni,vector<Alumno>&v);

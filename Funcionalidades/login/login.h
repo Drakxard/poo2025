@@ -10,7 +10,7 @@ extern System sistema;
 // Declara las funciones, pero no las variables globales
 int BuscarDniEnBibliotecarios(int dni, vector<Bibliotecario>& v);
 int BuscarDniEnAlumnos(int dni, vector<Alumno>& v);
-Bibliotecario CrearObjetoCorrespondienteBibliotecario(int posBibliotecario, vector<Bibliotecario>& v);
-Alumno CrearObjetoCorrespondienteAlumno(int posAlumno, vector<Alumno>& v);
+Bibliotecario ObjetoCorrespondienteBibliotecario(int posBibliotecario, vector<Bibliotecario>& v);
+Alumno ObjetoCorrespondienteAlumno(int posAlumno, vector<Alumno>& v);
 
 #endif

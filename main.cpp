@@ -50,7 +50,7 @@ int Nlibros;
 ///Iteradores para los metodos
 vector<Libro>::const_iterator it;
 vector<Libro>::const_iterator itBorrar;
-int c;
+int c; //ya apareci
 
 vector<Tags> Etiquetas;
 string etiquetasLibros = "Recursos/binarios/Tags/Libros.bin";
@@ -64,7 +64,66 @@ void menuAlumno();
 
 int main(){
 	////*Login*/
-	menuBibliotecario();
+	//menuBibliotecario();
+	cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;
+	
+	int dni;
+	cout<<"Ingrese su Documento de Identidad, por favor: ";
+	cin>>dni;
+	
+	string AlumnosPath ="Recursos/Binarios/alumnos.bin";
+	string BibliotecarioPath="Recursos/Binarios/bibliotecario.bin";
+	
+
+	vector<Bibliotecario> vectorBibliotecario = sistema.VerContenido<Bibliotecario>(BibliotecarioPath,true);
+	int PosBibliotecario = BuscarDniEnBibliotecarios(dni, vectorBibliotecario);
+	//Declarar Variables para ser usadas en la ejecucion
+	Alumno alumn;
+	Bibliotecario biblio;
+	
+	if(PosBibliotecario != -1){
+		biblio = ObjetoCorrespondienteBibliotecario(PosBibliotecario, vectorBibliotecario);
+		cout<<"¿Qué Quieres Hacer "<<biblio.VerNombre()<<" ?"<<endl;
+		
+	}
+	else{
+		vector<Alumno> vectorAlumno = sistema.VerContenido<Alumno>(AlumnosPath,true);
+		int PosAlumno = BuscarDniEnAlumnos(dni,vectorAlumno);
+		if(PosAlumno!= -1){
+			alumn = ObjetoCorrespondienteAlumno(PosAlumno, vectorAlumno); 
+			cout<<"¿Qué Quieres Hacer "<<alumn.VerNombre()<<" ?"<<endl;
+		}else{
+			string nombre;
+			cout<<"Ingresa tu nombre: ";cin>>nombre;
+			int id = 12;
+			alumn = Alumno(id, nombre.c_str(), dni);
+		}
+	}
+	
+	//Fin login, tenemos o un Bibliotecario o un Alumno
+///	Busqueda de libros basado en una palabra
+	//vector<Libro> encontrar = posiciones(palabraBuscada, vectorLibros);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	return 0;
 }
 	

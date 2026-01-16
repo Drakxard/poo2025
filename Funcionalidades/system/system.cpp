@@ -165,6 +165,7 @@ template void System::Guardar<Libro>(string, vector<Libro>&);
 // Instanciaci�n para VerContenido
 template vector<Alumno> System::VerContenido<Alumno>(string, bool);
 template vector<Libro> System::VerContenido<Libro>(string, bool);
+template vector<Bibliotecario> System::VerContenido<Bibliotecario>(string, bool);
 template vector<int> System::VerContenido<int>(string, bool);
 
 // Instanciaci�n para LeerDelBin y EscribirDelBin

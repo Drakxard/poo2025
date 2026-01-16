@@ -20,7 +20,7 @@ public:
 	}
 	//vector<Libro>::const_iterator Buscar(string nombreBuscado, int Cantidad);
 	vector<Libro> Buscar(string &nombreBuscado, vector<Tags> &etiquedasUsadas, int cantidad);
-	
+	vector<Libro> posiciones(string palabraBuscada, vector<Libro>&vectorLibros);
 	void AgregarEtiqueta(string& nombre);
 	void EliminarEtiqueta(int& idEtiqueta);
 

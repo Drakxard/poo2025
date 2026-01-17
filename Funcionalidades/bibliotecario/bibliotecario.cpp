@@ -5,9 +5,13 @@ using namespace std;
 
 
 
+<<<<<<< Updated upstream
 
 template<typename T>
 vector<T> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo)
+=======
+vector<Libro> Bibliotecario::AgregarLibros(int LibrosAgregar)
+>>>>>>> Stashed changes
 {
 	vector<T> resultado;
 	string nombre = "";

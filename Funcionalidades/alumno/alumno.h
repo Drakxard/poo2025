@@ -10,7 +10,6 @@ class Alumno: public Persona{
 	    Alumno(int id, const char *nombre,int DNI):Persona(id,nombre,DNI){
         this-> sancion=false;
         };
-
         //Propios para uso del bibliotecario
         //No darle acceso al alumno (No en botones)
         bool VerEstadoDeSancion(){{return sancion;}};

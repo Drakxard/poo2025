@@ -13,8 +13,13 @@ public:
 	Bibliotecario(){}
 	Bibliotecario(int id, const char *nombre,int DNI):Persona(id,nombre,DNI){};
 
+<<<<<<< Updated upstream
 	template<typename T>
 	vector<T> AgregarElementos(int Agregar,string nombreArchivo);
+=======
+	
+	vector<Libro> AgregarLibros(int LibrosAgregar);
+>>>>>>> Stashed changes
 	void EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v);
 
 //	1) Verificar si no es narco para poder prestarle el libro(es para la funcion Prestar Libro)

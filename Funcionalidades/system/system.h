@@ -30,7 +30,6 @@ public:
 	/// Cambiar a solo leer N cosas
 	template <typename T>
 	int VerUltimo(string nombreArchivo);
-	
 	template <typename T> 
 	vector<T> VerContenido(string nombreArchivo, bool crear);
 	template <typename T>

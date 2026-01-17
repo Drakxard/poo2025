@@ -8,7 +8,7 @@
 using namespace std;
 class System;
 class Bibliotecario: public Persona{
- System* sistema;
+ System* sistema; vector<int>Id_Prestamos;
 public:
 	Bibliotecario(){}
 	Bibliotecario(int id, const char *nombre,int DNI):Persona(id,nombre,DNI){};
@@ -23,6 +23,9 @@ public:
 	bool PrestarLibros(size_t idLibro,size_t idAlumno, vector<Libro>&Libros,vector<Alumno>&Alumno, int dia, int mes, int anio);
 	// calcula la candtidad de dias de la diferencia entre hoy y la fecha de cuando se iene que devolver el libro(esta funcion se creo para la funcion prestar un libro y para ir actualizando los dias restantes del libro)
 	int CalcularDiferenciaDias(int dia, int mes, int anio);
+
+	void AgregarLibroPrestado(int libro_prestado,Vector<int>Id_Prestamos);
+	bool Devolucion_libro(int idlibro);
 
 	//LibrosPrestado.bin -> idLibro y IdAlumno 
 	bool Sancionar(int idAlumno, string nombreArchivo, bool desicion);

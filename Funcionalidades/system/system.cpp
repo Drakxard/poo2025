@@ -130,16 +130,17 @@ throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo);
 int resultado;
 if(archi.tellg() < sizeof(T)){
 archi.close();
-throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo+" No hay registros");
+return 0;
 }
-archi.seekg(-sizeof(T),ios::end);
+archi.seekg(-( sizeof(T)),ios::end);
 T aux;
 archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
-resultado= aux.VerID();
+resultado = aux.VerID();
 
 archi.close();
 return resultado;
 }
+
 
 template<typename S >
 int System::Verificar_Existencia_Vector(int dni,vector<S>&v){

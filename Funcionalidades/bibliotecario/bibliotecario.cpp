@@ -76,7 +76,8 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 				itlibro->DiasRestantes(diasCalculados);
 				
 				cout << "Libro prestado exitosamente. Dias para devolucion: " << diasCalculados << endl;
-				return true; 
+				return true;
+				AgregarLibroPrestado(idLibro);
 			} else {
 				cout << "El libro ya se encuentra prestado." << endl;
 				return false; 
@@ -85,6 +86,26 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
     
     cout << "Libro no encontrado." << endl;
     return false;
+}
+
+void Bibliotecario::AgregarLibroPrestado(int libro_prestado){
+	Id_Prestamos.push_back(libro_prestado);
+}
+
+bool Bibliotecario:: Devolucion_libro(int idlibro){
+	// 1. Buscar el libro por ID si existe
+		
+		if(idLibro>Id_Prestamos.size()){
+			cout<<"C�digo de libro inexistente, Libro no encontrado." << endl;
+			return false;
+		}else{
+			auto itlibro = find_if(Id_Prestamos.begin(), Id_Prestamos.end(), [idLibro](const Libro& a) {
+			return a.VerID() == idLibro;
+
+		});
+		}
+		}
+
 }
 
 bool Bibliotecario:: Alumno_quiere_un_libro(Alumno &x){

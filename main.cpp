@@ -83,7 +83,7 @@ int main(){
 	
 	if(PosBibliotecario != -1){
 		biblio = ObjetoCorrespondienteBibliotecario(PosBibliotecario, vectorBibliotecario);
-		cout<<"¿Qué Quieres Hacer "<<biblio.VerNombre()<<" ?"<<endl;
+		cout<<"ï¿½Quï¿½ Quieres Hacer "<<biblio.VerNombre()<<" ?"<<endl;
 		
 	}
 	else{
@@ -91,7 +91,7 @@ int main(){
 		int PosAlumno = BuscarDniEnAlumnos(dni,vectorAlumno);
 		if(PosAlumno!= -1){
 			alumn = ObjetoCorrespondienteAlumno(PosAlumno, vectorAlumno); 
-			cout<<"¿Qué Quieres Hacer "<<alumn.VerNombre()<<" ?"<<endl;
+			cout<<"ï¿½Quï¿½ Quieres Hacer "<<alumn.VerNombre()<<" ?"<<endl;
 		}else{
 			string nombre;
 			cout<<"Ingresa tu nombre: ";cin>>nombre;
@@ -106,32 +106,15 @@ int main(){
 
 //Agregar Libros
 	int cant;
-	cout<<"¿Cuantos elementos?: ";cin>>cant;
+	cout<<"ï¿½Cuantos elementos?: ";cin>>cant;
 	vector<Libro> Agregados= admin.AgregarElementos<Libro>(cant,libros);
+
 	cout<<endl<<"Datos ingresados: "<<endl;
+
 	for(Libro&x : Agregados)
 		cout<<x.VerNombre()<<endl;
 	char confirmar;
 	cout<<"Confirmar?: s/n";cin>>confirmar;
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	return 0;
@@ -342,17 +325,21 @@ int main(){
 		
 		
 		void menuAlumno(){
-			cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;
+			cout<<"Sistema de Aluno"<<endl<<endl;
 			int opcion=-1;
 			while(opcion!=0){
 				
 				cout<<"Menu de gestion"<<endl;
-				cout<<"1. Libros"<<endl
-					<<"2. Usuarios"<<endl
-					<<"3. Bibliotecarios"<<endl
+				cout<<"Menu para Alumno"<<endl
+					<<"1. BuscarLibro()"<<endl
+					<<"2. VerLibros()"<<endl
+					<<"3. VerHistorial()"<<endl
+					<<"4. VerHistorial()"<<endl
+					<<"5. LibrosPrestadosActualmente()"<<endl
 					<<"0. Salir"
 					<<endl
-					<<"Selecciona: ";cin>>opcion;
+					<<"Selecciona: ";
+					cin>>opcion;
 					
 					//	cin.get();
 					system("cls");	
@@ -363,10 +350,8 @@ int main(){
 							cout<<"Menu Libros"<<endl;
 							cout<<"1. Ver libros"<<endl
 								<<"2. Buscar libros"<<endl
-								<<"3. Eliminar libro"<<endl
-								<<"4. Agregar Libro"<<endl
-								<<"5. Etiquetas"<<endl
-								<<"6. Volver"
+								<<"3. Etiquetas"<<endl
+								<<"4. Volver"
 								
 								<<endl
 								<<"Selecciona: ";cin>>opcion;
@@ -404,55 +389,7 @@ int main(){
 									system("cls");
 									
 									break;
-								case 3:
-									cout<<"ID a eliminar: ";cin>>idLibro;
-									
-									
-									///Buscar Libro		| Proceso
-									resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
-									
-									/*if(it!= vectorLibros.end() ){
-									///Muestra 			| Salida
-									cout<<"Libro: "<<endl
-									<<"Nombre: "<<(*(it)).VerNombre()
-									<<endl 
-									<<"ID: "<<(*(it)).VerID()
-									<<endl;
-									
-									char borrar;
-									cout<<"Confirmas Eliminarlo? s/n: ";cin>>borrar;
-									if(borrar=='s'){
-									///Uso del metodo 	| Proceso
-									itBorrar = navega.Buscar(idLibro,vectorLibros);
-									admin.EliminarLibro(itBorrar,vectorLibros);
-									sistema.Guardar<Libro>(libros,vectorLibros);
-									}
-									}else{ cout<<endl<<"Codigo No existente";}
-									
-									*/
-									cout<<endl<<endl<<"Preciona para volver";
-									cin.ignore();
-									cin.get();
-									system("cls");
-									
-									break;
-									case 4:
-										cout<<"Agregar Libro...";
-										cout<<"LIbros a agregar: ";cin>>Nlibros;
-										///Uso del metodo	| Proceso
-										if(!Nlibros==0){
-											vectorLibros = admin.AgregarElementos<Libro>(Nlibros,libros);	
-											sistema.Guardar<Libro>(libros,vectorLibros);
-											vectorLibros = sistema.VerContenido<Libro>(libros,true);
-											cout<<"Agregados Corectamente!"<<endl;
-										}	
-										cout<<endl<<endl<<"Preciona para volver";
-										cin.ignore();
-										cin.get();
-										system("cls");
-										
-										break;
-									case 5:
+									case 3:
 										opcion=-1;
 										while(opcion!=5){
 											cout<<"Menu Etiquetas"<<endl;

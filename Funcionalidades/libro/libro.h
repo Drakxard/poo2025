@@ -7,7 +7,7 @@ using namespace std;
 
 class Libro
 {
-	int id;
+	size_t id;
 	char nombre[50];
 	int diasRestantes;
 	bool disponible; // Quitamos la inicializaci�n aqu� para hacerlo en el constructor
@@ -20,7 +20,7 @@ public:
 		diasRestantes = 0;
 	};
 	
-	Libro(int id, const char* nombre)
+	Libro(size_t id, const char* nombre)
 	{
 		this->id = id;
 		strncpy(this->nombre, nombre, 49);
@@ -30,7 +30,7 @@ public:
 		this->diasRestantes = 0;
 	}
 	
-	int VerID() const;
+	size_t VerID() const;
 	const char* VerNombre() const;
 	void CambiarNombre(const char* NuevoNombre);
 	

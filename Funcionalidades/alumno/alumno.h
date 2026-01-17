@@ -2,12 +2,10 @@
 #define ALUMNO_H
 #include "../Persona/persona.h"
 class Alumno: public Persona{
-    char nombre[49];
-    int id;
     bool sancion;
     public:
 		Alumno(){}
-	    Alumno(int id, const char *nombre,int DNI):Persona(id,nombre,DNI){
+	    Alumno(size_t id, const char *nombre,size_t DNI):Persona(id,nombre,DNI){
         this-> sancion=false;
         };
         //Propios para uso del bibliotecario

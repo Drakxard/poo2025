@@ -1,5 +1,5 @@
 #include "Libro.h"
-int Libro::VerID() const  
+size_t Libro::VerID() const  
 {
     return id;
 }

@@ -11,26 +11,22 @@ class Bibliotecario: public Persona{
  System* sistema; vector<int>Id_Prestamos;
 public:
 	Bibliotecario(){}
-	Bibliotecario(int id, const char *nombre,int DNI):Persona(id,nombre,DNI){};
+	Bibliotecario(size_t id, const char *nombre,size_t DNI):Persona(id,nombre,DNI){};
 
-<<<<<<< Updated upstream
 	template<typename T>
 	vector<T> AgregarElementos(int Agregar,string nombreArchivo);
-=======
-	
-	vector<Libro> AgregarLibros(int LibrosAgregar);
->>>>>>> Stashed changes
+
 	void EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v);
 
 //	1) Verificar si no es narco para poder prestarle el libro(es para la funcion Prestar Libro)
 	bool Alumno_quiere_un_libro( Alumno& x );
 	//este es la funcion grande que inicia el proceso de prestamo
-	bool PrestarLibros(size_t idLibro,size_t idAlumno, vector<Libro>&Libros,vector<Alumno>&Alumno, int dia, int mes, int anio);
+	bool PrestarLibros(size_t idLibro,size_t idAlumno, vector<Libro>&Libros,vector<Alumno>&Alumno,vector<int>Id_Prestamos, int dia, int mes, int anio);
 	// calcula la candtidad de dias de la diferencia entre hoy y la fecha de cuando se iene que devolver el libro(esta funcion se creo para la funcion prestar un libro y para ir actualizando los dias restantes del libro)
 	int CalcularDiferenciaDias(int dia, int mes, int anio);
 
-	void AgregarLibroPrestado(int libro_prestado,Vector<int>Id_Prestamos);
-	bool Devolucion_libro(int idlibro);
+	void AgregarLibroPrestado(int libro_prestado,vector<int>Id_Prestamos);
+	bool Devolucion_libro(size_t idlibro,vector<int>Id_Prestamos);
 
 	//LibrosPrestado.bin -> idLibro y IdAlumno 
 	bool Sancionar(int idAlumno, string nombreArchivo, bool desicion);

@@ -9,11 +9,11 @@
 using namespace std;
 
 class Persona{
-	int id, DNI;
+	size_t id, DNI;
 	char nombre[49]; 
 public:
 	Persona(){}
-	Persona(int id, const char *nombre,int DNI){
+	Persona(size_t id, const char *nombre,size_t DNI){
 		this->id = id;
 		this->DNI = DNI;
 		

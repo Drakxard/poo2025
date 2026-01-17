@@ -5,13 +5,9 @@ using namespace std;
 
 
 
-<<<<<<< Updated upstream
-
 template<typename T>
 vector<T> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo)
-=======
-vector<Libro> Bibliotecario::AgregarLibros(int LibrosAgregar)
->>>>>>> Stashed changes
+
 {
 	vector<T> resultado;
 	string nombre = "";
@@ -38,16 +34,19 @@ void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector
 	Libros.erase(Eliminar);
 }
 
+void Bibliotecario::AgregarLibroPrestado(int libro_prestado,vector<int>Id_Prestamos){}
+
 
 // En bibliotecario.cpp
 
-bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos, int dia, int mes, int anio)
+bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos,vector<int>Id_Prestamos, int dia, int mes, int anio)
 {
 	// 1. Buscar si el alumno por ID si existe
-	auto itAlumno = find_if(Alumnos.begin(), Alumnos.end(), [idAlumno](const Alumno& a) {
+	///No esta siendo usado
+	/*auto itAlumno = find_if(Alumnos.begin(), Alumnos.end(), [idAlumno](const Alumno& a) {
 			return a.VerID() == idAlumno;
 		});
-	
+	*/
 	if(idLibro>Alumnos.size()){
 			cout<<"C�digo de libro inexistente, Libro no encontrado." << endl;
 			return false; //no existe el libro o est� prestado
@@ -80,8 +79,9 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 				itlibro->DiasRestantes(diasCalculados);
 				
 				cout << "Libro prestado exitosamente. Dias para devolucion: " << diasCalculados << endl;
+				AgregarLibroPrestado(idLibro,Id_Prestamos);
 				return true;
-				AgregarLibroPrestado(idLibro);
+				
 			} else {
 				cout << "El libro ya se encuentra prestado." << endl;
 				return false; 
@@ -91,24 +91,24 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
     cout << "Libro no encontrado." << endl;
     return false;
 }
-
-void Bibliotecario::AgregarLibroPrestado(int libro_prestado){
+///Usar sistema.Agregar<Tipo>(...); + sistema.Guardar(...) o EscribirEnBin()
+/*void Bibliotecario::AgregarLibroPrestado(int libro_prestado){
 	Id_Prestamos.push_back(libro_prestado);
 }
-
-bool Bibliotecario:: Devolucion_libro(int idlibro){
+*/
+bool Bibliotecario:: Devolucion_libro(size_t idLibro,vector<int>Id_Prestamos){
 	// 1. Buscar el libro por ID si existe
-		
+		///Usar sistema.VerUltimo
 		if(idLibro>Id_Prestamos.size()){
-			cout<<"C�digo de libro inexistente, Libro no encontrado." << endl;
-			return false;
+			cout<<"C�digo de libro inexistente, Libro no encontrado." << endl;			
 		}else{
-			auto itlibro = find_if(Id_Prestamos.begin(), Id_Prestamos.end(), [idLibro](const Libro& a) {
-			return a.VerID() == idLibro;
-
-		});
+			auto itlibro = find(Id_Prestamos.begin(), Id_Prestamos.end(), idLibro);
+			if(itlibro !=Id_Prestamos.end()){
+				return true;
+			}
 		}
-		}
+return false;
+		
 
 }
 

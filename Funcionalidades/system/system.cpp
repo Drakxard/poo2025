@@ -87,22 +87,17 @@ template <typename T>
 bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo)
 { 	// 3 4 7 8 9
 
-	ofstream archi(nombreArchivo, ios::binary);
-	if (!archi)
-		throw runtime_error("Error al Recuperar de " + nombreArchivo);
-
-	T aux;
-	vector<T> resultado;
-	int actual;
-	bool primero = true; // Ajustar puntero, para iniciar
-	for (size_t i = 0; i < IdARecuperar.size() - 1; ++i)
+	
+	if(IdARecuperar.size() != 0){
+		ofstream archi(nombreArchivo, ios::binary);
+		if (!archi)
+			throw runtime_error("Error al Recuperar de " + nombreArchivo);
+		
+		T aux;
+		int actual;
+		bool primero = true; // Ajustar puntero, para iniciar
+		for (size_t i = 0; i < IdARecuperar.size() - 1; ++i)
 	{
-		// Está ordenado, logica para 2 -> n (seguir pensando)
-		//   2 4 6 8
-		// primero -> 0 + primerID, hacer,
-		//  4 - 2 = 2, cursor en 2 -> 4, saltar 2 lugares
-		// 6 -4 = 2, cursor en 4 -> 6, saltar 2 lugares
-		//  8 - 6 = 2, cursor en 6 -> 8, saltar 2 lugares
 		if (primero)
 		{
 			actual = IdARecuperar[i];
@@ -112,9 +107,15 @@ bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, strin
 		{
 			actual = IdARecuperar[i + 1] - IdARecuperar[i];
 		}
+		aux = elementos[i];
 		archi.seekp((actual) * (sizeof(T))); // vamos a la posicion
 		archi.write(reinterpret_cast<const char *>(&aux), sizeof(aux));
-		resultado.push_back(aux);
+	}
+		archi.close();
+	}else{
+		
+		Guardar<T>(nombreArchivo,elementos);
+		
 	}
 	return true;	
 };

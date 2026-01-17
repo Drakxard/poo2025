@@ -6,26 +6,25 @@ using namespace std;
 
 
 
-vector<Libro> Bibliotecario::AgregarLibros(int LibrosAgregar)
+template<typename T>
+vector<T> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo)
 {
-	vector<Libro> resultado;
-	string nombreLibro = "";
-	int idLibro = 0;
-	string a="ab";
-	int id = sistema->VerUltimo<Bibliotecario>(a);
+	vector<T> resultado;
+	string nombre = "";
+
+	int idElemento = sistema->VerUltimo<T>(nombreArchivo);
 	
-	while (LibrosAgregar > 0)
+	while (Agregar > 0)
 	{
 		
-		cout << "Nombre del libro: ";
-		cin >> nombreLibro;
-		
+		cout << "Nombre: ";cin>>nombre;
+
 		/// Generar ID
-			idLibro = ++id;
+		++idElemento;
 		
-		Libro aux(idLibro, nombreLibro.c_str());
+			T aux(idElemento, nombre.c_str());
 		resultado.push_back(aux);
-		--LibrosAgregar;
+		--Agregar;
 	}
 	return resultado;
 }
@@ -165,3 +164,4 @@ bool Bibliotecario::Actualizar_Disponibilidad( int idLibro, string nombreArchivo
      	return true; //Libro Disponible
 	}
 }
+template vector<Libro> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo);

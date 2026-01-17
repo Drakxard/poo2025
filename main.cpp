@@ -63,7 +63,7 @@ void menuAlumno();
 
 
 int main(){
-	////*Login*/
+	/*Login
 	//menuBibliotecario();
 	cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;
 	
@@ -99,12 +99,22 @@ int main(){
 			alumn = Alumno(id, nombre.c_str(), dni);
 		}
 	}
-	
+	*/
 	//Fin login, tenemos o un Bibliotecario o un Alumno
 ///	Busqueda de libros basado en una palabra
 	//vector<Libro> encontrar = posiciones(palabraBuscada, vectorLibros);
 
-
+//Agregar Libros
+	int cant;
+	cout<<"¿Cuantos elementos?: ";cin>>cant;
+	vector<Libro> Agregados= admin.AgregarElementos<Libro>(cant,libros);
+	cout<<endl<<"Datos ingresados: "<<endl;
+	for(Libro&x : Agregados)
+		cout<<x.VerNombre()<<endl;
+	char confirmar;
+	cout<<"Confirmar?: s/n";cin>>confirmar;
+	
+	
 
 
 
@@ -228,7 +238,7 @@ int main(){
 									cout<<"LIbros a agregar: ";cin>>Nlibros;
 									///Uso del metodo	| Proceso
 									if(!Nlibros==0){
-										vectorLibros = admin.AgregarLibros(Nlibros);	
+										vectorLibros = admin.AgregarElementos<Libro>(Nlibros,libros);	
 										sistema.Guardar<Libro>(libros,vectorLibros);
 										vectorLibros = sistema.VerContenido<Libro>(libros,true);
 										cout<<"Agregados Corectamente!"<<endl;
@@ -431,7 +441,7 @@ int main(){
 										cout<<"LIbros a agregar: ";cin>>Nlibros;
 										///Uso del metodo	| Proceso
 										if(!Nlibros==0){
-											vectorLibros = admin.AgregarLibros(Nlibros);	
+											vectorLibros = admin.AgregarElementos<Libro>(Nlibros,libros);	
 											sistema.Guardar<Libro>(libros,vectorLibros);
 											vectorLibros = sistema.VerContenido<Libro>(libros,true);
 											cout<<"Agregados Corectamente!"<<endl;

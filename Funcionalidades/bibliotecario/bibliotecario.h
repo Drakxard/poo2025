@@ -3,6 +3,7 @@
 #include "../preConfiguracion/preConfiguracion.h"
 #include "../libro/libro.h"
 #include "../alumno/alumno.h"
+#include "../Persona/persona.h"
 
 using namespace std;
 class System;
@@ -12,8 +13,8 @@ public:
 	Bibliotecario(){}
 	Bibliotecario(int id, const char *nombre,int DNI):Persona(id,nombre,DNI){};
 
-
-	vector<Libro> AgregarLibros(int LibrosAgregar);
+	template<typename T>
+	vector<T> AgregarElementos(int Agregar,string nombreArchivo);
 	void EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v);
 
 //	1) Verificar si no es narco para poder prestarle el libro(es para la funcion Prestar Libro)

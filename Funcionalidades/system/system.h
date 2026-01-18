@@ -3,13 +3,12 @@
 #include "../preConfiguracion/preConfiguracion.h"
 #include "../libro/libro.h"
 #include "../alumno/alumno.h"
+#include "../Tags/tags.h"
 
 
 using namespace std;
 //template<typename K>
-struct Tags{
-	string nombre,path;
-};
+
 class System{
 	string pathalumnos ="../../Recursos/Binarios/alumnos.bin";
 	

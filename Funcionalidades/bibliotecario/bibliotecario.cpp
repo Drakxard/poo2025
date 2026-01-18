@@ -24,6 +24,8 @@ vector<T> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo)
 		T aux(idElemento, nombre.c_str(),dni);
 		resultado.push_back(aux);
 		--Agregar;
+		cout<<endl<<"DesdeAgregarElementos"<<endl;
+		cout<<"Nombre del nuevo: "<<aux.VerNombre()<<endl;
 	}
 	return resultado;
 }
@@ -33,7 +35,6 @@ vector<Libro> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo)
 	vector<Libro> resultado;
 	string nombre = "";
 	int idElemento = sistema->VerUltimo<Libro>(nombreArchivo);
-	
 	while (Agregar > 0)
 	{
 		cout << "Nombre: ";cin>>nombre;		
@@ -43,6 +44,9 @@ vector<Libro> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo)
 		Libro aux(idElemento, nombre.c_str());
 		resultado.push_back(aux);
 		--Agregar;
+		cout<<endl<<"DesdeAgregarElementosLibro"<<endl;
+		cout<<"Nombre del nuevo: "<<aux.VerNombre()<<endl;
+	
 	}
 	return resultado;
 }

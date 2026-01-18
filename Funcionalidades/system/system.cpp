@@ -14,6 +14,7 @@ void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
 	for (size_t i = 0; i < A_Guardar.size(); ++i)
 	{
 		aux = A_Guardar[i];
+		cout<<endl<<"En guardar :"<<aux.VerNombre()<<endl;
 		archi.write(reinterpret_cast<const char *>(&(aux)), sizeof(aux));
 	}
 	archi.close();
@@ -132,15 +133,14 @@ if(archi.tellg()<=0){
 if(!archi)
 throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo);
 int resultado;
-if(archi.tellg() < sizeof(T)){
-archi.close();
-return 0;
-}
-archi.seekg(-( sizeof(T)),ios::end);
+int tam = static_cast<int>(sizeof(T));///Antes desfases por esto
+///Size_of convierte a size_t, el cual solo tiene positivos, por ello
+///no podiamos retroceder antes
+archi.seekg(-tam,ios::end);
 T aux;
 archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
 resultado = aux.VerID();
-
+cout<<endl<<"Desde VerUltimo: "<<resultado<<endl;
 archi.close();
 return resultado;
 }
@@ -150,7 +150,7 @@ template<typename S >
 int System::Verificar_Existencia_Vector(int dni,vector<S>&v){
 	
 	auto encontrar = find_if(v.begin(), v.end(), [dni](const S& x) {
-		return x.VerID() == dni;
+		return x.VerDNI() == dni;
 	});
 	if(encontrar !=v.end())
 		return encontrar->VerID();

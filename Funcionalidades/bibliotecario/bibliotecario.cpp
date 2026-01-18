@@ -7,22 +7,40 @@ using namespace std;
 
 template<typename T>
 vector<T> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo)
-
 {
 	vector<T> resultado;
 	string nombre = "";
-
+	size_t dni;
 	int idElemento = sistema->VerUltimo<T>(nombreArchivo);
 	
 	while (Agregar > 0)
 	{
+		cout << "Nombre: ";cin>>nombre;		
+		cout<<"Dni: ";cin>>dni;
 		
-		cout << "Nombre: ";cin>>nombre;
-
+		
 		/// Generar ID
 		++idElemento;
+		T aux(idElemento, nombre.c_str(),dni);
+		resultado.push_back(aux);
+		--Agregar;
+	}
+	return resultado;
+}
+
+vector<Libro> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo)
+{
+	vector<Libro> resultado;
+	string nombre = "";
+	int idElemento = sistema->VerUltimo<Libro>(nombreArchivo);
+	
+	while (Agregar > 0)
+	{
+		cout << "Nombre: ";cin>>nombre;		
 		
-			T aux(idElemento, nombre.c_str());
+				/// Generar ID
+		++idElemento;
+		Libro aux(idElemento, nombre.c_str());
 		resultado.push_back(aux);
 		--Agregar;
 	}
@@ -189,4 +207,36 @@ bool Bibliotecario::Actualizar_Disponibilidad( int idLibro, string nombreArchivo
      	return true; //Libro Disponible
 	}
 }
-template vector<Libro> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo);
+
+template<typename T>
+void Bibliotecario::CargarNuevos(int cant,string nombreArchivo){
+	
+	vector<T> Agregados= AgregarElementos<T>(cant,nombreArchivo);
+	
+	for(T&x : Agregados)
+		cout<<x.VerNombre()<<"    "<<x.VerDNI()<<endl;
+	char confirmar;
+	cout<<"Confirmar?: s/n ";cin>>confirmar;
+	system("cls");
+	if(confirmar == 's'){
+		sistema->Guardar<T>(nombreArchivo,Agregados);
+	}
+}
+void Bibliotecario::CargarNuevosLibros(int cant,string nombreArchivo){
+	
+	vector<Libro> Agregados= AgregarElementos(cant,nombreArchivo);
+	
+	for(Libro&x : Agregados)
+		cout<<x.VerNombre()<<"    "<<x.VerID()<<endl;
+	char confirmar;
+	cout<<"Confirmar?: s/n ";cin>>confirmar;
+	system("cls");
+	if(confirmar == 's'){
+		sistema->Guardar<Libro>(nombreArchivo,Agregados);
+	}
+}
+template void Bibliotecario::CargarNuevos<Bibliotecario>(int cant,string nombreArchivo);
+template void Bibliotecario::CargarNuevos<Alumno>(int cant,string nombreArchivo);
+
+template vector<Alumno> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo);
+template vector<Bibliotecario> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo);

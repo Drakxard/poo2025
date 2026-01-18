@@ -5,7 +5,7 @@ using namespace std;
 template <typename T>  ///Cambiar a Guardar al final
 void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
 {
-	ofstream archi(nombreArhivo, ios::binary|ios::ate);
+	ofstream archi(nombreArhivo, ios::binary|ios::app);
 
 	if (!archi)
 		throw runtime_error("Error al guardar en " + nombreArhivo);
@@ -125,6 +125,10 @@ template<typename T>
 int System::VerUltimo(string nombreArchivo){
 
 ifstream archi(nombreArchivo,ios::binary|ios::ate);
+if(archi.tellg()<=0){
+	archi.close();
+	return -1;
+}
 if(!archi)
 throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo);
 int resultado;
@@ -155,12 +159,20 @@ int System::Verificar_Existencia_Vector(int dni,vector<S>&v){
 }
 
 
+
+
+
 template <typename T> /// Cuando terminas las modificacines lo sobreescribes
 bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {return true;};
+
+
+
+
 
 // Instanciaci�n para Guardar
 template void System::Guardar<Alumno>(string, vector<Alumno>&);
 template void System::Guardar<Libro>(string, vector<Libro>&);
+template void System::Guardar<Bibliotecario>(string, vector<Bibliotecario>&);
 
 
 

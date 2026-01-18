@@ -15,7 +15,8 @@ public:
 
 	template<typename T>
 	vector<T> AgregarElementos(int Agregar,string nombreArchivo);
-
+	vector<Libro> AgregarElementos(int Agregar,string nombreArchivo);
+	
 	void EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v);
 
 //	1) Verificar si no es narco para poder prestarle el libro(es para la funcion Prestar Libro)
@@ -31,6 +32,10 @@ public:
 	//LibrosPrestado.bin -> idLibro y IdAlumno 
 	bool Sancionar(int idAlumno, string nombreArchivo, bool desicion);
 	bool Actualizar_Disponibilidad( int idLibro, string nombreArchivo, bool decision);
+	
+	template<typename T>
+	void CargarNuevos(int cant,string nombreArchivo);
+	void CargarNuevosLibros(int cant,string nombreArchivo);
 	
 };
 #endif // 3. Fin de la condici�n

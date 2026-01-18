@@ -24,7 +24,7 @@ System sistema;
 
 /// Nombre del Binario de test
 string libros = "Recursos/Binarios/libros.bin";
-string usuarios = "Recursos/Binarios/usuarios.bin";
+string alumnos = "Recursos/Binarios/alumnos.bin";
 string bibliotecarios = "Recursos/Binarios/bibliotecarios.bin";
 
 ///Clase encargada de las busquedas
@@ -44,6 +44,8 @@ string fisica = "Recursos/binarios/fisica.bin";
 
 
 vector<Libro> vectorLibros = sistema.VerContenido<Libro>(libros, 1);
+vector<Alumno> vectorAlumnos = sistema.VerContenido<Alumno>(alumnos, 1);
+vector<Bibliotecario> vectorBibliotecario = sistema.VerContenido<Bibliotecario>(bibliotecarios, 1);
 int idLibro;
 int Nlibros;	
 
@@ -104,19 +106,11 @@ int main(){
 ///	Busqueda de libros basado en una palabra
 	//vector<Libro> encontrar = posiciones(palabraBuscada, vectorLibros);
 
-//Agregar Libros
-	int cant;
-	cout<<"�Cuantos elementos?: ";cin>>cant;
-	vector<Libro> Agregados= admin.AgregarElementos<Libro>(cant,libros);
-
-	cout<<endl<<"Datos ingresados: "<<endl;
-
-	for(Libro&x : Agregados)
-		cout<<x.VerNombre()<<endl;
-	char confirmar;
-	cout<<"Confirmar?: s/n";cin>>confirmar;
-
-
+/*Agregar Nuevos
+	int cant=1;
+	admin.CargarNuevosLibros(cant,libros);
+*/
+	
 	return 0;
 }
 	
@@ -221,7 +215,7 @@ int main(){
 									cout<<"LIbros a agregar: ";cin>>Nlibros;
 									///Uso del metodo	| Proceso
 									if(!Nlibros==0){
-										vectorLibros = admin.AgregarElementos<Libro>(Nlibros,libros);	
+										vectorLibros = admin.AgregarElementos(Nlibros,libros);	
 										sistema.Guardar<Libro>(libros,vectorLibros);
 										vectorLibros = sistema.VerContenido<Libro>(libros,true);
 										cout<<"Agregados Corectamente!"<<endl;

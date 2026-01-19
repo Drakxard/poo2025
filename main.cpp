@@ -65,6 +65,7 @@ void menuAlumno();
 
 
 int main(){
+<<<<<<< Updated upstream
 	vectorAlumnos = sistema.VerContenido<Alumno>(alumnos,true);
 	vectorBibliotecario= sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
 	vectorLibros = sistema.VerContenido<Libro>(libros,true);
@@ -121,6 +122,42 @@ int main(){
 	
 	
 	
+=======
+cout<<"Bienvenidos a la Biblioteca!!!"<<endl<<endl;
+
+int dni;
+cout<<"Ingrese su Documento de Identidad, por favor"<<endl;
+cin>>dni;
+//Declaramos direccion de los binarios 
+string AlumnosPath="Recursos/Binarios/alumnos.bin";
+string BibliotecarioPath="Recursos/Binarios/bibliotecario.bin";
+
+//
+vector<Bibliotecario> vectorBibliotecario = sistema.VerContenido<Bibliotecario>(BibliotecarioPath,true);
+int PosBibliotecario = BuscarDniEnBibliotecarios(dni, vectorBibliotecario);
+Alumno alumn;
+if(PosBibliotecario != -1){
+	Bibliotecario biblio = CrearObjetoCorrespondienteBibliotecario(PosBibliotecario, vectorBibliotecario);
+	cout<<"¿Qué Quieres Hacer "<<biblio.VerNombre()<<" ?"<<endl;
+
+}else{
+	vector<Alumno> vectorAlumno = sistema.VerContenido<Alumno>(AlumnosPath,true);
+	int PosAlumno = BuscarDniEnAlumnos(dni,vectorAlumno);
+	if(PosAlumno!= -1){
+		alumn = CrearObjetoCorrespondienteAlumno(PosAlumno, vectorAlumno); 
+			cout<<"¿Qué Quieres Hacer "<<alumn.VerNombre()<<" ?"<<endl;
+	}else{
+		string nombre;
+		cout<<"Ingresa tu nombre: ";cin>>nombre;
+		int id = 12;
+		alumn = Alumno(id, nombre.c_str(), dni);
+	}
+}
+
+
+//Fin login, tenemos o un Bibliotecario o un Alumno
+
+>>>>>>> Stashed changes
 	
 	return 0;
 }

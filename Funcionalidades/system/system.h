@@ -6,6 +6,7 @@
 #include "../Tags/tags.h"
 
 
+#include <vector>
 using namespace std;
 //template<typename K>
 

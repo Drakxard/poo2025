@@ -1,5 +1,6 @@
 #include "Bibliotecario.h"
 #include "../system/system.h"
+#include "../Historial/Historial.h"
 
 using namespace std;
 

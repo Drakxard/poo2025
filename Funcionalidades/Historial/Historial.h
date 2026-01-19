@@ -22,6 +22,6 @@ class Historial{
 		bool AgregarNuevoRegistro(int IdBibliotecario);//trabajo del bibliotecario
 		bool EliminarRegistro(int IdRegistro);
 		template<typename S>
-        void Ver_Historial(int actual,vector<S>& v,string nombreArchivo);
+		Ver_Historial(int actual, vector<S>& v, vector<Registros>& r)
 };
 #endif

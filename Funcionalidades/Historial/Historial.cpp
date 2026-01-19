@@ -10,6 +10,7 @@ template <typename S>
 bool Historial::Verificar_Existencia(int x, vector<S>&v){//string nombreArchivo){
 	
 	//Buscar si Alumno/Bibliotecario/Libro por ID si existe
+	///usar sistema.verultimo();
 	auto verificacion = find_if(v.begin(), v.end(), [x](const S& a) {
 		return a.VerID() == x;
 	});

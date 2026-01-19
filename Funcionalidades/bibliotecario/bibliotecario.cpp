@@ -56,7 +56,6 @@ void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector
 	Libros.erase(Eliminar);
 }
 
-void Bibliotecario::AgregarLibroPrestado(int libro_prestado,vector<int>Id_Prestamos){}
 
 
 // En bibliotecario.cpp
@@ -113,6 +112,7 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
     cout << "Libro no encontrado." << endl;
     return false;
 }
+void Bibliotecario::AgregarLibroPrestado(int libro_prestado,vector<int>Id_Prestamos){}
 ///Usar sistema.Agregar<Tipo>(...); + sistema.Guardar(...) o EscribirEnBin()
 /*void Bibliotecario::AgregarLibroPrestado(int libro_prestado){
 	Id_Prestamos.push_back(libro_prestado);

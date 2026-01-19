@@ -46,7 +46,7 @@ vector<int> Buscador::Ordenar(vector<Tags>v){
 void Buscador::AgregarEtiqueta(string& nombre){}
 
 
-vector<Libro> posiciones(string palabraBuscada, vector<Libro>&vectorLibros){
+vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros){
 	vector<Libro> aux;
 	int avanzar=0;
 	auto encontrado = vectorLibros.begin();

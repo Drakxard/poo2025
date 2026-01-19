@@ -35,6 +35,7 @@ vector<Libro> resultadoLibros;
 ///Estados Especiales
 ///De alumno
 string sancionados = "Recursos/binarios/sancionados.bin";
+string HistorialPrestamos= "Recursos/binarios/Historial.bin"
 ///De libro
 string prestados = "Recursos/binarios/prestados.bin";
 string matematica = "Recursos/binarios/matematica.bin";
@@ -62,10 +63,10 @@ string TagsAlmunos= "Recursos/binarios/Tags/Alumnos.bin";
 
 void menuBibliotecario();
 void menuAlumno();
-
+vector<libros> BuscarLibro;
 
 int main(){
-<<<<<<< Updated upstream
+
 	vectorAlumnos = sistema.VerContenido<Alumno>(alumnos,true);
 	vectorBibliotecario= sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
 	vectorLibros = sistema.VerContenido<Libro>(libros,true);
@@ -91,7 +92,7 @@ int main(){
 	
 	if(PosBibliotecario != -1){
 		biblio = ObjetoCorrespondienteBibliotecario(PosBibliotecario, vectorBibliotecario);
-		cout<<"¿Que Quieres Hacer "<<biblio.VerNombre()<<" ?"<<endl;
+		cout<<"ï¿½Que Quieres Hacer "<<biblio.VerNombre()<<" ?"<<endl;
 			menuBibliotecario();
 	}
 	else{
@@ -100,10 +101,10 @@ int main(){
 			alumn = ObjetoCorrespondienteAlumno(PosAlumno, vectorAlumnos); 
 			cout<<"PosAlumno: "<<PosAlumno<<endl;
 
-			cout<<"¿Que Quieres Hacer "<<alumn.VerNombre()<<" ?"<<endl;
+			cout<<"ï¿½Que Quieres Hacer "<<alumn.VerNombre()<<" ?"<<endl;
 			cout<<"Menu alumno..";
 		}else{
-			cout<<"No estás en el sistema... Registrandote"<<endl;
+			cout<<"No estï¿½s en el sistema... Registrandote"<<endl;
 			cant=1;
 			admin.CargarNuevos<Alumno>(cant,alumnos);
 		}
@@ -122,7 +123,6 @@ int main(){
 	
 	
 	
-=======
 cout<<"Bienvenidos a la Biblioteca!!!"<<endl<<endl;
 
 int dni;
@@ -157,7 +157,6 @@ if(PosBibliotecario != -1){
 
 //Fin login, tenemos o un Bibliotecario o un Alumno
 
->>>>>>> Stashed changes
 	
 	return 0;
 }
@@ -207,7 +206,7 @@ if(PosBibliotecario != -1){
 								
 								
 								
-								cout<<endl<<endl<<"Preciona para volver";
+								cout<<endl<<endl<<"Presiona para volver";
 								cin.ignore();
 								cin.get();
 								system("cls");
@@ -222,7 +221,7 @@ if(PosBibliotecario != -1){
 								resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
 								
 								
-								cout<<endl<<endl<<"Preciona para volver";
+								cout<<endl<<endl<<"Presiona para volver";
 								cin.ignore();
 								cin.get();
 								system("cls");
@@ -254,7 +253,7 @@ if(PosBibliotecario != -1){
 								}else{ cout<<endl<<"Codigo No existente";}
 								
 								*/
-								cout<<endl<<endl<<"Preciona para volver";
+								cout<<endl<<endl<<"Presiona para volver";
 								cin.ignore();
 								cin.get();
 								system("cls");
@@ -265,7 +264,7 @@ if(PosBibliotecario != -1){
 									admin.CargarNuevosLibros(cant,libros);
 									
 									
-									cout<<endl<<endl<<"Preciona para volver";
+									cout<<endl<<endl<<"Presiona para volver";
 									cin.ignore();
 									cin.get();
 									system("cls");
@@ -300,14 +299,14 @@ if(PosBibliotecario != -1){
 												for(Tags& x : Etiquetas)
 													cout<<++c<<" ) "<<x.VerNombre()<<endl;
 												
-												cout<<endl<<endl<<"Preciona para volver";
+												cout<<endl<<endl<<"Presiona para volver";
 												cin.ignore();
 												cin.get();
 												system("cls");
 												break;
 											case 2:
 												cout<<"Buscar Etiquetas...";
-												cout<<endl<<endl<<"Preciona para volver";
+												cout<<endl<<endl<<"Presiona para volver";
 												cin.ignore();
 												cin.get();
 												system("cls");
@@ -315,7 +314,7 @@ if(PosBibliotecario != -1){
 												
 											case 3:
 												cout<<"Eliminar Etiquetas...";
-												cout<<endl<<endl<<"Preciona para volver";
+												cout<<endl<<endl<<"Presiona para volver";
 												cin.ignore();
 												cin.get();
 												system("cls");
@@ -329,7 +328,7 @@ if(PosBibliotecario != -1){
 												//VectorTags=lleno
 												///Va al bin a cargarlo
 												//sistema.Guardar<Tags>(VectorTags)
-												cout<<endl<<endl<<"Preciona para volver";
+												cout<<endl<<endl<<"Presiona para volver";
 												cin.ignore();
 												cin.get();
 												system("cls");
@@ -379,14 +378,14 @@ if(PosBibliotecario != -1){
 									  cout<<endl<<endl<<"------------------------------"<<endl;
 									  
 									  
-									  cout<<endl<<endl<<"Preciona para volver";
+									  cout<<endl<<endl<<"Presiona para volver";
 									  cin.ignore();
 									  cin.get();
 									  system("cls");
 									  break;
 								  case 2:
 									cout<<"Buscar alumno"<<endl;  
-									  cout<<endl<<endl<<"Preciona para volver";
+									  cout<<endl<<endl<<"Presiona para volver";
 									  cin.ignore();
 									  cin.get();
 									  system("cls");
@@ -415,7 +414,7 @@ if(PosBibliotecario != -1){
 									  }else{ cout<<endl<<"Codigo No existente";}
 									  
 									  */
-									  cout<<endl<<endl<<"Preciona para volver";
+									  cout<<endl<<endl<<"Presiona para volver";
 									  cin.ignore();
 									  cin.get();
 									  system("cls");
@@ -426,7 +425,7 @@ if(PosBibliotecario != -1){
 										  admin.CargarNuevos<Alumno>(cant,alumnos);
 										  
 										  
-										  cout<<endl<<endl<<"Preciona para volver";
+										  cout<<endl<<endl<<"Presiona para volver";
 										  cin.ignore();
 										  cin.get();
 										  system("cls");
@@ -461,14 +460,14 @@ if(PosBibliotecario != -1){
 													  for(Tags& x : Etiquetas)
 														  cout<<++c<<" ) "<<x.VerNombre()<<endl;
 													  
-													  cout<<endl<<endl<<"Preciona para volver";
+													  cout<<endl<<endl<<"Presiona para volver";
 													  cin.ignore();
 													  cin.get();
 													  system("cls");
 													  break;
 												  case 2:
 													  cout<<"Buscar Etiquetas...";
-													  cout<<endl<<endl<<"Preciona para volver";
+													  cout<<endl<<endl<<"Presiona para volver";
 													  cin.ignore();
 													  cin.get();
 													  system("cls");
@@ -476,7 +475,7 @@ if(PosBibliotecario != -1){
 													  
 												  case 3:
 													  cout<<"Eliminar Etiquetas...";
-													  cout<<endl<<endl<<"Preciona para volver";
+													  cout<<endl<<endl<<"Presiona para volver";
 													  cin.ignore();
 													  cin.get();
 													  system("cls");
@@ -490,7 +489,7 @@ if(PosBibliotecario != -1){
 													  //VectorTags=lleno
 													  ///Va al bin a cargarlo
 													  //sistema.Guardar<Tags>(VectorTags)
-													  cout<<endl<<endl<<"Preciona para volver";
+													  cout<<endl<<endl<<"Presiona para volver";
 													  cin.ignore();
 													  cin.get();
 													  system("cls");
@@ -537,14 +536,14 @@ if(PosBibliotecario != -1){
 											cout<<endl<<endl<<"------------------------------"<<endl;
 											
 											
-											cout<<endl<<endl<<"Preciona para volver";
+											cout<<endl<<endl<<"Presiona para volver";
 											cin.ignore();
 											cin.get();
 											system("cls");
 											break;
 										case 2:
 											cout<<"Buscar alumno"<<endl;  
-											cout<<endl<<endl<<"Preciona para volver";
+											cout<<endl<<endl<<"Presiona para volver";
 											cin.ignore();
 											cin.get();
 											system("cls");
@@ -573,7 +572,7 @@ if(PosBibliotecario != -1){
 										}else{ cout<<endl<<"Codigo No existente";}
 											
 											*/
-											cout<<endl<<endl<<"Preciona para volver";
+											cout<<endl<<endl<<"Presiona para volver";
 											cin.ignore();
 											cin.get();
 											system("cls");
@@ -583,7 +582,7 @@ if(PosBibliotecario != -1){
 											cout<<"Bibliotecarios a agregar: ";cin>>cant;
 											admin.CargarNuevos<Bibliotecario>(cant,bibliotecarios);
 											
-											cout<<endl<<endl<<"Preciona para volver";
+											cout<<endl<<endl<<"Presiona para volver";
 											cin.ignore();
 											cin.get();
 											system("cls");
@@ -618,14 +617,14 @@ if(PosBibliotecario != -1){
 														for(Tags& x : Etiquetas)
 															cout<<++c<<" ) "<<x.VerNombre()<<endl;
 														
-														cout<<endl<<endl<<"Preciona para volver";
+														cout<<endl<<endl<<"Presiona para volver";
 														cin.ignore();
 														cin.get();
 														system("cls");
 														break;
 													case 2:
 														cout<<"Buscar Etiquetas...";
-														cout<<endl<<endl<<"Preciona para volver";
+														cout<<endl<<endl<<"Presiona para volver";
 														cin.ignore();
 														cin.get();
 														system("cls");
@@ -633,7 +632,7 @@ if(PosBibliotecario != -1){
 														
 													case 3:
 														cout<<"Eliminar Etiquetas...";
-														cout<<endl<<endl<<"Preciona para volver";
+														cout<<endl<<endl<<"Presiona para volver";
 														cin.ignore();
 														cin.get();
 														system("cls");
@@ -647,7 +646,7 @@ if(PosBibliotecario != -1){
 														//VectorTags=lleno
 														///Va al bin a cargarlo
 														//sistema.Guardar<Tags>(VectorTags)
-														cout<<endl<<endl<<"Preciona para volver";
+														cout<<endl<<endl<<"Presiona para volver";
 														cin.ignore();
 														cin.get();
 														system("cls");
@@ -690,8 +689,7 @@ if(PosBibliotecario != -1){
 					<<"1. BuscarLibro()"<<endl
 					<<"2. VerLibros()"<<endl
 					<<"3. VerHistorial()"<<endl
-					<<"4. VerHistorial()"<<endl
-					<<"5. LibrosPrestadosActualmente()"<<endl
+					<<"4. LibrosPrestadosActualmente()"<<endl
 					<<"0. Salir"
 					<<endl
 					<<"Selecciona: ";
@@ -701,21 +699,28 @@ if(PosBibliotecario != -1){
 					system("cls");	
 					
 					switch (opcion){
-					case 1://Menu libro
-						while(opcion!=6){
-							cout<<"Menu Libros"<<endl;
-							cout<<"1. Ver libros"<<endl
-								<<"2. Buscar libros"<<endl
-								<<"3. Etiquetas"<<endl
-								<<"4. Volver"
-								
-								<<endl
-								<<"Selecciona: ";cin>>opcion;
-								
-								system("cls");
-								switch (opcion){
-								case 1:
-									cout<<"Libros Disponibles: "<<endl;	
+					case 1://Buscar Libro
+						///Buscar libro
+									///Terminal			| Entrada
+									cout<<"Buscar libro, indica ID: ";cin>>idLibro;
+									
+									///Buscar Libro		| Proceso
+									
+									BuscarLibro =navega.Relacionados(string palabraBuscada, vector<Libro>&vectorLibros);
+									for (auto &&i : BuscarLibro)
+									{
+										cout<<"Nombre Libro: " 	<<i.VerNombre()<<"  Id: "	<<i.VerID()<<endl<<i.VerDisponible()<<endl;
+									}
+									
+									
+									cout<<endl<<endl<<"Presiona para volver";
+									cin.ignore();
+									cin.get();
+									system("cls");
+									
+									break;
+					case 2: // VerLibros
+					cout<<"Libros Disponibles: "<<endl;	
 									///Contenido Actual
 									for(Libro &x: vectorLibros)
 										cout
@@ -724,116 +729,24 @@ if(PosBibliotecario != -1){
 										<<endl; 
 									
 									
-									cout<<endl<<endl<<"Preciona para volver";
+									cout<<endl<<endl<<"Presiona para volver";
 									cin.ignore();
 									cin.get();
 									system("cls");
 									break;
-								case 2:
-									///Buscar libro
-									///Terminal			| Entrada
-									cout<<"Buscar libro, indica ID: ";cin>>idLibro;
-									
-									///Buscar Libro		| Proceso
-									
-									resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
-									
-									
-									cout<<endl<<endl<<"Preciona para volver";
-									cin.ignore();
-									cin.get();
-									system("cls");
-									
-									break;
-									case 3:
-										opcion=-1;
-										while(opcion!=5){
-											cout<<"Menu Etiquetas"<<endl;
-											cout<<"1. Ver Etiquetas"<<endl
-												<<"2. Buscar Etiquetas"<<endl
-												<<"3. Eliminar Etiquetas"<<endl
-												<<"4. Agregar Etiquetas"<<endl
-												<<"5. Volver"
-												
-												<<endl
-												<<"Selecciona: ";cin>>opcion;
-												
-												system("cls");
-												switch (opcion){
-												case 1:
-													
-													cout<<"Etiquetas Existentes: "<<endl;
-													cout<<"De Libros: "<<endl;
-													Etiquetas = sistema.etiquetas(etiquetasLibros);
-													c=0;
-													for(Tags& x : Etiquetas)
-														cout<<++c<<" ) "<<x.VerNombre()<<endl;
-													cout<<"De Alumnos: "<<endl;
-													Etiquetas = sistema.etiquetas(TagsAlmunos);
-													c=0;
-													for(Tags& x : Etiquetas)
-														cout<<++c<<" ) "<<x.VerNombre()<<endl;
-													
-													cout<<endl<<endl<<"Preciona para volver";
-													cin.ignore();
-													cin.get();
-													system("cls");
-													break;
-												case 2:
-													cout<<"Buscar Etiquetas...";
-													cout<<endl<<endl<<"Preciona para volver";
-													cin.ignore();
-													cin.get();
-													system("cls");
-													break;
-													
-												case 3:
-													cout<<"Eliminar Etiquetas...";
-													cout<<endl<<endl<<"Preciona para volver";
-													cin.ignore();
-													cin.get();
-													system("cls");
-													break;
-													
-												case 4:
-													cout<<"Agregar Etiquetas...";
-													///Carga en memoria N elementos
-													//VectorTags= vacio
-													//bibliotecario.Agregar<Tags>(VectorTags)
-													//VectorTags=lleno
-													///Va al bin a cargarlo
-													//sistema.Guardar<Tags>(VectorTags)
-													cout<<endl<<endl<<"Preciona para volver";
-													cin.ignore();
-													cin.get();
-													system("cls");
-													break;
-													
-												case 5:
-													///volver
-													break;
-													
-												default:
-													break;
-												}///Fin case, etiquetas
-										}///Fin While etiquetas
-									case 6:
-											  //Volviendo
-											  break;
-											  
-											  
-									default:
-										break;
-										
-								}///Case
-						}
-						///While Menu Libros	
-						//Casos Usuarios, Bibliotecarios, ...
-					default:
-							  break;
-							  
+					case 3:// Ver Historial 	
+						cout<<"Historial de Prestamos"<<endl;
+						Ver_Historial(alumn.VerID(),vectorLibros,HistorialPrestamos);
+					break;
+					
 					}//Case
-			}///While Principal
+			
+			
+				}///While Principal
+		
+		
+		
+		
 		}//Fin funcion
 			
 			

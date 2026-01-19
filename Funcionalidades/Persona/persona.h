@@ -11,6 +11,7 @@ using namespace std;
 class Persona{
 	size_t id, DNI;
 	char nombre[49]; 
+	vector<int> id_libros;
 public:
 	Persona(){}
 	Persona(size_t id, const char *nombre,size_t DNI){

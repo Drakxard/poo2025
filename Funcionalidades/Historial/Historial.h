@@ -18,10 +18,14 @@ class Historial{
 		IdUsuario=x;
         }
         template<typename S>
-        bool Verificar_Existencia(int x, vector<S>& v);
-        bool AgregarNuevoRegistro(int IdBibliotecario);//trabajo del bibliotecario
-        bool EliminarRegistro(int IdRegistro);
-        Registro Ver_Registro(int actual,string nombreArchivo);
+        bool Verificar_Existencia(int Id,string nombreArchivo);
+        
+		bool AgregarNuevoRegistro(int IdBibliotecario);//trabajo del bibliotecario
+        
+		bool EliminarRegistro(int IdRegistro);
+		
+		template<typename S>
+        void Ver_Registro(int actual,vector<S>& v,string nombreArchivo);
 
 };
 #endif

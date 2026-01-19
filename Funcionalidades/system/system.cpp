@@ -123,26 +123,26 @@ bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, strin
 
 
 template<typename T>
-int System::VerUltimo(string nombreArchivo){
+	int System::VerUltimo(string nombreArchivo){
 
-ifstream archi(nombreArchivo,ios::binary|ios::ate);
-if(archi.tellg()<=0){
+	ifstream archi(nombreArchivo,ios::binary|ios::ate);
+	if(archi.tellg()<=0){
+		archi.close();
+		return -1;
+	}
+	if(!archi)
+		throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo);
+	int resultado;
+	int tam = static_cast<int>(sizeof(T));///Antes desfases por esto
+	///Size_of convierte a size_t, el cual solo tiene positivos, por ello
+	///no podiamos retroceder antes
+	archi.seekg(-tam,ios::end);
+	T aux;
+	archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
+	resultado = aux.VerID();
+	cout<<endl<<"Desde VerUltimo: "<<resultado<<endl;
 	archi.close();
-	return -1;
-}
-if(!archi)
-throw runtime_error("error al abrir para VerUltimo-> "+nombreArchivo);
-int resultado;
-int tam = static_cast<int>(sizeof(T));///Antes desfases por esto
-///Size_of convierte a size_t, el cual solo tiene positivos, por ello
-///no podiamos retroceder antes
-archi.seekg(-tam,ios::end);
-T aux;
-archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
-resultado = aux.VerID();
-cout<<endl<<"Desde VerUltimo: "<<resultado<<endl;
-archi.close();
-return resultado;
+	return resultado;
 }
 
 

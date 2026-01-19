@@ -21,8 +21,7 @@ public:
 	vector<Tags> etiquetas(const string& path);
 	bool actualizar_disponibilidad( string nombreArchivo, int id);
 	
-	template<typename S>
-	bool Verificar_Existencia_Binario(int x,string nombreArchivo);
+
 	template<typename S>
 	int Verificar_Existencia_Vector(int dni, vector<S>&v);
 	

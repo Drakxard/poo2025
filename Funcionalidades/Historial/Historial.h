@@ -17,13 +17,11 @@ class Historial{
         this->ingreso=false; 
 		IdUsuario=x;
         }
-        template<typename S>
-        bool Verificar_Existencia(int Id,string nombreArchivo);
-        
 		bool AgregarNuevoRegistro(int IdBibliotecario);//trabajo del bibliotecario
         
 		bool EliminarRegistro(int IdRegistro);
-		
+		template<typename S>
+		bool Verificar_Existencia_Binario(int Id,string nombreArchivo);
 		template<typename S>
         void Ver_Registro(int actual,vector<S>& v,string nombreArchivo);
 

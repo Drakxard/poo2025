@@ -161,7 +161,6 @@ int System::Verificar_Existencia_Vector(int dni,vector<S>&v){
 
 
 
-
 template <typename T> /// Cuando terminas las modificacines lo sobreescribes
 bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {return true;};
 
@@ -194,6 +193,7 @@ template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Tags>&elem
 
 template int System::Verificar_Existencia_Vector(int dni,vector<Bibliotecario>&v);
 template int System::Verificar_Existencia_Vector(int dni,vector<Alumno>&v);
+
 
 template int System::VerUltimo<Alumno>(string nombreArchivo);
 template int System::VerUltimo<Libro>(string nombreArchivo);

@@ -3,6 +3,7 @@
 #include <cstring>
 #include <iostream>
 
+#include <vector>
 using namespace std;
 
 class Libro
@@ -12,6 +13,7 @@ class Libro
 	int diasRestantes;
 	bool disponible; // Quitamos la inicializaci�n aqu� para hacerlo en el constructor
 	bool caduco;
+	vector<int> id_alumnos;
 public:
 	Libro()
 	{
@@ -29,7 +31,7 @@ public:
 		this->caduco = false;
 		this->diasRestantes = 0;
 	}
-	
+	size_t VerDisponible() const;
 	size_t VerID() const;
 	const char* VerNombre() const;
 	void CambiarNombre(const char* NuevoNombre);

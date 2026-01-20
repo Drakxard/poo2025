@@ -1,5 +1,6 @@
 #include "Bibliotecario.h"
 #include "../system/system.h"
+#include "../Historial/Historial.h"
 
 using namespace std;
 
@@ -51,11 +52,6 @@ vector<Libro> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo)
 	return resultado;
 }
 
-void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector<Libro> &Libros)
-{
-	Libros.erase(Eliminar);
-}
-
 
 
 // En bibliotecario.cpp
@@ -102,6 +98,9 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 				cout << "Libro prestado exitosamente. Dias para devolucion: " << diasCalculados << endl;
 				AgregarLibroPrestado(idLibro,Id_Prestamos);
 				return true;
+				Registros nuevo;
+				nuevo.id_usuario=idAlumno;
+				nuevo.id_libro=idLibro;
 				
 			} else {
 				cout << "El libro ya se encuentra prestado." << endl;

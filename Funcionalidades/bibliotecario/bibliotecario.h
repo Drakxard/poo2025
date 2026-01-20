@@ -17,7 +17,7 @@ public:
 	vector<T> AgregarElementos(int Agregar,string nombreArchivo);
 	vector<Libro> AgregarElementos(int Agregar,string nombreArchivo);
 	
-	void EliminarLibro(vector<Libro>::const_iterator Eliminar,vector<Libro>&v);
+	
 
 //	1) Verificar si no es narco para poder prestarle el libro(es para la funcion Prestar Libro)
 	bool Alumno_quiere_un_libro( Alumno& x );

@@ -7,6 +7,10 @@ const char* Libro::VerNombre() const{
     return this->nombre;
 }
 
+size_t Libro:: VerDisponible() const{
+    return this->disponible;
+}
+
 // Corrección: Ahora retorna el atributo de la clase
 bool Libro::EstadoDisponibilidad() const {
     return this->disponible;

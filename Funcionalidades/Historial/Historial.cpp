@@ -13,12 +13,19 @@ bool Historial::EliminarRegistro(int IdRegistro){return true;};//Si quiere elimi
                                                     //un alumno
 
 
-template <typename S>
-void Historial::Ver_Historial(int actual, vector<S>& v, vector<Registros>& r){	
-		system sistema;
-		auto encontrado=find_if(r.begin(), r.end(), [actual](const Registros& a) {
-			return a.VerID() == idLibro;
-
-}
-	   
+//template <typename S>
+//void Historial::Ver_Historial(int actual, vector<S>& v, vector<Registros>& r){	
+//		System sistema;
+//		auto encontrado=find_if(r.begin(), r.end(), [actual](const Registros& a) {
+//			return a.VerID() == idLibro;
+//
+//}
+//	
+//void Historial::Ver_Historial_Libro(int actual, vector<Libro>& v, vector<Registros>& r){	
+//	System sistema;
+//	auto encontrado=find_if(r.begin(), r.end(), [actual](const Registros& a) {
+//		return a.VerID() == idLibro;
+//		
+//	}
+//}
 

@@ -35,7 +35,7 @@ vector<Libro> resultadoLibros;
 ///Estados Especiales
 ///De alumno
 string sancionados = "Recursos/binarios/sancionados.bin";
-string HistorialPrestamos= "Recursos/binarios/Historial.bin"
+string HistorialPrestamos= "Recursos/binarios/Historial.bin";
 ///De libro
 string prestados = "Recursos/binarios/prestados.bin";
 string matematica = "Recursos/binarios/matematica.bin";
@@ -63,7 +63,7 @@ string TagsAlmunos= "Recursos/binarios/Tags/Alumnos.bin";
 
 void menuBibliotecario();
 void menuAlumno();
-vector<libros> BuscarLibro;
+vector<Libro> BuscarLibro;
 
 int main(){
 

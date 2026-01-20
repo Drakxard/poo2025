@@ -23,7 +23,7 @@ public:
 	bool actualizar_disponibilidad( string nombreArchivo, int id);
 	
 	template<typename S>
-	void EliminarLibro(vector<S>::const_iterator Eliminar,vector<S>&v);
+	void EliminarElemento(int Eliminar,vector<S>&v);
 	template<typename S>
 	int Verificar_Existencia_Vector(int dni, vector<S>&v);
 	template<typename S>

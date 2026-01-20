@@ -39,9 +39,10 @@ vector<T> System::VerContenido(string nombreArchivo,bool crear){
     return Resultado;
 }
 template< typename S>
-void System::Eliminar(vector<S>::const_iterator Eliminar, vector<S> &v)
+void System::EliminarElemento(int Eliminar, vector<S> &v)
 {
-	v.erase(Eliminar);
+	auto encontrado = find(v.begin(),v.end(),Eliminar);
+	v.erase(encontrado);
 }
 
 vector<Tags> System::etiquetas(const string& path){

@@ -17,8 +17,6 @@ public:
 	vector<T> AgregarElementos(int Agregar,string nombreArchivo);
 	vector<Libro> AgregarElementos(int Agregar,string nombreArchivo);
 	
-	
-
 //	1) Verificar si no es narco para poder prestarle el libro(es para la funcion Prestar Libro)
 	bool Alumno_quiere_un_libro( Alumno& x );
 	//este es la funcion grande que inicia el proceso de prestamo

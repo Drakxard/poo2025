@@ -12,20 +12,38 @@ bool Historial::AgregarNuevoRegistro(int IdBibliotecario){return true;}//se debe
 bool Historial::EliminarRegistro(int IdRegistro){return true;};//Si quiere eliminar un libro o
                                                     //un alumno
 
-
-//template <typename S>
-//void Historial::Ver_Historial(int actual, vector<S>& v, vector<Registros>& r){	
-//		System sistema;
-//		auto encontrado=find_if(r.begin(), r.end(), [actual](const Registros& a) {
-//			return a.VerID() == idLibro;
-//
-//}
-//	
-//void Historial::Ver_Historial_Libro(int actual, vector<Libro>& v, vector<Registros>& r){	
-//	System sistema;
-//	auto encontrado=find_if(r.begin(), r.end(), [actual](const Registros& a) {
-//		return a.VerID() == idLibro;
-//		
-//	}
-//}
+template <typename S>
+void Historial::Ver_Historial(int actual, vector<S>& v){	
+	auto encontrado = find_if(v.begin(), v.end(), [actual](const S& p){
+		return p.VerID() == actual;
+	});
+	if(encontrado != v.end()){
+		int pos= encontrado-v.begin();
+		if(v[pos].Lectores.size() > 0){
+			for(int i=0;i<v[actual].Leidos.size();++i){
+				cout<<"' "<<v[actual].Leidos[i]<<" '"<<endl;
+			}
+		}else{//		Mostramos los libros si es que ha leído
+			cout<<"No ha leído libros aún"<<endl;
+		}
+	}
+}
+	
+void Historial::Ver_Historial_libros(int actual, vector<Libro>& v){	
+	
+	auto encontrado = find_if(v.begin(), v.end(), [actual](const Libro& l){
+		return l.VerID() == actual;
+	});
+	
+	if(encontrado != v.end()){
+		int pos= encontrado-v.begin();
+		if(v[pos].Agregar_Lectores().size() > 0){
+			for(int i=0;i<v[actual].Agregar_Lectores().size();++i){
+				cout<<"' "<<v[actual].Lectores[i]<<" '"<<endl;
+			}
+		}else{//		Mostramos los libros si es que ha leído
+			cout<<"No ha tenido lectores aún"<<endl;
+		}
+	}
+}
 

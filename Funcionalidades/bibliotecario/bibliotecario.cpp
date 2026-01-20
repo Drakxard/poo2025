@@ -98,9 +98,8 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 				cout << "Libro prestado exitosamente. Dias para devolucion: " << diasCalculados << endl;
 				AgregarLibroPrestado(idLibro,Id_Prestamos);
 				return true;
-				Registros nuevo;
-				nuevo.id_usuario=idAlumno;
-				nuevo.id_libro=idLibro;
+				Agregar_Leidos(idLibro);
+				Libros[idLibro].Agregar_Lectores(idAlumno);
 				
 			} else {
 				cout << "El libro ya se encuentra prestado." << endl;

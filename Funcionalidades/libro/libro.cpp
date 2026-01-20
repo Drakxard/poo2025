@@ -16,6 +16,11 @@ bool Libro::EstadoDisponibilidad() const {
     return this->disponible;
 }
 
+
+void Libro::Agregar_Lectores(size_t idAlumno){
+	Lectores.push_back(idAlumno);
+}
+
 // Nuevo método para cambiar la disponibilidad desde Bibliotecario
 void Libro::SetDisponible(bool d) {
     this->disponible = d;

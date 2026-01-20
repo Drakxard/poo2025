@@ -13,7 +13,7 @@ class Libro
 	int diasRestantes;
 	bool disponible; // Quitamos la inicializaci�n aqu� para hacerlo en el constructor
 	bool caduco;
-	vector<int> id_alumnos;
+	vector<int> Lectores;
 public:
 	Libro()
 	{
@@ -35,7 +35,7 @@ public:
 	size_t VerID() const;
 	const char* VerNombre() const;
 	void CambiarNombre(const char* NuevoNombre);
-	
+	void Agregar_Lectores(size_t x);
 	// M�todos corregidos
 	bool EstadoDisponibilidad() const; 
 	void SetDisponible(bool d); // Nuevo m�todo necesario para PrestarLibros

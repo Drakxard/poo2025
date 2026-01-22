@@ -3,7 +3,6 @@
 #include <cstring>
 #include <iostream>
 
-#include <vector>
 using namespace std;
 
 class Libro
@@ -11,9 +10,8 @@ class Libro
 	size_t id;
 	char nombre[50];
 	int diasRestantes;
-	bool disponible; // Quitamos la inicializaci?n aqu? para hacerlo en el constructor
+	bool disponible; // Quitamos la inicializaci�n aqu� para hacerlo en el constructor
 	bool caduco;
-	vector<int> Lectores;
 public:
 	Libro()
 	{
@@ -31,19 +29,14 @@ public:
 		this->caduco = false;
 		this->diasRestantes = 0;
 	}
-	size_t VerDisponible() const;
+	
 	size_t VerID() const;
 	const char* VerNombre() const;
 	void CambiarNombre(const char* NuevoNombre);
-	void Agregar_Lectores(size_t x);
-	const vector<int> Ver_Lectores() const;
-<<<<<<< Updated upstream
+	
 	// M�todos corregidos
-=======
-	// M?todos corregidos
->>>>>>> Stashed changes
 	bool EstadoDisponibilidad() const; 
-	void SetDisponible(bool d); // Nuevo m?todo necesario para PrestarLibros
+	void SetDisponible(bool d); // Nuevo m�todo necesario para PrestarLibros
 	
 	void CambiarEstado(bool estado); // 1 expirado, 0 no expirado
 	void RestarDia(); 

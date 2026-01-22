@@ -24,7 +24,7 @@ vector<int> Buscador::Ordenar(vector<Tags>v){
 	
 	vector<string> paths;
 	for(size_t i = 0 ; i < v.size(); ++i)
-		paths.push_back(v[i].VerNombre());
+		//paths.push_back(v[i].VerNombre());
 	
 	
 	//A cada path (Recursos/Binarios/Tags/Libros/prestados.bin), etc
@@ -32,7 +32,7 @@ vector<int> Buscador::Ordenar(vector<Tags>v){
 	vector<int> aux;
 	for(size_t i = 0; i < paths.size(); ++i){
 		aux= sistema.VerContenido<int>(paths[i],true);
-		Ids.insert(Ids.end(),aux.begin(),aux.end());
+		//Ids.insert(Ids.end(),aux.begin(),aux.end());
 	
 	}
 	

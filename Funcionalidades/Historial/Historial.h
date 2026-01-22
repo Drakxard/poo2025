@@ -6,38 +6,24 @@
 #include "../alumno/alumno.h"
 #include "../system/system.h"
 
-/*prestados.bin ->registro de los prestamos*/
-struct Registros{
-<<<<<<< Updated upstream
-    int id_usuario, id_libro;
-=======
-	int id_usuario, id_libro;
->>>>>>> Stashed changes
-};
+//prestados.bin ->registro de los prestamos
+
 class Historial{
-	System sistema;  
-	int IdUsuario; //puede ser alumno o bibliotecario
-	bool ingreso;
-public:
-	Historial(int x){
-		this->ingreso=false; 
+    System sistema;  
+    int IdUsuario; //puede ser alumno o bibliotecario
+    bool ingreso;
+    public:
+        Historial(int x){
+        this->ingreso=false; 
 		IdUsuario=x;
-<<<<<<< Updated upstream
         }
 		bool AgregarNuevoRegistro(int IdBibliotecario);//trabajo del bibliotecario
+        
 		bool EliminarRegistro(int IdRegistro);
 		template<typename S>
-		void Ver_Historial(int actual, vector<S>& v);
-		void Ver_Historial_libros(int actual, vector<Libro>& v);
+		bool Verificar_Existencia_Binario(int Id,string nombreArchivo);
+		template<typename S>
+        void Ver_Registro(int actual,vector<S>& v,string nombreArchivo);
 
-=======
-	}
-	bool AgregarNuevoRegistro(int IdBibliotecario);//trabajo del bibliotecario
-	bool EliminarRegistro(int IdRegistro);
-	template<typename S>
-	void Ver_Historial(int actual, vector<S>& v);
-	void Ver_Historial_libros(int actual, vector<Libro>& v);
-	
->>>>>>> Stashed changes
 };
 #endif

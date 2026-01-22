@@ -14,7 +14,7 @@ void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
 	for (size_t i = 0; i < A_Guardar.size(); ++i)
 	{
 		aux = A_Guardar[i];
-		cout<<endl<<"En guardar :"<<aux.VerNombre()<<endl;
+		//cout<<endl<<"En guardar :"<<aux.VerNombre()<<endl;
 		archi.write(reinterpret_cast<const char *>(&(aux)), sizeof(aux));
 	}
 	archi.close();
@@ -38,12 +38,7 @@ vector<T> System::VerContenido(string nombreArchivo,bool crear){
     archi.close();
     return Resultado;
 }
-template< typename S>
-void System::EliminarElemento(int Eliminar, vector<S> &v)
-{
-	auto encontrado = find(v.begin(),v.end(),Eliminar);
-	v.erase(encontrado);
-}
+
 
 vector<Tags> System::etiquetas(const string& path){
 	///Segun el tipo un path?
@@ -128,7 +123,8 @@ bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, strin
 
 
 template<typename T>
-int System::VerUltimo(string nombreArchivo){
+	int System::VerUltimo(string nombreArchivo){
+
 	ifstream archi(nombreArchivo,ios::binary|ios::ate);
 	if(archi.tellg()<=0){
 		archi.close();
@@ -162,22 +158,8 @@ int System::Verificar_Existencia_Vector(int dni,vector<S>&v){
 	return -1;
 }
 
-template< typename S>
-bool System::Verificar_Existencia_Binario(int Id,string nombreArchivo){
-	//Buscar si Alumno/Bibliotecario/Libro por ID que ya existe en el sistema
-	ifstream archi(nombreArchivo, ios::binary| ios::ate);
-	if(!archi)
-		throw runtime_error("no se pudo abrir el archivo, "+nombreArchivo);
-	
-	S aux;
-	archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
-	if(aux.VerID()==Id){
-		archi.close();
-		return true;
-	}
-	archi.close();
-	return false;
-}
+
+
 
 template <typename T> /// Cuando terminas las modificacines lo sobreescribes
 bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {return true;};
@@ -211,8 +193,6 @@ template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Tags>&elem
 
 template int System::Verificar_Existencia_Vector(int dni,vector<Bibliotecario>&v);
 template int System::Verificar_Existencia_Vector(int dni,vector<Alumno>&v);
-
-//template bool System::Verificar_Existencia_Binario(int Id,string nombreArchivo);
 
 
 template int System::VerUltimo<Alumno>(string nombreArchivo);

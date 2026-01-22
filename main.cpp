@@ -8,6 +8,7 @@
 #include "Funcionalidades/bibliotecario/bibliotecario.h"
 #include "Funcionalidades/alumno/alumno.h"
 #include "Funcionalidades/login/login.h" // Si vas a usar login
+#include "Funcionalidades/Tags/Tags.h"
 
 using namespace std; // Importante si usas string sin std::
 
@@ -65,6 +66,33 @@ void menuAlumno();
 
 
 int main(){
+	Tags allTags;
+	
+	string nombreTag;
+	cout<<"Nombre para el nuevo tag: ";
+	getline(cin,nombreTag);
+	
+	allTags.AgregarNuevoTag(nombreTag);
+	cout<<"Nombre ingresado: "<<nombreTag;
+
+	cout<<endl<<endl;
+	cout<<"Nombre para el nuevo tag: ";
+	getline(cin,nombreTag);
+	
+	allTags.AgregarNuevoTag(nombreTag);
+	cout<<"Nombre ingresado: "<<nombreTag;
+	
+	
+	cout<<endl<<endl;
+	cout<<"Nombre para el nuevo tag: ";
+	getline(cin,nombreTag);
+	
+	allTags.AgregarNuevoTag(nombreTag);
+	cout<<"Nombre ingresado: "<<nombreTag;
+	
+	
+	
+	/*
 	vectorAlumnos = sistema.VerContenido<Alumno>(alumnos,true);
 	vectorBibliotecario= sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
 	vectorLibros = sistema.VerContenido<Libro>(libros,true);
@@ -112,16 +140,11 @@ int main(){
 ///	Busqueda de libros basado en una palabra
 	//vector<Libro> encontrar = posiciones(palabraBuscada, vectorLibros);
 
-/*Agregar Nuevos
+Agregar Nuevos
 	cant=1;
 	admin.CargarNuevosLibros(cant,libros);
 */	///Actualizar
-	
-	
-	
-	
-	
-	
+
 	return 0;
 }
 	
@@ -255,13 +278,13 @@ int main(){
 												cout<<"De Libros: "<<endl;
 												Etiquetas = sistema.etiquetas(etiquetasLibros);
 												c=0;
-												for(Tags& x : Etiquetas)
-													cout<<++c<<" ) "<<x.VerNombre()<<endl;
+												//for(Tags& x : Etiquetas)
+													////cout<<++c<<" ) "<<x.VerNombre()<<endl;
 												cout<<"De Alumnos: "<<endl;
 												Etiquetas = sistema.etiquetas(TagsAlmunos);
 												c=0;
-												for(Tags& x : Etiquetas)
-													cout<<++c<<" ) "<<x.VerNombre()<<endl;
+												//for(Tags& x : Etiquetas)
+													//cout<<++c<<" ) "<<x.VerNombre()<<endl;
 												
 												cout<<endl<<endl<<"Preciona para volver";
 												cin.ignore();
@@ -416,13 +439,13 @@ int main(){
 													  cout<<"De Libros: "<<endl;
 													  Etiquetas = sistema.etiquetas(etiquetasLibros);
 													  c=0;
-													  for(Tags& x : Etiquetas)
-														  cout<<++c<<" ) "<<x.VerNombre()<<endl;
+													  //for(Tags& x : Etiquetas)
+														  //cout<<++c<<" ) "<<x.VerNombre()<<endl;
 													  cout<<"De Alumnos: "<<endl;
 													  Etiquetas = sistema.etiquetas(TagsAlmunos);
 													  c=0;
-													  for(Tags& x : Etiquetas)
-														  cout<<++c<<" ) "<<x.VerNombre()<<endl;
+													  //for(Tags& x : Etiquetas)
+														  //cout<<++c<<" ) "<<x.VerNombre()<<endl;
 													  
 													  cout<<endl<<endl<<"Preciona para volver";
 													  cin.ignore();
@@ -573,13 +596,13 @@ int main(){
 														cout<<"De Libros: "<<endl;
 														Etiquetas = sistema.etiquetas(etiquetasLibros);
 														c=0;
-														for(Tags& x : Etiquetas)
-															cout<<++c<<" ) "<<x.VerNombre()<<endl;
+														//for(Tags& x : Etiquetas)
+															//cout<<++c<<" ) "<<x.VerNombre()<<endl;
 														cout<<"De Alumnos: "<<endl;
 														Etiquetas = sistema.etiquetas(TagsAlmunos);
 														c=0;
-														for(Tags& x : Etiquetas)
-															cout<<++c<<" ) "<<x.VerNombre()<<endl;
+														//for(Tags& x : Etiquetas)
+															//cout<<++c<<" ) "<<x.VerNombre()<<endl;
 														
 														cout<<endl<<endl<<"Preciona para volver";
 														cin.ignore();
@@ -729,13 +752,13 @@ int main(){
 													cout<<"De Libros: "<<endl;
 													Etiquetas = sistema.etiquetas(etiquetasLibros);
 													c=0;
-													for(Tags& x : Etiquetas)
-														cout<<++c<<" ) "<<x.VerNombre()<<endl;
+													//for(Tags& x : Etiquetas)
+														//cout<<++c<<" ) "<<x.VerNombre()<<endl;
 													cout<<"De Alumnos: "<<endl;
 													Etiquetas = sistema.etiquetas(TagsAlmunos);
 													c=0;
-													for(Tags& x : Etiquetas)
-														cout<<++c<<" ) "<<x.VerNombre()<<endl;
+													//for(Tags& x : Etiquetas)
+														//cout<<++c<<" ) "<<x.VerNombre()<<endl;
 													
 													cout<<endl<<endl<<"Preciona para volver";
 													cin.ignore();

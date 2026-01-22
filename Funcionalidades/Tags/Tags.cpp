@@ -2,24 +2,24 @@
 
 using namespace std;
 
-
-int Tags::VerID() const
-{
-	return id;
+void Tags::AgregarNuevoTag(string NombreTag){
+	Tag nuevoTag;
+	nuevoTag.IdTag = ++CantidadTags;
+	nuevoTag.NombreTag = NombreTag;
+	
+	nuevoTag.InicioBloque = UltimaDireccion;
+	cout<<"Bloque Inicia en:"<<nuevoTag.InicioBloque<<endl;
+	UltimaDireccion += TamBloque;
+	cout<<"Bloque Finaliza en:"<<UltimaDireccion-1<<endl;
+	///Asignar Bloque
+	Bloque bloqueNuevo;
+	bloqueNuevo.CantidadElementos=0;
+	bloqueNuevo.SiguienteBloque=-1;
+	cout<<endl<<"Tam asignado: "<<sizeof(bloqueNuevo)<<endl;
+	///EscribirTagAlFinal(nuevoTag);
+	///EscribirBloqueAlFinal(bloqueNuevo);
+	
 }
 
-const char *Tags::VerNombre() const
-{
-	return this->nombre;
-}
-void Tags::CambiarNombre(const char *NuevoNombre)
-{
-	strncpy(this->nombre, NuevoNombre, 49);
-	this->nombre[49] = '\0';
-}
-void Tags::Cambiar_Id(int nuevo_id){
-	cin>>nuevo_id;
-	this->id= nuevo_id;
-}
-
-
+//bool AgregarNuevoElemento(int IdTag, int idLibro);
+//vector<int>LeerTodosLosElementos(int IdTag);

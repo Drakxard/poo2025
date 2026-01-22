@@ -14,7 +14,7 @@ void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
 	for (size_t i = 0; i < A_Guardar.size(); ++i)
 	{
 		aux = A_Guardar[i];
-		cout<<endl<<"En guardar :"<<aux.VerNombre()<<endl;
+		//cout<<endl<<"En guardar :"<<aux.VerNombre()<<endl;
 		archi.write(reinterpret_cast<const char *>(&(aux)), sizeof(aux));
 	}
 	archi.close();

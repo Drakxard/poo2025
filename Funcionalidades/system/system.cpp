@@ -212,7 +212,7 @@ template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Tags>&elem
 template int System::Verificar_Existencia_Vector(int dni,vector<Bibliotecario>&v);
 template int System::Verificar_Existencia_Vector(int dni,vector<Alumno>&v);
 
-template bool System::Verificar_Existencia_Binario(int Id,string nombreArchivo);
+//template bool System::Verificar_Existencia_Binario(int Id,string nombreArchivo);
 
 
 template int System::VerUltimo<Alumno>(string nombreArchivo);

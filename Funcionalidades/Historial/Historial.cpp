@@ -19,11 +19,12 @@ void Historial::Ver_Historial(int actual, vector<S>& v){
 	});
 	if(encontrado != v.end()){
 		int pos= encontrado-v.begin();
-		if(v[pos].Lectores.size() > 0){
+		if(v[pos].Ver_Leidos.size() > 0){
+			//		Mostramos los libros si es que ha leído
 			for(int i=0;i<v[actual].Leidos.size();++i){
 				cout<<"' "<<v[actual].Leidos[i]<<" '"<<endl;
 			}
-		}else{//		Mostramos los libros si es que ha leído
+		}else{
 			cout<<"No ha leído libros aún"<<endl;
 		}
 	}
@@ -37,11 +38,12 @@ void Historial::Ver_Historial_libros(int actual, vector<Libro>& v){
 	
 	if(encontrado != v.end()){
 		int pos= encontrado-v.begin();
-		if(v[pos].Agregar_Lectores().size() > 0){
-			for(int i=0;i<v[actual].Agregar_Lectores().size();++i){
-				cout<<"' "<<v[actual].Lectores[i]<<" '"<<endl;
+		if(v[pos].Ver_Lectores().size() > 0){
+			//Mostramos los libros si es que ha leído
+			for(int i = 0; i < v[pos].Ver_Lectores().size(); ++i){
+				cout << "' " << v[pos].Ver_Lectores()[i] << " '" << endl;
 			}
-		}else{//		Mostramos los libros si es que ha leído
+		}else{
 			cout<<"No ha tenido lectores aún"<<endl;
 		}
 	}

@@ -36,6 +36,7 @@ public:
 	const char* VerNombre() const;
 	void CambiarNombre(const char* NuevoNombre);
 	void Agregar_Lectores(size_t x);
+	const vector<int> Ver_Lectores() const;
 	// M�todos corregidos
 	bool EstadoDisponibilidad() const; 
 	void SetDisponible(bool d); // Nuevo m�todo necesario para PrestarLibros

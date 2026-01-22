@@ -21,6 +21,10 @@ void Libro::Agregar_Lectores(size_t idAlumno){
 	Lectores.push_back(idAlumno);
 }
 
+const vector<int> Libro:: Ver_Lectores()const {
+	return Lectores;
+}
+
 // Nuevo método para cambiar la disponibilidad desde Bibliotecario
 void Libro::SetDisponible(bool d) {
     this->disponible = d;

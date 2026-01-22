@@ -27,6 +27,7 @@ public:
 		void CambiarNombre(const char *NuevoNombre);
 		void Cambiar_Id( int nuevo_id);
 		void Agregar_Leidos(size_t x);
+		const vector<int> Ver_Leidos() const;
 		vector<Libro> VerLibros(string nombreArchivo,bool crear=false);//usan tanto el Bibliotecario como el Alumno
 };
 #endif // 3. Fin de la condici�n

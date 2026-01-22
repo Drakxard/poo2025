@@ -24,6 +24,7 @@ void Persona::Cambiar_Id(int nuevo_id){
 	this->id= nuevo_id;
 }
 
+<<<<<<< Updated upstream
 void Persona::Agregar_Leidos(size_t idLibro){
 	Leidos.push_back(idLibro);
 }
@@ -31,6 +32,15 @@ void Persona::Agregar_Leidos(size_t idLibro){
 const vector<int> Persona:: Ver_Leidos()const {
 	return Leidos;
 }
+=======
+//void Persona::Agregar_Leidos(size_t idLibro){
+//	Leidos.push_back(idLibro);
+//}
+//
+//const vector<int> Persona:: Ver_Leidos()const {
+//	return Leidos;
+//}
+>>>>>>> Stashed changes
 
 vector<Libro> Persona::VerLibros(string nombreArchivo,bool crear){
 	ifstream archi(nombreArchivo,ios::binary);

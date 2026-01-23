@@ -158,8 +158,22 @@ int System::Verificar_Existencia_Vector(int dni,vector<S>&v){
 	return -1;
 }
 
-
-
+template< typename S>
+bool Verificar_Existencia_Binario(int Id,string nombreArchivo){
+	//Buscar si Alumno/Bibliotecario/Libro por ID si existe
+	ifstream archi(nombreArchivo, ios::binary| ios::ate);
+	if(!archi)
+		throw runtime_error("no se pudo abrir el archivo, "+nombreArchivo);
+	
+	S aux;
+	archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
+	if(aux.VerID()==Id){
+		archi.close();
+		return true;
+	}
+	archi.close();
+	return false;
+}
 
 template <typename T> /// Cuando terminas las modificacines lo sobreescribes
 bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {return true;};

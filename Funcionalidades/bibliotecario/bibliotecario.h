@@ -22,7 +22,7 @@ public:
 //	1) Verificar si no es narco para poder prestarle el libro(es para la funcion Prestar Libro)
 	bool Alumno_quiere_un_libro( Alumno& x );
 	//este es la funcion grande que inicia el proceso de prestamo
-	bool PrestarLibros(size_t idLibro,size_t idAlumno, vector<Libro>&Libros,vector<Alumno>&Alumno,vector<int>Id_Prestamos, int dia, int mes, int anio);
+	bool PrestarLibros(size_t idLibro,size_t idAlumno, vector<Libro>&Libros,vector<Alumno>&Alumno,vector<int>&Id_Prestamos, int dia, int mes, int anio);
 	// calcula la candtidad de dias de la diferencia entre hoy y la fecha de cuando se iene que devolver el libro(esta funcion se creo para la funcion prestar un libro y para ir actualizando los dias restantes del libro)
 	int CalcularDiferenciaDias(int dia, int mes, int anio);
 

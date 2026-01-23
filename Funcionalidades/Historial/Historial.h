@@ -20,10 +20,10 @@ class Historial{
 		bool AgregarNuevoRegistro(int IdBibliotecario);//trabajo del bibliotecario
         
 		bool EliminarRegistro(int IdRegistro);
+		
 		template<typename S>
-		bool Verificar_Existencia_Binario(int Id,string nombreArchivo);
-		template<typename S>
-        void Ver_Registro(int actual,vector<S>& v,string nombreArchivo);
+		void Ver_Historial(int actual, vector<S>& v);
+		void Ver_Historial_libros(int actual, vector<Libro>& v);
 
 };
 #endif

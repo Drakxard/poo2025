@@ -58,3 +58,11 @@ bool Libro::operator==(const Libro& otro) const {
 }
 
 
+void Libro::Agregar_Lectores(size_t idAlumno){
+	Lectores.push_back(idAlumno);
+}
+
+const vector<int>& Libro::Ver_Lectores() const {
+	return Lectores;
+}
+

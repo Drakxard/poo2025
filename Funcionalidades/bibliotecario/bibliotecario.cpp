@@ -60,54 +60,56 @@ void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector
 
 // En bibliotecario.cpp
 
-bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos,vector<int>Id_Prestamos, int dia, int mes, int anio)
+bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos,vector<int>& Id_Prestamos, int dia, int mes, int anio)
 {
-	// 1. Buscar si el alumno por ID si existe
-	///No esta siendo usado
-	/*auto itAlumno = find_if(Alumnos.begin(), Alumnos.end(), [idAlumno](const Alumno& a) {
+//	 1. Buscar si el alumno por ID si existe
+	auto itAlumno = find_if(Alumnos.begin(), Alumnos.end(), [idAlumno](const Alumno& a) {
 			return a.VerID() == idAlumno;
 		});
-	*/
-	if(idLibro>Alumnos.size()){
-			cout<<"C�digo de libro inexistente, Libro no encontrado." << endl;
-			return false; //no existe el libro o est� prestado
-		}
+	
+	if(itAlumno == Alumnos.end()){
+		cout << "Alumno no encontrado." << endl;
+		return false;
+	}
 	//verificar si el alumno no esta sancionado
 		
 	
-		// 1. Buscar el libro por ID si existe
-		auto itlibro = find_if(Libros.begin(), Libros.end(), [idLibro](const Libro& a) {
-			return a.VerID() == idLibro;
-		});
+	// 1. Buscar el libro por ID si existe
+	auto itlibro = find_if(Libros.begin(), Libros.end(), [idLibro](const Libro& a) {
+		return a.VerID() == idLibro;
+	});
 		
-		if(idLibro>Libros.size()){
-			cout<<"C�digo de libro inexistente, Libro no encontrado." << endl;
-			return false; //no existe el libro o est� prestado
-		}
+//		if(idLibro>Libros.size()){
+//			cout<<"C�digo de libro inexistente, Libro no encontrado." << endl;
+//			return false; //no existe el libro o est� prestado
+//		}
 		
-		// 2. Verificar si existe
-		if (itlibro != Libros.end()) {
-			// 3. Verificar disponibilidad
-			if (itlibro->EstadoDisponibilidad()) {
-				
-				// Marcar como NO disponible
-				itlibro->SetDisponible(false); 
-				
-				// Calcular días restantes hasta la fecha dada
-				int diasCalculados = CalcularDiferenciaDias(dia, mes, anio);
+	// 2. Verificar si existe
+	if (itlibro != Libros.end()) {
+		// 3. Verificar disponibilidad
+		if (itlibro->EstadoDisponibilidad()) {
+			
+			// Marcar como NO disponible
+			itlibro->SetDisponible(false); 
+			
+			// Calcular días restantes hasta la fecha dada
+			int diasCalculados = CalcularDiferenciaDias(dia, mes, anio);
 
-				// Asignar los días al libro
-				itlibro->DiasRestantes(diasCalculados);
-				
-				cout << "Libro prestado exitosamente. Dias para devolucion: " << diasCalculados << endl;
-				AgregarLibroPrestado(idLibro,Id_Prestamos);
-				return true;
-				
-			} else {
-				cout << "El libro ya se encuentra prestado." << endl;
-				return false; 
-			}
+			// Asignar los días al libro
+			itlibro->DiasRestantes(diasCalculados);
+			
+			Id_Prestamos.push_back(idLibro);
+			itlibro->Agregar_Lectores(idAlumno);
+			itAlumno->Agregar_Leidos(idLibro);
+			
+			cout << "Libro prestado exitosamente. Dias para devolucion: " << diasCalculados << endl;
+			return true;
+			
+		} else {
+			cout << "El libro ya se encuentra prestado." << endl;
+			return false; 
 		}
+	}
     
     cout << "Libro no encontrado." << endl;
     return false;

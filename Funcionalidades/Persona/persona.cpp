@@ -24,6 +24,14 @@ void Persona::Cambiar_Id(int nuevo_id){
 	this->id= nuevo_id;
 }
 
+void Persona::Agregar_Leidos(size_t idLibro){
+	Leidos.push_back(idLibro);
+}
+
+const vector<int>& Persona::Ver_Leidos() const {
+	return Leidos;
+}
+
 vector<Libro> Persona::VerLibros(string nombreArchivo,bool crear){
 	ifstream archi(nombreArchivo,ios::binary);
 	if(crear){

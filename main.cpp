@@ -68,28 +68,23 @@ void menuAlumno();
 int main(){
 	Tags allTags;
 	
-	string nombreTag;
-	cout<<"Nombre para el nuevo tag: ";
-	getline(cin,nombreTag);
 	
-	allTags.AgregarNuevoTag(nombreTag);
-	cout<<"Nombre ingresado: "<<nombreTag;
-
+	TagUnitario auxTags;
+	vector<TagUnitario> tagsActuales;
+	auxTags = allTags.AgregarNuevoTag();
+	tagsActuales.push_back(auxTags);
+	auxTags = allTags.AgregarNuevoTag();
+	tagsActuales.push_back(auxTags);
+	auxTags = allTags.AgregarNuevoTag();
+	tagsActuales.push_back(auxTags);
+	Tags etiquetas;
+	///Guardar tags
+	sistema.Guardar<TagUnitario>(etiquetas.VerPathEtiquetas(),tagsActuales);
+	
+	tagsActuales = sistema.VerContenido<TagUnitario>(etiquetas.VerPathEtiquetas(),true);
 	cout<<endl<<endl;
-	cout<<"Nombre para el nuevo tag: ";
-	getline(cin,nombreTag);
-	
-	allTags.AgregarNuevoTag(nombreTag);
-	cout<<"Nombre ingresado: "<<nombreTag;
-	
-	
-	cout<<endl<<endl;
-	cout<<"Nombre para el nuevo tag: ";
-	getline(cin,nombreTag);
-	
-	allTags.AgregarNuevoTag(nombreTag);
-	cout<<"Nombre ingresado: "<<nombreTag;
-	
+	for(TagUnitario& x:tagsActuales)
+		cout<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<endl;
 	
 	
 	/*

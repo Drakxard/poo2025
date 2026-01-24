@@ -2,12 +2,31 @@
 #include "../system/system.h"
 #include "../login/login.h"
 
+
 using namespace std;
 
-void Tags::AgregarNuevoTag(string NombreTag){
-	Tag nuevoTag;
+Tags::Tags(){
+	UltimaDireccion= actual.VerUltimaDireccion();
+	CantidadTags = actual.VerCantidadTags();
+	cout<<"Construido con: "<<endl<<
+		"UltimaDireccion: "<<UltimaDireccion<<endl<<
+		"CantidadTags: "<<CantidadTags;
+}
+Tags::~Tags(){
+	actual.AsignarUltimaDireccion(UltimaDireccion);
+	actual.AsignarCantidadTags(CantidadTags);
+}
+
+
+TagUnitario Tags::AgregarNuevoTag(){
+	string nombreTag;
+	cout<<"Nombre para el nuevo tag: ";
+	getline(cin,nombreTag);
+	
+	
+	TagUnitario nuevoTag;
 	nuevoTag.IdTag = ++CantidadTags;
-	nuevoTag.NombreTag = NombreTag;
+	nuevoTag.NombreTag = nombreTag;
 	
 	nuevoTag.InicioBloque = UltimaDireccion;
 	cout<<"Bloque Inicia en:"<<nuevoTag.InicioBloque<<endl;
@@ -18,7 +37,7 @@ void Tags::AgregarNuevoTag(string NombreTag){
 	bloqueNuevo.CantidadElementos=0;
 	bloqueNuevo.SiguienteBloque=-1;
 	cout<<endl<<"Tam asignado: "<<sizeof(bloqueNuevo)<<endl;
-	///EscribirTagAlFinal(nuevoTag);
+	return nuevoTag;
 	///EscribirBloqueAlFinal(bloqueNuevo);
 	
 }
@@ -38,7 +57,7 @@ size_t Tags::AgregarNuevoBloque(){
 	
 
 bool Tags::AgregarNuevoElemento(size_t IdTag, size_t idLibro){
-	Bloque aux = sistema->VerContenido(allTags,IdTag);
+	Bloque aux;// = sistema->VerContenido(allTags,IdTag);
 	size_t nuevoBloque;
 	vector<size_t> resultado;
 	if(aux.CantidadElementos != 0){

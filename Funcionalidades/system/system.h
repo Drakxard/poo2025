@@ -17,6 +17,7 @@ public:
 	System(){};
 	template<typename T>
 	void Guardar(string nombreArhivo, vector<T> &A_Guardar);
+	
 	//Falta codear Eliminar, tempalte
 	vector<Tags> etiquetas(const string& path);
 	bool actualizar_disponibilidad( string nombreArchivo, int id);

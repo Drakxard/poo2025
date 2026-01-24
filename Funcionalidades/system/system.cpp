@@ -3,6 +3,7 @@
 #include "../Tags/Tags.h"
 
 #include <fstream>
+
 using namespace std;
 template <typename T>  ///Cambiar a Guardar al final
 void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
@@ -203,6 +204,7 @@ template void System::Guardar<Alumno>(string, vector<Alumno>&);
 template void System::Guardar<Libro>(string, vector<Libro>&);
 template void System::Guardar<Bibliotecario>(string, vector<Bibliotecario>&);
 template void System::Guardar<Bloque>(string, vector<Bloque>&);
+template void System::Guardar<TagUnitario>(string, vector<TagUnitario>&);
 
 
 // Instanciaci�n para VerContenido
@@ -210,6 +212,7 @@ template vector<Alumno> System::VerContenido<Alumno>(string, bool);
 template vector<Libro> System::VerContenido<Libro>(string, bool);
 template vector<Bibliotecario> System::VerContenido<Bibliotecario>(string, bool);
 template vector<int> System::VerContenido<int>(string, bool);
+template vector<TagUnitario> System::VerContenido<TagUnitario>(string, bool);
 
 // Instanciaci�n para LeerDelBin y EscribirDelBin
 template vector<Alumno> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);

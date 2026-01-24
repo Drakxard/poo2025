@@ -1,6 +1,8 @@
 #include "system.h"
 #include "../bibliotecario/bibliotecario.h"
+#include "../Tags/Tags.h"
 
+#include <fstream>
 using namespace std;
 template <typename T>  ///Cambiar a Guardar al final
 void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
@@ -49,6 +51,20 @@ vector<Tags> System::etiquetas(const string& path){
 	return resultado;
 
 }
+
+
+Bloque System::VerContenido(string nombreArchivo,size_t NroBloque){
+	ifstream archi(nombreArchivo,ios::binary);
+	if(!archi)
+		throw runtime_error("Error al Recuperar de " + nombreArchivo);
+
+Bloque aux;
+archi.seekg(sizeof(Bloque)*NroBloque);
+archi.read(reinterpret_cast<char*>(&(aux)),sizeof(aux));
+archi.close();
+return aux;
+}
+
 
 template <typename T>
 vector<T> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo)
@@ -186,7 +202,7 @@ bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {return true;};
 template void System::Guardar<Alumno>(string, vector<Alumno>&);
 template void System::Guardar<Libro>(string, vector<Libro>&);
 template void System::Guardar<Bibliotecario>(string, vector<Bibliotecario>&);
-
+template void System::Guardar<Bloque>(string, vector<Bloque>&);
 
 
 // Instanciaci�n para VerContenido

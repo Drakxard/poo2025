@@ -5,29 +5,32 @@
 #include <vector>
 using namespace std;
 struct Tag{
-	int IdTag;
+	size_t IdTag;
 	string NombreTag;
-	int InicioBloque;
+	size_t InicioBloque;
 };
 
 struct Bloque{
-	int CantidadElementos;
-	int SiguienteBloque;
-	int Elementos[1022];
+	size_t CantidadElementos;
+	size_t SiguienteBloque;
+	size_t Elementos[1022];
 };
+class System;
 class Tags {
+	System *sistema;
 	size_t TamBloque= 4096;
-	int UltimaDireccion = 0;
-	int CantidadTags=0;
+	size_t UltimaDireccion = 0;
+	size_t CantidadTags=0;
 	string allTags= "Recursos/Binarios/Tags/tags_data.bin";
 	
 public:
 	Tags(){};
 	void AgregarNuevoTag(string NombreTag);
-	vector<int>LeerTodosLosElementos(int IdTag);
+	size_t AgregarNuevoBloque();
+	vector<size_t>LeerTodosLosElementos(size_t IdTag);
 	///Usar Como en AgregarNuevoElemento, VerContenido Actualizado
 	/// o Sobrecargado para bloques
-	bool AgregarNuevoElemento(int IdTag, int idLibro);
+	bool AgregarNuevoElemento(size_t IdTag, size_t idLibro);
 	///VerContenido<Bloque>, me da todo el bloque
 	///Pero deberia ser el bloque correcto, 
 	///por ende no todo el archivo sino basado en id, asi seek y Leer
@@ -37,7 +40,7 @@ public:
 	///Y escribir el bloque actualizado
 	///Return true al final, llego bien
 	
-	int CantTags(){return CantidadTags;}
+	size_t CantTags(){return CantidadTags;}
 };
 
 #endif

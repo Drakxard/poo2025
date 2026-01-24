@@ -32,6 +32,7 @@ public:
 	int VerUltimo(string nombreArchivo);
 	template <typename T> 
 	vector<T> VerContenido(string nombreArchivo, bool crear);
+	Bloque VerContenido(string nombreArchivo,size_t NroBloque);
 	template <typename T>
 	vector<T> LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
 	template <typename T>

@@ -67,7 +67,7 @@ return aux;
 }
 void System::Guardar(string nombreArhivo, Bloque &A_Guardar, size_t Pos)
 {
-	ofstream archi(nombreArhivo, ios::binary|ios::app);
+	ofstream archi(nombreArhivo, ios::binary);
 	
 	if (!archi)
 		throw runtime_error("Error al guardar en " + nombreArhivo);

@@ -27,7 +27,8 @@ TagUnitario Tags::AgregarNuevoTag(){
 	
 	
 	TagUnitario nuevoTag;
-	nuevoTag.IdTag = ++CantidadTags;
+	nuevoTag.IdTag = CantidadTags;
+	++CantidadTags;
 	nuevoTag.NombreTag = nombreTag;
 	
 	nuevoTag.InicioBloque = UltimaDireccion;
@@ -56,7 +57,7 @@ size_t Tags::AgregarNuevoBloque(){
 	
 
 bool Tags::AgregarNuevoElemento(size_t IdTag, size_t idLibro){
-	Bloque aux = sistema->VerContenido(allTags,IdTag);
+	Bloque aux = sistema->VerContenido(allTags_data,IdTag);
 	
 
 	aux.Elementos[aux.CantidadElementos]=idLibro;
@@ -67,7 +68,7 @@ bool Tags::AgregarNuevoElemento(size_t IdTag, size_t idLibro){
 	return true;
 }
 vector<size_t> Tags::LeerTodosLosElementos(size_t IdTag){
-	Bloque aux = sistema->VerContenido(allTags,IdTag);
+	Bloque aux = sistema->VerContenido(allTags_data,IdTag);
 	vector<size_t> resultado;
 	bool parar = false;
 	while(!parar){
@@ -79,7 +80,7 @@ vector<size_t> Tags::LeerTodosLosElementos(size_t IdTag){
 		
 		if(aux.SiguienteBloque!= 0){
 			///Tomar siguiente bloque
-			aux = sistema->VerContenido(allTags,aux.SiguienteBloque);
+			aux = sistema->VerContenido(allTags_data,aux.SiguienteBloque);
 		}else{parar = true;}
 	}
 	return resultado;

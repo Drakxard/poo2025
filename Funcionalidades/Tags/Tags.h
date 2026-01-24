@@ -19,7 +19,7 @@ struct Bloque{
 class System;
 class Tags {
 	System *sistema;
-	size_t TamBloque= 4096;
+	size_t TamBloque= sizeof(Bloque);
 	size_t UltimaDireccion = 0;
 	size_t CantidadTags=0;
 	string allTags_data= "./Recursos/Binarios/Tags/tags_data.bin";

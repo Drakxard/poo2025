@@ -93,8 +93,9 @@ int main(){
 	cout<<"Ingresado IdTag: ";cin>>IDtag;
 	cout<<"Id a agregar: ";cin>>IDNuevo;
 	
+	
+	
 	allTags.AgregarNuevoElemento(IDtag,IDNuevo);
-	cout<<endl<<"Agregado..."<<endl;
 	
 	cout<<endl<<"Todos los id de ese bloque son: "<<endl;
 	vector<size_t>resultado = allTags.LeerTodosLosElementos(IDtag);

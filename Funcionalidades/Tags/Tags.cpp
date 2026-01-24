@@ -80,7 +80,6 @@ vector<size_t> Tags::LeerTodosLosElementos(size_t IdTag){
 		}
 		
 		if(aux.SiguienteBloque!= 0){
-			///Tomar siguiente bloque
 			aux = sistema->VerContenido(allTags_data,aux.SiguienteBloque);
 		}else{parar = true;}
 	}

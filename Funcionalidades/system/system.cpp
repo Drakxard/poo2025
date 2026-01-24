@@ -67,11 +67,19 @@ return aux;
 }
 void System::Guardar(string nombreArhivo, Bloque &A_Guardar, size_t Pos)
 {
-	ofstream archi(nombreArhivo, ios::binary);
+	fstream archi(nombreArhivo, ios::binary | ios::in | ios::out);
+	
+	if (!archi) {
+		ofstream crear(nombreArhivo, ios::binary);
+		crear.close();
+		archi.open(nombreArhivo, ios::binary | ios::in | ios::out);
+		
+	}
 	
 	if (!archi)
 		throw runtime_error("Error al guardar en " + nombreArhivo);
-	archi.seekp(sizeof(Bloque)*Pos);
+	
+	archi.seekp(sizeof(Bloque) * Pos);
 	archi.write(reinterpret_cast<const char *>(&(A_Guardar)), sizeof(Bloque));
 	archi.close();
 }

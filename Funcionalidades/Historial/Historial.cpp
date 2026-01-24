@@ -10,53 +10,28 @@
 
 bool Historial::AgregarNuevoRegistro(int IdBibliotecario){return true;}//se debe agregar automaticamente                                                          //una vez prestado el libro
 bool Historial::EliminarRegistro(int IdRegistro){return true;};//Si quiere eliminar un libro o
-                                                    //un alumno
-
-
-template <typename S>
-void Historial::Ver_Historial(int actual, vector<S>& v){	
-	auto encontrado = find_if(v.begin(), v.end(), [actual](const S& p){
-		return p.VerID() == actual;
-	});
+//un alumno
+template< typename S>
+bool Verificar_Existencia_Binario(int Id,string nombreArchivo){
+	//Buscar si Alumno/Bibliotecario/Libro por ID si existe
+	ifstream archi(nombreArchivo, ios::binary| ios::ate);
+	if(!archi)
+		throw runtime_error("no se pudo abrir el archivo, "+nombreArchivo);
 	
-	if(encontrado != v.end()){
-		int pos = encontrado - v.begin();
-		
-		const vector<int>& leidos = v[pos].Ver_Leidos();
-		
-		if(leidos.size() > 0){
-			for(int i = 0; i < leidos.size(); ++i){
-				cout << "' " << leidos[i] << " '" << endl;
-			}
-		}else{
-			cout << "No ha leído libros aún" << endl;
-		}
-	}else{
-		cout << "Persona no encontrada." << endl;
+	S aux;
+	archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
+	if(aux.VerID()==Id){
+		archi.close();
+		return true;
 	}
+	archi.close();
+	return false;
 }
-
-void Historial::Ver_Historial_libros(int actual, vector<Libro>& v){	
 	
-	auto encontrado = find_if(v.begin(), v.end(), [actual](const Libro& l){
-		return l.VerID() == actual;
-	});
-	
-	if(encontrado != v.end()){
-		int pos = encontrado - v.begin();
-		
-		const vector<int>& lectores = v[pos].Ver_Lectores();
-		
-		if(lectores.size() > 0){
-			for(int i = 0; i < lectores.size(); ++i){
-				cout << "' " << lectores[i] << " '" << endl;
-			}
-		}else{
-			cout << "No ha tenido lectores aún" << endl;
-		}
-	}else{
-		cout << "Libro no encontrado." << endl;
+	template <typename S>
+		void Historial::Ver_Registro(int actual, vector<S>& v, string nombreArchivo){	
+		//	if(Verificar_Existencia_Binario(actual,nombreArchivo)){
+		//mostrar el historial de libros o usuarios
+		//pero como lo hago?
 	}
-}
-	   
-
+	

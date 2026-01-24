@@ -66,9 +66,9 @@ void menuAlumno();
 
 
 int main(){
+
 	Tags allTags;
-	
-	
+		
 	TagUnitario auxTags;
 	vector<TagUnitario> tagsActuales;
 	auxTags = allTags.AgregarNuevoTag();
@@ -77,14 +77,31 @@ int main(){
 	tagsActuales.push_back(auxTags);
 	auxTags = allTags.AgregarNuevoTag();
 	tagsActuales.push_back(auxTags);
-	Tags etiquetas;
+
 	///Guardar tags
-	sistema.Guardar<TagUnitario>(etiquetas.VerPathEtiquetas(),tagsActuales);
+	sistema.Guardar<TagUnitario>(allTags.VerPathEtiquetas(),tagsActuales);
 	
-	tagsActuales = sistema.VerContenido<TagUnitario>(etiquetas.VerPathEtiquetas(),true);
+	tagsActuales = sistema.VerContenido<TagUnitario>(allTags.VerPathEtiquetas(),true);
 	cout<<endl<<endl;
 	for(TagUnitario& x:tagsActuales)
-		cout<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<endl;
+		cout<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<
+		"   < ------ >  "<<x.IdTag<<  endl;
+	
+	
+	
+	size_t IDtag, IDNuevo;
+	cout<<"Ingresado IdTag: ";cin>>IDtag;
+	cout<<"Id a agregar: ";cin>>IDNuevo;
+	
+	allTags.AgregarNuevoElemento(IDtag,IDNuevo);
+	cout<<endl<<"Agregado..."<<endl;
+	
+	cout<<endl<<"Todos los id de ese bloque son: "<<endl;
+	vector<size_t>resultado = allTags.LeerTodosLosElementos(IDtag);
+	for(size_t& x : resultado)
+		cout<<x<<"     ";
+	
+	
 	
 	
 	/*

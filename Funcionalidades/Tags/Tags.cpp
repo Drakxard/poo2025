@@ -3,6 +3,7 @@
 #include "../login/login.h"
 
 
+#include <vector>
 using namespace std;
 
 Tags::Tags(){
@@ -12,6 +13,7 @@ Tags::Tags(){
 		"UltimaDireccion: "<<UltimaDireccion<<endl<<
 		"CantidadTags: "<<CantidadTags;
 }
+
 Tags::~Tags(){
 	actual.AsignarUltimaDireccion(UltimaDireccion);
 	actual.AsignarCantidadTags(CantidadTags);
@@ -35,52 +37,32 @@ TagUnitario Tags::AgregarNuevoTag(){
 	///Asignar Bloque
 	Bloque bloqueNuevo;
 	bloqueNuevo.CantidadElementos=0;
-	bloqueNuevo.SiguienteBloque=-1;
+	bloqueNuevo.SiguienteBloque=0;
 	cout<<endl<<"Tam asignado: "<<sizeof(bloqueNuevo)<<endl;
+	sistema->Guardar(allTags_data,bloqueNuevo,nuevoTag.IdTag);
 	return nuevoTag;
-	///EscribirBloqueAlFinal(bloqueNuevo);
+	
 	
 }
 
 size_t Tags::AgregarNuevoBloque(){
-	cout<<"Bloque Inicia en:"<<UltimaDireccion<<endl;
 	UltimaDireccion += TamBloque;
-	cout<<"Bloque Finaliza en:"<<UltimaDireccion-1<<endl;
-	///Asignar Bloque
+
 	Bloque bloqueNuevo;
 	bloqueNuevo.CantidadElementos=0;
 	bloqueNuevo.SiguienteBloque=-1;
-	cout<<endl<<"Tam asignado: "<<sizeof(bloqueNuevo)<<endl;
-	///EscribirBloqueAlFinal(bloqueNuevo);
 	return UltimaDireccion;
 }
 	
 
 bool Tags::AgregarNuevoElemento(size_t IdTag, size_t idLibro){
-	Bloque aux;// = sistema->VerContenido(allTags,IdTag);
-	size_t nuevoBloque;
-	vector<size_t> resultado;
-	if(aux.CantidadElementos != 0){
-	///Caso bloque con elementos
-	for(size_t i = 0; i < aux.CantidadElementos; ++i){
-		resultado.push_back(aux.Elementos[i]);
-	}
-		resultado.push_back(idLibro);
-	}
-	if(aux.CantidadElementos == 0){
-		resultado.push_back(idLibro);
-	}
+	Bloque aux = sistema->VerContenido(allTags,IdTag);
 	
-	if(aux.CantidadElementos == resultado.size()){///Bloque lleno
-		nuevoBloque = AgregarNuevoBloque();
-		AgregarNuevoElemento(nuevoBloque,idLibro);
-	}
-	
-	///Ajustar para usar Guardar
+
+	aux.Elementos[aux.CantidadElementos]=idLibro;
 	++aux.CantidadElementos;
-	vector<Bloque> Bloques;
-	Bloques.push_back(aux);
-	sistema->Guardar<Bloque>(allTags,Bloques);
+	
+	sistema->Guardar(allTags_data,aux,IdTag);
 	
 	return true;
 }
@@ -92,17 +74,13 @@ vector<size_t> Tags::LeerTodosLosElementos(size_t IdTag){
 	
 		for(size_t i = 0; i < aux.CantidadElementos; ++i){
 			resultado.push_back(aux.Elementos[i]);
+			cout<<"["<<i<<"] "<<aux.Elementos[i]<<endl;
 		}
-		if(aux.CantidadElementos == resultado.size()){
-			if(aux.SiguienteBloque!= -1){
-				///Tomar siguiente bloque
-				aux = sistema->VerContenido(allTags,aux.SiguienteBloque);
-			}
-		}
-		if(aux.SiguienteBloque== -1)
-			parar = true;
-
+		
+		if(aux.SiguienteBloque!= 0){
+			///Tomar siguiente bloque
+			aux = sistema->VerContenido(allTags,aux.SiguienteBloque);
+		}else{parar = true;}
 	}
-	
 	return resultado;
 }

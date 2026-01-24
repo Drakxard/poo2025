@@ -65,6 +65,18 @@ archi.read(reinterpret_cast<char*>(&(aux)),sizeof(aux));
 archi.close();
 return aux;
 }
+void System::Guardar(string nombreArhivo, Bloque &A_Guardar, size_t Pos)
+{
+	ofstream archi(nombreArhivo, ios::binary|ios::app);
+	
+	if (!archi)
+		throw runtime_error("Error al guardar en " + nombreArhivo);
+	archi.seekp(sizeof(Bloque)*Pos);
+	archi.write(reinterpret_cast<const char *>(&(A_Guardar)), sizeof(Bloque));
+	archi.close();
+}
+
+
 
 
 template <typename T>
@@ -203,7 +215,6 @@ bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {return true;};
 template void System::Guardar<Alumno>(string, vector<Alumno>&);
 template void System::Guardar<Libro>(string, vector<Libro>&);
 template void System::Guardar<Bibliotecario>(string, vector<Bibliotecario>&);
-template void System::Guardar<Bloque>(string, vector<Bloque>&);
 template void System::Guardar<TagUnitario>(string, vector<TagUnitario>&);
 
 

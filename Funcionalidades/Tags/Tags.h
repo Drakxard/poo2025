@@ -18,14 +18,13 @@ struct Bloque{
 };
 class System;
 class Tags {
-	Persistencia actual;
 	System *sistema;
 	size_t TamBloque= 4096;
 	size_t UltimaDireccion = 0;
 	size_t CantidadTags=0;
-	string allTags_data= "../../Recursos/Binarios/Tags/tags_data.bin";
+	string allTags_data= "./Recursos/Binarios/Tags/tags_data.bin";
 	string allTags= "./Recursos/Binarios/Tags/tags.bin";
-	
+	Persistencia actual;
 	
 public:
 	Tags();

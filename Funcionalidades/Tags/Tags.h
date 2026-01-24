@@ -12,9 +12,9 @@ struct TagUnitario{
 };
 
 struct Bloque{
-	size_t CantidadElementos=0;
-	size_t SiguienteBloque=0;
-	size_t Elementos[1022];
+	uint32_t CantidadElementos=0;
+	uint32_t SiguienteBloque=0;
+	uint32_t Elementos[1022];
 };
 class System;
 class Tags {

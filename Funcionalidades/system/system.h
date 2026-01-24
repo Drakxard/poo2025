@@ -24,12 +24,15 @@ public:
 
 	template<typename S>
 	int Verificar_Existencia_Vector(int dni, vector<S>&v);
+	template<typename S>
+	bool Verificar_Existencia_Binario(int Id,string nombreArchivo);
 	
 	/// Cambiar a solo leer N cosas
 	template <typename T>
 	int VerUltimo(string nombreArchivo);
 	template <typename T> 
 	vector<T> VerContenido(string nombreArchivo, bool crear);
+	Bloque VerContenido(string nombreArchivo,size_t NroBloque);
 	template <typename T>
 	vector<T> LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
 	template <typename T>

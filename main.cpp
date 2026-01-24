@@ -69,17 +69,13 @@ int main(){
 
 	Tags allTags;
 		
-	TagUnitario auxTags;
+	//TagUnitario auxTags;
 	vector<TagUnitario> tagsActuales;
-	auxTags = allTags.AgregarNuevoTag();
-	tagsActuales.push_back(auxTags);
-	auxTags = allTags.AgregarNuevoTag();
-	tagsActuales.push_back(auxTags);
-	auxTags = allTags.AgregarNuevoTag();
-	tagsActuales.push_back(auxTags);
+	//auxTags = allTags.AgregarNuevoTag();
+	//tagsActuales.push_back(auxTags);
 
 	///Guardar tags
-	sistema.Guardar<TagUnitario>(allTags.VerPathEtiquetas(),tagsActuales);
+	//sistema.Guardar<TagUnitario>(allTags.VerPathEtiquetas(),tagsActuales);
 	
 	tagsActuales = sistema.VerContenido<TagUnitario>(allTags.VerPathEtiquetas(),true);
 	cout<<endl<<endl;

@@ -7,7 +7,7 @@
 using namespace std;
 struct TagUnitario{
 	size_t IdTag;
-	string NombreTag;
+	char NombreTag[50];
 	size_t InicioBloque;
 };
 

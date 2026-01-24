@@ -4,6 +4,7 @@
 
 
 #include <vector>
+#include <cstring>
 using namespace std;
 
 Tags::Tags(){
@@ -29,8 +30,10 @@ TagUnitario Tags::AgregarNuevoTag(){
 	TagUnitario nuevoTag;
 	nuevoTag.IdTag = CantidadTags;
 	++CantidadTags;
-	nuevoTag.NombreTag = nombreTag;
+
 	
+	strncpy(nuevoTag.NombreTag, nombreTag.c_str(), 49);
+	nuevoTag.NombreTag[49] = '\0';
 	nuevoTag.InicioBloque = UltimaDireccion;
 	cout<<"Bloque Inicia en:"<<nuevoTag.InicioBloque<<endl;
 	UltimaDireccion += TamBloque;

@@ -62,6 +62,7 @@ bool Tags::AgregarNuevoElemento(size_t IdTag, size_t idLibro){
 
 	aux.Elementos[aux.CantidadElementos]=idLibro;
 	++aux.CantidadElementos;
+	cout<<endl<<"Nueva cantidad de elementos: "<<aux.CantidadElementos;
 	
 	sistema->Guardar(allTags_data,aux,IdTag);
 	

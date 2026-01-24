@@ -98,6 +98,8 @@ int main(){
 	
 	cout<<endl<<"Todos los id de ese bloque son: "<<endl;
 	vector<size_t>resultado = allTags.LeerTodosLosElementos(IDtag);
+	
+	
 
 	
 	

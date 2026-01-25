@@ -16,7 +16,9 @@ class Buscador{
 	Tags diccionario;
 	string allTagspath = "./Recursos/Binarios/Tags/tags.bin"; 
 	public:
-	Buscador(){}
+	Buscador(System* sistema){
+		this->sistema= sistema;
+	}
 	vector<size_t> Buscar(string nombreBuscado);
 	vector<size_t> Ordenar(vector<size_t>v);
 	vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros);

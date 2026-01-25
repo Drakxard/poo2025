@@ -24,6 +24,10 @@ class Bloques{
 	size_t CantidadTags=0;
 	Tags *etiquetas;
 public:
+	Bloques(System* sistema, Tags* etiquetas){
+		this->sistema=sistema;
+		this->etiquetas=etiquetas;
+	}
 	size_t AgregarNuevoBloque();
 	bool AgregarNuevoElemento(size_t IdTag, size_t idLibro);
     vector<size_t> LeerTodosLosElementos(size_t IdTag);

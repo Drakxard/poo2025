@@ -23,6 +23,7 @@ int DNI=12345;
 Bibliotecario admin(codigo,nom,DNI); 
 ///Clase encargada de los metodos de bajo nivel
 System sistema;
+System Busqueda;
 
 /// Nombre del Binario de test
 string libros = "Recursos/Binarios/libros.bin";
@@ -30,7 +31,7 @@ string alumnos = "Recursos/Binarios/alumnos.bin";
 string bibliotecarios = "Recursos/Binarios/bibliotecarios.bin";
 
 ///Clase encargada de las busquedas
-Buscador navega;
+Buscador navega(&Busqueda);
 string palabra="Casa";
 
 vector<Libro> resultadoLibros;
@@ -69,7 +70,7 @@ void menuAlumno();
 int main(){
 
 	Tags allTags;
-	Bloques bloqueTags;	
+	Bloques bloqueTags(&sistema,&allTags);	
 	TagUnitario auxTags;
 	vector<TagUnitario> tagsActuales;
 	auxTags = allTags.AgregarNuevoTag();

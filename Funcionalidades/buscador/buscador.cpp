@@ -1,50 +1,60 @@
 #include "buscador.h"
 #include "../libro/libro.h"
+#include "../system/system.h"
 #include <algorithm>
+#include "../Tags/Tags.h"
 using namespace std;
-vector<Libro> Buscador::Buscar(string &nombreBuscado, vector<Tags> &etiquedasUsadas, int cantidad)
+vector<size_t> Buscador::BusquedaSimple(string nombreBuscado)
 {
-	/*
-	if(etiquedasUsadas.size()>0){ tags=true;}
 	
-	//OrdenarIDs
-	vector<int> AllID = Ordenar(etiquedasUsadas);
+	string nombreArchivo = diccionario.VerPathEtiquetas();
+	vector<TagUnitario> contenedor;
+	contenedor = sistema->VerContenido<TagUnitario>(nombreArchivo,true);
 	
-	
-	
-	
-	
-	
-	*/	
-vector<Libro>resultado;
-return resultado;
-
-}
-vector<int> Buscador::Ordenar(vector<Tags>v){
-	
-	vector<string> paths;
-	for(size_t i = 0 ; i < v.size(); ++i)
-		//paths.push_back(v[i].VerNombre());
-	
-	
-	//A cada path (Recursos/Binarios/Tags/Libros/prestados.bin), etc
-	vector<int> Ids;
-	vector<int> aux;
-	for(size_t i = 0; i < paths.size(); ++i){
-		aux= sistema.VerContenido<int>(paths[i],true);
-		//Ids.insert(Ids.end(),aux.begin(),aux.end());
-	
+	vector<TagUnitario>::iterator buscado = find_if(contenedor.begin(),contenedor.end(),[nombreBuscado](const TagUnitario& a){
+		return a.NombreTag == nombreBuscado;
+	});
+	///Para la comparación, si no es la palabra exacta falla
+	///estaria bueno hacer por prefijo, truncar diccionario
+	///Y palabra ingresada
+	vector<size_t>resultado;
+	size_t DireccionBloque;
+	if(buscado != contenedor.end()){
+		DireccionBloque = buscado->IdTag;
+		resultado = diccionario.LeerTodosLosElementos(DireccionBloque);
 	}
-	
-	
-	
-	vector<int>resultado;
 	return resultado;
-	
+}
+vector<size_t> Buscador::BusquedaAmpliada(string nombreBuscado){
+	///Truncar frase a vector de palabras
+	vector<string> palabras = ExtraerPalabras(nombreBuscado);
+	vector<size_t> resultadoParcial;
+	vector<size_t>resultado;
+	for(size_t i = 0; i<palabras.size();++i){
+		resultadoParcial = BusquedaSimple(nombreBuscado);
+		resultado.insert(resultado.end(), resultadoParcial.begin(), resultadoParcial.end());
+	}
+	return resultado;
 }
 
-void Buscador::AgregarEtiqueta(string& nombre){}
-
+vector<string> Buscador::ExtraerPalabras(string nombreBuscado){
+	vector<string> resultado;
+	string palabra;
+	for(size_t i= 0; i< sizeof(nombreBuscado); ++i){
+		if(nombreBuscado[i]!=' '){
+			palabra += nombreBuscado[i];
+		}else{
+			resultado.push_back(palabra);
+			palabra="";
+		}
+	}
+	return resultado;
+}
+vector<size_t> Buscador::OrdenarAscendente(vector<size_t>v){
+	sort(v.begin(),v.end());
+	return v;
+	
+}
 
 vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros){
 	vector<Libro> aux;
@@ -56,17 +66,20 @@ vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros){
 		});
 		if(encontrado== vectorLibros.end()){break;}
 		
-			aux.push_back(*encontrado);//Devuelve posiciones
+		aux.push_back(*encontrado);//Devuelve posiciones
 		++avanzar;
 	}
 	return aux;
 }
-
-
-
-
-
-
-
-
-
+	
+	vector<size_t> Buscador:: Ordenar(vector<Libro>&vectorLibros){
+		
+	};
+	
+	
+	
+	
+	
+	
+	
+	

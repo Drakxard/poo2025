@@ -46,8 +46,8 @@ vector<Libro> Bibliotecario::AgregarElementos(int Agregar,string nombreArchivo)
 		--Agregar;
 		cout<<endl<<"DesdeAgregarElementosLibro"<<endl;
 		cout<<"Nombre del nuevo: "<<aux.VerNombre()<<endl;
-
-    }
+	
+	}
 	return resultado;
 }
 
@@ -55,6 +55,10 @@ void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector
 {
 	Libros.erase(Eliminar);
 }
+
+
+
+// En bibliotecario.cpp
 
 bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos,vector<int>Id_Prestamos, int dia, int mes, int anio)
 {
@@ -96,7 +100,7 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 				itlibro->DiasRestantes(diasCalculados);
 				
 				cout << "Libro prestado exitosamente. Dias para devolucion: " << diasCalculados << endl;
-				Id_Prestamos.push_back(idLibro);
+				AgregarLibroPrestado(idLibro,Id_Prestamos);
 				return true;
 				
 			} else {
@@ -108,12 +112,12 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
     cout << "Libro no encontrado." << endl;
     return false;
 }
-//void Bibliotecario::Ver_LibroPrestado(int libro_prestado,vector<int>Id_Prestamos){}
+void Bibliotecario::AgregarLibroPrestado(int libro_prestado,vector<int>Id_Prestamos){}
 ///Usar sistema.Agregar<Tipo>(...); + sistema.Guardar(...) o EscribirEnBin()
-//void Bibliotecario::AgregarLibroPrestado(int libro_prestado){
-//	Id_Prestamos.push_back(libro_prestado);
-//}
-
+/*void Bibliotecario::AgregarLibroPrestado(int libro_prestado){
+	Id_Prestamos.push_back(libro_prestado);
+}
+*/
 bool Bibliotecario:: Devolucion_libro(size_t idLibro,vector<int>Id_Prestamos){
 	// 1. Buscar el libro por ID si existe
 		///Usar sistema.VerUltimo

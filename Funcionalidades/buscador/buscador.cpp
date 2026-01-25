@@ -1,49 +1,72 @@
-
-#include "../bloques/bloques.h"
-#include "../system/system.h"
-#include "../Tags/Tags.h"
-
-
-size_t Bloques::AgregarNuevoBloque(){
-	// Tu código original...
-	// Nota: Asegúrate de que UltimaDireccion esté sincronizada con la persistencia
-	UltimaDireccion += TamBloque;
+#include "buscador.h"
+#include "../libro/libro.h"
+#include <algorithm>
+using namespace std;
+vector<Libro> Buscador::Buscar(string &nombreBuscado, vector<Tags> &etiquedasUsadas, int cantidad)
+{
+	/*
+	if(etiquedasUsadas.size()>0){ tags=true;}
 	
-	Bloque bloqueNuevo;
-	bloqueNuevo.CantidadElementos=0;
-	bloqueNuevo.SiguienteBloque=-1; // Ojo: SiguienteBloque es uint32_t (unsigned), -1 será 4294967295
-	return UltimaDireccion;
+	//OrdenarIDs
+	vector<int> AllID = Ordenar(etiquedasUsadas);
+	
+	
+	
+	
+	
+	
+	*/	
+vector<Libro>resultado;
+return resultado;
+
 }
-
-
-bool Bloques::AgregarNuevoElemento(size_t IdTag, size_t idLibro){
-	// Ahora 'sistema' y 'etiquetas' son válidos y apuntan a lo creado en main
-	Bloque aux = sistema->VerContenido(etiquetas->VerPathDataEtiquetas(),IdTag);
+vector<int> Buscador::Ordenar(vector<Tags>v){
 	
-	aux.Elementos[aux.CantidadElementos]=idLibro;
-	++aux.CantidadElementos;
-	cout<<endl<<"Nueva cantidad de elementos: "<<aux.CantidadElementos;
+	vector<string> paths;
+	for(size_t i = 0 ; i < v.size(); ++i)
+		//paths.push_back(v[i].VerNombre());
 	
-	sistema->Guardar(etiquetas->VerPathDataEtiquetas(),aux,IdTag);
 	
-	return true;
-}
-
-vector<size_t> Bloques::LeerTodosLosElementos(size_t IdTag){
-	// Tu código original...
-	Bloque aux = sistema->VerContenido(etiquetas->VerPathDataEtiquetas(),IdTag);
-	vector<size_t> resultado;
-	bool parar = false;
-	while(!parar){
-		
-		for(size_t i = 0; i < aux.CantidadElementos; ++i){
-			resultado.push_back(aux.Elementos[i]);
-			cout<<"["<<i<<"] "<<aux.Elementos[i]<<endl;
-		}
-		
-		if(aux.SiguienteBloque != 0 && aux.SiguienteBloque != -1){ // Ajuste lógico para unsigned
-			aux = sistema->VerContenido(etiquetas->VerPathDataEtiquetas(),aux.SiguienteBloque);
-		}else{parar = true;}
+	//A cada path (Recursos/Binarios/Tags/Libros/prestados.bin), etc
+	vector<int> Ids;
+	vector<int> aux;
+	for(size_t i = 0; i < paths.size(); ++i){
+		aux= sistema.VerContenido<int>(paths[i],true);
+		//Ids.insert(Ids.end(),aux.begin(),aux.end());
+	
 	}
+	
+	
+	
+	vector<int>resultado;
 	return resultado;
+	
 }
+
+void Buscador::AgregarEtiqueta(string& nombre){}
+
+
+vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros){
+	vector<Libro> aux;
+	int avanzar=0;
+	auto encontrado = vectorLibros.begin();
+	while(encontrado!=vectorLibros.end()){
+		encontrado = find_if(vectorLibros.begin()+avanzar,vectorLibros.end(),[palabraBuscada](const Libro& a){
+			return a.VerNombre() == palabraBuscada;
+		});
+		if(encontrado== vectorLibros.end()){break;}
+		
+			aux.push_back(*encontrado);//Devuelve posiciones
+		++avanzar;
+	}
+	return aux;
+}
+
+
+
+
+
+
+
+
+

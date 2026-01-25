@@ -9,6 +9,7 @@
 #include "Funcionalidades/alumno/alumno.h"
 #include "Funcionalidades/login/login.h" // Si vas a usar login
 #include "Funcionalidades/Tags/Tags.h"
+#include "Funcionalidades/bloques/bloques.h"
 
 using namespace std; // Importante si usas string sin std::
 
@@ -68,12 +69,16 @@ void menuAlumno();
 int main(){
 
 	Tags allTags;
-		
+	Bloques bloqueTags;	
 	TagUnitario auxTags;
 	vector<TagUnitario> tagsActuales;
 	auxTags = allTags.AgregarNuevoTag();
 	tagsActuales.push_back(auxTags);
-
+	for(TagUnitario& x:tagsActuales)
+		cout<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<
+		"   < ------ id:>  "<<x.IdTag<<  endl;
+	
+	
 	///Guardar tags
 	sistema.Guardar<TagUnitario>(allTags.VerPathEtiquetas(),tagsActuales);
 	
@@ -81,7 +86,7 @@ int main(){
 	cout<<endl<<endl;
 	for(TagUnitario& x:tagsActuales)
 		cout<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<
-		"   < ------ >  IDTag: "<<x.IdTag<<  endl;
+		"   < ------ id:>  "<<x.IdTag<<  endl;
 	
 	
 	
@@ -91,10 +96,10 @@ int main(){
 	
 	
 	
-	allTags.AgregarNuevoElemento(IDtag,IDNuevo);
+	bloqueTags.AgregarNuevoElemento(IDtag,IDNuevo);
 	
 	cout<<endl<<"Todos los id de ese bloque son: "<<endl;
-	vector<size_t>resultado = allTags.LeerTodosLosElementos(IDtag);
+	vector<size_t>resultado = bloqueTags.LeerTodosLosElementos(IDtag);
 	
 	
 
@@ -286,12 +291,12 @@ Agregar Nuevos
 												
 												cout<<"Etiquetas Existentes: "<<endl;
 												cout<<"De Libros: "<<endl;
-												Etiquetas = sistema.etiquetas(etiquetasLibros);
+												
 												c=0;
 												//for(Tags& x : Etiquetas)
 													////cout<<++c<<" ) "<<x.VerNombre()<<endl;
 												cout<<"De Alumnos: "<<endl;
-												Etiquetas = sistema.etiquetas(TagsAlmunos);
+												
 												c=0;
 												//for(Tags& x : Etiquetas)
 													//cout<<++c<<" ) "<<x.VerNombre()<<endl;
@@ -447,12 +452,12 @@ Agregar Nuevos
 													  
 													  cout<<"Etiquetas Existentes: "<<endl;
 													  cout<<"De Libros: "<<endl;
-													  Etiquetas = sistema.etiquetas(etiquetasLibros);
+													  
 													  c=0;
 													  //for(Tags& x : Etiquetas)
 														  //cout<<++c<<" ) "<<x.VerNombre()<<endl;
 													  cout<<"De Alumnos: "<<endl;
-													  Etiquetas = sistema.etiquetas(TagsAlmunos);
+													  
 													  c=0;
 													  //for(Tags& x : Etiquetas)
 														  //cout<<++c<<" ) "<<x.VerNombre()<<endl;
@@ -604,12 +609,12 @@ Agregar Nuevos
 														
 														cout<<"Etiquetas Existentes: "<<endl;
 														cout<<"De Libros: "<<endl;
-														Etiquetas = sistema.etiquetas(etiquetasLibros);
+														
 														c=0;
 														//for(Tags& x : Etiquetas)
 															//cout<<++c<<" ) "<<x.VerNombre()<<endl;
 														cout<<"De Alumnos: "<<endl;
-														Etiquetas = sistema.etiquetas(TagsAlmunos);
+														
 														c=0;
 														//for(Tags& x : Etiquetas)
 															//cout<<++c<<" ) "<<x.VerNombre()<<endl;
@@ -760,12 +765,12 @@ Agregar Nuevos
 													
 													cout<<"Etiquetas Existentes: "<<endl;
 													cout<<"De Libros: "<<endl;
-													Etiquetas = sistema.etiquetas(etiquetasLibros);
+													
 													c=0;
 													//for(Tags& x : Etiquetas)
 														//cout<<++c<<" ) "<<x.VerNombre()<<endl;
 													cout<<"De Alumnos: "<<endl;
-													Etiquetas = sistema.etiquetas(TagsAlmunos);
+													
 													c=0;
 													//for(Tags& x : Etiquetas)
 														//cout<<++c<<" ) "<<x.VerNombre()<<endl;

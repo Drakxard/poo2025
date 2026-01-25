@@ -1,6 +1,7 @@
 #include "system.h"
 #include "../bibliotecario/bibliotecario.h"
 #include "../Tags/Tags.h"
+#include "../bloques/bloques.h"
 
 #include <fstream>
 
@@ -43,15 +44,6 @@ vector<T> System::VerContenido(string nombreArchivo,bool crear){
 }
 
 
-vector<Tags> System::etiquetas(const string& path){
-	///Segun el tipo un path?
-	string AllTags= path;
-	
-	vector<Tags> resultado;
-	resultado = VerContenido<Tags>(AllTags,1);
-	return resultado;
-
-}
 
 
 Bloque System::VerContenido(string nombreArchivo,size_t NroBloque){

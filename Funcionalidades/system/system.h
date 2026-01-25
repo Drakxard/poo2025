@@ -3,7 +3,8 @@
 #include "../preConfiguracion/preConfiguracion.h"
 #include "../libro/libro.h"
 #include "../alumno/alumno.h"
-#include "../Tags/tags.h"
+#include "../bloques/bloques.h"
+#include "../Tags/Tags.h"
 
 
 using namespace std;
@@ -19,7 +20,6 @@ public:
 	void Guardar(string nombreArhivo, vector<T> &A_Guardar);
 	void Guardar(string nombreArhivo, Bloque &A_Guardar, size_t Pos);
 	//Falta codear Eliminar, tempalte
-	vector<Tags> etiquetas(const string& path);
 	bool actualizar_disponibilidad( string nombreArchivo, int id);
 	
 

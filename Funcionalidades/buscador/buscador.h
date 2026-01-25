@@ -3,23 +3,26 @@
 #include <string>
 #include <vector>
 #include "../libro/libro.h"
-#include "../Tags/Tags.h"
+#include "../system/system.h"
 
 using namespace std;
 
 //template<typename T>
-class System;
+
 class Buscador{
-	System *sistema;
-	Tags diccionario;
+	System sistema;
+	vector<Tags> Etiquetas;
+	vector<int> Ordenar(vector<Tags>v);
 public:
 	Buscador(){}
-	vector<size_t> BusquedaSimple(string nombreBuscado);
-	vector<size_t> BusquedaAmpliada(string nombreBuscado);
-	vector<string> ExtraerPalabras(string nombreBuscado);
-	
-	vector<size_t> OrdenarAscendente(vector<size_t>v);
+	Buscador(vector<Tags>Etiquetas){
+		this->Etiquetas = Etiquetas;
+	}
+	//vector<Libro>::const_iterator Buscar(string nombreBuscado, int Cantidad);
+	vector<Libro> Buscar(string &nombreBuscado, vector<Tags> &etiquedasUsadas, int cantidad);
 	vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros);
-	vector<size_t> Ordenar(vector<Libro>&vectorLibros);
+	void AgregarEtiqueta(string& nombre);
+	void EliminarEtiqueta(int& idEtiqueta);
+
 };
 #endif

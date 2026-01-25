@@ -8,7 +8,7 @@
 #include "Funcionalidades/bibliotecario/bibliotecario.h"
 #include "Funcionalidades/alumno/alumno.h"
 #include "Funcionalidades/login/login.h" // Si vas a usar login
-#include "Funcionalidades/Tags/Tags.h"
+#include "Funcionalidades/Bloques/Bloques.h"
 
 using namespace std; // Importante si usas string sin std::
 

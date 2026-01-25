@@ -1,6 +1,6 @@
 #include "system.h"
 #include "../bibliotecario/bibliotecario.h"
-#include "../Tags/Tags.h"
+#include "../Bloques/Bloques.h"
 
 #include <fstream>
 

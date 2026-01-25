@@ -3,7 +3,7 @@
 #include "../preConfiguracion/preConfiguracion.h"
 #include "../libro/libro.h"
 #include "../alumno/alumno.h"
-#include "../Tags/tags.h"
+#include "../Bloques/Bloques.h"
 
 
 using namespace std;

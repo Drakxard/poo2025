@@ -191,7 +191,7 @@ public:
 	*
 	* @retval el valor de la celda convertido a int
 	**/
-	int GetValueAsInt(int row, int col);
+//	int GetValueAsInt(int row, int col);
 	
 	/**
 	* @brief Obtiene el valor de una celda como double

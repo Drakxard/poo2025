@@ -1,4 +1,4 @@
-#include "Libro.h"
+#include "libro.h"
 size_t Libro::VerID() const  
 {
     return id;

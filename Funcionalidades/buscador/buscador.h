@@ -14,9 +14,12 @@ class Buscador{
 	Bloques diccionario;
 public:
 	Buscador(){}
-	vector<size_t> Buscar(string nombreBuscado);
-	vector<size_t> Ordenar(vector<size_t>v);
-	vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros);
+	vector<size_t> BusquedaSimple(string nombreBuscado);
+	vector<size_t> BusquedaAmpliada(string nombreBuscado);
+	vector<string> ExtraerPalabras(string nombreBuscado);
 	
+	vector<size_t> OrdenarAscendente(vector<size_t>v);
+	vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros);
+	vector<size_t> Ordenar(vector<Libro>&vectorLibros);
 };
 #endif

@@ -77,7 +77,7 @@ int main(){
 	
 	
 	
-	/*///Cabeceras
+	///Cabeceras
 	
 	string indexCabeceras="./Recursos/libros_index.txt";
 	
@@ -90,7 +90,7 @@ int main(){
 		"path: "<<x.path<<
 		endl;
 	
-	*/
+	
 	
 	
 	

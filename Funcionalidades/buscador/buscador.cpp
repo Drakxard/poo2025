@@ -3,9 +3,8 @@
 #include "../system/system.h"
 #include <algorithm>
 #include "../Bloques/Bloques.h"
-#include <vector>
 using namespace std;
-vector<size_t> Buscador::Buscar(string nombreBuscado)
+vector<size_t> Buscador::BusquedaSimple(string nombreBuscado)
 {
 	
 	string nombreArchivo = diccionario.VerPathEtiquetas();
@@ -26,7 +25,32 @@ vector<size_t> Buscador::Buscar(string nombreBuscado)
 	}
 	return resultado;
 }
-vector<size_t> Buscador::Ordenar(vector<size_t>v){
+vector<size_t> Buscador::BusquedaAmpliada(string nombreBuscado){
+	///Truncar frase a vector de palabras
+	vector<string> palabras = ExtraerPalabras(nombreBuscado);
+	vector<size_t> resultadoParcial;
+	vector<size_t>resultado;
+	for(size_t i = 0; i<palabras.size();++i){
+		resultadoParcial = BusquedaSimple(nombreBuscado);
+		resultado.insert(resultado.end(), resultadoParcial.begin(), resultadoParcial.end());
+	}
+	return resultado;
+}
+
+vector<string> Buscador::ExtraerPalabras(string nombreBuscado){
+	vector<string> resultado;
+	string palabra;
+	for(size_t i= 0; i< sizeof(nombreBuscado); ++i){
+		if(nombreBuscado[i]!=' '){
+			palabra += nombreBuscado[i];
+		}else{
+			resultado.push_back(palabra);
+			palabra="";
+		}
+	}
+	return resultado;
+}
+vector<size_t> Buscador::OrdenarAscendente(vector<size_t>v){
 	sort(v.begin(),v.end());
 	return v;
 	
@@ -48,7 +72,10 @@ vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros){
 	return aux;
 }
 	
-	
+	vector<size_t> Buscador:: Ordenar(vector<Libro>&vectorLibros){
+		vector<size_t> resultado;
+		return resultado;
+	};
 	
 	
 	

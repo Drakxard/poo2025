@@ -22,6 +22,8 @@ public:
 	void Guardar(string nombreArhivo, vector<T> &A_Guardar);
 	void Guardar(string nombreArhivo, Bloque &A_Guardar, size_t Pos);
 	//Falta codear Eliminar, tempalte
+	template<typename T>
+	bool Eliminar(int id, vector<T>&v);
 	vector<Tags> etiquetas(const string& path);
 	bool actualizar_disponibilidad( string nombreArchivo, int id);
 	

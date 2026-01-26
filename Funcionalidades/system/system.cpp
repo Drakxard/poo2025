@@ -24,6 +24,19 @@ archi.write(reinterpret_cast<const char *>(&(aux)), sizeof(aux));
 archi.close();
 }
 
+template <typename T>
+bool Eliminar(int id, vector<T>&v){
+    vector<T>::iterator itBorrar = find(v.begin(),v.end(),[id](const T& a){
+        return a.VerId() == id;
+    });
+    if(itBorrar!=v.end()){
+        v.remove(v.begin(),v.end(),id);
+        return true;//borrado
+    }else{
+        return false;//no se encontro xD
+    }
+}
+
 template <typename T> ///Cambiar a solo leer N cosas
 vector<T> System::VerContenido(string nombreArchivo,bool crear){
 ifstream archi(nombreArchivo,ios::binary);
@@ -103,7 +116,7 @@ int actual;
 bool primero=true; //Ajustar puntero, para iniciar 
 for (size_t i = 0; i < IdARecuperar.size()-1;++i)
 {
-//Está ordenado, logica para 2 -> n (seguir pensando)
+//Estï¿½ ordenado, logica para 2 -> n (seguir pensando)
 //  2 4 6 8
 //primero -> 0 + primerID, hacer,
 // 4 - 2 = 2, cursor en 2 -> 4, saltar 2 lugares

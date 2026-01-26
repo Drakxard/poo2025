@@ -1,0 +1,160 @@
+C++ Como Programar Deitel
+./Recursos/img/0.jpg
+El Lenguaje de Programacion C++ Stroustrup
+NO_ENCONTRADO
+Programacion en C++ Joyanes Aguilar
+./Recursos/img/2.jpg
+C++ Primer Lippman
+./Recursos/img/3.jpg
+Thinking in C++ Bruce Eckel
+./Recursos/img/4.jpg
+Effective C++ Scott Meyers
+./Recursos/img/5.jpg
+Programacion orientada a objetos con C++ Francisco Javier Ceballos
+NO_ENCONTRADO
+Accelerated C++ Andrew Koenig
+./Recursos/img/7.jpg
+Clean Code Robert Martin
+./Recursos/img/8.jpg
+Design Patterns Gamma
+./Recursos/img/9.jpg
+Calculo de varias variables James Stewart
+./Recursos/img/10.jpg
+Calculo Vectorial Marsden
+./Recursos/img/11.jpg
+Calculo Thomas Finney
+./Recursos/img/12.jpg
+Calculo Leithold
+./Recursos/img/13.jpg
+Calculo Larson Hostetler
+./Recursos/img/14.jpg
+Calculo Trascendentes Tempranas Zill
+./Recursos/img/15.jpg
+Calculo Avanzado Kaplan
+NO_ENCONTRADO
+Calculo Tom Apostol
+./Recursos/img/17.jpg
+Analisis Matematico Haaser
+./Recursos/img/18.jpg
+Calculo diferencial e integral Purcell
+./Recursos/img/19.jpg
+Algebra Lineal Stanley Grossman
+./Recursos/img/20.jpg
+Algebra Lineal Bernard Kolman
+./Recursos/img/21.jpg
+Algebra Lineal y sus aplicaciones David Lay
+./Recursos/img/22.jpg
+Introduccion al Algebra Lineal Howard Anton
+NO_ENCONTRADO
+Algebra Lineal Gilbert Strang
+NO_ENCONTRADO
+Algebra Lineal Kenneth Hoffman
+./Recursos/img/25.jpg
+Algebra Lineal Serge Lang
+NO_ENCONTRADO
+Algebra Lineal Seymour Lipschutz
+./Recursos/img/27.jpg
+Algebra Lineal David Poole
+./Recursos/img/28.jpg
+Algebra Lineal George Nakos
+./Recursos/img/29.jpg
+Fisica Universitaria Sears Zemansky
+./Recursos/img/30.jpg
+Fisica para ciencias e ingenieria Serway
+./Recursos/img/31.jpg
+Fisica Resnick Halliday
+./Recursos/img/32.jpg
+Fisica para la ciencia y la tecnologia Tipler
+./Recursos/img/33.jpg
+Fisica General Burbano
+./Recursos/img/34.jpg
+Fisica Conceptual Paul Hewitt
+./Recursos/img/35.jpg
+Fisica Alonso Finn
+./Recursos/img/36.jpg
+Mecanica Vectorial para Ingenieros Beer Johnston
+./Recursos/img/37.jpg
+Ingenieria Mecanica Dinamica Hibbeler
+NO_ENCONTRADO
+Curso de Fisica de Berkeley Kittel
+NO_ENCONTRADO
+Matematicas Discretas Kenneth Rosen
+./Recursos/img/40.jpg
+Matematicas Discretas Johnsonbaugh
+./Recursos/img/41.jpg
+Matematicas Discretas y Combinatoria Grimaldi
+./Recursos/img/42.jpg
+Introduccion a la teoria de la computacion Michael Sipser
+NO_ENCONTRADO
+Teoria de Automatas y Lenguajes Formales Hopcroft
+NO_ENCONTRADO
+Logica Matematica para Informaticos Ben-Ari
+NO_ENCONTRADO
+Estructuras de Matematicas Discretas para la Computacion Kolman
+./Recursos/img/46.jpg
+Introduccion a la Logica Copi
+./Recursos/img/47.jpg
+Computability and Logic Boolos
+./Recursos/img/48.jpg
+Godel Escher Bach Hofstadter
+./Recursos/img/49.jpg
+Probabilidad y Estadistica para ingenieros Walpole
+NO_ENCONTRADO
+Probabilidad y Estadistica para ingenieria y ciencias Devore
+./Recursos/img/51.jpg
+Estadistica Matematica con Aplicaciones Wackerly
+./Recursos/img/52.jpg
+Probabilidad y Estadistica aplicadas a la ingenieria Montgomery
+./Recursos/img/53.jpg
+Introduccion a la Probabilidad y Estadistica Mendenhall
+./Recursos/img/54.jpg
+Probabilidad y Estadistica Murray Spiegel
+./Recursos/img/55.jpg
+Probabilidad y Aplicaciones Estadisticas Paul Meyer
+./Recursos/img/56.jpg
+Estadistica elemental Mario Triola
+NO_ENCONTRADO
+Estadistica para administracion y economia Levin
+./Recursos/img/58.jpg
+A First Course in Probability Sheldon Ross
+./Recursos/img/59.jpg
+Ecuaciones Diferenciales con problemas de valores en la frontera Zill
+NO_ENCONTRADO
+Ecuaciones Diferenciales elementales y problemas con valores en la frontera Boyce
+NO_ENCONTRADO
+Ecuaciones Diferenciales Nagle
+NO_ENCONTRADO
+Ecuaciones Diferenciales Elementales Rainville
+NO_ENCONTRADO
+Ecuaciones Diferenciales con aplicaciones Simmons
+NO_ENCONTRADO
+Ecuaciones Diferenciales Blanchard
+NO_ENCONTRADO
+Ecuaciones Diferenciales y Algebra Lineal Edwards Penney
+NO_ENCONTRADO
+Ecuaciones Diferenciales Isabel Carmona
+NO_ENCONTRADO
+Matematicas Avanzadas para Ingenieria Kreyszig
+./Recursos/img/68.jpg
+Transformadas de Laplace Spiegel
+./Recursos/img/69.jpg
+Estructuras de Datos en C++ Joyanes Aguilar
+NO_ENCONTRADO
+Introduction to Algorithms Cormen
+./Recursos/img/71.jpg
+Estructuras de Datos y Algoritmos Aho
+./Recursos/img/72.jpg
+Algorithms Robert Sedgewick
+./Recursos/img/73.jpg
+The Art of Computer Programming Knuth
+./Recursos/img/74.jpg
+Data Structures and Algorithm Analysis Mark Allen Weiss
+./Recursos/img/75.jpg
+Estructuras de Datos Osvaldo Cairo
+NO_ENCONTRADO
+Algoritmos y Estructuras de Datos Niklaus Wirth
+NO_ENCONTRADO
+Cracking the Coding Interview McDowell
+./Recursos/img/78.jpg
+Python Data Science Handbook VanderPlas
+./Recursos/img/79.jpg

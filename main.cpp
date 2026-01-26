@@ -66,7 +66,24 @@ void menuAlumno();
 
 
 int main(){
+///Cabeceras
+	
+	string indexCabeceras="./Recursos/libros_index.txt";
+	
+	vector<Cabecera> resultado = sistema.CargarDesdeTxt(indexCabeceras);
 
+	for(Cabecera& x: resultado)
+		cout<<
+		"Nombre libro: "<<x.nombre<<
+		"      "<<
+		"path: "<<x.path<<
+		endl;
+	
+	
+	
+	
+	
+	/* ///Trabajar con bloques
 	Bloques allTags;
 
 	Tags auxTags;
@@ -97,7 +114,7 @@ int main(){
 	vector<size_t>resultado = allTags.LeerTodosLosElementos(IDtag);
 	
 	
-
+*/
 	
 	
 	

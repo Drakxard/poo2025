@@ -9,6 +9,9 @@
 using namespace std;
 //template<typename K>
 
+struct Cabecera{
+	char nombre[50], path[50];
+};
 class System{
 	string pathalumnos ="../../Recursos/Binarios/alumnos.bin";
 	
@@ -22,7 +25,7 @@ public:
 	vector<Tags> etiquetas(const string& path);
 	bool actualizar_disponibilidad( string nombreArchivo, int id);
 	
-
+	
 	template<typename S>
 	int Verificar_Existencia_Vector(int dni, vector<S>&v);
 	template<typename S>
@@ -39,8 +42,10 @@ public:
 	template <typename T>
 	bool EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo);
 	string alumnos(){return pathalumnos;}
-
-
+	
+	
+	///Cabeceras para libros
+	vector<Cabecera> CargarDesdeTxt(string nombreArchivo);
 	
 };
 

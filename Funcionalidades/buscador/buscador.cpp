@@ -1,50 +1,36 @@
 #include "buscador.h"
 #include "../libro/libro.h"
+#include "../system/system.h"
 #include <algorithm>
+#include "../Bloques/Bloques.h"
+#include <vector>
 using namespace std;
-vector<Libro> Buscador::Buscar(string &nombreBuscado, vector<Tags> &etiquedasUsadas, int cantidad)
+vector<size_t> Buscador::Buscar(string nombreBuscado)
 {
-	/*
-	if(etiquedasUsadas.size()>0){ tags=true;}
 	
-	//OrdenarIDs
-	vector<int> AllID = Ordenar(etiquedasUsadas);
+	string nombreArchivo = diccionario.VerPathEtiquetas();
+	vector<Tags> contenedor;
+	contenedor = sistema->VerContenido<Tags>(nombreArchivo,true);
 	
-	
-	
-	
-	
-	
-	*/	
-vector<Libro>resultado;
-return resultado;
-
-}
-vector<int> Buscador::Ordenar(vector<Tags>v){
-	
-	vector<string> paths;
-	for(size_t i = 0 ; i < v.size(); ++i)
-		//paths.push_back(v[i].VerNombre());
-	
-	
-	//A cada path (Recursos/Binarios/Tags/Libros/prestados.bin), etc
-	vector<int> Ids;
-	vector<int> aux;
-	for(size_t i = 0; i < paths.size(); ++i){
-		aux= sistema.VerContenido<int>(paths[i],true);
-		//Ids.insert(Ids.end(),aux.begin(),aux.end());
-	
+	vector<Tags>::iterator buscado = find_if(contenedor.begin(),contenedor.end(),[nombreBuscado](const Tags& a){
+		return a.NombreTag == nombreBuscado;
+	});
+	///Para la comparación, si no es la palabra exacta falla
+	///estaria bueno hacer por prefijo, truncar diccionario
+	///Y palabra ingresada
+	vector<size_t>resultado;
+	size_t DireccionBloque;
+	if(buscado != contenedor.end()){
+		DireccionBloque = buscado->IdTag;
+		resultado = diccionario.LeerTodosLosElementos(DireccionBloque);
 	}
-	
-	
-	
-	vector<int>resultado;
 	return resultado;
+}
+vector<size_t> Buscador::Ordenar(vector<size_t>v){
+	sort(v.begin(),v.end());
+	return v;
 	
 }
-
-void Buscador::AgregarEtiqueta(string& nombre){}
-
 
 vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros){
 	vector<Libro> aux;
@@ -56,17 +42,18 @@ vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros){
 		});
 		if(encontrado== vectorLibros.end()){break;}
 		
-			aux.push_back(*encontrado);//Devuelve posiciones
+		aux.push_back(*encontrado);//Devuelve posiciones
 		++avanzar;
 	}
 	return aux;
 }
-
-
-
-
-
-
-
-
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -66,7 +66,18 @@ void menuAlumno();
 
 
 int main(){
-///Cabeceras
+
+	///Buscador de Tags
+	//navega.
+	
+	
+	
+	
+	
+	
+	
+	
+	/*///Cabeceras
 	
 	string indexCabeceras="./Recursos/libros_index.txt";
 	
@@ -79,7 +90,7 @@ int main(){
 		"path: "<<x.path<<
 		endl;
 	
-	
+	*/
 	
 	
 	
@@ -232,7 +243,7 @@ Agregar Nuevos
 								
 								///Buscar Libro		| Proceso
 								
-								resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
+								//resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
 								
 								
 								cout<<endl<<endl<<"Preciona para volver";
@@ -246,7 +257,7 @@ Agregar Nuevos
 								
 								
 								///Buscar Libro		| Proceso
-								resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
+								//resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
 								
 								/*if(it!= vectorLibros.end() ){
 								///Muestra 			| Salida
@@ -749,7 +760,7 @@ Agregar Nuevos
 									
 									///Buscar Libro		| Proceso
 									
-									resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
+									//resultadoLibros = navega.Buscar(palabra,Etiquetas,50);
 									
 									
 									cout<<endl<<endl<<"Preciona para volver";

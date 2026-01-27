@@ -25,6 +25,6 @@ public:
 	vector<size_t> OrdenarAscendente(vector<size_t>v);
 	template <typename T>
 	vector<T> Relacionados(string palabraBuscada, vector<T>&v);
-	vector<size_t> Repetidos(vector<size_t>&All_IDs);
+	vector<size_t> ResultadoBusqueda(vector<size_t>&All_IDs);
 };
 #endif

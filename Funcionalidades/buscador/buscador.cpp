@@ -73,7 +73,7 @@ vector<T> Relacionados(string palabraBuscada, vector<T>&v){
 }
 	
 	
-	vector<size_t> Buscador:: Repetidos(vector<size_t>&All_IDs){
+	vector<size_t> Buscador:: ResultadoBusqueda(vector<size_t>&All_IDs){
 		vector<size_t> resultado;
 		if(All_IDs.size()==0) return resultado;
 		Ranking aux;

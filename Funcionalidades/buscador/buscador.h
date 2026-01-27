@@ -19,7 +19,8 @@ public:
 	vector<string> ExtraerPalabras(string nombreBuscado);
 	
 	vector<size_t> OrdenarAscendente(vector<size_t>v);
-	vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros);
+	template <typename T>
+	vector<T> Relacionados(string palabraBuscada, vector<T>&v);
 	vector<size_t> Repetidos(vector<Libro>&vectorLibros);
 };
 #endif

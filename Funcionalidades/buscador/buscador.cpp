@@ -55,16 +55,16 @@ vector<size_t> Buscador::OrdenarAscendente(vector<size_t>v){
 	return v;
 	
 }
-
-vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros){
-	vector<Libro> aux;
+template <typename T>
+vector<T> Relacionados(string palabraBuscada, vector<T>&v){
+	vector<T> aux;
 	int avanzar=0;
-	auto encontrado = vectorLibros.begin();
-	while(encontrado!=vectorLibros.end()){
-		encontrado = find_if(vectorLibros.begin()+avanzar,vectorLibros.end(),[palabraBuscada](const Libro& a){
+	auto encontrado = v.begin();
+	while(encontrado!=v.end()){
+		encontrado = find_if(v.begin()+avanzar,v.end(),[palabraBuscada](const T& a){
 			return a.VerNombre() == palabraBuscada;
 		});
-		if(encontrado== vectorLibros.end()){break;}
+		if(encontrado== v.end()){break;}
 		
 		aux.push_back(*encontrado);//Devuelve posiciones
 		++avanzar;

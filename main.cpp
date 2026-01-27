@@ -317,7 +317,7 @@ cout<<"Confirmas Eliminarlo? s/n: ";cin>>borrar;
 if(borrar=='s'){
 ///Uso del metodo 	| Proceso
 	sistema.Eliminar(idBibliotecario, vectorBibliotecario);
-	sistema.Guardar<Alumno>(bibliotecarios,vectorBibliotecario);
+	sistema.Guardar<Bibliotecario>(bibliotecarios,vectorBibliotecario);
 	
 }else{
 		cout<<endl<<"Codigo de identificación inexistente";

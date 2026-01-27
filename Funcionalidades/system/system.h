@@ -45,6 +45,8 @@ public:
 	bool EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo);
 	string alumnos(){return pathalumnos;}
 	
+
+	
 	
 	///Cabeceras para libros
 	vector<Cabecera> CargarDesdeTxt(string nombreArchivo);

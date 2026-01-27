@@ -14,7 +14,7 @@ vector<size_t> Buscador::BusquedaSimple(string nombreBuscado)
 	vector<Tags>::iterator buscado = find_if(contenedor.begin(),contenedor.end(),[nombreBuscado](const Tags& a){
 		return a.NombreTag == nombreBuscado;
 	});
-	///Para la comparación, si no es la palabra exacta falla
+	///Para la comparaciï¿½n, si no es la palabra exacta falla
 	///estaria bueno hacer por prefijo, truncar diccionario
 	///Y palabra ingresada
 	vector<size_t>resultado;
@@ -40,7 +40,7 @@ vector<size_t> Buscador::BusquedaAmpliada(string nombreBuscado){
 vector<string> Buscador::ExtraerPalabras(string nombreBuscado){
 	vector<string> resultado;
 	string palabra;
-	for(size_t i= 0; i< sizeof(nombreBuscado); ++i){
+	for(size_t i= 0; i< nombreBuscado.length(); ++i){
 		if(nombreBuscado[i]!=' '){
 			palabra += nombreBuscado[i];
 		}else{
@@ -72,8 +72,40 @@ vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros){
 	return aux;
 }
 	
-	vector<size_t> Buscador:: Ordenar(vector<Libro>&vectorLibros){
+	vector<size_t> Buscador:: Repetidos(vector<Libro>&vector_busqueda_apliada){
 		vector<size_t> resultado;
+		if(vector_busqueda_apliada.empty()) return resultado;
+		// Extraer IDs
+		vector<size_t> ids;
+		ids.reserve(vector_busqueda_apliada.size());
+		for(const auto &l : vector_busqueda_apliada){
+			ids.push_back(l.VerID());
+		}
+		// Ordenar para agrupar iguales
+		sort(ids.begin(), ids.end());
+		// Contar repetidos consecutivos
+		vector<pair<size_t,size_t>> conteos; // (count, id)
+		size_t actual_id = ids[0];
+		size_t cuenta = 1;
+		for(size_t i=1;i<ids.size();++i){
+			if(ids[i] == actual_id) {
+				++cuenta;
+			} else {
+				conteos.emplace_back(cuenta, actual_id);
+				actual_id = ids[i];
+				cuenta = 1;
+			}
+		}
+		conteos.emplace_back(cuenta, actual_id);
+		// Ordenar por frecuencia descendente; en empate, por id ascendente
+		sort(conteos.begin(), conteos.end(), [](const pair<size_t,size_t>& a, const pair<size_t,size_t>& b){
+			if(a.first != b.first) return a.first > b.first;
+			return a.second < b.second;
+		});
+		// Construir resultado con los IDs en orden deseado
+		for(const auto &p : conteos){
+			resultado.push_back(p.second);
+		}
 		return resultado;
 	};
 	

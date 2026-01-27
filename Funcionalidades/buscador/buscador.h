@@ -20,6 +20,6 @@ public:
 	
 	vector<size_t> OrdenarAscendente(vector<size_t>v);
 	vector<Libro> Relacionados(string palabraBuscada, vector<Libro>&vectorLibros);
-	vector<size_t> Ordenar(vector<Libro>&vectorLibros);
+	vector<size_t> Repetidos(vector<Libro>&vectorLibros);
 };
 #endif

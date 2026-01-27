@@ -69,7 +69,19 @@ int main(){
 	///Buscador de Tags
 	//navega.
 	
-	
+	cout<<"ID a eliminar: ";cin>>idLibro;
+							
+	char borrar;
+	cout<<"Confirmas Eliminarlo? s/n: ";cin>>borrar;
+	if(borrar=='s'){
+	///Uso del metodo 	| Proceso
+		sistema.Eliminar(idLibro, vectorLibros);
+		sistema.Guardar<Libro>(libros,vectorLibros);
+	}else{
+			cout<<endl<<"Codigo No existente";
+	}
+							
+							
 	
 	
 	
@@ -78,7 +90,7 @@ int main(){
 	
 	///Cabeceras
 	
-	string indexCabeceras="./Recursos/libros_index.txt";
+	/*string indexCabeceras="./Recursos/libros_index.txt";
 	
 	vector<Cabecera> resultado = sistema.CargarDesdeTxt(indexCabeceras);
 
@@ -92,7 +104,7 @@ int main(){
 	
 	
 	
-	
+	*/
 	/* ///Trabajar con bloques
 
 	Tags auxTags;
@@ -217,20 +229,20 @@ void menuBibliotecario(){
 						
 						system("cls");
 						switch (opcion){
-						case 1:
-							cout<<"Libros Disponibles: "<<endl;	
-							///Contenido Actual
+						case 1:///Contenido Actual
+
+							cout<<"Libros Disponibles: "<<endl;
 							vectorLibros = sistema.VerContenido<Libro>(libros,true);
 							resultadoLibros = navega.Relacionados(palabra,vectorLibros);
 				
 							for(Libro& x: vectorLibros){
 								cout
 									<<"Nombre Libro: " 	<<x.VerNombre()
-									<<"  Id: "	<<x.VerID();
+									<<"/ Id: "	<<x.VerID();
 									if(x.EstadoDisponibilidad()==1){
-										cout<<"Disponible"<<endl;
+										cout<<"/ Disponible"<<endl;
 									}else{
-										cout<<"No Disponible"
+										cout<<"/ No Disponible"
 										<<endl;
 									}
 								}
@@ -243,22 +255,18 @@ void menuBibliotecario(){
 							cin.get();
 							system("cls");
 							break;
-						case 2:
-							///Buscar libro
-							///Terminal			| Entrada
-							cout<<"Buscar libro, indica palabra: ";cin>>palabra;
-							
-							///Buscar Libro		| Proceso
+						case 2:///Buscar libro
+							cout<<"Buscar libro, ingrese palabra: ";cin>>palabra;
 							
 							resultadoLibros = navega.Relacionados(palabra,vectorLibros);
 							for(Libro &x: vectorLibros){
 									cout
 									<<"Nombre Libro: " 	<<x.VerNombre()
-									<<"  Id: "	<<x.VerID();
+									<<"/ Id: "	<<x.VerID();
 									if(x.EstadoDisponibilidad()==1){
-										cout<<"Disponible"<<endl;
+										cout<<"/ Disponible"<<endl;
 									}else{
-										cout<<"No Disponible"
+										cout<<"/ No Disponible"
 										<<endl;
 									}
 								} 
@@ -269,26 +277,18 @@ void menuBibliotecario(){
 							system("cls");
 							
 							break;
-						case 3:
+						case 3:///Eliminar libro
 							cout<<"ID a eliminar: ";cin>>idLibro;
-							itBorrar = navega.Relacionados(palabra,vectorLibros);
-							if(it!= vectorLibros.end() ){
-							///Muestra 			| Salida
-							cout<<"Libro: "<<endl
-							<<"/ Nombre: "<<(*(it)).VerNombre()
-							<<endl 
-							<<"/ ID: "<<(*(it)).VerID()
-							<<endl;
 							
 							char borrar;
 							cout<<"Confirmas Eliminarlo? s/n: ";cin>>borrar;
 							if(borrar=='s'){
 							///Uso del metodo 	| Proceso
-							
-							sistema.Eliminar<Libro>(itBorrar,vectorLibros);
-							sistema.Guardar<Libro>(libros,vectorLibros);
-							}
-							}else{ cout<<endl<<"Codigo No existente";}
+								sistema.Eliminar(idLibro, vectorLibros);
+								sistema.Guardar<Libro>(libros,vectorLibros);
+							}else{
+								 cout<<endl<<"Codigo No existente";
+								}
 							
 							
 							cout<<endl<<endl<<"Presiona para volver";

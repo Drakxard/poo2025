@@ -105,15 +105,9 @@ vector<T> Relacionados(string palabraBuscada, vector<T>&v){
 				 return a.cuenta > b.cuenta;
 			 });
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		///Retornar solo mayor inferencia
+		for(Ranking&x:resultadosParciales)
+			resultado.push_back(x);
 		return resultado;
 	};
 	

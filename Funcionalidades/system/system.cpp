@@ -30,7 +30,7 @@ bool Eliminar(int id, vector<T>&v){
         return a.VerId() == id;
     });
     if(itBorrar!=v.end()){
-        v.remove(v.begin(),v.end(),id);
+        v.erase(itBorrar);
         return true;//borrado
     }else{
         return false;//no se encontro xD

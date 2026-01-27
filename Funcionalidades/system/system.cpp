@@ -26,7 +26,7 @@ archi.close();
 
 template <typename T>
 bool Eliminar(int id, vector<T>&v){
-    vector<T>::iterator itBorrar = find(v.begin(),v.end(),[id](const T& a){
+    typename vector<T>::iterator itBorrar = find(v.begin(),v.end(),[id](const T& a){
         return a.VerId() == id;
     });
     if(itBorrar!=v.end()){

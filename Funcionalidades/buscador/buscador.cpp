@@ -72,40 +72,48 @@ vector<T> Relacionados(string palabraBuscada, vector<T>&v){
 	return aux;
 }
 	
-	vector<size_t> Buscador:: Repetidos(vector<Libro>&vector_busqueda_apliada){
+	
+	vector<size_t> Buscador:: Repetidos(vector<size_t>&All_IDs){
 		vector<size_t> resultado;
-		if(vector_busqueda_apliada.empty()) return resultado;
-		// Extraer IDs
-		vector<size_t> ids;
-		ids.reserve(vector_busqueda_apliada.size());
-		for(const auto &l : vector_busqueda_apliada){
-			ids.push_back(l.VerID());
-		}
-		// Ordenar para agrupar iguales
-		sort(ids.begin(), ids.end());
-		// Contar repetidos consecutivos
-		vector<pair<size_t,size_t>> conteos; // (count, id)
-		size_t actual_id = ids[0];
-		size_t cuenta = 1;
-		for(size_t i=1;i<ids.size();++i){
-			if(ids[i] == actual_id) {
-				++cuenta;
-			} else {
-				conteos.emplace_back(cuenta, actual_id);
-				actual_id = ids[i];
-				cuenta = 1;
+		if(All_IDs.size()==0) return resultado;
+		Ranking aux;
+		
+		OrdenarAscendente(All_IDs);
+		
+		///Contar IDs Distintos
+		vector<Ranking>resultadosParciales;
+		bool primero = true;
+		for(size_t i = 0; i < All_IDs.size();++i){
+			if(primero){
+				primero = false;
+				aux.cuenta = count(All_IDs.begin(),All_IDs.end(),All_IDs[i]);
+				aux.valor= All_IDs[i];
+				resultadosParciales.push_back(aux);
+			}else{
+				if(All_IDs[i]!=All_IDs[i-1]){
+					aux.cuenta = count(All_IDs.begin(),All_IDs.end(),All_IDs[i]);
+					aux.valor= All_IDs[i];
+					resultadosParciales.push_back(aux);
+				}
 			}
 		}
-		conteos.emplace_back(cuenta, actual_id);
-		// Ordenar por frecuencia descendente; en empate, por id ascendente
-		sort(conteos.begin(), conteos.end(), [](const pair<size_t,size_t>& a, const pair<size_t,size_t>& b){
-			if(a.first != b.first) return a.first > b.first;
-			return a.second < b.second;
-		});
-		// Construir resultado con los IDs en orden deseado
-		for(const auto &p : conteos){
-			resultado.push_back(p.second);
-		}
+		
+		///Ordenar Descendente
+		sort(resultadosParciales.begin(),
+			 resultadosParciales.end(),
+			 [](const Ranking& a, const Ranking& b){
+				 return a.cuenta > b.cuenta;
+			 });
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		return resultado;
 	};
 	

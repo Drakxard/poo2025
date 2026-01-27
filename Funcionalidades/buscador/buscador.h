@@ -9,6 +9,10 @@ using namespace std;
 
 //template<typename T>
 class System;
+
+struct Ranking{
+	size_t cuenta, valor;
+};
 class Buscador{
 	System *sistema;
 	Bloques diccionario;
@@ -21,6 +25,6 @@ public:
 	vector<size_t> OrdenarAscendente(vector<size_t>v);
 	template <typename T>
 	vector<T> Relacionados(string palabraBuscada, vector<T>&v);
-	vector<size_t> Repetidos(vector<Libro>&vectorLibros);
+	vector<size_t> Repetidos(vector<size_t>&All_IDs);
 };
 #endif

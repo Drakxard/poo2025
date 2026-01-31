@@ -40,6 +40,7 @@ vector<size_t> Buscador::BusquedaAmpliada(string nombreBuscado){
 vector<string> Buscador::ExtraerPalabras(string nombreBuscado){
 	vector<string> resultado;
 	string palabra;
+	cout<<endl<<nombreBuscado.length()<<endl;
 	for(size_t i= 0; i< nombreBuscado.length(); ++i){
 		if(nombreBuscado[i]!=' '){
 			palabra += nombreBuscado[i];
@@ -48,6 +49,7 @@ vector<string> Buscador::ExtraerPalabras(string nombreBuscado){
 			palabra="";
 		}
 	}
+	resultado.push_back(palabra);
 	return resultado;
 }
 vector<size_t> Buscador::OrdenarAscendente(vector<size_t>v){

@@ -107,9 +107,9 @@ vector<T> Relacionados(string palabraBuscada, vector<T>&v){
 		
 		///Retornar solo mayor inferencia
 		for(Ranking&x:resultadosParciales)
-			resultado.push_back(x);
+			resultado.push_back(x.valor);
 		return resultado;
-	};
+}
 	
 	
 	

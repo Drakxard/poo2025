@@ -325,10 +325,20 @@ if(borrar=='s'){
 
  -----------^ Metodos relacionados a Bibliotecarios ^ --------------
 */
-
-// -----------^ Metodos relacionados a Bibliotecarios ^ --------------
+	
+	
+	
+///------------------ Buscador ------------------
+/* Coincidencias
+vector<size_t> coincidencias = {1,2,3,3,4,5,6,6,7,7,7,7,8,9,10};
+vector<size_t> resultadoDeBusqueda = navega.ResultadoBusqueda(coincidencias);
+cout<<"Ranking de frecuencia: "<<endl;
+c=0;
+for(size_t& x: resultadoDeBusqueda)
+	cout<<++c<<") "<<x<<endl;
+*/
+	
+	
 	return 0;
 }
 	
-	
-		

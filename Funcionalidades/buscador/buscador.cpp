@@ -8,9 +8,12 @@ vector<size_t> Buscador::BusquedaSimple(string nombreBuscado)
 {
 	
 	string nombreArchivo = diccionario.VerPathEtiquetas();
+	cout<<endl<<"Archivo a abrir: "<<nombreArchivo<<endl;
+
+
+
 	vector<Tags> contenedor;
 	contenedor = sistema->VerContenido<Tags>(nombreArchivo,true);
-	
 	vector<Tags>::iterator buscado = find_if(contenedor.begin(),contenedor.end(),[nombreBuscado](const Tags& a){
 		return a.NombreTag == nombreBuscado;
 	});
@@ -61,13 +64,18 @@ template <typename T>
 vector<T>Buscador::Relacionados(string palabraBuscada, vector<T>&v){
 	vector<T> aux;
 	auto encontrado = v.begin();
+	size_t pos=0;
 	while(encontrado!=v.end()){
-		encontrado = find_if(v.begin()+(encontrado-v.begin()),v.end(),[palabraBuscada](const T& a){			
+		
+		encontrado = find_if(v.begin()+pos,v.end(),[palabraBuscada](const T& a){	
+			
 			return a.VerNombre() == palabraBuscada;
 		});
+		
 		if(encontrado== v.end()){break;}
 		
 		aux.push_back(*encontrado);//Devuelve posiciones
+		pos=(encontrado-v.begin())+1;
 	}
 	return aux;
 }

@@ -261,21 +261,25 @@ cout<<"ID a eliminar: ";cin>>idAlumno;
 
 //---------------Buscar Alummno--------------
 cout<<"Buscar Alumno, ingrese el nombre: ";
-getline(cin,palabra);
-cin.ignore();
+	getline(cin,palabra);
+	cin.ignore();
 	
 	resultadoAlumnos = navega.Relacionados(palabra,vectorAlumnos);
-	for(Alumno &x: vectorAlumnos){
-			cout<<"Nombre Alumno: " <<x.VerNombre()
-			<<" / Id: "	<<x.VerID()
-			<<" / DNI: "<<x.VerDNI();
-			if(x.VerEstadoDeSancion()==1){
-				cout<<"/ Sancionado"<<endl;
-			}else{
-				cout<<"/ No Sancionado"
-				<<endl;
-			}
-		} 
+	if(resultadoAlumnos.size()==0){
+	cout<<"no se encontro a nadie con ese nombre"<<endl;
+}else{
+	for(Alumno &x: resultadoAlumnos){
+	cout<<"Nombre Alumno: " <<x.VerNombre()
+	<<" / Id: "	<<x.VerID()
+	<<" / DNI: "<<x.VerDNI();
+	if(x.VerEstadoDeSancion()==1){
+	cout<<"/ Sancionado"<<endl;
+}else{
+	cout<<"/ No Sancionado"
+	<<endl;
+}
+} 
+} 
 	*/
 
 
@@ -337,6 +341,23 @@ c=0;
 for(string& x: resultado)
 	cout<<++c<<")"<<x<<endl;
 */
+
+
+///Tags actuales	
+	vector<Tags> tagsActuales;	
+	tagsActuales = sistema.VerContenido<Tags>(allTags.VerPathEtiquetas(),true);
+	cout<<endl<<endl;
+	for(Tags& x:tagsActuales)
+		cout<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<
+		"   < ------ >  "<<x.IdTag<<  endl;
+	
+
+///Busqueda ampliada
+string fraseBusqueda;
+cout<<"Nombre de la frase de busqueda: ";cin>>fraseBusqueda;
+vector<size_t> resultadoBusqueda = navega.BusquedaAmpliada(busquedaAmpliada);
+
+
 
 /* Coincidencias
 vector<size_t> coincidencias = {1,2,3,3,4,5,6,6,7,7,7,7,8,9,10};

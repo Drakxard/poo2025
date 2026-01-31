@@ -151,6 +151,7 @@ int main(){
 	*/
 	
 	/* -------------------- Buscar libro palabra -----------------------
+	cin.ignore();
 	cout<<"Buscar libro, ingrese palabra: ";
 	getline(cin,palabra);
 	cin.ignore();
@@ -260,6 +261,7 @@ cout<<"ID a eliminar: ";cin>>idAlumno;
 	}
 
 //---------------Buscar Alummno--------------
+cin.ignore();
 cout<<"Buscar Alumno, ingrese el nombre: ";
 	getline(cin,palabra);
 	cin.ignore();
@@ -298,6 +300,7 @@ for(Bibliotecario& x: vectorBibliotecario)
 cout<<endl<<endl<<"------------------------------"<<endl;
 
 //---------------Buscar Bibliotecarios"--------------
+cin.ignore();
 cout<<"Buscar Bibliotecario, ingrese el nombre: ";
 getline(cin,palabra);
 cin.ignore();
@@ -356,7 +359,9 @@ for(string& x: resultado)
 string fraseBusqueda;
 cout<<"Nombre de la frase de busqueda: ";cin>>fraseBusqueda;
 vector<size_t> resultadoBusqueda = navega.BusquedaAmpliada(busquedaAmpliada);
-
+cout<<endl;
+for(size_t& x: resultadoBusqueda)
+	cout<< x <<endl;
 
 
 /* Coincidencias

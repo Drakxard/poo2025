@@ -120,7 +120,7 @@ vector<T>Buscador::Relacionados(string palabraBuscada, vector<T>&v){
 }
 	
 	
-template vector<Alumno>Buscador:: Relacionados(string palabraBuscada, vector<Alumno>&v)
+template vector<Alumno>Buscador:: Relacionados(string palabraBuscada, vector<Alumno>&v);
 	
 	
 	

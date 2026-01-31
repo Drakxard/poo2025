@@ -49,7 +49,7 @@ string fisica = "Recursos/binarios/fisica.bin";
 vector<Libro> vectorLibros = sistema.VerContenido<Libro>(libros, 1);
 vector<Alumno> vectorAlumnos = sistema.VerContenido<Alumno>(alumnos, 1);
 vector<Bibliotecario> vectorBibliotecario = sistema.VerContenido<Bibliotecario>(bibliotecarios, 1);
-int idLibro, idAlumno, idBibliotecario;
+size_t idLibro, idAlumno, idBibliotecario;
 int cant;	
 
 ///Iteradores para los metodos
@@ -79,74 +79,74 @@ int main(){
 	cout<<"Ingrese su Documento de Identidad, por favor: ";
 	cin>>dni;
 	
-
+	
 	int PosBibliotecario = BuscarDniEnBibliotecarios(dni, vectorBibliotecario);
 	cout<<"PosBibliotecario: "<<PosBibliotecario<<endl;
 	//Declarar Variables para ser usadas en la ejecucion
 	Alumno alumn;
 	Bibliotecario biblio;
-
+	
 	
 	
 	if(PosBibliotecario != -1){
-		biblio = ObjetoCorrespondienteBibliotecario(PosBibliotecario, vectorBibliotecario);
-		cout<<"�Que Quieres Hacer "<<biblio.VerNombre()<<" ?"<<endl;
-			menuBibliotecario();
-	}
+	biblio = ObjetoCorrespondienteBibliotecario(PosBibliotecario, vectorBibliotecario);
+	cout<<"?Que Quieres Hacer "<<biblio.VerNombre()<<" ?"<<endl;
+	menuBibliotecario();
+}
 	else{
-		int PosAlumno = BuscarDniEnAlumnos(dni,vectorAlumnos);
-		if(PosAlumno!= -1){
-			alumn = ObjetoCorrespondienteAlumno(PosAlumno, vectorAlumnos); 
-			cout<<"PosAlumno: "<<PosAlumno<<endl;
-
-			cout<<"�Que Quieres Hacer "<<alumn.VerNombre()<<" ?"<<endl;
-			cout<<"Menu alumno..";
-		}else{
-			cout<<"No est�s en el sistema... Registrandote"<<endl;
-			cant=1;
-			admin.CargarNuevos<Alumno>(cant,alumnos);
-		}
-	}
+	int PosAlumno = BuscarDniEnAlumnos(dni,vectorAlumnos);
+	if(PosAlumno!= -1){
+	alumn = ObjetoCorrespondienteAlumno(PosAlumno, vectorAlumnos); 
+	cout<<"PosAlumno: "<<PosAlumno<<endl;
+	
+	cout<<"?Que Quieres Hacer "<<alumn.VerNombre()<<" ?"<<endl;
+	cout<<"Menu alumno..";
+}else{
+	cout<<"No est?s en el sistema... Registrandote"<<endl;
+	cant=1;
+	admin.CargarNuevos<Alumno>(cant,alumnos);
+}
+}
 	
 	//Fin login, tenemos o un Bibliotecario o un Alumno
-*/
+	*/
 	/* ----------------------- Intefaz --------------------
 	///Para mostrar los libros antes mostramos sus Cabeceras
 	
 	/*string indexCabeceras="./Recursos/libros_index.txt";
 	
 	vector<Cabecera> resultado = sistema.CargarDesdeTxt(indexCabeceras);
-
+	
 	for(Cabecera& x: resultado)
-		cout<<
-		"Nombre libro: "<<x.nombre<<
-		"      "<<
-		"path: "<<x.path<<
-		endl;
+	cout<<
+	"Nombre libro: "<<x.nombre<<
+	"      "<<
+	"path: "<<x.path<<
+	endl;
 	
 	*/
 	
 	
 	/* ----------- Metodos relacionados a Libros --------------
-
+	
 	
 	
 	//VerLibrosExistentes
 	cout<<"Libros Disponibles: "<<endl;
 	vectorLibros = sistema.VerContenido<Libro>(libros,true);
 	resultadoLibros = navega.Relacionados(palabra,vectorLibros);
-
+	
 	for(Libro& x: vectorLibros){
-		cout
-			<<"Nombre Libro: " 	<<x.VerNombre()
-			<<"/ Id: "	<<x.VerID();
-			if(x.EstadoDisponibilidad()==1){
-				cout<<"/ Disponible"<<endl;
-			}else{
-				cout<<"/ No Disponible"
-				<<endl;
-			}
-		}
+	cout
+	<<"Nombre Libro: " 	<<x.VerNombre()
+	<<"/ Id: "	<<x.VerID();
+	if(x.EstadoDisponibilidad()==1){
+	cout<<"/ Disponible"<<endl;
+}else{
+	cout<<"/ No Disponible"
+	<<endl;
+}
+}
 	cout<<endl<<endl<<"------------------------------"<<endl;
 	*/
 	
@@ -157,16 +157,16 @@ int main(){
 	cin.ignore();
 	resultadoLibros = navega.Relacionados(palabra,vectorLibros);
 	for(Libro &x: vectorLibros){
-			cout
-			<<"Nombre Libro: " 	<<x.VerNombre()
-			<<"/ Id: "	<<x.VerID();
-			if(x.EstadoDisponibilidad()==1){
-				cout<<"/ Disponible"<<endl;
-			}else{
-				cout<<"/ No Disponible"
-				<<endl;
-			}
-		} 
+	cout
+	<<"Nombre Libro: " 	<<x.VerNombre()
+	<<"/ Id: "	<<x.VerID();
+	if(x.EstadoDisponibilidad()==1){
+	cout<<"/ Disponible"<<endl;
+}else{
+	cout<<"/ No Disponible"
+	<<endl;
+}
+} 
 	*/
 	
 	
@@ -179,40 +179,40 @@ int main(){
 	cout<<"Confirmas Eliminarlo? s/n: ";cin>>borrar;
 	if(borrar=='s'){
 	///Uso del metodo 	| Proceso
-		sistema.Eliminar(idLibro, vectorLibros);
-		sistema.Guardar<Libro>(libros,vectorLibros);
-		
-	}else{
-			cout<<endl<<"Codigo No existente";
-	}
+	sistema.Eliminar(idLibro, vectorLibros);
+	sistema.Guardar<Libro>(libros,vectorLibros);
+	
+}else{
+	cout<<endl<<"Codigo No existente";
+}
 	*/
 	
-/*------------Agregar Libros----------------
+	/*------------Agregar Libros----------------
 	cout<<"Libros a agregar: ";cin>>cant;
 	admin.CargarNuevosLibros(cant,libros);
-*/
-
-// -----------^ Metodos relacionados a Libros ^ --------------
+	*/
+	
+	// -----------^ Metodos relacionados a Libros ^ --------------
 	
 	
 	
 	/* --------------- Flujo de bloques ------------
 	//Trabajar con bloques
-
+	
 	//Las etiquetas reservan bloques, al ser creados
 	Tags auxTags;
 	vector<Tags> tagsActuales;
 	auxTags = allTags.AgregarNuevoTag();
 	tagsActuales.push_back(auxTags);
-
+	
 	///Guardar tags
 	sistema.Guardar<Tags>(allTags.VerPathEtiquetas(),tagsActuales);
 	
 	tagsActuales = sistema.VerContenido<Tags>(allTags.VerPathEtiquetas(),true);
 	cout<<endl<<endl;
 	for(Tags& x:tagsActuales)
-		cout<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<
-		"   < ------ >  "<<x.IdTag<<  endl;
+	cout<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<
+	"   < ------ >  "<<x.IdTag<<  endl;
 	
 	
 	
@@ -229,40 +229,40 @@ int main(){
 	vector<size_t>resultado = allTags.LeerTodosLosElementos(IDtag);
 	
 	
-*/
+	*/
 	
-
-/* ----------- Metodos relacionados a Alumnos --------------
-
-//--------------Ver Alumnos------------
-vectorAlumnos = sistema.VerContenido<Alumno>(alumnos,true);
-									
+	
+	/* ----------- Metodos relacionados a Alumnos --------------
+	
+	//--------------Ver Alumnos------------
+	vectorAlumnos = sistema.VerContenido<Alumno>(alumnos,true);
+	
 	cout<<"Alumnos: "<<endl;
 	for(Alumno& x: vectorAlumnos)
-		cout<<x.VerNombre()  <<"/   "<<x.VerDNI()  <<"/   "<<x.VerID()<<endl;
+	cout<<x.VerNombre()  <<"/   "<<x.VerDNI()  <<"/   "<<x.VerID()<<endl;
 	
 	cout<<endl<<endl<<"------------------------------"<<endl;
-
-//--------------Agregar Alumnos -----------  
-cout<<"Alumnos a agregar: ";cin>>cant;
-admin.CargarNuevos<Alumno>(cant,alumnos);
-
-//---------------Eliminar Alumno--------------
-cout<<"ID a eliminar: ";cin>>idAlumno;
+	
+	//--------------Agregar Alumnos -----------  
+	cout<<"Alumnos a agregar: ";cin>>cant;
+	admin.CargarNuevos<Alumno>(cant,alumnos);
+	
+	//---------------Eliminar Alumno--------------
+	cout<<"ID a eliminar: ";cin>>idAlumno;
 	char borrar;
 	cout<<"Confirmas Eliminarlo? s/n: ";cin>>borrar;
 	if(borrar=='s'){
 	///Uso del metodo 	| Proceso
-		sistema.Eliminar(idAlumno, vectorAlumnos);
-		sistema.Guardar<Alumno>(alumnos,vectorAlumnos);
-		
-	}else{
-			cout<<endl<<"Codigo de identificación inexistente";
-	}
-
-//---------------Buscar Alummno--------------
-cin.ignore();
-cout<<"Buscar Alumno, ingrese el nombre: ";
+	sistema.Eliminar<Alumno>(idAlumno, vectorAlumnos);
+	sistema.Guardar<Alumno>(alumnos,vectorAlumnos);
+	
+}else{
+	cout<<endl<<"Codigo de identificaci�n inexistente";
+}
+	
+	//---------------Buscar Alummno--------------
+	cin.ignore();
+	cout<<"Buscar Alumno, ingrese el nombre: ";
 	getline(cin,palabra);
 	cin.ignore();
 	
@@ -283,100 +283,92 @@ cout<<"Buscar Alumno, ingrese el nombre: ";
 } 
 } 
 	*/
-
-
-/* -----------^ Metodos relacionados a Alumnos ^ --------------
-
-
-
-/* ----------- Metodos relacionados a Bibliotecarios  --------------
-
-//---------------Ver Bibliotecarios--------------
-
-vectorBibliotecario= sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
-cout<<"Bibliotecario: "<<endl;
-for(Bibliotecario& x: vectorBibliotecario)
-	cout<<x.VerNombre()<<" / "<<x.VerDNI()<<" / "<<x.VerID()<<endl;
-cout<<endl<<endl<<"------------------------------"<<endl;
-
-//---------------Buscar Bibliotecarios"--------------
-cin.ignore();
-cout<<"Buscar Bibliotecario, ingrese el nombre: ";
-getline(cin,palabra);
-cin.ignore();
 	
-resultadoBibliotecarios = navega.Relacionados(palabra,vectorBibliotecario);
-for(Bibliotecario &x: vectorBibliotecario){
-		cout<<"Nombre Bibliotecario: " <<x.VerNombre()
-		<<" / Id: "	<<x.VerID()
-		<<" / DNI: "<<x.VerDNI();
+	
+	/* -----------^ Metodos relacionados a Alumnos ^ --------------
+	
+	
+	
+	/* ----------- Metodos relacionados a Bibliotecarios  --------------
+	
+	//---------------Ver Bibliotecarios--------------
+	
+	vectorBibliotecario= sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
+	cout<<"Bibliotecario: "<<endl;
+	for(Bibliotecario& x: vectorBibliotecario)
+	cout<<x.VerNombre()<<" / "<<x.VerDNI()<<" / "<<x.VerID()<<endl;
+	cout<<endl<<endl<<"------------------------------"<<endl;
+	
+	//---------------Buscar Bibliotecarios"--------------
+	cin.ignore();
+	cout<<"Buscar Bibliotecario, ingrese el nombre: ";
+	getline(cin,palabra);
+	cin.ignore();
+	
+	resultadoBibliotecarios = navega.Relacionados(palabra,vectorBibliotecario);
+	for(Bibliotecario &x: vectorBibliotecario){
+	cout<<"Nombre Bibliotecario: " <<x.VerNombre()
+	<<" / Id: "	<<x.VerID()
+	<<" / DNI: "<<x.VerDNI();
 } 
-
-//--------------Agregar Bibliotecarios -----------
-cout<<"Bibliotecarios a agregar: ";cin>>cant;
-admin.CargarNuevos<Bibliotecario>(cant,bibliotecarios);
-
-
-//---------------Eliminar Bibliotecarios"--------------
-cout<<"ID a eliminar: ";cin>>idBibliotecario;
-char borrar;
-cout<<"Confirmas Eliminarlo? s/n: ";cin>>borrar;
-if(borrar=='s'){
-///Uso del metodo 	| Proceso
-	sistema.Eliminar(idBibliotecario, vectorBibliotecario);
+	
+	//--------------Agregar Bibliotecarios -----------
+	cout<<"Bibliotecarios a agregar: ";cin>>cant;
+	admin.CargarNuevos<Bibliotecario>(cant,bibliotecarios);
+	
+	
+	//---------------Eliminar Bibliotecarios"--------------
+	cout<<"ID a eliminar: ";cin>>idBibliotecario;
+	char borrar;
+	cout<<"Confirmas Eliminarlo? s/n: ";cin>>borrar;
+	if(borrar=='s'){
+	///Uso del metodo 	| Proceso
+	sistema.Eliminar>Bibliotecario>(idBibliotecario, vectorBibliotecario);
 	sistema.Guardar<Bibliotecario>(bibliotecarios,vectorBibliotecario);
 	
 }else{
-		cout<<endl<<"Codigo de identificación inexistente";
+	cout<<endl<<"Codigo de identificaci�n inexistente";
 }
-
- -----------^ Metodos relacionados a Bibliotecarios ^ --------------
-*/
+	
+	-----------^ Metodos relacionados a Bibliotecarios ^ --------------
+	*/
 	
 	
 	
-///------------------ Buscador ------------------
-
-/*///Extraer palabra de frase
-string frase= "Luna llena de Azul marino";
-vector<string> resultado = navega.ExtraerPalabras(frase);
-c=0;
-for(string& x: resultado)
+	///------------------ Buscador ------------------
+	
+	/*///Extraer palabra de frase
+	string frase= "Luna llena de Azul marino";
+	vector<string> resultado = navega.ExtraerPalabras(frase);
+	c=0;
+	for(string& x: resultado)
 	cout<<++c<<")"<<x<<endl;
-*/
-
-
-///Tags actuales	
-	vector<Tags> tagsActuales;	
-	tagsActuales = sistema.VerContenido<Tags>(allTags.VerPathEtiquetas(),true);
-	cout<<endl<<endl;
-	for(Tags& x:tagsActuales)
-		cout<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<
-		"   < ------ >  "<<x.IdTag<<  endl;
+	*/
+		
+/*	///Busqueda ampliada
+	string fraseBusqueda;
+	cout<<"Nombre de la frase de busqueda: ";cin>>fraseBusqueda;
+	vector<size_t> resultadoBusqueda = navega.BusquedaAmpliada(fraseBusqueda);
+	cout<<endl;
+	for(size_t& x: resultadoBusqueda)
+		cout<< x <<endl;
+	*/
 	
-
-///Busqueda ampliada
-string fraseBusqueda;
-cout<<"Nombre de la frase de busqueda: ";cin>>fraseBusqueda;
-vector<size_t> resultadoBusqueda = navega.BusquedaAmpliada(busquedaAmpliada);
-cout<<endl;
-for(size_t& x: resultadoBusqueda)
-	cout<< x <<endl;
-
-
-/* Coincidencias
-vector<size_t> coincidencias = {1,2,3,3,4,5,6,6,7,7,7,7,8,9,10};
-vector<size_t> resultadoDeBusqueda = navega.ResultadoBusqueda(coincidencias);
-cout<<"Ranking de frecuencia: "<<endl;
-c=0;
-for(size_t& x: resultadoDeBusqueda)
+	/* Coincidencias
+	vector<size_t> coincidencias = {1,2,3,3,4,5,6,6,7,7,7,7,8,9,10};
+	vector<size_t> resultadoDeBusqueda = navega.ResultadoBusqueda(coincidencias);
+	cout<<"Ranking de frecuencia: "<<endl;
+	c=0;
+	for(size_t& x: resultadoDeBusqueda)
 	cout<<++c<<") "<<x<<endl;
-*/
+	*/
 	
-
-
-
+	
+	
+	
 	
 	return 0;
 }
+	
+	
 	

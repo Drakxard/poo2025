@@ -17,7 +17,7 @@ vector<size_t> Buscador::BusquedaSimple(string nombreBuscado)
 	vector<Tags>::iterator buscado = find_if(contenedor.begin(),contenedor.end(),[nombreBuscado](const Tags& a){
 		return a.NombreTag == nombreBuscado;
 	});
-	///Para la comparaci�n, si no es la palabra exacta falla
+	///Para la comparaciï¿½n, si no es la palabra exacta falla
 	///estaria bueno hacer por prefijo, truncar diccionario
 	///Y palabra ingresada
 	vector<size_t>resultado;
@@ -37,6 +37,9 @@ vector<size_t> Buscador::BusquedaAmpliada(string nombreBuscado){
 		resultadoParcial = BusquedaSimple(nombreBuscado);
 		resultado.insert(resultado.end(), resultadoParcial.begin(), resultadoParcial.end());
 	}
+	
+	resultado = ResultadoBusqueda(resultado);
+	
 	return resultado;
 }
 
@@ -61,17 +64,15 @@ vector<size_t> Buscador::OrdenarAscendente(vector<size_t>v){
 	
 }
 template <typename T>
-vector<T>Buscador::Relacionados(string palabraBuscada, vector<T>&v){
+vector<T>Buscador:: Relacionados(string palabraBuscada, vector<T>&v){
 	vector<T> aux;
 	auto encontrado = v.begin();
 	size_t pos=0;
 	while(encontrado!=v.end()){
-		
-		encontrado = find_if(v.begin()+pos,v.end(),[palabraBuscada](const T& a){	
+		encontrado = find_if(v.begin()+pos,v.end(),[palabraBuscada](const T& a){
 			
 			return a.VerNombre() == palabraBuscada;
 		});
-		
 		if(encontrado== v.end()){break;}
 		
 		aux.push_back(*encontrado);//Devuelve posiciones
@@ -81,6 +82,7 @@ vector<T>Buscador::Relacionados(string palabraBuscada, vector<T>&v){
 }
 	
 	
+
 	vector<size_t> Buscador:: ResultadoBusqueda(vector<size_t>&All_IDs){
 		vector<size_t> resultado;
 		if(All_IDs.size()==0) return resultado;
@@ -117,8 +119,7 @@ vector<T>Buscador::Relacionados(string palabraBuscada, vector<T>&v){
 		for(Ranking&x:resultadosParciales)
 			resultado.push_back(x.valor);
 		return resultado;
-}
-	
+}	
 	
 template vector<Alumno>Buscador:: Relacionados(string palabraBuscada, vector<Alumno>&v);
 	

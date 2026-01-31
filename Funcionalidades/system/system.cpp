@@ -9,7 +9,7 @@ using namespace std;
 template <typename T>  ///Cambiar a Guardar al final
 void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
 {
-ofstream archi(nombreArhivo, ios::binary|ios::app);
+ofstream archi(nombreArhivo, ios::binary);
 
 if (!archi)
 throw runtime_error("Error al guardar en " + nombreArhivo);
@@ -25,16 +25,16 @@ archi.close();
 }
 
 template <typename T>
-bool Eliminar(int id, vector<T>&v){
-    typename vector<T>::iterator itBorrar = find(v.begin(),v.end(),[id](const T& a){
-        return a.VerId() == id;
-    });
-    if(itBorrar!=v.end()){
-        v.erase(itBorrar);
-        return true;//borrado
-    }else{
-        return false;//no se encontro xD
-    }
+bool System::Eliminar(int id, vector<T>&v){
+typename vector<T>::iterator itBorrar = find_if(v.begin(),v.end(),[id](const T& a){
+return a.VerID() == id;
+});
+if(itBorrar!=v.end()){
+v.erase(itBorrar);
+return true;//borrado
+}else{
+return false;//no se encontro xD
+}
 }
 
 template <typename T> ///Cambiar a solo leer N cosas
@@ -45,7 +45,7 @@ if(crear){
 }
 else{
 if(!archi)
-throw runtime_error("Error al Recuperar de " + nombreArchivo);
+    throw runtime_error("Error al Recuperar de " + nombreArchivo);
 }
 vector<T>Resultado;
 T aux;
@@ -116,17 +116,17 @@ int actual;
 bool primero=true; //Ajustar puntero, para iniciar 
 for (size_t i = 0; i < IdARecuperar.size()-1;++i)
 {
-//Est� ordenado, logica para 2 -> n (seguir pensando)
+//Est? ordenado, logica para 2 -> n (seguir pensando)
 //  2 4 6 8
 //primero -> 0 + primerID, hacer,
 // 4 - 2 = 2, cursor en 2 -> 4, saltar 2 lugares
 //6 -4 = 2, cursor en 4 -> 6, saltar 2 lugares
 // 8 - 6 = 2, cursor en 6 -> 8, saltar 2 lugares 
 if(primero){
-actual = IdARecuperar[i];
-primero = false;
+    actual = IdARecuperar[i];
+    primero = false;
 }else{
-actual = IdARecuperar[i + 1] - IdARecuperar[i];
+    actual = IdARecuperar[i + 1] - IdARecuperar[i];
 }
 archi.seekg((actual) * (sizeof(T))); // vamos a la posicion
 archi.read(reinterpret_cast<char*>(&aux), sizeof(aux));
@@ -143,25 +143,25 @@ bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, strin
 if(IdARecuperar.size() != 0){
 ofstream archi(nombreArchivo, ios::binary);
 if (!archi)
-throw runtime_error("Error al Recuperar de " + nombreArchivo);
+    throw runtime_error("Error al Recuperar de " + nombreArchivo);
 
 T aux;
 int actual;
 bool primero = true; // Ajustar puntero, para iniciar
 for (size_t i = 0; i < IdARecuperar.size() - 1; ++i)
 {
-if (primero)
-{
-	actual = IdARecuperar[i];
-	primero = false;
-}
-else
-{
-	actual = IdARecuperar[i + 1] - IdARecuperar[i];
-}
-aux = elementos[i];
-archi.seekp((actual) * (sizeof(T))); // vamos a la posicion
-archi.write(reinterpret_cast<const char *>(&aux), sizeof(aux));
+    if (primero)
+    {
+        actual = IdARecuperar[i];
+        primero = false;
+    }
+    else
+    {
+        actual = IdARecuperar[i + 1] - IdARecuperar[i];
+    }
+    aux = elementos[i];
+    archi.seekp((actual) * (sizeof(T))); // vamos a la posicion
+    archi.write(reinterpret_cast<const char *>(&aux), sizeof(aux));
 }
 archi.close();
 }else{
@@ -229,18 +229,18 @@ return false;
 vector<Cabecera> System::CargarDesdeTxt(string nombreArchivo){
 ifstream archi(nombreArchivo);
 if(!archi)
-throw runtime_error("Error al leer "+nombreArchivo);
+    throw runtime_error("Error al leer "+nombreArchivo);
 
 vector<Cabecera>resultado;
 string nombre,path;
 Cabecera aux;
 while((getline(archi,nombre)) and (getline(archi,path))){
-strncpy(aux.nombre,nombre.c_str(),49);
-aux.nombre[49] = '\0';
-
-strncpy(aux.path,path.c_str(),49);
-aux.path[49] = '\0';
-resultado.push_back(aux);
+    strncpy(aux.nombre,nombre.c_str(),49);
+    aux.nombre[49] = '\0';
+    
+    strncpy(aux.path,path.c_str(),49);
+    aux.path[49] = '\0';
+    resultado.push_back(aux);
 }
 archi.close();
 return resultado;
@@ -284,5 +284,9 @@ template int System::VerUltimo<Alumno>(string nombreArchivo);
 template int System::VerUltimo<Libro>(string nombreArchivo);
 
 template int System::VerUltimo<Bibliotecario>(string nombreArchivo);
+
+
+template bool System:: Eliminar<Alumno>(size_t id, vector<Alumno>&v);
 // funcion para saltar al lugar que quieras, de libro, alumno o incluso bibl!
 // vector<Registro> resultado = Saltar<Registro>(vector<int>IdARecuperar);
+

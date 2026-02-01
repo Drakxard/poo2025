@@ -3,7 +3,7 @@
 #include "../preConfiguracion/preConfiguracion.h"
 #include "../libro/libro.h"
 #include "../alumno/alumno.h"
-#include "../Bloques/Bloques.h"
+
 
 
 using namespace std;
@@ -12,6 +12,8 @@ using namespace std;
 struct Cabecera{
 	char nombre[50], path[50];
 };
+struct Tags;
+struct Bloque;
 class System{
 	string pathalumnos ="../../Recursos/Binarios/alumnos.bin";
 	
@@ -19,8 +21,9 @@ class System{
 public:
 	System(){};
 	template<typename T>
-	void Guardar(string nombreArhivo, vector<T> &A_Guardar);
-	void Guardar(string nombreArhivo, Bloque &A_Guardar, size_t Pos);
+	bool Guardar(string nombreArhivo, vector<T> &A_Guardar, bool sobreEscribir=false);
+	
+	bool Guardar(string nombreArhivo, Bloque &A_Guardar, size_t Pos);
 	//Falta codear Eliminar, tempalte
 	template<typename T>
 	bool Eliminar(size_t id, vector<T>&v);

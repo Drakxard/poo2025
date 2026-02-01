@@ -17,6 +17,7 @@ struct Bloque{
 	int Elementos[1022];
 };
 class System;
+
 class Bloques {
 	System *sistema;
 	size_t TamBloque= sizeof(Bloque);

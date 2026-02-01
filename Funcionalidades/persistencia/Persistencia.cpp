@@ -1,40 +1,32 @@
 #include "Persistencia.h"
 #include <fstream>
 #include <iostream> // Para cerr
+#include "../system/system.h"
 
 using namespace std;
 
 Persistencia::Persistencia() {
-	
+	cout<<"holaPersistenca";
+	System sistema;
 	string path = "./Recursos/Binarios/persistencia.bin";
-	ifstream archi(path, ios::binary);
-	
-	if(!archi){
+	vector<Persistencia> resultado = sistema.VerContenido<Persistencia>(path,true);
+	cout<<"Creando con "<<resultado.size();
+	if(resultado.size()==0){
 		this->UltimaDireccion = 0;
 		this->CantidadTags = 0;
 	}
 	else {
-		Persistencia aux;
-		archi.read(reinterpret_cast<char*>(&aux), sizeof(aux));
-		
-		
-		
-		this->UltimaDireccion = aux.VerUltimaDireccion();
-		this->CantidadTags = aux.VerCantidadTags();
-		
-		archi.close();
+		this->UltimaDireccion = resultado[0].VerUltimaDireccion();
+		this->CantidadTags = resultado[0].VerCantidadTags();
 	}
 }
 
 Persistencia::~Persistencia(){
-
+	System sistema;
 	string path = "./Recursos/Binarios/persistencia.bin";
-	
-	ofstream archi(path, ios::binary);
-	if(!archi){
-		cerr << "Error al escribir la persistencia en " << path << endl;
-	} else {
-		archi.write(reinterpret_cast<const char*>(this), sizeof(Persistencia));
-		archi.close();  
-	}
+	vector<Persistencia> resultado;
+	Persistencia aux= *this;
+	resultado.push_back(aux);
+	bool SeGuardo = sistema.Guardar<Persistencia>(path,resultado,true);
+
 }

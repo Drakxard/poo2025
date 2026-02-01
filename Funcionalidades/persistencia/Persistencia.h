@@ -3,7 +3,7 @@
 #include <iostream>
 
 using namespace std;
-
+class System;
 class Persistencia {
 	///Para saber siguiente bloque a crear
 	size_t UltimaDireccion=0;

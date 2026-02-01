@@ -64,10 +64,11 @@ vector<Tags> tagsActuales;
 
 void menuBibliotecario();
 void menuAlumno();
-Bloques allTags;
 
 int main(){
 	
+	cout<<"holaAntesBloque";
+	Bloques allTags;
 	/*-----------------Login------------------------
 	//Saber los alumnos y bibliotecarios
 	vectorAlumnos = sistema.VerContenido<Alumno>(alumnos,true);
@@ -362,6 +363,76 @@ int main(){
 	for(size_t& x: resultadoDeBusqueda)
 	cout<<++c<<") "<<x<<endl;
 	*/
+	
+	
+	///VerLibros
+	
+	//VerLibrosExistentes
+	cout<<"Libros Disponibles: "<<endl;
+	vectorLibros = sistema.VerContenido<Libro>(libros,true);
+	resultadoLibros = navega.Relacionados<Libro>(palabra,vectorLibros);
+	
+	for(Libro& x: vectorLibros){
+		cout
+			<<"Nombre Libro: " 	<<x.VerNombre()
+			<<"/ Id: "	<<x.VerID();
+		if(x.EstadoDisponibilidad()==1){
+			cout<<"/ Disponible"<<endl;
+		}else{
+			cout<<"/ No Disponible"
+				<<endl;
+		}
+	}
+	cout<<endl<<endl<<"------------------------------"<<endl;
+	
+	cout<<"Libros a agregar: ";cin>>cant;
+	admin.CargarNuevosLibros(cant,libros);
+	
+	Tags auxTags;
+	vector<Tags> tagsActuales;
+	auxTags = allTags.AgregarNuevoTag();
+	tagsActuales.push_back(auxTags);
+	
+	auxTags = allTags.AgregarNuevoTag();
+	tagsActuales.push_back(auxTags);
+	
+	
+	auxTags = allTags.AgregarNuevoTag();
+	tagsActuales.push_back(auxTags);
+	
+	
+	///Guardar tags
+	sistema.Guardar<Tags>(allTags.VerPathEtiquetas(),tagsActuales);
+	
+	tagsActuales = sistema.VerContenido<Tags>(allTags.VerPathEtiquetas(),true);
+	cout<<endl<<endl;
+	for(Tags& x:tagsActuales)
+		cout<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<
+		"   < ------ >  "<<x.IdTag<<  endl;
+	
+	
+	
+	size_t IDtag, IDNuevo;
+	cout<<"Ingresado IdTag: ";cin>>IDtag;
+	cout<<"Id a agregar: ";cin>>IDNuevo;
+	
+	
+	///Deberia tener una estructura minima
+	///Borremos los libros
+	///Borremos los tags
+	
+	///1) libros enlasados a tags
+	
+	///Matematica -> 0, 1, 2
+	///buscar matematica, retornar los id, 
+	///usar leerDelBin
+	///Mostrar esos libros, toda la data mejor
+	
+	
+	
+	
+	
+	
 	
 	
 	

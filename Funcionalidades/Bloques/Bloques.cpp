@@ -23,6 +23,7 @@ Bloques::~Bloques(){
 
 Tags Bloques::AgregarNuevoTag(){
 	string nombreTag;
+	cin.ignore();
 	cout<<"Nombre para el nuevo tag: ";
 	getline(cin,nombreTag);
 	

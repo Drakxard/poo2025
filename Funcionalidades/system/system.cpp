@@ -7,12 +7,18 @@
 #include <cstring>
 using namespace std;
 template <typename T>  ///Cambiar a Guardar al final
-void System::Guardar(string nombreArhivo, vector<T> &A_Guardar)
+bool System::Guardar(string nombreArhivo, vector<T> &A_Guardar, bool sobreEscribir)
 {
-ofstream archi(nombreArhivo, ios::binary);
-
-if (!archi)
-throw runtime_error("Error al guardar en " + nombreArhivo);
+	ofstream archi;
+		if(sobreEscribir){
+			archi.open(nombreArhivo, ios::binary);
+		}else{
+			archi.open(nombreArhivo, ios::binary|ios::app);
+		}
+if (!archi){
+cerr<<"Error al guardar en " + nombreArhivo;
+return false;
+}
 
 T aux;
 for (size_t i = 0; i < A_Guardar.size(); ++i)
@@ -22,10 +28,13 @@ aux = A_Guardar[i];
 archi.write(reinterpret_cast<const char *>(&(aux)), sizeof(aux));
 }
 archi.close();
+return true;
 }
 
+
+
 template <typename T>
-bool System::Eliminar(int id, vector<T>&v){
+bool System::Eliminar(size_t id, vector<T>&v){
 typename vector<T>::iterator itBorrar = find_if(v.begin(),v.end(),[id](const T& a){
 return a.VerID() == id;
 });
@@ -79,7 +88,7 @@ archi.read(reinterpret_cast<char*>(&(aux)),sizeof(aux));
 archi.close();
 return aux;
 }
-void System::Guardar(string nombreArhivo, Bloque &A_Guardar, size_t Pos)
+bool System::Guardar(string nombreArhivo, Bloque &A_Guardar, size_t Pos)
 {
 fstream archi(nombreArhivo, ios::binary | ios::in | ios::out);
 
@@ -90,12 +99,14 @@ archi.open(nombreArhivo, ios::binary | ios::in | ios::out);
 
 }
 
-if (!archi)
-throw runtime_error("Error al guardar en " + nombreArhivo);
-
+if (!archi){
+cerr<<"Error al guardar en " + nombreArhivo;
+return false;
+}
 archi.seekp(sizeof(Bloque) * Pos);
 archi.write(reinterpret_cast<const char *>(&(A_Guardar)), sizeof(Bloque));
 archi.close();
+return true;
 }
 
 
@@ -103,7 +114,7 @@ archi.close();
 
 template <typename T>
 vector<T> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo)
-{   //3 4 7 8 9
+{  
 
 ifstream archi(nombreArchivo, ios::binary);
 if (!archi)
@@ -116,12 +127,7 @@ int actual;
 bool primero=true; //Ajustar puntero, para iniciar 
 for (size_t i = 0; i < IdARecuperar.size()-1;++i)
 {
-//Est? ordenado, logica para 2 -> n (seguir pensando)
-//  2 4 6 8
-//primero -> 0 + primerID, hacer,
-// 4 - 2 = 2, cursor en 2 -> 4, saltar 2 lugares
-//6 -4 = 2, cursor en 4 -> 6, saltar 2 lugares
-// 8 - 6 = 2, cursor en 6 -> 8, saltar 2 lugares 
+
 if(primero){
     actual = IdARecuperar[i];
     primero = false;
@@ -253,10 +259,13 @@ template <typename T> /// Cuando terminas las modificacines lo sobreescribes
 bool EscribirEnBin(vector<T> &aEscribir, string nombreArchivo) {return true;};
 
 // Instanciaci?n para Guardar
-template void System::Guardar<Alumno>(string, vector<Alumno>&);
-template void System::Guardar<Libro>(string, vector<Libro>&);
-template void System::Guardar<Bibliotecario>(string, vector<Bibliotecario>&);
-template void System::Guardar<Tags>(string, vector<Tags>&);
+template bool System::Guardar<Alumno>(string, vector<Alumno>&, bool sobreEscribir);
+template bool System::Guardar<Libro>(string, vector<Libro>&, bool sobreEscribir);
+template bool System::Guardar<Bibliotecario>(string, vector<Bibliotecario>&, bool sobreEscribir);
+template bool System::Guardar<Tags>(string, vector<Tags>&, bool sobreEscribir);
+template bool System::Guardar<Persistencia>(string, vector<Persistencia>&, bool sobreEscribir);
+
+
 
 
 // Instanciaci?n para VerContenido
@@ -265,6 +274,7 @@ template vector<Libro> System::VerContenido<Libro>(string, bool);
 template vector<Bibliotecario> System::VerContenido<Bibliotecario>(string, bool);
 template vector<int> System::VerContenido<int>(string, bool);
 template vector<Tags> System::VerContenido<Tags>(string, bool);
+template vector<Persistencia> System::VerContenido<Persistencia>(string, bool);
 
 // Instanciaci?n para LeerDelBin y EscribirDelBin
 template vector<Alumno> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);

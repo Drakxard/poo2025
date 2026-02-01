@@ -8,6 +8,7 @@
 using namespace std;
 
 Bloques::Bloques(){
+	actual.CargarDatos();
 	UltimaDireccion= actual.VerUltimaDireccion();
 	CantidadTags = actual.VerCantidadTags();
 	cout<<"Construido con: "<<endl<<

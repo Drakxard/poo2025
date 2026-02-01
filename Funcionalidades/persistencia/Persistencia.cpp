@@ -6,6 +6,12 @@
 using namespace std;
 
 Persistencia::Persistencia() {
+	this->UltimaDireccion = 0;
+	this->CantidadTags = 0;
+}
+
+void Persistencia::CargarDatos(){
+	
 	cout<<"holaPersistenca";
 	System sistema;
 	string path = "./Recursos/Binarios/persistencia.bin";

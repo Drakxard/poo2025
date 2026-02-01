@@ -13,7 +13,7 @@ public:
 	Persistencia();
 	~Persistencia();
 	
-	
+	void CargarDatos();
 	size_t VerUltimaDireccion(){return UltimaDireccion;};
 	size_t VerCantidadTags(){return CantidadTags;};
 	void AsignarUltimaDireccion(size_t nueva){UltimaDireccion= nueva;};

@@ -20,12 +20,10 @@ cerr<<"Error al guardar en " + nombreArhivo;
 return false;
 }
 
-T aux;
 for (size_t i = 0; i < A_Guardar.size(); ++i)
 {
-aux = A_Guardar[i];
 //cout<<endl<<"En guardar :"<<aux.VerNombre()<<endl;
-archi.write(reinterpret_cast<const char *>(&(aux)), sizeof(aux));
+archi.write(reinterpret_cast<const char *>(&(A_Guardar[i])), sizeof(A_Guardar[i]));
 }
 archi.close();
 return true;

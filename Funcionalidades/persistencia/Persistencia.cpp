@@ -11,8 +11,6 @@ Persistencia::Persistencia() {
 }
 
 void Persistencia::CargarDatos(){
-	
-	cout<<"holaPersistenca";
 	System sistema;
 	string path = "./Recursos/Binarios/persistencia.bin";
 	vector<Persistencia> resultado = sistema.VerContenido<Persistencia>(path,true);
@@ -27,12 +25,16 @@ void Persistencia::CargarDatos(){
 	}
 }
 
-Persistencia::~Persistencia(){
+void Persistencia::GuardarCambios(){
 	System sistema;
 	string path = "./Recursos/Binarios/persistencia.bin";
 	vector<Persistencia> resultado;
 	Persistencia aux= *this;
 	resultado.push_back(aux);
 	bool SeGuardo = sistema.Guardar<Persistencia>(path,resultado,true);
+}
+
+Persistencia::~Persistencia(){
+	
 
 }

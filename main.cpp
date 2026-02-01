@@ -66,8 +66,7 @@ void menuBibliotecario();
 void menuAlumno();
 
 int main(){
-	
-	cout<<"holaAntesBloque";
+
 	Bloques allTags;
 	/*-----------------Login------------------------
 	//Saber los alumnos y bibliotecarios
@@ -385,6 +384,7 @@ int main(){
 	}
 	cout<<endl<<endl<<"------------------------------"<<endl;
 	
+	
 	cout<<"Libros a agregar: ";cin>>cant;
 	admin.CargarNuevosLibros(cant,libros);
 	
@@ -396,25 +396,32 @@ int main(){
 	auxTags = allTags.AgregarNuevoTag();
 	tagsActuales.push_back(auxTags);
 	
-	
 	auxTags = allTags.AgregarNuevoTag();
 	tagsActuales.push_back(auxTags);
-	
 	
 	///Guardar tags
 	sistema.Guardar<Tags>(allTags.VerPathEtiquetas(),tagsActuales);
 	
+	
 	tagsActuales = sistema.VerContenido<Tags>(allTags.VerPathEtiquetas(),true);
 	cout<<endl<<endl;
-	for(Tags& x:tagsActuales)
+	vector<size_t> idTags;
+	cant=0;
+	for(Tags& x:tagsActuales){
 		cout<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<
 		"   < ------ >  "<<x.IdTag<<  endl;
-	
+		cout<<endl<<"Sus libros son: ";
+		idTags = allTags.LeerTodosLosElementos(cant);
+		for(size_t& x : idTags)
+			cout<<x<<"  ";
+		++cant;
+	}
 	
 	
 	size_t IDtag, IDNuevo;
 	cout<<"Ingresado IdTag: ";cin>>IDtag;
 	cout<<"Id a agregar: ";cin>>IDNuevo;
+	allTags.AgregarNuevoElemento(IDtag,IDNuevo);
 	
 	
 	///Deberia tener una estructura minima

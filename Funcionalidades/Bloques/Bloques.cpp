@@ -19,6 +19,7 @@ Bloques::Bloques(){
 Bloques::~Bloques(){
 	actual.AsignarUltimaDireccion(UltimaDireccion);
 	actual.AsignarCantidadTags(CantidadTags);
+	actual.GuardarCambios();
 }
 
 
@@ -81,7 +82,6 @@ vector<size_t> Bloques::LeerTodosLosElementos(size_t IdTag){
 	
 		for(size_t i = 0; i < aux.CantidadElementos; ++i){
 			resultado.push_back(aux.Elementos[i]);
-			cout<<"["<<i<<"] "<<aux.Elementos[i]<<endl;
 		}
 		
 		if(aux.SiguienteBloque!= 0){

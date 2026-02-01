@@ -14,7 +14,7 @@ void Persistencia::CargarDatos(){
 	System sistema;
 	string path = "./Recursos/Binarios/persistencia.bin";
 	vector<Persistencia> resultado = sistema.VerContenido<Persistencia>(path,true);
-	cout<<"Creando con "<<resultado.size();
+	cout<<endl<<"Tam de datos Persistencia, Creando con "<<resultado.size()<<endl;
 	if(resultado.size()==0){
 		this->UltimaDireccion = 0;
 		this->CantidadTags = 0;

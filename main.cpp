@@ -383,19 +383,13 @@ int main(){
 		}
 	}
 	cout<<endl<<endl<<"------------------------------"<<endl;
-	
+	/*
 	
 	cout<<"Libros a agregar: ";cin>>cant;
 	admin.CargarNuevosLibros(cant,libros);
-	
+	*/
 	Tags auxTags;
 	vector<Tags> tagsActuales;
-	auxTags = allTags.AgregarNuevoTag();
-	tagsActuales.push_back(auxTags);
-	
-	auxTags = allTags.AgregarNuevoTag();
-	tagsActuales.push_back(auxTags);
-	
 	auxTags = allTags.AgregarNuevoTag();
 	tagsActuales.push_back(auxTags);
 	

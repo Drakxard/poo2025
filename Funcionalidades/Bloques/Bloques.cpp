@@ -17,13 +17,15 @@ Bloques::Bloques(){
 }
 
 Bloques::~Bloques(){
-	actual.AsignarUltimaDireccion(UltimaDireccion);
-	actual.AsignarCantidadTags(CantidadTags);
-	actual.GuardarCambios();
-}
+	if (modificacion) { 
+		actual.AsignarUltimaDireccion(UltimaDireccion);
+		actual.AsignarCantidadTags(CantidadTags);
+		actual.GuardarCambios();
+	}}
 
 
 Tags Bloques::AgregarNuevoTag(){
+	modificacion = true;
 	string nombreTag;
 	cin.ignore();
 	cout<<"Nombre para el nuevo tag: ";
@@ -53,6 +55,8 @@ Tags Bloques::AgregarNuevoTag(){
 }
 
 size_t Bloques::AgregarNuevoBloque(){
+	modificacion = true;
+	
 	UltimaDireccion += TamBloque;
 
 	Bloque bloqueNuevo;
@@ -63,6 +67,8 @@ size_t Bloques::AgregarNuevoBloque(){
 	
 
 bool Bloques::AgregarNuevoElemento(size_t IdTag, size_t idLibro){
+	modificacion = true;
+	
 	Bloque aux = sistema->VerContenido(allTags_data,IdTag);
 	
 

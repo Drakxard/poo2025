@@ -7,6 +7,7 @@
 using namespace std;
 struct Tags{
 	size_t IdTag;
+	size_t VerID(){return IdTag;}
 	char NombreTag[50];
 	size_t InicioBloque;
 };
@@ -26,7 +27,7 @@ class Bloques {
 	string allTags_data= "./Recursos/Binarios/Tags/tags_data.bin";
 	string allTags= "./Recursos/Binarios/Tags/tags.bin";
 	Persistencia actual;
-	
+	bool modificacion = false;
 public:
 	Bloques();
 	~Bloques();

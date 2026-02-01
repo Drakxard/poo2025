@@ -43,7 +43,7 @@ public:
 	vector<T> VerContenido(string nombreArchivo, bool crear);
 	Bloque VerContenido(string nombreArchivo,size_t NroBloque);
 	template <typename T>
-	vector<T> LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
+	vector<T> LeerDelBin(vector<size_t> &IdARecuperar, string nombreArchivo);
 	template <typename T>
 	bool EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo);
 	string alumnos(){return pathalumnos;}

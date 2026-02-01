@@ -111,9 +111,8 @@ return true;
 
 
 template <typename T>
-vector<T> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo)
+vector<T> System::LeerDelBin(vector<size_t> &IdARecuperar, string nombreArchivo)
 {  
-
 ifstream archi(nombreArchivo, ios::binary);
 if (!archi)
 throw runtime_error("Error al Recuperar de " + nombreArchivo);
@@ -121,20 +120,14 @@ throw runtime_error("Error al Recuperar de " + nombreArchivo);
 
 T aux;
 vector<T>resultado;
-int actual;
-bool primero=true; //Ajustar puntero, para iniciar 
-for (size_t i = 0; i < IdARecuperar.size()-1;++i)
+int ultimo= VerUltimo<T>(nombreArchivo);
+for (size_t i = 0; i < IdARecuperar.size();++i)
 {
-
-if(primero){
-    actual = IdARecuperar[i];
-    primero = false;
-}else{
-    actual = IdARecuperar[i + 1] - IdARecuperar[i];
-}
-archi.seekg((actual) * (sizeof(T))); // vamos a la posicion
+if(IdARecuperar[i]<= ultimo){
+archi.seekg((IdARecuperar[i]) * (sizeof(T))); // vamos a la posicion
 archi.read(reinterpret_cast<char*>(&aux), sizeof(aux));
 resultado.push_back(aux);
+}
 }
 return resultado;
 };
@@ -150,21 +143,10 @@ if (!archi)
     throw runtime_error("Error al Recuperar de " + nombreArchivo);
 
 T aux;
-int actual;
-bool primero = true; // Ajustar puntero, para iniciar
-for (size_t i = 0; i < IdARecuperar.size() - 1; ++i)
+for (size_t i = 0; i < IdARecuperar.size(); ++i)
 {
-    if (primero)
-    {
-        actual = IdARecuperar[i];
-        primero = false;
-    }
-    else
-    {
-        actual = IdARecuperar[i + 1] - IdARecuperar[i];
-    }
-    aux = elementos[i];
-    archi.seekp((actual) * (sizeof(T))); // vamos a la posicion
+
+    archi.seekp((IdARecuperar[i]) * (sizeof(T))); // vamos a la posicion
     archi.write(reinterpret_cast<const char *>(&aux), sizeof(aux));
 }
 archi.close();
@@ -195,11 +177,9 @@ archi.seekg(-tam,ios::end);
 T aux;
 archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
 resultado = aux.VerID();
-cout<<endl<<"Desde VerUltimo: "<<resultado<<endl;
 archi.close();
 return resultado;
 }
-
 
 template<typename S >
 int System::Verificar_Existencia_Vector(int dni,vector<S>&v){
@@ -275,13 +255,13 @@ template vector<Tags> System::VerContenido<Tags>(string, bool);
 template vector<Persistencia> System::VerContenido<Persistencia>(string, bool);
 
 // Instanciaci?n para LeerDelBin y EscribirDelBin
-template vector<Alumno> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
+template vector<Alumno> System::LeerDelBin(vector<size_t> &IdARecuperar, string nombreArchivo);
 template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Alumno>& elementos, string nombreArchivo);
 
-template vector<Libro> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
+template vector<Libro> System::LeerDelBin(vector<size_t> &IdARecuperar, string nombreArchivo);
 template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Libro>&elementos, string nombreArchivo);
 
-template vector<Tags> System::LeerDelBin(vector<int> &IdARecuperar, string nombreArchivo);
+template vector<Tags> System::LeerDelBin(vector<size_t> &IdARecuperar, string nombreArchivo);
 template bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<Tags>&elementos, string nombreArchivo);
 
 template int System::Verificar_Existencia_Vector(int dni,vector<Bibliotecario>&v);
@@ -290,7 +270,6 @@ template int System::Verificar_Existencia_Vector(int dni,vector<Alumno>&v);
 
 template int System::VerUltimo<Alumno>(string nombreArchivo);
 template int System::VerUltimo<Libro>(string nombreArchivo);
-
 template int System::VerUltimo<Bibliotecario>(string nombreArchivo);
 
 

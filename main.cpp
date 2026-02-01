@@ -362,7 +362,7 @@ int main(){
 	for(size_t& x: resultadoDeBusqueda)
 	cout<<++c<<") "<<x<<endl;
 	*/
-	
+	/*/// LeerEnBin para Tags luego paginador
 	
 	///VerLibros
 	
@@ -387,7 +387,7 @@ int main(){
 	
 	cout<<"Libros a agregar: ";cin>>cant;
 	admin.CargarNuevosLibros(cant,libros);
-	*/
+	
 	Tags auxTags;
 	vector<Tags> tagsActuales;
 	auxTags = allTags.AgregarNuevoTag();
@@ -395,19 +395,27 @@ int main(){
 	
 	///Guardar tags
 	sistema.Guardar<Tags>(allTags.VerPathEtiquetas(),tagsActuales);
-	
-	
+
+	*/	
 	tagsActuales = sistema.VerContenido<Tags>(allTags.VerPathEtiquetas(),true);
 	cout<<endl<<endl;
 	vector<size_t> idTags;
+	vector<Libro> librosGuardados;
 	cant=0;
 	for(Tags& x:tagsActuales){
-		cout<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<
+		
+		cout<<endl<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<
 		"   < ------ >  "<<x.IdTag<<  endl;
 		cout<<endl<<"Sus libros son: ";
 		idTags = allTags.LeerTodosLosElementos(cant);
-		for(size_t& x : idTags)
-			cout<<x<<"  ";
+		librosGuardados = sistema.LeerDelBin<Libro>(idTags,libros);
+		cout<<endl<<"Libros encontrados: "<<librosGuardados.size()<<endl;
+		for(Libro& x : librosGuardados){
+			cout<<endl;
+			cout<<"Nombre: "<<x.VerNombre()<<endl
+				<<"Id: "<<x.VerID()<<endl;
+			cout<<endl;
+		}
 		++cant;
 	}
 	
@@ -417,19 +425,7 @@ int main(){
 	cout<<"Id a agregar: ";cin>>IDNuevo;
 	allTags.AgregarNuevoElemento(IDtag,IDNuevo);
 	
-	
-	///Deberia tener una estructura minima
-	///Borremos los libros
-	///Borremos los tags
-	
-	///1) libros enlasados a tags
-	
-	///Matematica -> 0, 1, 2
-	///buscar matematica, retornar los id, 
-	///usar leerDelBin
-	///Mostrar esos libros, toda la data mejor
-	
-	
+	*/
 	
 	
 	

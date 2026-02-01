@@ -31,7 +31,7 @@ void Persistencia::GuardarCambios(){
 	vector<Persistencia> resultado;
 	Persistencia aux= *this;
 	resultado.push_back(aux);
-	bool SeGuardo = sistema.Guardar<Persistencia>(path,resultado,true);
+	sistema.Guardar<Persistencia>(path,resultado,true);
 }
 
 Persistencia::~Persistencia(){

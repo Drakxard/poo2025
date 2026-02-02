@@ -274,6 +274,8 @@ template int System::VerUltimo<Bibliotecario>(string nombreArchivo);
 
 
 template bool System:: Eliminar<Alumno>(size_t id, vector<Alumno>&v);
+template bool System:: Eliminar<Bibliotecario>(size_t id, vector<Bibliotecario>&v);
+
 // funcion para saltar al lugar que quieras, de libro, alumno o incluso bibl!
 // vector<Registro> resultado = Saltar<Registro>(vector<int>IdARecuperar);
 

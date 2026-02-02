@@ -34,7 +34,7 @@ string palabra;
 
 vector<Libro> resultadoLibros;
 vector<Alumno> resultadoAlumnos;
-vector<Alumno> resultadoBibliotecarios;
+vector<Bibliotecario> resultadoBibliotecarios;
 ///Estados Especiales
 ///De alumno
 string sancionados = "Recursos/binarios/sancionados.bin";
@@ -304,12 +304,18 @@ int main(){
 	cout<<"Buscar Bibliotecario, ingrese el nombre: ";
 	getline(cin,palabra);
 	cin.ignore();
+	resultadoBibliotecarios = navega.Relacionados<Bibliotecario>(palabra,vectorBibliotecario);
 	
-	resultadoBibliotecarios = navega.Relacionados(palabra,vectorBibliotecario);
-	for(Bibliotecario &x: vectorBibliotecario){
-	cout<<"Nombre Bibliotecario: " <<x.VerNombre()
-	<<" / Id: "	<<x.VerID()
-	<<" / DNI: "<<x.VerDNI();
+	
+	if(resultadoBibliotecarios.size()==0){
+		cout<<"no se encontro a nadie con ese nombre"<<endl;
+	}else{
+			for(Bibliotecario &x: resultadoBibliotecarios){
+				cout<<"Nombre Bibliotecario: " <<x.VerNombre()
+					<<" / Id: "	<<x.VerID()
+					<<" / DNI: "<<x.VerDNI();
+			}
+	}
 } 
 	
 	//--------------Agregar Bibliotecarios -----------
@@ -322,14 +328,12 @@ int main(){
 	char borrar;
 	cout<<"Confirmas Eliminarlo? s/n: ";cin>>borrar;
 	if(borrar=='s'){
+	cout<<endl<<"Id ingresado a borrar: "<<idBibliotecario<<endl;
 	///Uso del metodo 	| Proceso
-	sistema.Eliminar>Bibliotecario>(idBibliotecario, vectorBibliotecario);
-	sistema.Guardar<Bibliotecario>(bibliotecarios,vectorBibliotecario);
-	
-}else{
-	cout<<endl<<"Codigo de identificaci�n inexistente";
-}
-	
+	vectorBibliotecario= sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
+	sistema.Eliminar<Bibliotecario>(idBibliotecario, vectorBibliotecario);
+	sistema.Guardar<Bibliotecario>(bibliotecarios,vectorBibliotecario,true);
+	}	
 	-----------^ Metodos relacionados a Bibliotecarios ^ --------------
 	*/
 	
@@ -396,7 +400,7 @@ int main(){
 	///Guardar tags
 	sistema.Guardar<Tags>(allTags.VerPathEtiquetas(),tagsActuales);
 
-	*/	
+	/// Libros del tags	
 	tagsActuales = sistema.VerContenido<Tags>(allTags.VerPathEtiquetas(),true);
 	cout<<endl<<endl;
 	vector<size_t> idTags;
@@ -419,7 +423,7 @@ int main(){
 		++cant;
 	}
 	
-	
+	///asignar libro a tag
 	size_t IDtag, IDNuevo;
 	cout<<"Ingresado IdTag: ";cin>>IDtag;
 	cout<<"Id a agregar: ";cin>>IDNuevo;

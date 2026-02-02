@@ -12,7 +12,7 @@
 
 using namespace std; // Importante si usas string sin std::
 // VARIABLE GLOBAL (Funciona en ambos sistemas)
-System sistema;
+
 
 string NombreUsuario= "Invitado";
 int codigo = 1;
@@ -22,7 +22,9 @@ const char *nom = NombreUsuario.c_str();
 int DNI=12345;
 Bibliotecario admin(codigo,nom,DNI); 
 ///Clase encargada de los metodos de bajo nivel
+// VARIABLE GLOBAL (Funciona en ambos sistemas)
 System sistema;
+
 
 // Nombre del Binario de test o Rutas con barras normales funcionan en ambos como mas le pinte
 string libros = "Recursos/Binarios/libros.bin";
@@ -207,7 +209,7 @@ int main(){
 	
 	//------------Agregar Libros----------------
 	cout<<"Libros a agregar: ";cin>>cant;
-	admin.CargarNuevosLibros(cant,libros);
+	admin.CargarNuevosLibros(cant,libros,sistema );
 	
 	
 	// -----------^ Metodos relacionados a Libros ^ --------------

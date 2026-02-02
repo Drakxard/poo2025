@@ -118,11 +118,11 @@ void Bibliotecario::AgregarLibroPrestado(int libro_prestado,vector<int>Id_Presta
 	Id_Prestamos.push_back(libro_prestado);
 }
 */
-bool Bibliotecario:: Devolucion_libro(size_t idLibro){
+bool Bibliotecario:: Devolucion_libro(size_t idlibro,vector<int>Id_Prestamos){
 	// 1. Buscar el libro por ID si existe
 		///Usar sistema.VerUltimo
-		if(idLibro<Id_Prestamos.size()){
-			auto itlibro = find(Id_Prestamos.begin(), Id_Prestamos.end(), idLibro);
+		if(idlibro<Id_Prestamos.size()){
+			auto itlibro = find(Id_Prestamos.begin(), Id_Prestamos.end(), idlibro);
 			if(itlibro !=Id_Prestamos.end()){
 				return true;
 			}

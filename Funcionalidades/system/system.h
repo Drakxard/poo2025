@@ -42,7 +42,11 @@ public:
 	bool EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo);
 	string alumnos(){return pathalumnos;}
 	
-
+	template<typename S>
+		int Verificar_Existencia_Vector(int dni, vector<S>&v);
+	template<typename S>
+	bool Verificar_Existencia_Binario(int Id,string nombreArchivo);
+	
 	
 	
 	///Cabeceras para libros

@@ -3,6 +3,7 @@
 #include "../system/system.h"
 #include <algorithm>
 #include "../Bloques/Bloques.h"
+#include "../bibliotecario/bibliotecario.h"
 using namespace std;
 vector<size_t> Buscador::BusquedaSimple(string nombreBuscado)
 {

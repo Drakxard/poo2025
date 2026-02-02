@@ -143,11 +143,9 @@ if (!archi)
 T aux;
 for (size_t i = 0; i < IdARecuperar.size(); ++i)
 {
-    if(IdARecuperar[i]>= 0 and IdARecuperar[i]<= ultimo){
-        archi.seekg((IdARecuperar[i]) * (sizeof(T))); // vamos a la posicion
+        archi.seekp((IdARecuperar[i]) * (sizeof(T))); // vamos a la posicion
         archi.write(reinterpret_cast<const char *>(&aux), sizeof(aux));
-    }
-} 
+ } 
 archi.close();    
 }else{
 return false;
@@ -198,7 +196,34 @@ archi.close();
 return resultado;
 }
 
+template<typename S >
+int System::Verificar_Existencia_Vector(int dni,vector<S>&v){
+	
+	auto encontrar = find_if(v.begin(), v.end(), [dni](const S& x) {
+		return x.VerDNI() == dni;
+	});
+	if(encontrar !=v.end())
+		return (encontrar-v.begin());
+	
+	return -1;
+}
 
+template< typename S>
+bool Verificar_Existencia_Binario(int Id,string nombreArchivo){
+	//Buscar si Alumno/Bibliotecario/Libro por ID si existe
+	ifstream archi(nombreArchivo, ios::binary| ios::ate);
+	if(!archi)
+		throw runtime_error("no se pudo abrir el archivo, "+nombreArchivo);
+	
+	S aux;
+	archi.read(reinterpret_cast<char*>(&aux),sizeof(aux));
+	if(aux.VerID()==Id){
+		archi.close();
+		return true;
+	}
+	archi.close();
+	return false;
+}
 
 
 template <typename T> /// Cuando terminas las modificacines lo sobreescribes

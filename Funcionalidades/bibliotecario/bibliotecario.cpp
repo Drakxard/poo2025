@@ -118,20 +118,16 @@ void Bibliotecario::AgregarLibroPrestado(int libro_prestado,vector<int>Id_Presta
 	Id_Prestamos.push_back(libro_prestado);
 }
 */
-bool Bibliotecario:: Devolucion_libro(size_t idLibro,vector<int>Id_Prestamos){
+bool Bibliotecario:: Devolucion_libro(size_t idLibro){
 	// 1. Buscar el libro por ID si existe
 		///Usar sistema.VerUltimo
-		if(idLibro>Id_Prestamos.size()){
-			cout<<"C�digo de libro inexistente, Libro no encontrado." << endl;			
-		}else{
+		if(idLibro<Id_Prestamos.size()){
 			auto itlibro = find(Id_Prestamos.begin(), Id_Prestamos.end(), idLibro);
 			if(itlibro !=Id_Prestamos.end()){
 				return true;
 			}
 		}
 return false;
-		
-
 }
 
 bool Bibliotecario:: Alumno_quiere_un_libro(Alumno &x){

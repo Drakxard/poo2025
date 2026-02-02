@@ -35,6 +35,7 @@ string palabra;
 vector<Libro> resultadoLibros;
 vector<Alumno> resultadoAlumnos;
 vector<Bibliotecario> resultadoBibliotecarios;
+vector<size_t>Prestamos;
 ///Estados Especiales
 ///De alumno
 string sancionados = "Recursos/binarios/sancionados.bin";
@@ -67,6 +68,8 @@ void menuAlumno();
 
 int main(){
 
+
+	
 	Bloques allTags;
 	/*-----------------Login------------------------
 	//Saber los alumnos y bibliotecarios
@@ -333,7 +336,20 @@ int main(){
 	vectorBibliotecario= sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
 	sistema.Eliminar<Bibliotecario>(idBibliotecario, vectorBibliotecario);
 	sistema.Guardar<Bibliotecario>(bibliotecarios,vectorBibliotecario,true);
-	}	
+	}
+	//---------------Prestar libro Bibliotecarios--------------
+	
+	//---------------Sancionar Bibliotecarios--------------
+
+
+	//---------------Devolucion libro Bibliotecarios--------------
+	cout<<"ingrese Id del libro a devolver";
+	cin>>idLibro;
+	if(admin.Devolucion_libro(idLibro)==true){
+		cout<<"Libro devuelto"<<endl;
+	}else{
+		cout<<"Cï¿½digo de libro inexistente, Libro no encontrado." << endl;
+	}
 	-----------^ Metodos relacionados a Bibliotecarios ^ --------------
 	*/
 	

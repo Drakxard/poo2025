@@ -11,7 +11,8 @@
 #include "Funcionalidades/Bloques/Bloques.h"
 
 using namespace std; // Importante si usas string sin std::
-
+// VARIABLE GLOBAL (Funciona en ambos sistemas)
+System sistema;
 
 string NombreUsuario= "Invitado";
 int codigo = 1;
@@ -23,7 +24,7 @@ Bibliotecario admin(codigo,nom,DNI);
 ///Clase encargada de los metodos de bajo nivel
 System sistema;
 
-/// Nombre del Binario de test
+// Nombre del Binario de test o Rutas con barras normales funcionan en ambos como mas le pinte
 string libros = "Recursos/Binarios/libros.bin";
 string alumnos = "Recursos/Binarios/alumnos.bin";
 string bibliotecarios = "Recursos/Binarios/bibliotecarios.bin";
@@ -31,6 +32,18 @@ string bibliotecarios = "Recursos/Binarios/bibliotecarios.bin";
 ///Clase encargada de las busquedas
 Buscador navega;
 string palabra;
+//Precarga de los dos menus
+void menuBibliotecario();
+void menuAlumno();
+
+// Función auxiliar para crear carpetas en ambos OS
+void CrearCarpetasNecesarias() {
+#ifdef _WIN32
+	system("if not exist Recursos\\Binarios\\Tags mkdir Recursos\\Binarios\\Tags");
+#else
+	system("mkdir -p Recursos/Binarios/Tags");
+#endif
+}
 
 vector<Libro> resultadoLibros;
 vector<Alumno> resultadoAlumnos;
@@ -67,7 +80,9 @@ void menuBibliotecario();
 void menuAlumno();
 
 int main(){
-
+	//para la compatibilidad en ambos sistemas operativos (linux y Windows)
+	CrearCarpetasNecesarias();
+	cout << "Sistema iniciado correctamente." << endl;
 
 	
 	Bloques allTags;
@@ -116,7 +131,7 @@ int main(){
 	/* ----------------------- Intefaz --------------------
 	///Para mostrar los libros antes mostramos sus Cabeceras
 	
-	/*string indexCabeceras="./Recursos/libros_index.txt";
+	string indexCabeceras="./Recursos/libros_index.txt";
 	
 	vector<Cabecera> resultado = sistema.CargarDesdeTxt(indexCabeceras);
 	
@@ -130,7 +145,7 @@ int main(){
 	*/
 	
 	
-	/* ----------- Metodos relacionados a Libros --------------
+	// ----------- Metodos relacionados a Libros --------------
 	
 	
 	
@@ -151,7 +166,7 @@ int main(){
 }
 }
 	cout<<endl<<endl<<"------------------------------"<<endl;
-	*/
+	
 	
 	/* -------------------- Buscar libro palabra -----------------------
 	cin.ignore();
@@ -190,10 +205,10 @@ int main(){
 }
 	*/
 	
-	/*------------Agregar Libros----------------
+	//------------Agregar Libros----------------
 	cout<<"Libros a agregar: ";cin>>cant;
 	admin.CargarNuevosLibros(cant,libros);
-	*/
+	
 	
 	// -----------^ Metodos relacionados a Libros ^ --------------
 	

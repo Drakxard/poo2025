@@ -61,7 +61,7 @@ void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector
 	Libros.erase(Eliminar);
 }
 
-bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos, int dia, int mes, int anio)
+bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos,vector<size_t>&Prestamos, int dia, int mes, int anio)
 {
 	if(idLibro > Libros.size()){
 		cout << "Codigo de libro inexistente." << endl;

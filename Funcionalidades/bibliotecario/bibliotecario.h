@@ -34,7 +34,7 @@ public:
 	
 	bool Alumno_quiere_un_libro( Alumno& x );
 	
-	bool PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>&Libros, vector<Alumno>&Alumno, int dia, int mes, int anio);
+	bool PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>&Libros, vector<Alumno>&Alumno,vector<size_t>&Prestamos , int dia, int mes, int anio);
 	
 	int CalcularDiferenciaDias(int dia, int mes, int anio);
 	

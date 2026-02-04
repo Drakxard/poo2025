@@ -16,7 +16,7 @@ struct Tags;
 struct Bloque;
 class System{
 	string pathalumnos ="../../Recursos/Binarios/alumnos.bin";
-	
+	string pathprestamos ="../../Recursos/Binarios/LibrosPrestamosActivos.bin";
 	
 public:
 	System(){};

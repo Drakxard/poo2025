@@ -78,9 +78,6 @@ Tags auxTags;
 vector<Tags> tagsActuales;
 
 
-void menuBibliotecario();
-void menuAlumno();
-
 int main(){
 	//para la compatibilidad en ambos sistemas operativos (linux y Windows)
 	CrearCarpetasNecesarias();

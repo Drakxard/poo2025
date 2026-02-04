@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// --- FUNCIÓN CROSS-PLATFORM ---
+// --- FUNCIï¿½N CROSS-PLATFORM ---
 void LimpiarPantalla() {
 #ifdef _WIN32
 	system("cls");
@@ -68,10 +68,17 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 		return false;
 	}
 	
+
 	auto itlibro = find_if(Libros.begin(), Libros.end(), [idLibro](const Libro& a) {
 		return a.VerID() == idLibro;
 	});
 	
+	auto itAlumno = find_if(Alumnos.begin(), Alumnos.end(), [idAlumno](const Alumno& b) {
+		return b.VerID() == idAlumno;
+	});
+	
+	return Alumno_quiere_un_libro(itAlumno);
+
 	if (itlibro != Libros.end()) {
 		if (itlibro->EstadoDisponibilidad()) {
 			itlibro->SetDisponible(false); 
@@ -171,7 +178,7 @@ template<typename T>
 	
 	char confirmar;
 	cout << "Confirmar? (s/n): "; cin >> confirmar;
-	LimpiarPantalla(); // Usa la función compatible
+	LimpiarPantalla(); // Usa la funciï¿½n compatible
 	
 	if(confirmar == 's'){
 		sys.Guardar<T>(nombreArchivo, Agregados, false);
@@ -185,7 +192,7 @@ void Bibliotecario::CargarNuevosLibros(int cant, string nombreArchivo, System& s
 	
 	char confirmar;
 	cout << "Confirmar? (s/n): "; cin >> confirmar;
-	LimpiarPantalla(); // Usa la función compatible
+	LimpiarPantalla(); // Usa la funciï¿½n compatible
 	
 	if(confirmar == 's'){
 		sys.Guardar<Libro>(nombreArchivo, Agregados, false);

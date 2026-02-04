@@ -38,7 +38,7 @@ string palabra;
 void menuBibliotecario();
 void menuAlumno();
 
-// Función auxiliar para crear carpetas en ambos OS
+// Funciï¿½n auxiliar para crear carpetas en ambos OS
 void CrearCarpetasNecesarias() {
 #ifdef _WIN32
 	system("if not exist Recursos\\Binarios\\Tags mkdir Recursos\\Binarios\\Tags");

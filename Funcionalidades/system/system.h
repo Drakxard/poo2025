@@ -12,6 +12,11 @@ using namespace std;
 struct Cabecera{
 	char nombre[50], path[50];
 };
+struct Libros_en_Prestamo
+{
+	size_t id_Libro,id_Prestamo,id_Alumno,dia_Devolucion,mes_Devolucion,año_Devolucion;
+};
+
 struct Tags;
 struct Bloque;
 class System{

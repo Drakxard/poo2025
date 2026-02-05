@@ -3,6 +3,7 @@
 #include "../preConfiguracion/preConfiguracion.h"
 #include "../libro/libro.h"
 #include "../alumno/alumno.h"
+#include "../system/system.h"
 #include "../Persona/persona.h"
 
 using namespace std;
@@ -34,11 +35,11 @@ public:
 	
 	bool Alumno_quiere_un_libro( Alumno& x );
 	
-	bool PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>&Libros, vector<Alumno>&Alumno,vector<size_t>&Prestamos , int dia, int mes, int anio);
+	bool PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>&Libros, vector<Alumno>&Alumno, vector<Libros_en_Prestamo>& Prestamos , int dia, int mes, int anio);
 	
 	int CalcularDiferenciaDias(int dia, int mes, int anio);
 	
-	void AgregarLibroPrestado(int libro_prestado,vector<size_t>Prestamos);
+	void AgregarLibroPrestado(size_t id_LibroPrestado,size_t id_AlumnoPrestado, int dia, int mes, int anio, vector<Libros_en_Prestamo>& Prestamos);
 	bool Devolucion_libro(size_t idlibro);
 	
 	bool Sancionar(int idAlumno, string nombreArchivo, bool desicion, System& sys);

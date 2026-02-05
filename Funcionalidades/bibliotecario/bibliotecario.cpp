@@ -61,7 +61,7 @@ void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector
 	Libros.erase(Eliminar);
 }
 
-bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos,vector<size_t>&Prestamos, int dia, int mes, int anio)
+bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos, vector<Libros_en_Prestamo>& Prestamos, int dia, int mes, int anio)
 {
 	if(idLibro > Libros.size()){
 		cout << "Codigo de libro inexistente." << endl;
@@ -76,8 +76,10 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 	auto itAlumno = find_if(Alumnos.begin(), Alumnos.end(), [idAlumno](const Alumno& b) {
 		return b.VerID() == idAlumno;
 	});
-	
-	if (Alumno_quiere_un_libro(itAlumno)){return false};
+
+	if (itAlumno != Alumnos.end() && Alumno_quiere_un_libro(*itAlumno)) {
+		return false;
+	}
 
 	if (itlibro != Libros.end()) {
 		if (itlibro->EstadoDisponibilidad()) {
@@ -86,7 +88,7 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 			itlibro->DiasRestantes(diasCalculados);
 			
 			cout << "Libro prestado exitosamente. Dias: " << diasCalculados << endl;
-			AgregarLibroPrestado(idLibro,); 
+			AgregarLibroPrestado(idLibro, idAlumno, dia, mes, anio, Prestamos);
 			return true;
 		} else {
 			cout << "El libro ya se encuentra prestado." << endl;
@@ -97,13 +99,25 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 	return false;
 }
 
-void Bibliotecario::AgregarLibroPrestado(size_t itlibro,vector<size_t>&Prestamos){
-	if(CantidadPrestamos < 50){
-		Id_Prestamos[CantidadPrestamos] = libro_prestado;
-		CantidadPrestamos++;
-	} else {
-		cout << "Limite de prestamos alcanzado." << endl;
+void Bibliotecario::AgregarLibroPrestado(size_t id_LibroPrestado,size_t id_AlumnoPrestado, int dia, int mes, int anio, vector<Libros_en_Prestamo>& Prestamos){
+	Libros_en_Prestamo aux;
+	aux.id_Libro = id_LibroPrestado;
+	aux.id_Alumno = id_AlumnoPrestado;
+	aux.dia_Devolucion = dia;
+	aux.mes_Devolucion = mes;
+	aux.año_Devolucion = anio;
+
+	// Calcular el último id_Prestamo en el vector (0 si está vacío)
+	size_t ultimoId = 0;
+	if (!Prestamos.empty()) {
+		auto it = std::max_element(Prestamos.begin(), Prestamos.end(), [](const Libros_en_Prestamo &a, const Libros_en_Prestamo &b){
+			return a.id_Prestamo < b.id_Prestamo;
+		});
+		ultimoId = it->id_Prestamo;
 	}
+	aux.id_Prestamo = ultimoId + 1;
+
+	Prestamos.push_back(aux);
 }
 
 bool Bibliotecario::Devolucion_libro(size_t idlibro){

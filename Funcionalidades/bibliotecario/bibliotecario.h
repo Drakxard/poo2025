@@ -38,7 +38,7 @@ public:
 	
 	int CalcularDiferenciaDias(int dia, int mes, int anio);
 	
-	void AgregarLibroPrestado(int libro_prestado);
+	void AgregarLibroPrestado(int libro_prestado,vector<size_t>Prestamos);
 	bool Devolucion_libro(size_t idlibro);
 	
 	bool Sancionar(int idAlumno, string nombreArchivo, bool desicion, System& sys);

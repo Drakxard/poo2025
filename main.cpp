@@ -50,7 +50,7 @@ void CrearCarpetasNecesarias() {
 vector<Libro> resultadoLibros;
 vector<Alumno> resultadoAlumnos;
 vector<Bibliotecario> resultadoBibliotecarios;
-vector<size_t>Prestamos;
+vector<Libros_en_Prestamo>Prestamos;
 ///Estados Especiales
 ///De alumno
 string sancionados = "Recursos/binarios/sancionados.bin";

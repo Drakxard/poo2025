@@ -77,7 +77,7 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 		return b.VerID() == idAlumno;
 	});
 	
-	return Alumno_quiere_un_libro(itAlumno);
+	if (Alumno_quiere_un_libro(itAlumno)){return false};
 
 	if (itlibro != Libros.end()) {
 		if (itlibro->EstadoDisponibilidad()) {
@@ -86,7 +86,7 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 			itlibro->DiasRestantes(diasCalculados);
 			
 			cout << "Libro prestado exitosamente. Dias: " << diasCalculados << endl;
-			AgregarLibroPrestado(idLibro); 
+			AgregarLibroPrestado(idLibro,); 
 			return true;
 		} else {
 			cout << "El libro ya se encuentra prestado." << endl;
@@ -97,7 +97,7 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 	return false;
 }
 
-void Bibliotecario::AgregarLibroPrestado(int libro_prestado){
+void Bibliotecario::AgregarLibroPrestado(size_t itlibro,vector<size_t>&Prestamos){
 	if(CantidadPrestamos < 50){
 		Id_Prestamos[CantidadPrestamos] = libro_prestado;
 		CantidadPrestamos++;

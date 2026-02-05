@@ -40,7 +40,7 @@ public:
 	int CalcularDiferenciaDias(int dia, int mes, int anio);
 	
 	void AgregarLibroPrestado(size_t id_LibroPrestado,size_t id_AlumnoPrestado, int dia, int mes, int anio, vector<Libros_en_Prestamo>& Prestamos);
-	bool Devolucion_libro(size_t idlibro);
+	bool Devolucion_libro(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos, vector<Libros_en_Prestamo>& Prestamos, int dia_Devolucion, int mes_Devolucion, int anio_Devolucion);
 	
 	bool Sancionar(int idAlumno, string nombreArchivo, bool desicion, System& sys);
 	bool Actualizar_Disponibilidad( int idLibro, string nombreArchivo, bool decision, System& sys);

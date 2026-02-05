@@ -120,14 +120,32 @@ void Bibliotecario::AgregarLibroPrestado(size_t id_LibroPrestado,size_t id_Alumn
 	Prestamos.push_back(aux);
 }
 
-bool Bibliotecario::Devolucion_libro(size_t idlibro){
-	for(int i = 0; i < CantidadPrestamos; ++i){
-		if((size_t)Id_Prestamos[i] == idlibro){
-			Id_Prestamos[i] = -1; 
-			return true;
-		}
+bool Bibliotecario::Devolucion_libro(size_t idLibro, size_t /*idAlumno*/, vector<Libro> &Libros, vector<Alumno> &/*Alumnos*/, vector<Libros_en_Prestamo>& Prestamos, int /*dia_Devolucion*/, int /*mes_Devolucion*/, int /*anio_Devolucion*/){
+	//queda marcado alumnos, dia, mes, año para implementar en la funcion historial
+	// Buscar el préstamo correspondiente al libro y eliminarlo del vector Prestamos
+	auto itPrestamo = find_if(Prestamos.begin(), Prestamos.end(), [idLibro](const Libros_en_Prestamo &p){
+		return p.id_Libro == idLibro;
+	});
+
+	if (itPrestamo == Prestamos.end()) {
+		cout << "Prestamo para ese libro no encontrado." << endl;
+		return false;
 	}
-	return false;
+
+	Prestamos.erase(itPrestamo);
+
+	// Marcar el libro correspondiente como disponible si existe en el vector Libros
+	auto itLibro = find_if(Libros.begin(), Libros.end(), [idLibro](const Libro &l){
+		return l.VerID() == idLibro;
+	});
+
+	if (itLibro != Libros.end()) {
+		itLibro->SetDisponible(true);
+		itLibro->DiasRestantes(0);
+	}
+
+	cout << "Devolucion realizada y prestamo eliminado." << endl;
+	return true;
 }
 
 bool Bibliotecario::Alumno_quiere_un_libro(Alumno &x){

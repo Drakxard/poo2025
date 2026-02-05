@@ -10,7 +10,7 @@ class Alumno: public Persona{
         };
         //Propios para uso del bibliotecario
         //No darle acceso al alumno (No en botones)
-        bool VerEstadoDeSancion(){{return sancion;}};
+        bool VerEstadoDeSancion() const { return sancion; };
         void Sancionar(bool desicion) { sancion =desicion;};
 };
 #endif // 3. Fin de la condici�n

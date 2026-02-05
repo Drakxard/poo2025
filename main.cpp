@@ -84,7 +84,7 @@ int main(){
 	cout << "Sistema iniciado correctamente." << endl;
 
 	
-	Bloques allTags;
+	//Bloques allTags;
 	/*-----------------Login------------------------
 	//Saber los alumnos y bibliotecarios
 	vectorAlumnos = sistema.VerContenido<Alumno>(alumnos,true);
@@ -149,7 +149,7 @@ int main(){
 	
 	
 	//VerLibrosExistentes
-	cout<<"Libros Disponibles: "<<endl;
+	/*cout<<"Libros Disponibles: "<<endl;
 	vectorLibros = sistema.VerContenido<Libro>(libros,true);
 	resultadoLibros = navega.Relacionados(palabra,vectorLibros);
 	
@@ -165,7 +165,7 @@ int main(){
 }
 }
 	cout<<endl<<endl<<"------------------------------"<<endl;
-	
+	*/
 	
 	/* -------------------- Buscar libro palabra -----------------------
 	cin.ignore();
@@ -205,10 +205,10 @@ int main(){
 	*/
 	
 	//------------Agregar Libros----------------
-	cout<<"Libros a agregar: ";cin>>cant;
+	/*cout<<"Libros a agregar: ";cin>>cant;
 	admin.CargarNuevosLibros(cant,libros,sistema );
 	
-	
+	*/
 	// -----------^ Metodos relacionados a Libros ^ --------------
 	
 	
@@ -351,7 +351,27 @@ int main(){
 	sistema.Eliminar<Bibliotecario>(idBibliotecario, vectorBibliotecario);
 	sistema.Guardar<Bibliotecario>(bibliotecarios,vectorBibliotecario,true);
 	}
-	//---------------Prestar libro Bibliotecarios--------------
+	*///---------------Prestar libro Bibliotecarios--------------
+	cout << "ID Libro: "; 
+	size_t idL; 
+	cin >> idL;
+	cout << "ID Alumno: "; 
+	size_t idA; 
+	cin >> idA;
+	cout << "Fecha devolucion (dia mes anio): "; 
+	int d,m,y; 
+	cin >> d >> m >> y;
+	vectorLibros = sistema.VerContenido<Libro>(libros, true);
+	vectorAlumnos = sistema.VerContenido<Alumno>(alumnos, true);
+	bool ok = admin.PrestarLibros(idL, idA, vectorLibros, vectorAlumnos, Prestamos, d, m, y);
+	if (ok) {
+		sistema.Guardar<Libro>(libros, vectorLibros, true);
+		cout << "Prestamo registrado. ID prestamo: " << Prestamos.back().id_Prestamo << "\n";
+	}else{ cout << "No se pudo prestar el libro.\n";
+	}
+// actualizar persistencia del libro
+	/*
+
 	
 	//---------------Sancionar Bibliotecarios--------------
 
@@ -366,7 +386,8 @@ int main(){
 	}
 	-----------^ Metodos relacionados a Bibliotecarios ^ --------------
 	*/
-	
+
+	/**/
 	
 	
 	///------------------ Buscador ------------------

@@ -14,7 +14,7 @@ struct Cabecera{
 };
 struct Libros_en_Prestamo
 {
-	size_t id_Libro,id_Prestamo,id_Alumno,dia_Devolucion,mes_Devolucion,año_Devolucion;
+	size_t id_Libro,id_Prestamo,id_Alumno,dia_Devolucion,mes_Devolucion,anio_Devolucion;
 };
 
 struct Tags;

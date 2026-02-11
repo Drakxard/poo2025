@@ -81,7 +81,7 @@ vector<Tags> tagsActuales;
 int main(){
 	//para la compatibilidad en ambos sistemas operativos (linux y Windows)
 	CrearCarpetasNecesarias();
-	cout << "Sistema iniciado correctamente." << endl;
+	cout <<endl<< "Sistema iniciado correctamente." << endl;
 
 	
 	//Bloques allTags;

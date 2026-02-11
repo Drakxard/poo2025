@@ -105,7 +105,7 @@ void Bibliotecario::AgregarLibroPrestado(size_t id_LibroPrestado,size_t id_Alumn
 	aux.id_Alumno = id_AlumnoPrestado;
 	aux.dia_Devolucion = dia;
 	aux.mes_Devolucion = mes;
-	aux.año_Devolucion = anio;
+	aux.anio_Devolucion = anio;
 
 	// Calcular el último id_Prestamo en el vector (0 si está vacío)
 	size_t ultimoId = 0;

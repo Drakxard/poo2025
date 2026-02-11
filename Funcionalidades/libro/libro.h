@@ -3,6 +3,7 @@
 #include <cstring>
 #include <iostream>
 
+#include <vector>
 using namespace std;
 
 class Libro
@@ -12,7 +13,6 @@ class Libro
 	int diasRestantes;
 	bool disponible; // Quitamos la inicializaci�n aqu� para hacerlo en el constructor
 	bool caduco;
-	vector<Libro> resultadoLibros;
 public:
 	Libro()
 	{

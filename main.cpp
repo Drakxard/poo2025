@@ -75,16 +75,20 @@ vector<Tags> tagsActuales;
 int main(){
 	//para la compatibilidad en ambos sistemas operativos (linux y Windows)
 	CrearCarpetasNecesarias();
-	cout <<endl<< "Sistema iniciado correctamente." << endl;
+//	cout <<endl<< "Sistema iniciado correctamente." << endl;
 
 	
 	//Bloques allTags;
 	/*-----------------Login------------------------
 	//Saber los alumnos y bibliotecarios
+	
 	vector<Alumno> vectorAlumnos ;
 	vectorAlumnos = sistema.VerContenido<Alumno>(alumnos,true);
+
+	
 	vector<Bibliotecario> vectorBibliotecario ;
 	vectorBibliotecario= sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
+	
 	
 	cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;
 	

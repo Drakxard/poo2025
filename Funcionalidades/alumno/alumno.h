@@ -1,9 +1,9 @@
 #ifndef ALUMNO_H  // 1. Si no est� definido PERSONA_H
 #define ALUMNO_H
 #include "../Persona/persona.h"
+#include "../system/system.h"
 class Alumno: public Persona{
     bool sancion;
-    vector<Alumno> resultadoAlumnos;
     public:
 		Alumno(){}
 	    Alumno(size_t id, const char *nombre,size_t DNI):Persona(id,nombre,DNI){

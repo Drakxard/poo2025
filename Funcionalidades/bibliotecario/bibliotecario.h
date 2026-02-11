@@ -5,14 +5,14 @@
 #include "../alumno/alumno.h"
 #include "../system/system.h"
 #include "../Persona/persona.h"
-
+struct Libros_en_Prestamo;
 using namespace std;
 class System;
-
 class Bibliotecario: public Persona{
 	// CAMBIO CRITICO: Array fijo para compatibilidad binaria en Windows y Linux
 	int Id_Prestamos[50]; 
 	int CantidadPrestamos;
+	vector<Bibliotecario> resultadoBibliotecarios;
 	
 public:
 	Bibliotecario():Persona(){

@@ -47,10 +47,10 @@ void CrearCarpetasNecesarias() {
 #endif
 }
 
-vector<Libro> resultadoLibros;
-vector<Alumno> resultadoAlumnos;
-vector<Bibliotecario> resultadoBibliotecarios;
-vector<Libros_en_Prestamo>Prestamos;
+
+
+
+
 ///Estados Especiales
 ///De alumno
 string sancionados = "Recursos/binarios/sancionados.bin";
@@ -62,16 +62,10 @@ string fisica = "Recursos/binarios/fisica.bin";
 ///N-tags
 
 
-vector<Libro> vectorLibros = sistema.VerContenido<Libro>(libros, 1);
-vector<Alumno> vectorAlumnos = sistema.VerContenido<Alumno>(alumnos, 1);
-vector<Bibliotecario> vectorBibliotecario = sistema.VerContenido<Bibliotecario>(bibliotecarios, 1);
-size_t idLibro, idAlumno, idBibliotecario;
-int cant;	
 
-///Iteradores para los metodos
-vector<Libro>::const_iterator it;
-vector<Libro>::const_iterator itBorrar;
-int c; //ya apareci
+
+ 
+int cant;	
 
 vector<Tags> Etiquetas;
 Tags auxTags;
@@ -87,7 +81,9 @@ int main(){
 	//Bloques allTags;
 	/*-----------------Login------------------------
 	//Saber los alumnos y bibliotecarios
+	vector<Alumno> vectorAlumnos ;
 	vectorAlumnos = sistema.VerContenido<Alumno>(alumnos,true);
+	vector<Bibliotecario> vectorBibliotecario ;
 	vectorBibliotecario= sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
 	
 	cout<<"Sistema de gestion Bibliotecario!!!"<<endl<<endl;
@@ -150,6 +146,7 @@ int main(){
 	
 	//VerLibrosExistentes
 	/*cout<<"Libros Disponibles: "<<endl;
+	vector<Libro> vectorLibros ;
 	vectorLibros = sistema.VerContenido<Libro>(libros,true);
 	resultadoLibros = navega.Relacionados(palabra,vectorLibros);
 	
@@ -189,7 +186,9 @@ int main(){
 	
 	
 	
-	/*----------------------- Eliminar Libros ---------------------								vectorLibros = sistema.VerContenido<Libro>(libros,true);
+	/*----------------------- Eliminar Libros ---------------------								
+	vectorLibros = sistema.VerContenido<Libro>(libros,true);
+	size_t idLibro;
 	cout<<"ID a eliminar: ";cin>>idLibro;
 	
 	char borrar;
@@ -265,6 +264,7 @@ int main(){
 	admin.CargarNuevos<Alumno>(cant,alumnos);
 	
 	//---------------Eliminar Alumno--------------
+	size_t idAlumno;
 	cout<<"ID a eliminar: ";cin>>idAlumno;
 	char borrar;
 	cout<<"Confirmas Eliminarlo? s/n: ";cin>>borrar;
@@ -309,7 +309,7 @@ int main(){
 	/* ----------- Metodos relacionados a Bibliotecarios  --------------
 	
 	//---------------Ver Bibliotecarios--------------
-	
+	vector<Bibliotecario> vectorBibliotecario ;
 	vectorBibliotecario= sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
 	cout<<"Bibliotecario: "<<endl;
 	for(Bibliotecario& x: vectorBibliotecario)
@@ -321,6 +321,7 @@ int main(){
 	cout<<"Buscar Bibliotecario, ingrese el nombre: ";
 	getline(cin,palabra);
 	cin.ignore();
+	
 	resultadoBibliotecarios = navega.Relacionados<Bibliotecario>(palabra,vectorBibliotecario);
 	
 	
@@ -341,6 +342,7 @@ int main(){
 	
 	
 	//---------------Eliminar Bibliotecarios"--------------
+	size_t idBibliotecario;
 	cout<<"ID a eliminar: ";cin>>idBibliotecario;
 	char borrar;
 	cout<<"Confirmas Eliminarlo? s/n: ";cin>>borrar;
@@ -361,6 +363,7 @@ int main(){
 //	cout << "Fecha devolucion (dia mes anio): "; 
 //	int d,m,y; 
 //	cin >> d >> m >> y;
+//	vector<Libros_en_Prestamo>Prestamos;
 //	vectorLibros = sistema.VerContenido<Libro>(libros, true);
 //	vectorAlumnos = sistema.VerContenido<Alumno>(alumnos, true);
 //	bool ok = admin.PrestarLibros(idL, idA, vectorLibros, vectorAlumnos, Prestamos, d, m, y);
@@ -377,6 +380,7 @@ int main(){
 
 
 	//---------------Devolucion libro Bibliotecarios--------------
+	size_t idLibro;
 	cout<<"ingrese Id del libro a devolver";
 	cin>>idLibro;
 	if(admin.Devolucion_libro(idLibro)==true){

@@ -3,6 +3,7 @@
 #include "../Persona/persona.h"
 class Alumno: public Persona{
     bool sancion;
+    vector<Alumno> resultadoAlumnos;
     public:
 		Alumno(){}
 	    Alumno(size_t id, const char *nombre,size_t DNI):Persona(id,nombre,DNI){

@@ -26,10 +26,7 @@ Bibliotecario admin(codigo,nom,DNI);
 System sistema;
 
 
-// Nombre del Binario de test o Rutas con barras normales funcionan en ambos como mas le pinte
-string libros = "Recursos/Binarios/libros.bin";
-string alumnos = "Recursos/Binarios/alumnos.bin";
-string bibliotecarios = "Recursos/Binarios/bibliotecarios.bin";
+
 
 ///Clase encargada de las busquedas
 Buscador navega;
@@ -313,6 +310,7 @@ int main(){
 	/* ----------- Metodos relacionados a Bibliotecarios  --------------
 	
 	//---------------Ver Bibliotecarios--------------
+	
 	vector<Bibliotecario> vectorBibliotecario ;
 	vectorBibliotecario= sistema.VerContenido<Bibliotecario>(bibliotecarios,true);
 	cout<<"Bibliotecario: "<<endl;

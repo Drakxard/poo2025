@@ -23,8 +23,10 @@ struct Libros_en_Prestamo
 struct Tags;
 struct Bloque;
 class System{
-	string pathalumnos ="../../Recursos/Binarios/alumnos.bin";
-	string pathprestamos ="../../Recursos/Binarios/LibrosPrestamosActivos.bin";
+	string pathalumnos ="Recursos/Binarios/alumnos.bin";
+	string pathprestamos ="Recursos/Binarios/LibrosPrestamosActivos.bin";
+	string pathlibros = "Recursos/Binarios/libros.bin";
+	string pathbibliotecarios = "Recursos/Binarios/bibliotecarios.bin";
 	
 public:
 	System(){};
@@ -49,6 +51,8 @@ public:
 	template <typename T>
 	bool EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo);
 	string alumnos(){return pathalumnos;}
+	string libros(){return pathlibros;}
+	string bibliotecarios(){return pathbibliotecarios;}
 	
 	template<typename S>
 		int Verificar_Existencia_Vector(int dni, vector<S>&v);

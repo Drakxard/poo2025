@@ -21,7 +21,7 @@ public:
 	vector<size_t> BusquedaSimple(string nombreBuscado);
 	vector<size_t> BusquedaAmpliada(string nombreBuscado);
 	vector<string> ExtraerPalabras(string nombreBuscado);
-	
+		
 	vector<size_t> OrdenarAscendente(vector<size_t>v);
 	template <typename T>
 	vector<T> Relacionados(string palabraBuscada, vector<T>&v);

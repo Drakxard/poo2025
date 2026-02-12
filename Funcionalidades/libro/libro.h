@@ -34,6 +34,7 @@ public:
 	size_t VerID() const;
 	const char* VerNombre() const;
 	void CambiarNombre(const char* NuevoNombre);
+	void Agregar_Lectores(size_t x);
 	
 	// M�todos corregidos
 	bool EstadoDisponibilidad() const; 

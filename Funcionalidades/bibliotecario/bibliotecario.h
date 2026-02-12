@@ -5,6 +5,7 @@
 #include "../alumno/alumno.h"
 #include "../system/system.h"
 #include "../Persona/persona.h"
+
 struct Libros_en_Prestamo;
 using namespace std;
 class System;
@@ -12,13 +13,11 @@ class Bibliotecario: public Persona{
 	// CAMBIO CRITICO: Array fijo para compatibilidad binaria en Windows y Linux
 	int Id_Prestamos[50]; 
 	int CantidadPrestamos;
-	
 public:
 	Bibliotecario():Persona(){
 		CantidadPrestamos = 0;
 		for(int i=0; i<50; i++) Id_Prestamos[i] = -1;
 	}
-	
 	Bibliotecario(size_t id, const char *nombre,size_t DNI):Persona(id,nombre,DNI){
 		CantidadPrestamos = 0;
 		for(int i=0; i<50; i++) Id_Prestamos[i] = -1;

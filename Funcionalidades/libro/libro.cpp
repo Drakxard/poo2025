@@ -50,6 +50,9 @@ void Libro::CambiarNombre(const char *NuevoNombre){
 	this->nombre[49]='\0';
 }
 
+void Libro::Agregar_Lectores(size_t idAlumno){
+	Lectores.push_back(idAlumno);
+}
 
 bool Libro::operator==(const Libro& otro) const {
 	// Comparamos si los IDs son iguales.

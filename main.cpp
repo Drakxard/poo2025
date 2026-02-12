@@ -51,22 +51,11 @@ void CrearCarpetasNecesarias() {
 ///Estados Especiales
 ///De alumno
 string sancionados = "Recursos/binarios/sancionados.bin";
-///De libro
-string prestados = "Recursos/binarios/prestados.bin";
-string matematica = "Recursos/binarios/matematica.bin";
-string poo = "Recursos/binarios/poo.bin";
-string fisica = "Recursos/binarios/fisica.bin";
-///N-tags
-
 
 
 
  
-int cant;	
-
-vector<Tags> Etiquetas;
-Tags auxTags;
-vector<Tags> tagsActuales;
+	
 
 
 int main(){
@@ -117,7 +106,7 @@ int main(){
 	cout<<"Menu alumno..";
 }else{
 	cout<<"No est?s en el sistema... Registrandote"<<endl;
-	cant=1;
+	int cant=1;
 	admin.CargarNuevos<Alumno>(cant,alumnos);
 }
 }
@@ -125,6 +114,11 @@ int main(){
 	//Fin login, tenemos o un Bibliotecario o un Alumno
 	*/
 	/* ----------------------- Intefaz --------------------
+	
+vector<Tags> Etiquetas;
+Tags auxTags;
+vector<Tags> tagsActuales;
+
 	///Para mostrar los libros antes mostramos sus Cabeceras
 	
 	string indexCabeceras="./Recursos/libros_index.txt";
@@ -205,7 +199,9 @@ int main(){
 	*/
 	
 	//------------Agregar Libros----------------
-	/*cout<<"Libros a agregar: ";cin>>cant;
+	/*
+	int cant;
+	cout<<"Libros a agregar: ";cin>>cant;
 	admin.CargarNuevosLibros(cant,libros,sistema );
 	
 	*/
@@ -217,6 +213,7 @@ int main(){
 	//Trabajar con bloques
 	
 	//Las etiquetas reservan bloques, al ser creados
+	
 	Tags auxTags;
 	vector<Tags> tagsActuales;
 	auxTags = allTags.AgregarNuevoTag();
@@ -260,7 +257,8 @@ int main(){
 	
 	cout<<endl<<endl<<"------------------------------"<<endl;
 	
-	//--------------Agregar Alumnos -----------  
+	//--------------Agregar Alumnos ----------- 
+	int cant; 
 	cout<<"Alumnos a agregar: ";cin>>cant;
 	admin.CargarNuevos<Alumno>(cant,alumnos);
 	
@@ -339,6 +337,7 @@ int main(){
 } 
 	
 	//--------------Agregar Bibliotecarios -----------
+	int cant;
 	cout<<"Bibliotecarios a agregar: ";cin>>cant;
 	admin.CargarNuevos<Bibliotecario>(cant,bibliotecarios);
 	
@@ -445,7 +444,7 @@ int main(){
 	}
 	cout<<endl<<endl<<"------------------------------"<<endl;
 	/*
-	
+	int cant;
 	cout<<"Libros a agregar: ";cin>>cant;
 	admin.CargarNuevosLibros(cant,libros);
 	
@@ -462,7 +461,7 @@ int main(){
 	cout<<endl<<endl;
 	vector<size_t> idTags;
 	vector<Libro> librosGuardados;
-	cant=0;
+	int cant=0;
 	for(Tags& x:tagsActuales){
 		
 		cout<<endl<<"Nombre Tag: "<<x.NombreTag<<" Inicia en: "<<x.InicioBloque<<

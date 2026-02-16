@@ -27,6 +27,7 @@ class System{
 	string pathprestamos ="Recursos/Binarios/LibrosPrestamosActivos.bin";
 	string pathlibros = "Recursos/Binarios/libros.bin";
 	string pathbibliotecarios = "Recursos/Binarios/bibliotecarios.bin";
+	string pathHistorial = "Recursos/Binarios/Historial.bin";
 	
 public:
 	System(){};

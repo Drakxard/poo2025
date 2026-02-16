@@ -1,48 +1,59 @@
 #include "Historial.h"
+#include <cstdlib>
+//#include <vector>
+#include "../system/system.h"
+using namespace std;
 
-//template <typename S>
-//void Historial::Ver_Historial(int actual, vector<S>& v){	
-//	auto encontrado = find_if(v.begin(), v.end(), [actual](const S& p){
-//		return p.VerID() == actual;
-//	});
-//	
-//	if(encontrado != v.end()){
-//		int pos = encontrado - v.begin();
-//		
-//		const vector<int>& leidos = v[pos].Ver_Leidos();
-//		
-//		if(leidos.size() > 0){
-//			for(int i = 0; i < leidos.size(); ++i){
-//				cout << "' " << leidos[i] << " '" << endl;
-//			}
-//		}else{
-//			cout << "No ha leído libros aún" << endl;
-//		}
-//	}else{
-//		cout << "Persona no encontrada." << endl;
-//	}
-//}
-
-//void Historial::Ver_Historial_libros(int actual, vector<Libro>& v){	
-//	
-//	auto encontrado = find_if(v.begin(), v.end(), [actual](const Libro& l){
-//		return l.VerID() == actual;
-//	});
-//	
-//	if(encontrado != v.end()){
-//		int pos = encontrado - v.begin();
-//		
-//		const vector<int>& lectores = v[pos].Ver_Lectores();
-//		
-//		if(lectores.size() > 0){
-//			for(int i = 0; i < lectores.size(); ++i){
-//				cout << "' " << lectores[i] << " '" << endl;
-//			}
-//		}else{
-//			cout << "No ha tenido lectores aún" << endl;
-//		}
-//	}else{
-//		cout << "Libro no encontrado." << endl;
-//	}
-//}
-	   
+vector<Registro>Historial:: Mostrar_Historial(size_t id_usuario, string nombreArchivo){
+	ifstream archi(nombreArchivo,ios::binary);
+	if(!archi.is_open()){
+		throw runtime_error("No se pudo abrir el archivo "+nombreArchivo);
+	}
+	
+	vector<Registro>resultado;
+	Registro a;
+	while(archi.read(reinterpret_cast<char*>(&a), sizeof(Registro)))
+	{
+		if(a.id_usuario == id_usuario)
+		{
+			resultado.push_back(a);
+		}
+	}
+	
+	archi.close();
+	return resultado;
+}
+vector<Registro>Historial:: Mostrar_Historial_libro(size_t id_libro, string nombreArchivo){
+	ifstream archi(nombreArchivo,ios::binary);
+	if(!archi.is_open()){
+		throw runtime_error("No se pudo abrir el archivo "+nombreArchivo);
+	}
+	
+	vector<Registro>resultado;
+	Registro a;
+	while(archi.read(reinterpret_cast<char*>(&a), sizeof(Registro)))
+	{
+		if(a.id_libro == id_libro)
+		{
+			resultado.push_back(a);
+		}
+	}
+	
+	archi.close();
+	return resultado;
+}
+void Historial::Cargar_Historial(size_t idLibro, size_t idAlumno,string nom_usu,string nom_lib,int dia,int mes,int anio, string nombreArchivo ){
+	Registro a;
+	a.id_usuario=idAlumno; a.id_libro=idLibro;
+	strncpy(a.nombre_usuario,nom_usu.c_str(),48);
+	a.nombre_usuario[48] = '\0';
+	strncpy(a.nombre_libro,nom_lib.c_str(),49);
+	a.nombre_libro[49] = '\0';
+	a.dia=dia;a.mes=mes;a.anio=anio;
+	
+	vector<Registro>aux;
+	aux.push_back(a);
+	System sistema;
+	sistema.Guardar(nombreArchivo,aux,true);
+}
+ 

@@ -1,5 +1,6 @@
 #include "bibliotecario.h"
 #include "../buscador/buscador.h"
+#include "../Historial/Historial.h"
 
 
 
@@ -68,11 +69,13 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 			itlibro->SetDisponible(false); 
 			int diasCalculados = CalcularDiferenciaDias(dia, mes, anio);
 			itlibro->DiasRestantes(diasCalculados);
-			
 			cout << "Libro prestado exitosamente. Dias: " << diasCalculados << endl;
 			AgregarLibroPrestado(idLibro, idAlumno, dia, mes, anio, Prestamos);
-//			Agregar_Leidos(idLibro);
-//			Libros[idLibro].Agregar_Lectores(idAlumno);
+			
+			string nom_usu= itAlumno->VerNombre();
+			string nom_lib= itlibro->VerNombre();
+			Historial h;
+			h.Cargar_Historial(idLibro,idAlumno,nom_usu,nom_lib,dia,mes,anio);
 			
 			return true;
 		} else {

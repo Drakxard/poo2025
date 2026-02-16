@@ -1,25 +1,25 @@
 #ifndef HISTORIAL_H
 #define HISTORIAL_H
-#include "../preConfiguracion/preConfiguracion.h"
-#include "../bibliotecario/bibliotecario.h"
-#include "../libro/libro.h"
-#include "../alumno/alumno.h"
-#include "../system/system.h"
+
+#include <vector>
+#include <string>
+#include <fstream>
+#include <cstring>
+using namespace std;
 
 //prestados.bin ->registro de los prestamos
 struct Registro{
 size_t id_libro, id_usuario;
-string nombre_usuario, nombre_libro;
+char nombre_usuario[49], nombre_libro[50];
 int anio,mes,dia;
 };
 class Historial{
-    System sistema;
     public:
-        Historial(size_t id){
-        }
-		
-        template<typename S>
-		void Ver_Historial(int actual, vector<S>& v);
-		void Ver_Historial_libros(int actual, vector<Libro>& v);
+        Historial(){}
+		vector<Registro> Mostrar_Historial(size_t id_usuario,string nombreArchivo="Recursos/Binarios/Historial.bin");
+		vector<Registro> Mostrar_Historial_libro(size_t id_libro,string nombreArchivo="Recursos/Binarios/Historial.bin");
+		void Cargar_Historial(size_t idLibro, size_t idAlumno,string nom_usu, string nom_lib,int dia,int mes,int anio, string nombreArchivo="Recursos/Binarios/Historial.bin" );
 };
+
+
 #endif

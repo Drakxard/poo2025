@@ -19,14 +19,11 @@ void Persona::CambiarNombre(const char *NuevoNombre)
 	strncpy(this->nombre, NuevoNombre, 49);
 	this->nombre[49] = '\0';
 }
-void Persona::Cambiar_Id(int nuevo_id){
+void Persona::Cambiar_Id(size_t nuevo_id){
 	cin>>nuevo_id;
 	this->id= nuevo_id;
 }
 
-//void Persona::Agregar_Leidos(size_t idLibro){
-//	Leidos.push_back(idLibro);
-//}
 
 vector<Libro> Persona::VerLibros(string nombreArchivo,bool crear){
 	ifstream archi(nombreArchivo,ios::binary);

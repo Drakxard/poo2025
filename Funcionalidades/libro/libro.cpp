@@ -6,6 +6,9 @@ size_t Libro::VerID() const
 const char* Libro::VerNombre() const{
     return this->nombre;
 }
+const char* Libro::VerAutor() const{
+    return this->autor;
+}
 
 // Corrección: Ahora retorna el atributo de la clase
 bool Libro::EstadoDisponibilidad() const {
@@ -18,16 +21,14 @@ void Libro::SetDisponible(bool d) {
 }
 
 
-void Libro::CambiarEstado(bool estado)
-{
+void Libro::CambiarEstado(bool estado){
     if (estado)
         caduco = true;
     else
         caduco = false;
 }
 
-void Libro::RestarDia()
-{
+void Libro::RestarDia(){
     //Llega hasta 0 dias, cuando se sobrepasa, caduca la devolucion
     //Ya no restar dias (antes de llamar)
     //sino antes preguntar si esta caducada la devolucion
@@ -50,9 +51,9 @@ void Libro::CambiarNombre(const char *NuevoNombre){
 	this->nombre[49]='\0';
 }
 
-void Libro::Agregar_Lectores(size_t idAlumno){
-	Lectores.push_back(idAlumno);
-}
+//void Libro::Agregar_Lectores(size_t idAlumno){
+//	Lectores.push_back(idAlumno);
+//}
 
 bool Libro::operator==(const Libro& otro) const {
 	// Comparamos si los IDs son iguales.

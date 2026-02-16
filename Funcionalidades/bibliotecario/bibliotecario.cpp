@@ -1,13 +1,12 @@
 #include "bibliotecario.h"
-#include "../system/system.h"
-#include <ctime>
-#include <algorithm>
-#include <iostream>
+#include "../buscador/buscador.h"
+
+
 
 using namespace std;
 
 // --- FUNCI�N CROSS-PLATFORM ---
-void LimpiarPantalla() {
+void Bibliotecario::LimpiarPantalla() {
 #ifdef _WIN32
 	system("cls");
 #else
@@ -16,53 +15,36 @@ void LimpiarPantalla() {
 }
 // ------------------------------
 
-template<typename T>
-	vector<T> Bibliotecario::AgregarElementos(int Agregar, string nombreArchivo, System& sys)
-{
-	vector<T> resultado;
-	string nombre = "";
-	size_t dni;
-	
-	int idElemento = sys.VerUltimo<T>(nombreArchivo);
-	
-	while (Agregar > 0)
-	{
-		cout << "Nombre: "; cin >> nombre;     
-		cout << "Dni: "; cin >> dni;
-		
-		++idElemento;
-		T aux(idElemento, nombre.c_str(), dni);
-		resultado.push_back(aux);
-		--Agregar;
-		cout << "Nombre del nuevo: " << aux.VerNombre() << endl;
-	}
-	return resultado;
-}
 
-vector<Libro> Bibliotecario::AgregarElementos(int Agregar, string nombreArchivo, System& sys)
-{
+
+vector<Libro> Bibliotecario::AgregarElementos(int Agregar, string nombreArchivo, System& sys){
 	vector<Libro> resultado;
-	string nombre = "";
+	Buscador x;
+	string nombre = "", autor = "";
 	int idElemento = sys.VerUltimo<Libro>(nombreArchivo);
 	while (Agregar > 0)
 	{
 		cout << "Nombre: "; cin >> nombre;     
-		++idElemento;
-		Libro aux(idElemento, nombre.c_str());
-		resultado.push_back(aux);
-		--Agregar;
-		cout << endl << "Libro agregado: " << aux.VerNombre() << endl;
+		cout << "Autor: "; cin >> autor; 
+		//validacion que no ingresen dos veces lo mismo
+		if(x.Busqueda_Autor(autor,resultado).size()==0){
+			++idElemento;
+			Libro aux(idElemento, nombre.c_str(),autor.c_str());
+			resultado.push_back(aux);
+			--Agregar;
+			cout << endl << "Libro agregado: " << aux.VerNombre() <<" / Autor: "<<aux.VerAutor()<<"/ ID:"<<idElemento<<endl;
+		}else{
+			cout<<"No se puede ingresar un libro y un autor dos veces"<<endl;
+		}
 	}
 	return resultado;
 }
 
-void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector<Libro> &Libros)
-{
+void Bibliotecario::EliminarLibro(vector<Libro>::const_iterator Eliminar, vector<Libro> &Libros){
 	Libros.erase(Eliminar);
 }
 
-bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos, vector<Libros_en_Prestamo>& Prestamos, int dia, int mes, int anio)
-{
+bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos, vector<Libros_en_Prestamo>& Prestamos, int dia, int mes, int anio){
 	if(idLibro > Libros.size()){
 		cout << "Codigo de libro inexistente." << endl;
 		return false;
@@ -89,8 +71,8 @@ bool Bibliotecario::PrestarLibros(size_t idLibro, size_t idAlumno, vector<Libro>
 			
 			cout << "Libro prestado exitosamente. Dias: " << diasCalculados << endl;
 			AgregarLibroPrestado(idLibro, idAlumno, dia, mes, anio, Prestamos);
-			Agregar_Leidos(idLibro);
-			Libros[idLibro].Agregar_Lectores(idAlumno);
+//			Agregar_Leidos(idLibro);
+//			Libros[idLibro].Agregar_Lectores(idAlumno);
 			
 			return true;
 		} else {
@@ -173,8 +155,7 @@ int Bibliotecario::CalcularDiferenciaDias(int dia, int mes, int anio){
 	return dias > 0 ? dias : 0; 
 }
 
-bool Bibliotecario::Sancionar(int IdAlumno, string nombreArchivo, bool decision, System& sys)
-{
+bool Bibliotecario::Sancion(int IdAlumno, string nombreArchivo, bool decision, System& sys){
 	fstream archi(nombreArchivo, ios::binary|ios::out|ios::in);
 	if (!archi) return false;
 	
@@ -188,6 +169,7 @@ bool Bibliotecario::Sancionar(int IdAlumno, string nombreArchivo, bool decision,
 	archi.write(reinterpret_cast<const char*>(&t), sizeof(Alumno));
 	return true; 
 }
+
 
 bool Bibliotecario::Actualizar_Disponibilidad(int idLibro, string nombreArchivo, bool decision, System& sys){
 	fstream archi(nombreArchivo, ios::binary|ios::out|ios::in);
@@ -205,20 +187,7 @@ bool Bibliotecario::Actualizar_Disponibilidad(int idLibro, string nombreArchivo,
 	return true; 
 }
 
-template<typename T>
-	void Bibliotecario::CargarNuevos(int cant, string nombreArchivo, System& sys){
-	vector<T> Agregados = AgregarElementos<T>(cant, nombreArchivo, sys);
-	for(T&x : Agregados)
-		cout << x.VerNombre() << "    " << x.VerDNI() << endl;
-	
-	char confirmar;
-	cout << "Confirmar? (s/n): "; cin >> confirmar;
-	LimpiarPantalla(); // Usa la funci�n compatible
-	
-	if(confirmar == 's'){
-		sys.Guardar<T>(nombreArchivo, Agregados, false);
-	}
-}
+
 
 void Bibliotecario::CargarNuevosLibros(int cant, string nombreArchivo, System& sys){
 	vector<Libro> Agregados = AgregarElementos(cant, nombreArchivo, sys);
@@ -234,8 +203,4 @@ void Bibliotecario::CargarNuevosLibros(int cant, string nombreArchivo, System& s
 	}
 }
 
-// Instanciaciones
-template void Bibliotecario::CargarNuevos<Bibliotecario>(int, string, System&);
-template void Bibliotecario::CargarNuevos<Alumno>(int, string, System&);
-template vector<Alumno> Bibliotecario::AgregarElementos(int, string, System&);
-template vector<Bibliotecario> Bibliotecario::AgregarElementos(int, string, System&);
+

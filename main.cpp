@@ -146,9 +146,7 @@ vector<Tags> tagsActuales;
 	resultadoLibros = navega.Relacionados(palabra,vectorLibros);
 	
 	for(Libro& x: vectorLibros){
-	cout
-	<<"Nombre Libro: " 	<<x.VerNombre()
-	<<"/ Id: "	<<x.VerID();
+	cout<<"Nombre Libro: " 	<<x.VerNombre()<<"/ Id: " <<x.VerID()<<" Autor "<<x.VerAutor();
 	if(x.EstadoDisponibilidad()==1){
 	cout<<"/ Disponible"<<endl;
 }else{
@@ -168,7 +166,7 @@ vector<Tags> tagsActuales;
 	for(Libro &x: vectorLibros){
 	cout
 	<<"Nombre Libro: " 	<<x.VerNombre()
-	<<"/ Id: "	<<x.VerID();
+	<<"/ Id: "	<<x.VerID()<<" Autor "<<x.VerAutor();
 	if(x.EstadoDisponibilidad()==1){
 	cout<<"/ Disponible"<<endl;
 }else{
@@ -243,10 +241,10 @@ vector<Tags> tagsActuales;
 	vector<size_t>resultado = allTags.LeerTodosLosElementos(IDtag);
 	
 	
-	*/
 	
 	
-	/* ----------- Metodos relacionados a Alumnos --------------
+	
+	 ----------- Metodos relacionados a Alumnos --------------
 	
 	//--------------Ver Alumnos------------
 	vectorAlumnos = sistema.VerContenido<Alumno>(alumnos,true);
@@ -298,14 +296,14 @@ vector<Tags> tagsActuales;
 }
 } 
 } 
-	*/
-	
-	
-	/* -----------^ Metodos relacionados a Alumnos ^ --------------
 	
 	
 	
-	/* ----------- Metodos relacionados a Bibliotecarios  --------------
+	 -----------^ Metodos relacionados a Alumnos ^ --------------
+	
+	
+	
+	 ----------- Metodos relacionados a Bibliotecarios  --------------
 	
 	//---------------Ver Bibliotecarios--------------
 	
@@ -354,7 +352,7 @@ vector<Tags> tagsActuales;
 	sistema.Eliminar<Bibliotecario>(idBibliotecario, vectorBibliotecario);
 	sistema.Guardar<Bibliotecario>(bibliotecarios,vectorBibliotecario,true);
 	}
-	*///---------------Prestar libro Bibliotecarios--------------
+	//---------------Prestar libro Bibliotecarios--------------
 //	cout << "ID Libro: "; 
 //	size_t idL; 
 //	cin >> idL;
@@ -374,7 +372,7 @@ vector<Tags> tagsActuales;
 //	}else{ cout << "No se pudo prestar el libro.\n";
 //	}
 // actualizar persistencia del libro
-	/*
+	
 
 	
 	//---------------Sancionar Bibliotecarios--------------
@@ -443,7 +441,7 @@ vector<Tags> tagsActuales;
 		}
 	}
 	cout<<endl<<endl<<"------------------------------"<<endl;
-	/*
+	
 	int cant;
 	cout<<"Libros a agregar: ";cin>>cant;
 	admin.CargarNuevosLibros(cant,libros);

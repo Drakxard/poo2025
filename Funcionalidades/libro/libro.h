@@ -6,13 +6,13 @@
 #include <vector>
 using namespace std;
 
-class Libro
-{
+class Libro{
 	size_t id;
 	char nombre[50];
 	int diasRestantes;
 	bool disponible; // Quitamos la inicializaci�n aqu� para hacerlo en el constructor
 	bool caduco;
+	char autor [20];
 public:
 	Libro()
 	{
@@ -21,18 +21,20 @@ public:
 		diasRestantes = 0;
 	};
 	
-	Libro(size_t id, const char* nombre)
-	{
+	Libro(size_t id, const char* nombre, const char* autor){
 		this->id = id;
 		strncpy(this->nombre, nombre, 49);
 		this->nombre[49] = '\0';
 		this->disponible = true; // Por defecto disponible
 		this->caduco = false;
 		this->diasRestantes = 0;
+		strncpy(this->autor,autor, 19);
+		this->autor[19]= '\0';
 	}
 	
 	size_t VerID() const;
 	const char* VerNombre() const;
+	const char* VerAutor() const;
 	void CambiarNombre(const char* NuevoNombre);
 	void Agregar_Lectores(size_t x);
 	

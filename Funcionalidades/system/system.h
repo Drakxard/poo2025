@@ -74,8 +74,7 @@ public:
 
 
 template <typename T>  ///Cambiar a Guardar al final
-bool System::Guardar(string nombreArhivo, vector<T> &A_Guardar, bool sobreEscribir)
-{
+bool System::Guardar(string nombreArhivo, vector<T> &A_Guardar, bool sobreEscribir){
 	ofstream archi;
 		if(sobreEscribir){
 			archi.open(nombreArhivo, ios::binary);
@@ -136,8 +135,7 @@ vector<T> System::VerContenido(string nombreArchivo,bool crear){
 
 
 template <typename T>
-vector<T> System::LeerDelBin(vector<size_t> &IdARecuperar, string nombreArchivo)
-{  
+vector<T> System::LeerDelBin(vector<size_t> &IdARecuperar, string nombreArchivo){  
 	ifstream archi(nombreArchivo, ios::binary);
 	if (!archi)
 	throw runtime_error("Error al Recuperar de " + nombreArchivo);
@@ -158,8 +156,7 @@ vector<T> System::LeerDelBin(vector<size_t> &IdARecuperar, string nombreArchivo)
 };
 
 template <typename T>
-bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo)
-{ 
+bool System::EscribirEnBin(vector<int> &IdARecuperar, vector<T>&elementos, string nombreArchivo){ 
 	if(IdARecuperar.size() != 0){
 	ofstream archi(nombreArchivo, ios::binary);
 	if (!archi)

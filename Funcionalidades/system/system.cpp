@@ -11,8 +11,7 @@ Bloque System::VerContenido(string nombreArchivo,size_t NroBloque){
 	archi.close();
 	return aux;
 }
-bool System::Guardar(string nombreArhivo, Bloque &A_Guardar, size_t Pos)
-{
+bool System::Guardar(string nombreArhivo, Bloque &A_Guardar, size_t Pos){
 	fstream archi(nombreArhivo, ios::binary | ios::in | ios::out);
 	
 	if (!archi) {

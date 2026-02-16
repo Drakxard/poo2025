@@ -40,11 +40,56 @@ public:
 	void AgregarLibroPrestado(size_t id_LibroPrestado,size_t id_AlumnoPrestado, int dia, int mes, int anio, vector<Libros_en_Prestamo>& Prestamos);
 	bool Devolucion_libro(size_t idLibro, size_t idAlumno, vector<Libro> &Libros, vector<Alumno> &Alumnos, vector<Libros_en_Prestamo>& Prestamos, int dia_Devolucion, int mes_Devolucion, int anio_Devolucion);
 	
-	bool Sancionar(int idAlumno, string nombreArchivo, bool desicion, System& sys);
+	bool Sancion(int idAlumno, string nombreArchivo, bool desicion, System& sys);
 	bool Actualizar_Disponibilidad( int idLibro, string nombreArchivo, bool decision, System& sys);
+	
+	void LimpiarPantalla();
 	
 	template<typename T>
 	void CargarNuevos(int cant, string nombreArchivo, System& sys);
 	void CargarNuevosLibros(int cant, string nombreArchivo, System& sys);
 };
+
+
+#include <ctime>
+#include <algorithm>
+#include <iostream>
+
+
+template<typename T>
+vector<T> Bibliotecario::AgregarElementos(int Agregar, string nombreArchivo, System& sys){
+	vector<T> resultado;
+	string nombre = "";
+	size_t dni;
+	
+	int idElemento = sys.VerUltimo<T>(nombreArchivo);
+	
+	while (Agregar > 0)
+	{
+		cout << "Nombre: "; cin >> nombre;     
+		cout << "Dni: "; cin >> dni;
+		
+		++idElemento;
+		T aux(idElemento, nombre.c_str(), dni);
+		resultado.push_back(aux);
+		--Agregar;
+		cout << "Nombre del nuevo: " << aux.VerNombre() << endl;
+	}
+	return resultado;
+}
+
+template<typename T>
+void Bibliotecario::CargarNuevos(int cant, string nombreArchivo, System& sys){
+	vector<T> Agregados = AgregarElementos<T>(cant, nombreArchivo, sys);
+	for(T&x : Agregados)
+		cout << x.VerNombre() << "    " << x.VerDNI() << endl;
+	
+	char confirmar;
+	cout << "Confirmar? (s/n): "; cin >> confirmar;
+	LimpiarPantalla(); // Usa la funci�n compatible
+	
+	if(confirmar == 's'){
+		sys.Guardar<T>(nombreArchivo, Agregados, false);
+	}
+}
 #endif
